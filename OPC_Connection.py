@@ -41,12 +41,13 @@ class OPC_Client:
     value=self.client[parameter]
     return value
   
-  def Wr(self,prefix,parameter,value):
-    string1=prefix+"."+parameter
-    self.client.write(string1,value)
+  def Wr(self,parameter,value):
+    self.client.write(parameter,value)
 
-  
-  
+  def getInfo(self):
+    infoList=self.client.info()
+    infoDict=dict(infoList)
+    return infoDict
 
 
   

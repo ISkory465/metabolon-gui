@@ -15,8 +15,9 @@ class Worker(QObject):
     progress = pyqtSignal(list)
     #recieved = pyqtSignal(list)
     
-    def __init__(self, x ):
+    def __init__(self, x,serverName):
       self.varList=x
+      self.serverName=serverName
       #self.client=client
       super().__init__()
 
@@ -26,7 +27,7 @@ class Worker(QObject):
         try:
             opc=OpenOPC.client()
             #print('client')   
-            opc.connect("Matrikon.OPC.Simulation.1")
+            opc.connect(self.serverName)
             if self.varList==[]:
                 ls=['No Values']
                 print(ls)
@@ -53,6 +54,7 @@ class Window(QWidget):
         super().__init__()
         self.setGeometry(100,100,800,600)
         self.setWindowTitle('Elementary OPC Test with Multithreading')
+        self.infoDict={'OPC Server':'None'}
         self.UI()
         
     def UI(self):
@@ -118,8 +120,9 @@ class Window(QWidget):
         self.thread = QThread()
         #x=[1,2,3]
         # Step 3: Create a worker object
-        #ls=['Random.Int4','Random.Int8']
-        self.worker = Worker(self.opcList)
+        serverName=self.infoDict['OPC Server']
+     
+        self.worker = Worker(self.opcList,serverName)
         # Step 4: Move worker to the thread
         self.worker.moveToThread(self.thread)
 
@@ -165,7 +168,8 @@ class Window(QWidget):
     def funcConnect(self):
         val=self.listWidget.currentItem().text()
         self.client1.start_connection(val)
-        
+        self.infoDict=self.client1.getInfo()
+        print(self.infoDict)
     def funcClose(self):
         
         self.client1.close_connection()

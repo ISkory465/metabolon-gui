@@ -15,18 +15,24 @@ list1=client1.servernames()
 
 print(list1)
 #print(type(list1[5]))
-client1.start_connection(list1[5])
-list2=client1.listValues()
+#client1.start_connection(list1[5])
+d=client1.getInfo()
 
-print(list2)
-list3=client1.listValues2(list2[0])
-print(list3)
-list4=client1.listValues2(list2[0]+'.'+list3[1])
-print(list4)
 
-val=client1.R(list4[5])
-print(val)
-client1.close_connection()
+print(d)
+serverName=d['OPC Server']
+print(serverName)
+# list2=client1.listValues()
+
+# print(list2)
+# list3=client1.listValues2(list2[0])
+# print(list3)
+# list4=client1.listValues2(list2[0]+'.'+list3[1])
+# print(list4)
+
+# val=client1.R(list4[5])
+# print(val)
+# client1.close_connection()
 
 
 
