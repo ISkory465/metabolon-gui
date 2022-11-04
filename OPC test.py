@@ -15,7 +15,7 @@ list1=client1.servernames()
 
 print(list1)
 #print(type(list1[5]))
-#client1.start_connection(list1[5])
+client1.start_connection(list1[5])
 d=client1.getInfo()
 
 
