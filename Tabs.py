@@ -7,6 +7,7 @@ from PyQt5.QtCore import QObject, QThread, pyqtSignal,QTimer
 import OpenOPC
 import pywintypes
 from OPC_Connection import OPC_Client
+from faceplates import Box
 
 class Worker(QObject):
     finished = pyqtSignal()
@@ -66,7 +67,10 @@ class Window(QWidget):
 
         ###################Widgets###############
         vbox=QVBoxLayout()
+        vbox1=QVBoxLayout()
+        vbox2=QVBoxLayout()
         hbox=QHBoxLayout()
+        hbox2=QHBoxLayout()
         self.text=QLabel("Hello Python")
         self.btn1=QPushButton("First Tab")
         self.listWidget=QListWidget(self)
@@ -78,23 +82,32 @@ class Window(QWidget):
 
         vbox.addWidget(self.text)
         vbox.addWidget(self.listWidget)
+        
         #vbox.addWidget(self.btn1)
         hbox.addWidget(self.btn2)
-        hbox.addWidget(self.listWidget2)
+        #hbox.addWidget(self.listWidget2)
+        facePlate1=Box('HE11','A12CH2')
+        vbox1.addWidget(facePlate1)
+        facePlate2=Box('RW13','A15CH11')
+        vbox1.addWidget(facePlate2)
+        hbox2.addLayout(vbox1,25)
+        hbox2.addLayout(vbox2,75)
+        vbox.addLayout(hbox2)
         self.tab1.setLayout(vbox)
         self.tab2.setLayout(hbox)
-        self.tabs.currentChanged.connect(self.btnFunc2)
-
+        #self.tabs.currentChanged.connect(self.btnFunc2)
+        #facePlate1.radioBtn1.clicked.connect(facePlate1.write)
         mainLayout.addWidget(self.tabs)
         self.setLayout(mainLayout)
         self.opclist=['Random.Int4','Random.Int8']
 
-        self.timer = QTimer()
-        self.timer.setInterval(10000)
-        self.timer.timeout.connect(self.runLongTask)
-        self.timer.start()
+        # self.timer = QTimer()
+        # self.timer.setInterval(10000)
+        # self.timer.timeout.connect(self.runLongTask)
+        # self.timer.start()
         self.show()
-
+    
+    
     def runLongTask(self):
         """Long-running task in 5 steps."""
         # Step 2: Create a QThread object
