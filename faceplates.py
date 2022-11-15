@@ -3,7 +3,7 @@ import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import QObject, QThread, pyqtSignal,QTimer
 from PyQt5.QtGui import QPixmap
-import QLed
+from QLed import QLed
 
 
 
@@ -13,15 +13,13 @@ class Box(QGroupBox):
     super().__init__(name)
 
     mainLayout=QFormLayout()
-    self.img1=QLabel()
-    self.img1.setPixmap(QPixmap('images/CIRCLEGRAY.png'))
-    self.flag1=0
-    self.img2=QLabel()
-    self.img2.setPixmap(QPixmap('images/CIRCLEGRAY.png'))
-    self.flag2=0
-    self.img3=QLabel()
-    self.img3.setPixmap(QPixmap('images/CIRCLEGRAY.png'))
-    self.flag3=0
+  
+    self.led1=QLed(onColour=QLed.Green, shape=QLed.Circle)
+    
+    self.led2=QLed(onColour=QLed.Green, shape=QLed.Circle)
+    
+    self.led3=QLed(onColour=QLed.Green, shape=QLed.Circle)
+    
 
     self.radioBtn1=QRadioButton('Hand')
     self.radioBtn2=QRadioButton('AUS')
@@ -31,67 +29,37 @@ class Box(QGroupBox):
     self.radioBtn2.clicked.connect(self.write2)
     self.radioBtn3.clicked.connect(self.write3)
     
-    mainLayout.addRow(self.radioBtn1,self.img1)
-    mainLayout.addRow(self.radioBtn2,self.img2)
-    mainLayout.addRow(self.radioBtn3,self.img3)
+    mainLayout.addRow(self.radioBtn1,self.led1)
+    mainLayout.addRow(self.radioBtn2,self.led2)
+    mainLayout.addRow(self.radioBtn3,self.led3)
 
 
     self.setLayout(mainLayout)
   
   def write1(self):
+    if self.led1.value==False:
+      print(self.opcID+': '+ self.radioBtn1.text())
 
-    print(self.opcID+': '+ self.radioBtn1.text())
-
-    if self.flag1 == 0:
-
-      self.img1.setPixmap(QPixmap('images/CIRCLEGREEN.png'))
-      self.img2.setPixmap(QPixmap('images/CIRCLEGRAY.png'))
-      self.img3.setPixmap(QPixmap('images/CIRCLEGRAY.png'))
-
-
-      self.flag1=1
-      self.flag2=0
-      self.flag3=0
-    else:
-      self.img1.setPixmap(QPixmap('images/CIRCLEGRAY.png'))
-      self.flag1=0
+    self.led1.value=True
+    self.led2.value=False
+    self.led3.value=False
 
   def write2(self):
 
-    print(self.opcID+': '+ self.radioBtn2.text())
+    if self.led2.value==False:
+      print(self.opcID+': '+ self.radioBtn2.text())
 
-    if self.flag2 == 0:
-
-      self.img2.setPixmap(QPixmap('images/CIRCLEGREEN.png'))
-      self.img1.setPixmap(QPixmap('images/CIRCLEGRAY.png'))
-      self.img3.setPixmap(QPixmap('images/CIRCLEGRAY.png'))
-
-
-      self.flag2=1
-      self.flag1=0
-      self.flag3=0
-    else:
-      self.img2.setPixmap(QPixmap('images/CIRCLEGRAY.png'))
-      self.flag2=0
-      
+    self.led2.value=True
+    self.led1.value=False
+    self.led3.value=False
   def write3(self):
 
-    print(self.opcID+': '+ self.radioBtn3.text())
+    if self.led3.value==False:
+      print(self.opcID+': '+ self.radioBtn3.text())
 
-    if self.flag3 == 0:
-
-      self.img3.setPixmap(QPixmap('images/CIRCLEGREEN.png'))
-      self.img1.setPixmap(QPixmap('images/CIRCLEGRAY.png'))
-      self.img2.setPixmap(QPixmap('images/CIRCLEGRAY.png'))
-
-
-      self.flag3=1
-      self.flag1=0
-      self.flag2=0
-    else:
-      self.img3.setPixmap(QPixmap('images/CIRCLEGRAY.png'))
-      self.flag3=0
-      
+    self.led3.value=True
+    self.led1.value=False
+    self.led2.value=False
 
 
   
