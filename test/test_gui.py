@@ -33,8 +33,8 @@ class Window(QWidget):
         vbox1=QVBoxLayout()
         vbox2=QVBoxLayout()
 
-        hbox=QHBoxLayout()
-        hbox1=QHBoxLayout()
+        # hbox=QHBoxLayout()
+        # hbox1=QHBoxLayout()
         hbox2=QHBoxLayout()
 
 
