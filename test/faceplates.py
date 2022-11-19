@@ -23,6 +23,7 @@ class Box(QGroupBox):
 
     self.radioBtn1=QRadioButton('Hand')
     self.radioBtn2=QRadioButton('AUS')
+    self.radioBtn2.setChecked(True)
     self.radioBtn3=QRadioButton('AUTO')
     self.opcID=opcID
     self.radioBtn1.clicked.connect(self.write1)
