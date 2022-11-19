@@ -9,7 +9,7 @@ from test_element import Mixer
 class Window(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Metabolo Station")
+        self.setWindowTitle("Metabolon Station")
         self.setGeometry(350,150,900,600)
         self.UI()
 
