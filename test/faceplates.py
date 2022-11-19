@@ -53,6 +53,7 @@ class Box(QGroupBox):
     self.led2.value=True
     self.led1.value=False
     self.led3.value=False
+    
   def write3(self):
 
     if self.led3.value==False:
