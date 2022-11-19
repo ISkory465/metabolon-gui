@@ -10,6 +10,8 @@ class Mixer(QGroupBox):
 
         mainLayout=QFormLayout()
 
+
+
         #<-------------------------------------->
 
         self.label1 = QLabel("\nFermenter Temp.-Sollwert (\N{DEGREE SIGN}C)")
@@ -20,6 +22,10 @@ class Mixer(QGroupBox):
         #Check range of values in LabView
         self.temp1.setMinimum(10)
         self.temp1.setMaximum(100)
+
+        #Removing button arrows:
+        self.temp1.setButtonSymbols(2)
+        self.temp1.setMaximumSize(25, 20)
 
         #connect some function when value changed, source: https://www.pythonguis.com/tutorials/pyqt-basic-widgets/
         # temp1.valueChanged.connect(self.value_changed)
