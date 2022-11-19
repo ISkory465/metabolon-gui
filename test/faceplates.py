@@ -8,7 +8,7 @@ from QLed import QLed
 
 
 class Box(QGroupBox):
-  def __init__(self,name,opcID):
+  def __init__(self,name, opcID=None):
     #self.setTitle(name)
     super().__init__(name)
 
@@ -53,7 +53,7 @@ class Box(QGroupBox):
     self.led2.value=True
     self.led1.value=False
     self.led3.value=False
-    
+
   def write3(self):
 
     if self.led3.value==False:
