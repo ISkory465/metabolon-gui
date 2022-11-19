@@ -104,7 +104,7 @@ class Mixer(QGroupBox):
 
 
         #<-------------------------------------->
-        #Third row
+        #Fourth row
 
         #Left
         self.label7 = QLabel("H2S [ppm]")
@@ -115,7 +115,6 @@ class Mixer(QGroupBox):
 
         self.H2S.setButtonSymbols(2)
         self.H2S.setMaximumSize(35, 20)
-
 
         mainLayout.addRow(self.label7)
         mainLayout.addRow(self.H2S)
