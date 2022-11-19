@@ -36,6 +36,10 @@ class Window(QWidget):
 
         #Layout that contains two vertically stacked sets of the Radio buttons:
         vbox3=QVBoxLayout()
+        vbox3_1=QVBoxLayout()
+        vbox3_2=QVBoxLayout()
+        vbox3_3=QVBoxLayout()
+        vbox3_4=QVBoxLayout()
 
         #Dummy layout for adjusting positioning of the radio buttons
         vbox4=QVBoxLayout()
@@ -68,13 +72,36 @@ class Window(QWidget):
         facePlate2=Box('RW13','A15CH11')
         vbox3.addWidget(facePlate2)
 
-        hbox1.addLayout(vbox3,25)
-        hbox1.addLayout(vbox4,75)
+        facePlate3=Box('PU11')
+        vbox3_1.addWidget(facePlate3)
+        facePlate4=Box('PU13')
+        vbox3_1.addWidget(facePlate4)
+
+        facePlate5=Box('RW11')
+        vbox3_2.addWidget(facePlate5)
+        facePlate6=Box('RW12')
+        vbox3_2.addWidget(facePlate6)
+
+        facePlate7=Box('AA11')
+        vbox3_3.addWidget(facePlate7)
+        facePlate8=Box('AA12')
+        vbox3_3.addWidget(facePlate8)
+
+        facePlate9=Box('AA13')
+        vbox3_4.addWidget(facePlate9)
+        facePlate10=Box('AA14')
+        vbox3_4.addWidget(facePlate10)
+
+        hbox1.addLayout(vbox3,15)
+        hbox1.addLayout(vbox3_1,15)
+        hbox1.addLayout(vbox3_2,15)
+        hbox1.addLayout(vbox3_3,15)
+        hbox1.addLayout(vbox3_4,15)
+        hbox1.addLayout(vbox4,30)
 
         #Assigning to the tab
         vbox.addLayout(hbox1)
         self.tab1.setLayout(vbox)
-
 
 
 
