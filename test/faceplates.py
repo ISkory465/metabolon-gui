@@ -8,7 +8,7 @@ from QLed import QLed
 
 
 class Box(QGroupBox):
-  def __init__(self,name, opcID=None):
+  def __init__(self,name, opcID='blank'):
     #self.setTitle(name)
     super().__init__(name)
 
