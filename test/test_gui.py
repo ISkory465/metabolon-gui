@@ -67,6 +67,7 @@ class Window(QWidget):
         
 
         #Add Radio Buttons Objects
+        #Without 2nd position argument app crashes; opcid=None does not work properly; fix - change to defalt string.
         facePlate1=Box('HE11','A12CH2')
         vbox3.addWidget(facePlate1)
         facePlate2=Box('RW13','A15CH11')
