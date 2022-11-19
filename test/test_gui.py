@@ -10,7 +10,7 @@ class Window(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Metabolo Station")
-        self.setGeometry(350,150,600,600)
+        self.setGeometry(350,150,900,600)
         self.UI()
 
     def UI(self):
@@ -47,8 +47,7 @@ class Window(QWidget):
         hbox1=QHBoxLayout()
         
 
-
-
+        #Add Mixer Objects
         mixer1 = Mixer("Fermenter")
         vbox1.addWidget(mixer1)
 
@@ -58,11 +57,12 @@ class Window(QWidget):
         hbox.addLayout(vbox1, 30)
         hbox.addLayout(vbox2, 30)
         hbox.addLayout(vbox2_2, 40)
+
+        #Assigning to the tab
         vbox.addLayout(hbox)
         
-        
-    
-    
+
+        #Add Radio Buttons Objects
         facePlate1=Box('HE11','A12CH2')
         vbox3.addWidget(facePlate1)
         facePlate2=Box('RW13','A15CH11')
@@ -71,15 +71,9 @@ class Window(QWidget):
         hbox1.addLayout(vbox3,25)
         hbox1.addLayout(vbox4,75)
 
-
+        #Assigning to the tab
         vbox.addLayout(hbox1)
         self.tab1.setLayout(vbox)
-
-
-
-        # self.tab2.setLayout(hbox)
- 
-
 
 
 
