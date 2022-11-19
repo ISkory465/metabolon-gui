@@ -26,41 +26,53 @@ class Window(QWidget):
 
 
 
-        ###################Widgets###############
+        #Main layout of the first tab 'Straße 1"
         vbox=QVBoxLayout()
 
-
+        #Layout for each Mixer Object
         vbox1=QVBoxLayout()
         vbox2=QVBoxLayout()
+        vbox2_2=QVBoxLayout()
 
-        # hbox=QHBoxLayout()
-        # hbox1=QHBoxLayout()
-        hbox2=QHBoxLayout()
+        #Layout that contains two vertically stacked sets of the Radio buttons:
+        vbox3=QVBoxLayout()
+
+        #Dummy layout for adjusting positioning of the radio buttons
+        vbox4=QVBoxLayout()
+
+        #Contain Mixer Objects for vbox1 and vbox2 Layouts
+        hbox=QHBoxLayout()
+
+        #Contain Radio Buttons objects for vbox3 and vbox4
+        hbox1=QHBoxLayout()
+        
 
 
 
         mixer1 = Mixer("Fermenter")
-        vbox.addWidget(mixer1)
+        vbox1.addWidget(mixer1)
 
         mixer2 = Mixer("Nachgärer")
-        vbox.addWidget(mixer2)
+        vbox2.addWidget(mixer2)
 
-        # hbox1.addLayout(vbox, 50)
-        # hbox1.addLayout(vbox, 50)
-        # hbox1.addLayout()
+        hbox.addLayout(vbox1, 30)
+        hbox.addLayout(vbox2, 30)
+        hbox.addLayout(vbox2_2, 40)
+        vbox.addLayout(hbox)
+        
         
     
     
         facePlate1=Box('HE11','A12CH2')
-        vbox1.addWidget(facePlate1)
+        vbox3.addWidget(facePlate1)
         facePlate2=Box('RW13','A15CH11')
-        vbox1.addWidget(facePlate2)
+        vbox3.addWidget(facePlate2)
 
-        hbox2.addLayout(vbox1,25)
-        hbox2.addLayout(vbox2,75)
+        hbox1.addLayout(vbox3,25)
+        hbox1.addLayout(vbox4,75)
 
 
-        vbox.addLayout(hbox2)
+        vbox.addLayout(hbox1)
         self.tab1.setLayout(vbox)
 
 
