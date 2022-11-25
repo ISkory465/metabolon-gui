@@ -1,6 +1,7 @@
 import sys
 from PyQt5.QtWidgets import *
 import app_tabs.Strasse_1 as Strasse1
+import app_tabs.Steuerung_Strasse_2 as St_Strasse_2
 
 
 class Window(QWidget):
@@ -33,12 +34,13 @@ class Window(QWidget):
         #Fourth Tab
         self.tab4 = QWidget()
         self.tabs.addTab(self.tab4,"Steuerung Strasse 2")
-        # valera.Tab_Steuerung_Strasse2(self)
+        St_Strasse_2.UI(self)
+        
                 
         mainLayout.addWidget(self.tabs)
         self.setLayout(mainLayout)
 
-    µ
+
 
 
 def main():
