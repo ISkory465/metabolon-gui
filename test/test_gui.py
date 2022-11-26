@@ -9,7 +9,6 @@ class Window(QWidget):
         super().__init__()
         self.setWindowTitle("Metabolon Station")
         self.setGeometry(350,150,900,600)
-        # self.UI()
         self.Tabs_UI()
 
     def Tabs_UI(self):
