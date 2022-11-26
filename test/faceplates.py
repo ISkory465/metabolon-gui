@@ -1,8 +1,5 @@
-import opcode
-import sys
 from PyQt5.QtWidgets import *
-from PyQt5.QtCore import QObject, QThread, pyqtSignal,QTimer
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtCore import Qt
 from QLed import QLed
 
 
@@ -33,7 +30,8 @@ class Box(QGroupBox):
     mainLayout.addRow(self.radioBtn1,self.led1)
     mainLayout.addRow(self.radioBtn2,self.led2)
     mainLayout.addRow(self.radioBtn3,self.led3)
-
+    mainLayout.setVerticalSpacing(8)
+    mainLayout.setFormAlignment(Qt.AlignLeft)
 
     self.setLayout(mainLayout)
   
