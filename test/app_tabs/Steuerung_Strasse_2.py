@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import *
+from PyQt5.QtCore import Qt
 from faceplates import Box
-from test_element import Mixer
+
 
 
 def UI(self):
@@ -27,6 +28,10 @@ def UI(self):
     #First column elements of vbox1 for the hbox1:
     faceplate1 = Box("HE21")
     vbox1.addWidget(faceplate1)
+    # print(faceplate1.height())
+    # print(faceplate1.width())
+    faceplate1.setFixedHeight(120)
+    faceplate1.setFixedWidth(190)
 
     label1 = QLabel("\nFermenter Temp.-Sollwert (\N{DEGREE SIGN}C)")
     vbox1.addWidget(label1)
@@ -92,10 +97,9 @@ def UI(self):
     temp3.setButtonSymbols(2)
     temp3.setMaximumSize(35, 20)
 
-    vbox1.addWidget(temp3)  
+    vbox1.addWidget(temp3) 
 
-
-    #<------------------------------->
+     #<------------------------------->
     
     label5 = QLabel("\nTemp. Fer 2 (\N{DEGREE SIGN}C)")
     vbox1.addWidget(label5)
@@ -112,10 +116,25 @@ def UI(self):
 
     vbox1.addWidget(val2) 
 
+
+    label_blank=QLabel("\n") 
+    label_blank.setAlignment(Qt.AlignTop)
+    # vbox1.addWidget(label_blank)
+    vbox1.setAlignment(Qt.AlignLeft)
+    vbox2.setAlignment(Qt.AlignLeft)
+    hbox1.setAlignment(Qt.AlignTop)
+    hbox1.setSpacing(10)
+    vbox1.setSpacing(0)
+    print(vars(vbox1))
+
 #----------------------SECOND COLUMN--------------------
 
     #Second column elements of vbox1 for the hbox1:
     faceplate2 = Box("rw23")
+    faceplate2.setFixedHeight(120)
+    faceplate2.setFixedWidth(190)
+    
+    
     vbox2.addWidget(faceplate2)
 
     label6 = QLabel("\nFermenter Temp.-Sollwert (\N{DEGREE SIGN}C)")
@@ -138,17 +157,33 @@ def UI(self):
 
     #Third column elements of vbox1 for the hbox1:
     faceplate3 = Box("rw23")
+    faceplate3.setFixedHeight(120)
+    faceplate3.setFixedWidth(190)
+
     vbox3.addWidget(faceplate3)
 
     label7 = QLabel("\nFermenter Temp.-Sollwert (\N{DEGREE SIGN}C)")
     vbox3.addWidget(label7)
 
+    label8=QLabel("123")
+    label9=QLabel("123")
+    label10=QLabel("123")
+    label11=QLabel("123")
+    label12=QLabel("123")
+    label13=QLabel("123")
+    vbox2.addWidget(label8)
+    vbox2.addWidget(label9)
+    vbox2.addWidget(label10)
+    vbox2.addWidget(label11)
+    vbox2.addWidget(label12)
+    vbox2.addWidget(label13)
 
 
-    hbox1.addLayout(vbox1, 20)
-    hbox1.addLayout(vbox2, 20)
-    hbox1.addLayout(vbox3, 10)
-    hbox1.addLayout(vbox3_3,40)
+
+    hbox1.addLayout(vbox1, 1)
+    hbox1.addLayout(vbox2, 1)
+    hbox1.addLayout(vbox3, 1)
+    hbox1.addLayout(vbox3_3, 3)
 
 
     hbox2.addLayout(vbox4,30)
@@ -158,6 +193,7 @@ def UI(self):
     vbox.addLayout(hbox1, 50)
     vbox.addLayout(hbox2, 50)
     self.tab4.setLayout(vbox)
+    
     #-----------------------------------------
     #-----------------------------------------
     #-----------------------------------------
