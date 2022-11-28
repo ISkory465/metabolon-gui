@@ -1,7 +1,12 @@
 import sys
 from PyQt5.QtWidgets import *
+
+#app tabs import:
 import components.app_tabs.Strasse_1 as Strasse1
 import components.app_tabs.Steuerung_Strasse_2 as St_Strasse_2
+import components.app_tabs.Fuetterung_Strasse_1 as Fuet_Strasse_1
+import components.app_tabs.Stoermeldungen_Strasse_2 as St_meld_Strasse_2
+import components.app_tabs.Betriebsstunden as Betriebsstunden
 
 
 class Window(QWidget):
@@ -32,9 +37,24 @@ class Window(QWidget):
 
         #Fourth Tab
         self.tab4 = QWidget()
-        self.tabs.addTab(self.tab4,"Steuerung Strasse 2")
+        self.tabs.addTab(self.tab4,"Steuµerung Strasse 2")
         St_Strasse_2.UI(self)
-        
+
+        #Fifth Tab
+        self.tab5 = QWidget()
+        self.tabs.addTab(self.tab5,"Fütterung Straße 1")
+        Fuet_Strasse_1.UI(self)
+
+        #Sixth Tab
+        self.tab6 = QWidget()
+        self.tabs.addTab(self.tab6,"Störmeldungen Straße 2")
+        St_meld_Strasse_2.UI(self)
+
+        #Seventh Tab
+        self.tab7 = QWidget()
+        self.tabs.addTab(self.tab7,"Betriebsstunden")
+        Betriebsstunden.UI(self)
+                        
                 
         mainLayout.addWidget(self.tabs)
         self.setLayout(mainLayout)
