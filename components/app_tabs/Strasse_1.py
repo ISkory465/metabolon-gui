@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import *
-from faceplates import Box
-from test_element import Mixer
+from ..faceplates import Box
+from ..test_element import Mixer
 
 
 
