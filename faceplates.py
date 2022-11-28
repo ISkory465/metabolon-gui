@@ -10,7 +10,8 @@ from QLed import QLed
 class Box(QGroupBox):
   def __init__(self,name,opcID):
     #self.setTitle(name)
-    super().__init__(name)
+    self.name=name
+    super().__init__(self.name)
 
     mainLayout=QFormLayout()
   
@@ -61,5 +62,9 @@ class Box(QGroupBox):
     self.led1.value=False
     self.led2.value=False
 
+  def update(self,val):
+    self.led1.value=val[self.name+'.Hand']
+    self.led2.value=val[self.name+'.AUS']
+    self.led3.value=val[self.name+'.AUTO']
 
   
