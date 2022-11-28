@@ -1,7 +1,7 @@
 import sys
 from PyQt5.QtWidgets import *
-import app_tabs.Strasse_1 as Strasse1
-import app_tabs.Steuerung_Strasse_2 as St_Strasse_2
+import components.app_tabs.Strasse_1 as Strasse1
+import components.app_tabs.Steuerung_Strasse_2 as St_Strasse_2
 
 
 class Window(QWidget):
