@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
-from faceplates import Box
+from ..faceplates import Box
 
 
 
@@ -125,7 +125,7 @@ def UI(self):
     hbox1.setAlignment(Qt.AlignTop)
     hbox1.setSpacing(10)
     vbox1.setSpacing(0)
-    print(vars(vbox1))
+    # print(vars(vbox1))
 
 #----------------------SECOND COLUMN--------------------
 
