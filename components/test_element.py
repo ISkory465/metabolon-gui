@@ -1,10 +1,15 @@
-import sys
 from PyQt5.QtWidgets import *
+from PyQt5.QtCore import Qt
 
 
 
 class Mixer(QGroupBox):
+    """Mixer set of elements for the Strasse 1 tab
 
+    :param QGroupBox: _description_
+    :type QGroupBox: _type_
+    """
+    
     def __init__(self,name,opcID=None):
         super().__init__(name)
 
@@ -121,3 +126,35 @@ class Mixer(QGroupBox):
 
         self.setLayout(mainLayout)
 
+
+
+class InfoField(QGroupBox):
+    """Groupelement that combines QLabel and QSpinBox with settings to them
+
+    :param QGroupBox: _description_
+    :type QGroupBox: _type_
+    """
+
+    def __init__(self, name, layout, opcID='None'):
+        super().__init__(name)
+        self.layout = layout
+
+        #Header (QLabel) for the numerical field
+        self.name = QLabel(name)
+        self.layout.addWidget(self.name)
+
+        #Field for numerical Value
+        self.spin = QSpinBox() #uses integers; for floats use QDoubleSpinBox
+
+        #Check range of values in LabView
+        self.spin.setMinimum(10)
+        self.spin.setMaximum(100)
+        self.spin.setAlignment(Qt.AlignRight)
+
+        #Deleting the arrows
+        self.spin.setButtonSymbols(2)
+
+        #Setting size of the field
+        self.spin.setMaximumSize(35, 20)
+
+        self.layout.addWidget(self.spin)
