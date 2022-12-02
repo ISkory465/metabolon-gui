@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import *
+from PyQt5.QtCore import Qt
 from ..faceplates import Box
 from ..test_element import Mixer
 
@@ -40,6 +41,8 @@ def UI(self):
     hbox.addLayout(vbox1, 30)
     hbox.addLayout(vbox2, 30)
     hbox.addLayout(vbox2_2, 40)
+    hbox.setAlignment(Qt.AlignTop)
+    hbox.setSpacing(5)
 
     #Assigning to the tab
     vbox.addLayout(hbox)
@@ -78,6 +81,8 @@ def UI(self):
     hbox1.addLayout(vbox3_3,15)
     hbox1.addLayout(vbox3_4,15)
     hbox1.addLayout(vbox4,30)
+    hbox1.setAlignment(Qt.AlignBottom)
+    hbox1.setSpacing(5)
 
     #Assigning to the tab
     vbox.addLayout(hbox1)
