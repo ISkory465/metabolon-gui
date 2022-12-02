@@ -5,7 +5,7 @@ from QLed import QLed
 
 
 class Box(QGroupBox):
-  def __init__(self,name, opcID='blank'):
+  def __init__(self,name, opcID='opcID'):
     #self.setTitle(name)
     super().__init__(name)
 
