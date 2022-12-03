@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import *
 
 #app tabs import:
 import components.app_tabs.Strasse_1 as Strasse1
+import components.app_tabs.Steuerung_Strasse_1 as St_Strasse_1
 import components.app_tabs.Steuerung_Strasse_2 as St_Strasse_2
 import components.app_tabs.Fuetterung_Strasse_1 as Fuet_Strasse_1
 import components.app_tabs.Stoermeldungen_Strasse_2 as St_meld_Strasse_2
@@ -22,8 +23,8 @@ class Window(QWidget):
 
         #first Tab
         self.tab1 = QWidget()
-        self.tabs.addTab(self.tab1,"Strasse 1")
-        Strasse1.UI(self)
+        # self.tabs.addTab(self.tab1,"Strasse 1")
+        # Strasse1.UI(self)
 
         #Second Tab
         self.tab2 = QWidget()
@@ -32,12 +33,12 @@ class Window(QWidget):
 
         #Third Tab
         self.tab3 = QWidget()
-        # self.tabs.addTab(self.tab3,"Steuerung Strasse 1")
-        # self.Tab_Steuerung_Strasse1()
+        self.tabs.addTab(self.tab3,"Steuerung Strasse 1")
+        St_Strasse_1.UI(self)
 
         #Fourth Tab
         self.tab4 = QWidget()
-        self.tabs.addTab(self.tab4,"Steuµerung Strasse 2")
+        self.tabs.addTab(self.tab4,"Steuerung Strasse 2")
         St_Strasse_2.UI(self)
 
         #Fifth Tab
