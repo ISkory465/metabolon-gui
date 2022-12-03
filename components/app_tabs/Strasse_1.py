@@ -1,6 +1,8 @@
+from tkinter import N
+from unicodedata import name
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
-from ..faceplates import Box
+from ..test_element import Box
 from ..test_element import Mixer
 
 
@@ -32,15 +34,15 @@ def UI(self):
     
 
     #Add Mixer Objects
-    mixer1 = Mixer("Fermenter")
-    vbox1.addWidget(mixer1)
+    mixer1 = Mixer(name="Fermenter", layout=vbox1)
+    # vbox1.addWidget(mixer1)
 
-    mixer2 = Mixer("Nachgärer")
-    vbox2.addWidget(mixer2)
+    mixer2 = Mixer(name="Nachgärer", layout=vbox2)
+    # vbox2.addWidget(mixer2)
 
-    hbox.addLayout(vbox1, 30)
-    hbox.addLayout(vbox2, 30)
-    hbox.addLayout(vbox2_2, 40)
+    hbox.addLayout(vbox1, 1)
+    hbox.addLayout(vbox2, 1)
+    hbox.addLayout(vbox2_2, 2)
     hbox.setAlignment(Qt.AlignTop)
     hbox.setSpacing(5)
 
@@ -50,30 +52,18 @@ def UI(self):
 
     #Add Radio Buttons Objects
     #Without 2nd position argument app crashes; opcid=None does not work properly; fix - change to defalt string.
-    facePlate1=Box('HE11','A12CH2')
-    vbox3.addWidget(facePlate1)
-    facePlate2=Box('RW13','A15CH11')
-    vbox3.addWidget(facePlate2)
+    box1=Box(name='HE11', layout=vbox3, opcID='A12CH2')
+    box2=Box(name='RW13',layout=vbox3, opcID='A15CH11')  
+    box3=Box(name='PU11', layout=vbox3_1)   
+    box4=Box(name='PU13', layout=vbox3_1)   
+    box5=Box(name='RW11', layout=vbox3_2)    
+    box6=Box(name='RW12', layout=vbox3_2)
 
-    facePlate3=Box('PU11')
-    vbox3_1.addWidget(facePlate3)
-    facePlate4=Box('PU13')
-    vbox3_1.addWidget(facePlate4)
-
-    facePlate5=Box('RW11')
-    vbox3_2.addWidget(facePlate5)
-    facePlate6=Box('RW12')
-    vbox3_2.addWidget(facePlate6)
-
-    facePlate7=Box('AA11')
-    vbox3_3.addWidget(facePlate7)
-    facePlate8=Box('AA12')
-    vbox3_3.addWidget(facePlate8)
-
-    facePlate9=Box('AA13')
-    vbox3_4.addWidget(facePlate9)
-    facePlate10=Box('AA14')
-    vbox3_4.addWidget(facePlate10)
+    box7=Box(name='AA11', layout=vbox3_3)    
+    box8=Box(name='AA12', layout=vbox3_3)    
+    box9=Box(name='AA13', layout=vbox3_4)   
+    box10=Box(name='AA14', layout=vbox3_4)
+    
 
     hbox1.addLayout(vbox3,15)
     hbox1.addLayout(vbox3_1,15)
