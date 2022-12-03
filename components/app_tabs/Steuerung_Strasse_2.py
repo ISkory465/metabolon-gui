@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
-from ..faceplates import Box
+from ..test_element import Box
 from ..test_element import InfoField
 
 
@@ -30,20 +30,18 @@ def UI(self):
     #hbox1
     #----------------------FIRST COLUMN--------------------
     #First column elements of vbox1 for the hbox1:
-    faceplate1 = Box("HE21")
-    vbox1.addWidget(faceplate1)
-    faceplate1.setFixedHeight(120)
-    faceplate1.setFixedWidth(190)
 
-    field1_1 = InfoField(name = "Fermenter Temp.-Sollwert (\N{DEGREE SIGN}C)",
+    box1 = Box("HE21", vbox1)
+    
+    field1_1 = InfoField(name = "Fermenter Temp.-Sollwert [\N{DEGREE SIGN}C]",
                          layout = vbox1)
     field1_2 = InfoField(name = "D8400.HZG_REG.SZ_HE21",
                          layout = vbox1)
-    field1_3 = InfoField(name = "Temp. Vorlauf Fer 2 (\N{DEGREE SIGN}C)",
+    field1_3 = InfoField(name = "Temp. Vorlauf Fer 2 [\N{DEGREE SIGN}C]",
                          layout = vbox1)
-    field1_4 = InfoField(name = "Temp. Fer 2 (\N{DEGREE SIGN}C)",
+    field1_4 = InfoField(name = "Temp. Fer 2 [\N{DEGREE SIGN}C]",
                          layout = vbox1)
-    field1_5 = InfoField(name = "Temp. Fer 2 (\N{DEGREE SIGN}C)",
+    field1_5 = InfoField(name = "Temp. Fer 2 [\N{DEGREE SIGN}C]",
                          layout = vbox1)
 
     #Settings for the vbox1 (First Column of the hbox1)
@@ -52,11 +50,8 @@ def UI(self):
      
 #----------------------SECOND COLUMN--------------------
     #Second column elements of vbox1 for the hbox1:
-    faceplate2 = Box("SC23")
-    faceplate2.setFixedHeight(120)
-    faceplate2.setFixedWidth(190)
-    vbox2.addWidget(faceplate2)
-
+    box2 = Box("SC23", vbox2)
+    
     field2_1 = InfoField(name = "RW23 Pause Soll [min] ln", 
                          layout = vbox2)
     field2_2 = InfoField(name = "RW23 Run Soll [min] ln", 
@@ -72,10 +67,7 @@ def UI(self):
 
 #----------------------THRD COLUMN--------------------
     #Third column elements of vbox3 for the hbox1:
-    faceplate3 = Box("SC21")
-    faceplate3.setFixedHeight(120)
-    faceplate3.setFixedWidth(190)
-    vbox3.addWidget(faceplate3)
+    box3 = Box("SC21", vbox3)
 
     #Settings for the vbox3 (Third Column of the hbox1)
     vbox3.setAlignment(Qt.AlignTop)
@@ -95,10 +87,7 @@ def UI(self):
     #hbox2
     #----------------------FIRST COLUMN--------------------
     #First column elements of vbox4 for the hbox2:
-    faceplate4 = Box("HE22")
-    faceplate4.setFixedHeight(120)
-    faceplate4.setFixedWidth(190)
-    vbox4.addWidget(faceplate4)
+    box4 = Box("HE22", vbox4)
     
     field3_1 = InfoField(name = "Nachgärer Temp.-Sollwert [\N{DEGREE SIGN}C]", 
                          layout = vbox4)
@@ -113,10 +102,7 @@ def UI(self):
     
     #----------------------SECOND COLUMN--------------------
     #Second column elements of vbox5 for the hbox2:
-    faceplate5 = Box("RW24")
-    faceplate5.setFixedHeight(120)
-    faceplate5.setFixedWidth(190)
-    vbox5.addWidget(faceplate5)
+    box5 = Box("RW24", vbox5)
 
     field4_1 = InfoField(name = "RW24 Pause Soll [min] ln", 
                          layout = vbox5)
@@ -140,8 +126,6 @@ def UI(self):
     hbox2.addLayout(vbox4,1)
     hbox2.addLayout(vbox5,1)
     hbox2.addLayout(vbox3_3, 2)
-
-
 
 
 
