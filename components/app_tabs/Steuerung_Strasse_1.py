@@ -38,11 +38,14 @@ def UI(self):
     box1 = Box("HE11", vbox1)
     
     field1_1 = InfoField(name = "Fermenter Temp.-Sollwert (\N{DEGREE SIGN}C)",
-                         layout = vbox1)
+                         layout = vbox1,
+                         buttonSymbol=2)
     field1_2 = InfoField(name = "Temp. Vorlauf Fer 1 (\N{DEGREE SIGN}C)",
-                         layout = vbox1)
+                         layout = vbox1,
+                         buttonSymbol=2)
     field1_3 = InfoField(name = "Temp. Fer 1 (\N{DEGREE SIGN}C)",
-                         layout = vbox1)
+                         layout = vbox1,
+                         buttonSymbol=2)
     
     #Settings for the vbox1 (First Column of the hbox1)
     vbox1.setAlignment(Qt.AlignTop)
@@ -54,13 +57,17 @@ def UI(self):
     box2 = Box("RW13", vbox2)
     
     field2_1 = InfoField(name = "RW13 Auto Sollwert [%]", 
-                         layout = vbox2)
+                         layout = vbox2,
+                         buttonSymbol=2)
     field2_2 = InfoField(name = "RW13 Hand Sollwert [%]", 
-                         layout = vbox2)
+                         layout = vbox2,
+                         buttonSymbol=2)
     field2_3 = InfoField(name = "RW13 Pause Soll [min] ln", 
-                         layout = vbox2)
+                         layout = vbox2,
+                         buttonSymbol=2)
     field2_4 = InfoField(name = "RW13 Run Soll [min] ln", 
-                         layout = vbox2)
+                         layout = vbox2,
+                         buttonSymbol=2)
 
     #Settings for the vbox2 (First Column of the hbox1)
     vbox2.setAlignment(Qt.AlignTop)
@@ -69,7 +76,8 @@ def UI(self):
 
 #----------------------THRD COLUMN--------------------
     field2_add = InfoField(name = "RW13.SW_AKT [%]", 
-                         layout = vbox2_2)
+                         layout = vbox2_2,
+                         buttonSymbol=1)
     
     #Settings for the vbox2_2 (Third Column of the hbox1)
     vbox2_2.setAlignment(Qt.AlignBottom)
@@ -80,13 +88,17 @@ def UI(self):
     box3 = Box("SC11", vbox3)
 
     field3_1 = InfoField(name = "RW12 Auto Sollwert [%]", 
-                         layout = vbox3)
+                         layout = vbox3,
+                         buttonSymbol=2)
     field3_2 = InfoField(name = "RW12 Hand Sollwert [%]", 
-                         layout = vbox3)
+                         layout = vbox3,
+                         buttonSymbol=2)
     field3_3 = InfoField(name = "RW12 Pause Soll [min] ln", 
-                         layout = vbox3)
+                         layout = vbox3,
+                         buttonSymbol=2)
     field3_4 = InfoField(name = "RW12 Run Soll [min] ln", 
-                         layout = vbox3)
+                         layout = vbox3,
+                         buttonSymbol=2)
 
     #Settings for the vbox3 (Third Column of the hbox1)
     vbox3.setAlignment(Qt.AlignTop)
@@ -97,13 +109,17 @@ def UI(self):
     #Fifth column elements of vbox3_3 for the hbox1:
     
     field3_1a = InfoField(name = "RW11 Auto Sollwert [%]", 
-                         layout = vbox3_3)
+                         layout = vbox3_3,
+                         buttonSymbol=2)
     field3_2a = InfoField(name = "RW11 Hand Sollwert [%]", 
-                         layout = vbox3_3)
+                         layout = vbox3_3,
+                         buttonSymbol=2)
     field3_3a = InfoField(name = "RW11 Pause Soll [min] ln", 
-                         layout = vbox3_3)
+                         layout = vbox3_3,
+                         buttonSymbol=2)
     field3_4a = InfoField(name = "RW11 Run Soll [min] ln", 
-                         layout = vbox3_3)
+                         layout = vbox3_3, 
+                         buttonSymbol=2)
 
     #Settings for the vbox3 (Third Column of the hbox1)
     vbox3_3.setAlignment(Qt.AlignBottom)
@@ -127,11 +143,14 @@ def UI(self):
     box4 = Box("HE12", vbox4)
     
     field3_1 = InfoField(name = "Nachgärer Temp.-Sollwert [\N{DEGREE SIGN}C]", 
-                         layout = vbox4)
+                         layout = vbox4,
+                         buttonSymbol=2)
     field3_2 = InfoField(name = "Temp. Vorlauf Ng 1 [\N{DEGREE SIGN}C]", 
-                         layout = vbox4)
+                         layout = vbox4,
+                         buttonSymbol=2)
     field3_3 = InfoField(name = "Temp. Ng 1 [\N{DEGREE SIGN}C]", 
-                         layout = vbox4)     
+                         layout = vbox4,
+                         buttonSymbol=2)     
 
     #Settings for the vbox4 (First Column of the hbox2)
     vbox4.setAlignment(Qt.AlignTop)
@@ -142,13 +161,17 @@ def UI(self):
     box5 = Box("RW14", vbox5)
 
     field4_1 = InfoField(name = "RW14 Auto Sollwert [%]", 
-                         layout = vbox5)
+                         layout = vbox5, 
+                         buttonSymbol=2)
     field4_2 = InfoField(name = "RW14 Hand Sollwert [%]", 
-                         layout = vbox5)
+                         layout = vbox5,
+                         buttonSymbol=2)
     field4_3 = InfoField(name = "RW14 Pause Soll [min] ln", 
-                         layout = vbox5)
+                         layout = vbox5,
+                         buttonSymbol=2)
     field4_4 = InfoField(name = "RW14 Run Soll [min] ln", 
-                         layout = vbox5)
+                         layout = vbox5,
+                         buttonSymbol=2)
     #Settings for the vbox5 (First Column of the hbox2)
     vbox5.setAlignment(Qt.AlignTop)
     vbox5.setSpacing(5)                    

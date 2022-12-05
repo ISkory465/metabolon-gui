@@ -12,7 +12,7 @@ class InfoField(QGroupBox):
     :type QGroupBox: _type_
     """
 
-    def __init__(self, name, layout, opcID='None'):
+    def __init__(self, name, layout, buttonSymbol, opcID='None'):
         super().__init__(name)
         self.layout = layout
 
@@ -28,8 +28,11 @@ class InfoField(QGroupBox):
         self.spin.setMaximum(100)
         self.spin.setAlignment(Qt.AlignRight)
 
-        #Deleting the arrows
-        self.spin.setButtonSymbols(2)
+        #Deleting or adding the arrows
+          #QAbstractSpinBox::UpDownArrows	0	Little arrows in the classic style.
+          #QAbstractSpinBox::PlusMinus	1	+ and - symbols.
+          #QAbstractSpinBox::NoButtons	2	Don't display buttons.
+        self.spin.setButtonSymbols(buttonSymbol)
 
         #Setting size of the field
         self.spin.setMaximumSize(35, 20)
@@ -87,11 +90,13 @@ class Mixer(QGroupBox):
         #Left elements of the row
 
         self.ch4 = InfoField(name = "CH4 [%]", 
-                         layout = self.mainLayout)
+                         layout = self.mainLayout, 
+                         buttonSymbol=2)
 
         #Right element of the row
         self.Qgas = InfoField(name = "Qgas [l/min]", 
-                         layout = self.mainLayout)
+                         layout = self.mainLayout,
+                         buttonSymbol=2)
 
         self.mainLayout.addRow(self.ch4.name, self.Qgas.name)
         self.mainLayout.addRow(self.ch4.spin, self.Qgas.spin)
@@ -101,11 +106,13 @@ class Mixer(QGroupBox):
         #Second row
         #Left
         self.co2 = InfoField(name = "CO2 [%]", 
-                         layout = self.mainLayout)
+                         layout = self.mainLayout,
+                         buttonSymbol=2)
 
         #Right
         self.Qgas1 = InfoField(name = "CH4 [%]", 
-                         layout = self.mainLayout)
+                         layout = self.mainLayout,
+                         buttonSymbol=2)
 
         self.mainLayout.addRow(self.co2.name, self.Qgas1.name)
         self.mainLayout.addRow(self.co2.spin, self.Qgas1.spin)
@@ -115,11 +122,13 @@ class Mixer(QGroupBox):
         #Third row
         #Left
         self.H2 = InfoField(name = "H2 [ppm]", 
-                         layout = self.mainLayout)
+                         layout = self.mainLayout,
+                         buttonSymbol=2)
   
         #Right
         self.pH = InfoField(name = "pH [-]", 
-                         layout = self.mainLayout)
+                         layout = self.mainLayout,
+                         buttonSymbol=2)
  
         self.mainLayout.addRow(self.H2.name, self.pH.name)
         self.mainLayout.addRow(self.H2.spin, self.pH.spin)
@@ -129,7 +138,8 @@ class Mixer(QGroupBox):
         #Fourth row
         #Left
         self.H2S = InfoField(name = "H2S [ppm]", 
-                         layout = self.mainLayout)
+                         layout = self.mainLayout,
+                         buttonSymbol=2)
  
         self.mainLayout.addRow(self.H2S.name)
         self.mainLayout.addRow(self.H2S.spin)
