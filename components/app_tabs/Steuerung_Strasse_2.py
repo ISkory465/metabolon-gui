@@ -34,20 +34,15 @@ def UI(self):
     box1 = Box("HE21", vbox1)
     
     field1_1 = InfoField(name = "Fermenter Temp.-Sollwert [\N{DEGREE SIGN}C]",
-                         layout = vbox1,
-                         buttonSymbol=2)
+                         layout = vbox1)
     field1_2 = InfoField(name = "D8400.HZG_REG.SZ_HE21",
-                         layout = vbox1,
-                         buttonSymbol=2)
+                         layout = vbox1)
     field1_3 = InfoField(name = "Temp. Vorlauf Fer 2 [\N{DEGREE SIGN}C]",
-                         layout = vbox1,
-                         buttonSymbol=2)
+                         layout = vbox1)
     field1_4 = InfoField(name = "Temp. Fer 2 [\N{DEGREE SIGN}C]",
-                         layout = vbox1,
-                         buttonSymbol=2)
+                         layout = vbox1)
     field1_5 = InfoField(name = "Temp. Fer 2 [\N{DEGREE SIGN}C]",
-                         layout = vbox1,
-                         buttonSymbol=2)
+                         layout = vbox1)
 
     #Settings for the vbox1 (First Column of the hbox1)
     vbox1.setAlignment(Qt.AlignTop)
@@ -58,17 +53,13 @@ def UI(self):
     box2 = Box("SC23", vbox2)
     
     field2_1 = InfoField(name = "RW23 Pause Soll [min] ln", 
-                         layout = vbox2,
-                         buttonSymbol=2)
+                         layout = vbox2)
     field2_2 = InfoField(name = "RW23 Run Soll [min] ln", 
-                         layout = vbox2,
-                         buttonSymbol=2)
+                         layout = vbox2)
     field2_3 = InfoField(name = "RW23 Auto Sollwert [%]", 
-                         layout = vbox2,
-                         buttonSymbol=2)
+                         layout = vbox2)
     field2_4 = InfoField(name = "RW23 Hand Soll [min] ln", 
-                         layout = vbox2,
-                         buttonSymbol=2)
+                         layout = vbox2)
 
     #Settings for the vbox2 (First Column of the hbox1)
     vbox2.setAlignment(Qt.AlignTop)
@@ -91,22 +82,17 @@ def UI(self):
     hbox1.addLayout(vbox3_3, 2)
 
 
-
-
     #hbox2
     #----------------------FIRST COLUMN--------------------
     #First column elements of vbox4 for the hbox2:
     box4 = Box("HE22", vbox4)
     
     field3_1 = InfoField(name = "Nachgärer Temp.-Sollwert [\N{DEGREE SIGN}C]", 
-                         layout = vbox4,
-                         buttonSymbol=2)
+                         layout = vbox4)
     field3_2 = InfoField(name = "Temp. Vorlauf Ng 2 [\N{DEGREE SIGN}C]", 
-                         layout = vbox4,
-                         buttonSymbol=2)
+                         layout = vbox4)
     field3_3 = InfoField(name = "Temp. Ng 2 [\N{DEGREE SIGN}C]", 
-                         layout = vbox4,
-                         buttonSymbol=2)     
+                         layout = vbox4)     
 
     #Settings for the vbox4 (First Column of the hbox2)
     vbox4.setAlignment(Qt.AlignTop)
@@ -117,17 +103,13 @@ def UI(self):
     box5 = Box("RW24", vbox5)
 
     field4_1 = InfoField(name = "RW24 Pause Soll [min] ln", 
-                         layout = vbox5, 
-                         buttonSymbol=2)
+                         layout = vbox5)
     field4_2 = InfoField(name = "RW24 Run Soll [min] ln", 
-                         layout = vbox5,
-                         buttonSymbol=2)
+                         layout = vbox5)
     field4_3 = InfoField(name = "RW24 Auto Sollwert [%]", 
-                         layout = vbox5,
-                         buttonSymbol=2)
+                         layout = vbox5)
     field4_4 = InfoField(name = "RW24 Hand Soll [min] ln", 
-                         layout = vbox5,
-                         buttonSymbol=2)                                                
+                         layout = vbox5)                                                
   
     #Settings for the vbox5 (First Column of the hbox2)
     vbox5.setAlignment(Qt.AlignTop)
@@ -152,7 +134,6 @@ def UI(self):
     #Assigning page layout to the tab
     self.tab4.setLayout(vbox)
     
-
 
 if __name__=='__main__':
     UI()
