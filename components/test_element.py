@@ -3,6 +3,8 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
 from QLed import QLed
 
+
+
 class InfoField(QGroupBox):
     """Groupelement that combines QLabel and QSpinBox with settings to them
 
@@ -10,7 +12,7 @@ class InfoField(QGroupBox):
     :type QGroupBox: _type_
     """
 
-    def __init__(self, name, layout, buttonSymbol=2, opcID='None'):
+    def __init__(self, name, layout, opcID='None'):
         super().__init__(name)
         self.layout = layout
 
@@ -23,14 +25,11 @@ class InfoField(QGroupBox):
 
         #Check range of values in LabView
         self.spin.setMinimum(10)
-        self.spin.setMaximum(100)
+        self.spin.setMaximum(150)
         self.spin.setAlignment(Qt.AlignRight)
 
-        #Deleting or adding the arrows
-          #QAbstractSpinBox::UpDownArrows	0	Little arrows in the classic style.
-          #QAbstractSpinBox::PlusMinus	1	+ and - symbols.
-          #QAbstractSpinBox::NoButtons	2	Don't display buttons.
-        self.spin.setButtonSymbols(buttonSymbol)
+        #Deleting the arrows
+        self.spin.setButtonSymbols(2)
 
         #Setting size of the field
         self.spin.setMaximumSize(35, 20)
@@ -40,6 +39,38 @@ class InfoField(QGroupBox):
 
         self.layout.addWidget(self.spin)
 
+# Field for Double parameter with decimal setting
+#Example if dec_num = 2 you get 10,00
+#If dec_num = 4 - 10,0000
+# Default dec_num is 2
+
+class InfoFieldDouble(QGroupBox):
+    def __init__(self, name, layout, dec_num = 2, opcID='None'):
+        super().__init__(name)
+        self.layout = layout
+
+        #Header (QLabel) for the numerical field
+        self.name = QLabel(name)
+        self.layout.addWidget(self.name)
+
+        #Field for numerical Value
+        self.spin = QDoubleSpinBox(decimals = dec_num) #uses integers; for floats use QDoubleSpinBox
+
+        #Check range of values in LabView
+        self.spin.setMinimum(10)
+        self.spin.setMaximum(150)
+        self.spin.setAlignment(Qt.AlignRight)
+
+        #Deleting the arrows
+        self.spin.setButtonSymbols(2)
+
+        #Setting size of the field
+        self.spin.setMaximumSize(70, 20)
+
+        #connect some function when value changed, source: https://www.pythonguis.com/tutorials/pyqt-basic-widgets/
+        # temp1.valueChanged.connect(self.value_changed)
+
+        self.layout.addWidget(self.spin)
 
 class SingleLed(QGroupBox):
     def __init__(self, name, layout, opcID='opcID'):
@@ -209,3 +240,106 @@ class Box(QGroupBox):
     self.led3.value=True
     self.led1.value=False
     self.led2.value=False
+
+class Led_6(QGroupBox):
+    def __init__(self, name, layout, opcID='opcID'):
+        super().__init__()
+        self.layout = layout
+
+        local_layout = QFormLayout()
+
+        #self.name = QLabel(name)
+        self.led1=QLed(onColour=QLed.Green, shape=QLed.Circle)
+        self.led2=QLed(onColour=QLed.Green, shape=QLed.Circle)
+        self.led3=QLed(onColour=QLed.Green, shape=QLed.Circle)
+        self.led4=QLed(onColour=QLed.Green, shape=QLed.Circle)
+        self.led5=QLed(onColour=QLed.Green, shape=QLed.Circle)
+        self.led6=QLed(onColour=QLed.Green, shape=QLed.Circle)
+        
+
+        #add if-condition with opc input
+        self.led1.value = True
+        self.led2.value = True
+        self.led3.value = True
+        self.led4.value = True
+        self.led5.value = True
+        self.led6.value = True
+        #self.led1 = name.split(',')[0]
+
+        #self.layout.addWidget(self.led1)
+        #self.layout.addWidget(QLabel(name.split(',')[0]))
+       # self.layout.addWidget(self.led2)
+       # self.layout.addWidget(QLabel(name.split(',')[1]))
+
+
+        local_layout.addRow(self.led1, QLabel(name.split(',')[0]))
+        local_layout.addRow(self.led2, QLabel(name.split(',')[1]))
+        local_layout.addRow(self.led3, QLabel(name.split(',')[2]))
+        local_layout.addRow(self.led4, QLabel(name.split(',')[3]))
+        local_layout.addRow(self.led5, QLabel(name.split(',')[4]))
+        local_layout.addRow(self.led6, QLabel(name.split(',')[5]))
+        
+        
+
+        #Settings:
+        #self.setFixedHeight(78)
+        self.setFixedHeight(200)
+        self.setFixedWidth(300)
+        #local_layout.setVerticalSpacing(18)
+        local_layout.setFormAlignment(Qt.AlignLeft)
+        local_layout.setHorizontalSpacing(25)
+
+        self.setLayout(local_layout)
+        self.layout.addWidget(self)
+
+class Led_8(QGroupBox):
+    def __init__(self, name, layout, opcID='opcID'):
+        super().__init__()
+        self.layout = layout
+
+        local_layout = QFormLayout()
+
+        #self.name = QLabel(name)
+        self.led1=QLed(onColour=QLed.Green, shape=QLed.Circle)
+        self.led2=QLed(onColour=QLed.Green, shape=QLed.Circle)
+        self.led3=QLed(onColour=QLed.Green, shape=QLed.Circle)
+        self.led4=QLed(onColour=QLed.Green, shape=QLed.Circle)
+        self.led5=QLed(onColour=QLed.Green, shape=QLed.Circle)
+        self.led6=QLed(onColour=QLed.Green, shape=QLed.Circle)
+        self.led7=QLed(onColour=QLed.Green, shape=QLed.Circle)
+        self.led8=QLed(onColour=QLed.Green, shape=QLed.Circle)
+        
+        
+        #add if-condition with opc input
+        self.led1.value = True
+        self.led2.value = False
+        self.led3.value = True
+        self.led4.value = True
+        self.led5.value = True
+        self.led6.value = True
+        self.led7.value = True
+        self.led8.value = True
+
+        #self.led1 = name.split(',')[0]
+
+        local_layout.addRow(self.led1, QLabel(name.split(',')[0]))
+        local_layout.addRow(self.led2, QLabel(name.split(',')[1]))
+        local_layout.addRow(self.led3, QLabel(name.split(',')[2]))
+        local_layout.addRow(self.led4, QLabel(name.split(',')[3]))
+        local_layout.addRow(self.led5, QLabel(name.split(',')[4]))
+        local_layout.addRow(self.led6, QLabel(name.split(',')[5]))
+        local_layout.addRow(self.led7, QLabel(name.split(',')[6]))
+        local_layout.addRow(self.led8, QLabel(name.split(',')[7]))
+
+        #Settings:
+        #self.setFixedHeight(106)
+        self.setFixedHeight(250)
+        self.setFixedWidth(300)
+
+        #local_layout.setVerticalSpacing(18)
+        local_layout.setFormAlignment(Qt.AlignLeft)
+        local_layout.setHorizontalSpacing(25)
+
+
+        self.setLayout(local_layout)
+        self.layout.addWidget(self)
