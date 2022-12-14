@@ -181,7 +181,7 @@ class Box(QGroupBox):
     #self.setTitle(name)
     super().__init__(name)
     self.layout = layout
-
+    self.name=name
     mainLayout=QFormLayout()
   
     self.led1=QLed(onColour=QLed.Green, shape=QLed.Circle)
@@ -240,6 +240,11 @@ class Box(QGroupBox):
     self.led3.value=True
     self.led1.value=False
     self.led2.value=False
+  def update(self,val):
+    self.led1.value=val[self.name+'.Hand']
+    self.led2.value=val[self.name+'.AUS']
+    self.led3.value=val[self.name+'.AUTO']
+
 
 class Led_6(QGroupBox):
     def __init__(self, name, layout, opcID='opcID'):
@@ -343,3 +348,5 @@ class Led_8(QGroupBox):
 
         self.setLayout(local_layout)
         self.layout.addWidget(self)
+
+  
