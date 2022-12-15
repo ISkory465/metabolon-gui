@@ -37,11 +37,11 @@ class St():
 
         self.box1 = Box("HE11", vbox1)
         
-        field1_1 = InfoField(name = "Fermenter Temp.-Sollwert (\N{DEGREE SIGN}C)",
+        self.field1_1 = InfoField(name = "Fermenter Temp.-Sollwert (\N{DEGREE SIGN}C)",
                             layout = vbox1)
-        field1_2 = InfoField(name = "Temp. Vorlauf Fer 1 (\N{DEGREE SIGN}C)",
+        self.field1_2 = InfoField(name = "Temp. Vorlauf Fer 1 (\N{DEGREE SIGN}C)",
                             layout = vbox1)
-        field1_3 = InfoField(name = "Temp. Fer 1 (\N{DEGREE SIGN}C)",
+        self.field1_3 = InfoField(name = "Temp. Fer 1 (\N{DEGREE SIGN}C)",
                             layout = vbox1)
         
         #Settings for the vbox1 (First Column of the hbox1)
@@ -51,15 +51,15 @@ class St():
         
     #----------------------SECOND COLUMN--------------------
         #Second column elements of vbox1 for the hbox1:
-        box2 = Box("RW13", vbox2)
+        self.box2 = Box("RW13", vbox2)
         
-        field2_1 = InfoField(name = "RW13 Auto Sollwert [%]", 
+        self.field2_1 = InfoField(name = "RW13 Auto Sollwert [%]", 
                             layout = vbox2)
-        field2_2 = InfoField(name = "RW13 Hand Sollwert [%]", 
+        self.field2_2 = InfoField(name = "RW13 Hand Sollwert [%]", 
                             layout = vbox2)
-        field2_3 = InfoField(name = "RW13 Pause Soll [min] ln", 
+        self.field2_3 = InfoField(name = "RW13 Pause Soll [min] ln", 
                             layout = vbox2)
-        field2_4 = InfoField(name = "RW13 Run Soll [min] ln", 
+        self.field2_4 = InfoField(name = "RW13 Run Soll [min] ln", 
                             layout = vbox2)
 
         #Settings for the vbox2 (First Column of the hbox1)
@@ -68,7 +68,7 @@ class St():
 
 
     #----------------------THRD COLUMN--------------------
-        field2_add = InfoField(name = "RW13.SW_AKT [%]", 
+        self.field2_add = InfoField(name = "RW13.SW_AKT [%]", 
                             layout = vbox2_2)
         
         #Settings for the vbox2_2 (Third Column of the hbox1)
@@ -77,15 +77,15 @@ class St():
 
     #----------------------FOURTH COLUMN--------------------
         #Fourth column elements of vbox3 for the hbox1:
-        box3 = Box("SC11", vbox3)
+        self.box3 = Box("SC11", vbox3)
 
-        field3_1 = InfoField(name = "RW12 Auto Sollwert [%]", 
+        self.field3_1 = InfoField(name = "RW12 Auto Sollwert [%]", 
                             layout = vbox3)
-        field3_2 = InfoField(name = "RW12 Hand Sollwert [%]", 
+        self.field3_2 = InfoField(name = "RW12 Hand Sollwert [%]", 
                             layout = vbox3)
-        field3_3 = InfoField(name = "RW12 Pause Soll [min] ln", 
+        self.field3_3 = InfoField(name = "RW12 Pause Soll [min] ln", 
                             layout = vbox3)
-        field3_4 = InfoField(name = "RW12 Run Soll [min] ln", 
+        self.field3_4 = InfoField(name = "RW12 Run Soll [min] ln", 
                             layout = vbox3)
 
         #Settings for the vbox3 (Third Column of the hbox1)
@@ -96,13 +96,13 @@ class St():
     #----------------------FIFTH COLUMN--------------------
         #Fifth column elements of vbox3_3 for the hbox1:
         
-        field3_1a = InfoField(name = "RW11 Auto Sollwert [%]", 
+        self.field3_1a = InfoField(name = "RW11 Auto Sollwert [%]", 
                             layout = vbox3_3)
-        field3_2a = InfoField(name = "RW11 Hand Sollwert [%]", 
+        self.field3_2a = InfoField(name = "RW11 Hand Sollwert [%]", 
                             layout = vbox3_3)
-        field3_3a = InfoField(name = "RW11 Pause Soll [min] ln", 
+        self.field3_3a = InfoField(name = "RW11 Pause Soll [min] ln", 
                             layout = vbox3_3)
-        field3_4a = InfoField(name = "RW11 Run Soll [min] ln", 
+        self.field3_4a = InfoField(name = "RW11 Run Soll [min] ln", 
                             layout = vbox3_3)
 
         #Settings for the vbox3 (Third Column of the hbox1)
@@ -124,13 +124,13 @@ class St():
         #hbox2
         #----------------------FIRST COLUMN--------------------
         #First column elements of vbox4 for the hbox2:
-        box4 = Box("HE12", vbox4)
+        self.box4 = Box("HE12", vbox4)
         
-        field3_1 = InfoField(name = "Nachgärer Temp.-Sollwert [\N{DEGREE SIGN}C]", 
+        self.field3_1 = InfoField(name = "Nachgärer Temp.-Sollwert [\N{DEGREE SIGN}C]", 
                             layout = vbox4)
-        field3_2 = InfoField(name = "Temp. Vorlauf Ng 1 [\N{DEGREE SIGN}C]", 
+        self.field3_2 = InfoField(name = "Temp. Vorlauf Ng 1 [\N{DEGREE SIGN}C]", 
                             layout = vbox4)
-        field3_3 = InfoField(name = "Temp. Ng 1 [\N{DEGREE SIGN}C]", 
+        self.field3_3 = InfoField(name = "Temp. Ng 1 [\N{DEGREE SIGN}C]", 
                             layout = vbox4)     
 
         #Settings for the vbox4 (First Column of the hbox2)
@@ -139,15 +139,15 @@ class St():
         
         #----------------------SECOND COLUMN--------------------
         #Second column elements of vbox5 for the hbox2:
-        box5 = Box("RW14", vbox5)
+        self.box5 = Box("RW14", vbox5)
 
-        field4_1 = InfoField(name = "RW14 Auto Sollwert [%]", 
+        self.field4_1 = InfoField(name = "RW14 Auto Sollwert [%]", 
                             layout = vbox5)
-        field4_2 = InfoField(name = "RW14 Hand Sollwert [%]", 
+        self.field4_2 = InfoField(name = "RW14 Hand Sollwert [%]", 
                             layout = vbox5)
-        field4_3 = InfoField(name = "RW14 Pause Soll [min] ln", 
+        self.field4_3 = InfoField(name = "RW14 Pause Soll [min] ln", 
                             layout = vbox5)
-        field4_4 = InfoField(name = "RW14 Run Soll [min] ln", 
+        self.field4_4 = InfoField(name = "RW14 Run Soll [min] ln", 
                             layout = vbox5)
         #Settings for the vbox5 (First Column of the hbox2)
         vbox5.setAlignment(Qt.AlignTop)
@@ -156,8 +156,8 @@ class St():
 
         #----------------------FIFTH COLUMN--------------------
         #Second column elements of vbox6 for the hbox2:
-        led1 = SingleLed(name="Magentgasventill Fer 1", layout=vbox6)
-        led2 = SingleLed(name="Magentgasventill Fer 2", layout=vbox6)
+        self.led1 = SingleLed(name="Magentgasventill Fer 1", layout=vbox6)
+        self.led2 = SingleLed(name="Magentgasventill Fer 2", layout=vbox6)
         
         #settings for the vbox6:
         vbox6.setAlignment(Qt.AlignTop)
@@ -183,6 +183,19 @@ class St():
 
         #Assigning page layout to the window
         window.tab3.setLayout(vbox)
+
+    def updateAll(self,inputs: dict):
+        """method to update all objects in current tab periodically after reading the values in different thread
+
+        :param inputs: tag values
+        :type inputs: dict
+        """
+        objectList=[self.box1,self.box2,self.box3,self.box4,self.box5,self.field1_1,self.field1_2,self.field1_3,self.field2_1,self.field2_2,self.field2_3,
+                    self.field2_4,self.field2_add,self.field3_1,self.field3_1a,self.field3_2,self.field3_2a,self.field3_3,self.field3_3a,self.field3_4,self.field3_4a,self.field4_1,
+                    self.field4_2,self.field4_3,self.field4_4]
+        for o in objectList:
+            #iterate over an update method that should be added to all faceplate objects similar to box object
+            pass
         
 
 

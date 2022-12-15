@@ -187,7 +187,7 @@ class Window(QWidget):
               #self.listWidget2.addItem(str(tagValues[k]))
               val2[k]=tagValues[k]
 
-          self.st.box1.update(val2)
+          self.st.updateAll(val2)
 
         except:
             print('no tagValues')
