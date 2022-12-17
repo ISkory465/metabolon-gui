@@ -192,10 +192,10 @@ class St():
         """
         objectList=[self.box1,self.box2,self.box3,self.box4,self.box5,self.field1_1,self.field1_2,self.field1_3,self.field2_1,self.field2_2,self.field2_3,
                     self.field2_4,self.field2_add,self.field3_1,self.field3_1a,self.field3_2,self.field3_2a,self.field3_3,self.field3_3a,self.field3_4,self.field3_4a,self.field4_1,
-                    self.field4_2,self.field4_3,self.field4_4]
+                    self.field4_2,self.field4_3,self.field4_4,self.led1,self.led2]
         for o in objectList:
             #iterate over an update method that should be added to all faceplate objects similar to box object
-            pass
+            o.update(inputs)
         
 
 

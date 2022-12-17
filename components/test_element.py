@@ -15,10 +15,10 @@ class InfoField(QGroupBox):
     def __init__(self, name, layout, opcID='None'):
         super().__init__(name)
         self.layout = layout
-
+        self.name=name
         #Header (QLabel) for the numerical field
-        self.name = QLabel(name)
-        self.layout.addWidget(self.name)
+        self.nameLabel = QLabel(name)
+        self.layout.addWidget(self.nameLabel)
 
         #Field for numerical Value
         self.spin = QSpinBox() #uses integers; for floats use QDoubleSpinBox
@@ -38,6 +38,10 @@ class InfoField(QGroupBox):
         # temp1.valueChanged.connect(self.value_changed)
 
         self.layout.addWidget(self.spin)
+
+    def update(self,val:dict):
+        self.spin.value=val[self.name]
+
 
 # Field for Double parameter with decimal setting
 #Example if dec_num = 2 you get 10,00
@@ -76,16 +80,16 @@ class SingleLed(QGroupBox):
     def __init__(self, name, layout, opcID='opcID'):
         super().__init__()
         self.layout = layout
-
+        self.name=name
         local_layout = QFormLayout()
 
-        self.name = QLabel(name)
+        self.nameLabel = QLabel(name)
         self.led = QLed(onColour=QLed.Green, shape=QLed.Circle)
 
         #add if-condition with opc input
         self.led.value = True
 
-        local_layout.addRow(self.name, self.led)
+        local_layout.addRow(self.nameLabel, self.led)
         
 
         #Settings:
@@ -97,6 +101,9 @@ class SingleLed(QGroupBox):
 
         self.setLayout(local_layout)
         self.layout.addWidget(self)
+
+    def update(self,val:dict):
+        self.led.value=val[self.name]
         
 
 
@@ -125,7 +132,7 @@ class Mixer(QGroupBox):
         self.Qgas = InfoField(name = "Qgas [l/min]", 
                          layout = self.mainLayout)
 
-        self.mainLayout.addRow(self.ch4.name, self.Qgas.name)
+        self.mainLayout.addRow(self.ch4.nameLabel, self.Qgas.nameLabel)
         self.mainLayout.addRow(self.ch4.spin, self.Qgas.spin)
         
 
@@ -139,7 +146,7 @@ class Mixer(QGroupBox):
         self.Qgas1 = InfoField(name = "CH4 [%]", 
                          layout = self.mainLayout)
 
-        self.mainLayout.addRow(self.co2.name, self.Qgas1.name)
+        self.mainLayout.addRow(self.co2.nameLabel, self.Qgas1.nameLabel)
         self.mainLayout.addRow(self.co2.spin, self.Qgas1.spin)
 
 
@@ -153,7 +160,7 @@ class Mixer(QGroupBox):
         self.pH = InfoField(name = "pH [-]", 
                          layout = self.mainLayout)
  
-        self.mainLayout.addRow(self.H2.name, self.pH.name)
+        self.mainLayout.addRow(self.H2.nameLabel, self.pH.nameLabel)
         self.mainLayout.addRow(self.H2.spin, self.pH.spin)
 
 
@@ -163,7 +170,7 @@ class Mixer(QGroupBox):
         self.H2S = InfoField(name = "H2S [ppm]", 
                          layout = self.mainLayout)
  
-        self.mainLayout.addRow(self.H2S.name)
+        self.mainLayout.addRow(self.H2S.nameLabel)
         self.mainLayout.addRow(self.H2S.spin)
 
 
