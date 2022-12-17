@@ -14,6 +14,7 @@ import components.app_tabs.Fuetterung_Strasse_1 as Fuet_Strasse_1
 import components.app_tabs.Stoermeldungen_Strasse_2 as St_meld_Strasse_2
 import components.app_tabs.Betriebsstunden as Betriebsstunden
 
+opcPrefix='SIMATIC 300-Station.CPU 315-2 DP.'
 class Worker(QObject):
     finished = pyqtSignal()
     progress = pyqtSignal(dict)
@@ -150,10 +151,27 @@ class Window(QWidget):
 
         """
         x=self.tabs.currentIndex()
-
+        global opcPrefix
         #print(x)
-        #if x == 0:
-          #self.opclist={'First Tag':'Random.Int1',self.facePlate1.name+'.Hand':'Random.Boolean',self.facePlate1.name+'.AUS':'Bucket Brigade.Boolean',self.facePlate1.name+'.AUTO':'Square Waves.Boolean'}
+        if x == 0:
+          self.opclist={'HE11.Hand':opcPrefix+'DB5.HE11.BF2','HE11.AUTO':opcPrefix+'DB5.HE11.BF3','HE11.AUS':opcPrefix+'DB5.HE11.BF4',
+                        'HE12.Hand':opcPrefix+'DB5.HE12.BF2','HE12.AUTO':opcPrefix+'DB5.HE12.BF3','HE12.AUS':opcPrefix+'DB5.HE12.BF4',
+                        'RW13.Hand':opcPrefix+'DB5.RW13.BF2','RW13.AUTO':opcPrefix+'DB5.RW13.BF3','RW13.AUS':opcPrefix+'DB5.RW13.BF4',
+                        'RW14.Hand':opcPrefix+'DB5.RW14.BF2','RW14.AUTO':opcPrefix+'DB5.RW14.BF3','RW14.AUS':opcPrefix+'DB5.RW14.BF4',
+                        'SC11.Hand':opcPrefix+'DB5.SC11.BF2','SC11.AUTO':opcPrefix+'DB5.SC11.BF3','SC11.AUS':opcPrefix+'DB5.SC11.BF4',
+                        'Temp. Fer 1 (\N{DEGREE SIGN}C)':opcPrefix+'DB70.TI15_TMP_SK','Temp. Ng 1 [\N{DEGREE SIGN}C]':opcPrefix+'DB70.TI16_TMP_SK',
+                        'Temp. Vorlauf Fer 1 (\N{DEGREE SIGN}C)':opcPrefix+'DB302.PT_100_FER1','Temp. Vorlauf Ng 1 [\N{DEGREE SIGN}C]':opcPrefix+'DB302.PT_100_NGA1',
+                        'Magentgasventill Fer 1':opcPrefix+'A32_4','Magentgasventill Fer 2':opcPrefix+'A32_5',
+                        'Fermenter Temp.-Sollwert (\N{DEGREE SIGN}C)':opcPrefix+'DB84.TI15_FER1.SW','RW13.SW_AKT [%]':opcPrefix+'DB10.RW13_SW.SW_AKT',
+                        'RW11 Auto Sollwert [%]':opcPrefix+'DB10.RW11_SW.SW2','RW11 Hand Sollwert [%]':opcPrefix+'DB10.RW11_SW.SW1',
+                        'RW11 Pause Soll [min] ln':opcPrefix+'DB30.RW11.SZ_PAU','RW11 Run Soll [min] ln':opcPrefix+'DB30.RW11.SZ_EIN',
+                        'RW12 Auto Sollwert [%]':opcPrefix+'DB10.RW12_SW.SW2','RW12 Hand Sollwert [%]':opcPrefix+'DB10.RW12_SW.SW1',
+                        'RW12 Pause Soll [min] ln':opcPrefix+'DB30.RW12.SZ_PAU','RW12 Run Soll [min] ln':opcPrefix+'DB30.RW12.SZ_EIN',
+                        'RW13 Auto Sollwert [%]':opcPrefix+'DB10.RW13_SW.SW2','RW13 Hand Sollwert [%]':opcPrefix+'DB10.RW13_SW.SW1',
+                        'RW13 Pause Soll [min] ln':opcPrefix+'DB30.RW13.SZ_PAU','RW13 Run Soll [min] ln':opcPrefix+'DB30.RW13.SZ_EIN',
+                        'RW14 Auto Sollwert [%]':opcPrefix+'DB10.RW14_SW.SW2','RW14 Hand Sollwert [%]':opcPrefix+'DB10.RW14_SW.SW1',
+                        'RW14 Pause Soll [min] ln':opcPrefix+'DB30.RW14.SZ_PAU','RW14 Run Soll [min] ln':opcPrefix+'DB30.RW14.SZ_EIN',
+                        'Nachgärer Temp.-Sollwert [\N{DEGREE SIGN}C]':opcPrefix+'DB84.TI16_NGA1.SW'}
 
           
         #elif x==1:
