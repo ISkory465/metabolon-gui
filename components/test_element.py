@@ -15,10 +15,10 @@ class InfoField(QGroupBox):
     def __init__(self, name, layout, opcID='None'):
         super().__init__(name)
         self.layout = layout
-        self.name=name
+        self.opcName=name
         #Header (QLabel) for the numerical field
-        self.nameLabel = QLabel(name)
-        self.layout.addWidget(self.nameLabel)
+        self.name = QLabel(name)
+        self.layout.addWidget(self.name)
 
         #Field for numerical Value
         self.spin = QSpinBox() #uses integers; for floats use QDoubleSpinBox
@@ -40,7 +40,7 @@ class InfoField(QGroupBox):
         self.layout.addWidget(self.spin)
 
     def update(self,val:dict):
-        self.spin.value=val[self.name]
+        self.spin.value=val[self.opcName]
 
 
 # Field for Double parameter with decimal setting
@@ -80,16 +80,16 @@ class SingleLed(QGroupBox):
     def __init__(self, name, layout, opcID='opcID'):
         super().__init__()
         self.layout = layout
-        self.name=name
+        self.opcName=name
         local_layout = QFormLayout()
 
-        self.nameLabel = QLabel(name)
+        self.name = QLabel(name)
         self.led = QLed(onColour=QLed.Green, shape=QLed.Circle)
 
         #add if-condition with opc input
         self.led.value = True
 
-        local_layout.addRow(self.nameLabel, self.led)
+        local_layout.addRow(self.name, self.led)
         
 
         #Settings:
@@ -103,7 +103,7 @@ class SingleLed(QGroupBox):
         self.layout.addWidget(self)
 
     def update(self,val:dict):
-        self.led.value=val[self.name]
+        self.led.value=val[self.opcName]
         
 
 
@@ -132,7 +132,7 @@ class Mixer(QGroupBox):
         self.Qgas = InfoField(name = "Qgas [l/min]", 
                          layout = self.mainLayout)
 
-        self.mainLayout.addRow(self.ch4.nameLabel, self.Qgas.nameLabel)
+        self.mainLayout.addRow(self.ch4.name, self.Qgas.name)
         self.mainLayout.addRow(self.ch4.spin, self.Qgas.spin)
         
 
@@ -146,7 +146,7 @@ class Mixer(QGroupBox):
         self.Qgas1 = InfoField(name = "CH4 [%]", 
                          layout = self.mainLayout)
 
-        self.mainLayout.addRow(self.co2.nameLabel, self.Qgas1.nameLabel)
+        self.mainLayout.addRow(self.co2.name, self.Qgas1.name)
         self.mainLayout.addRow(self.co2.spin, self.Qgas1.spin)
 
 
@@ -160,7 +160,7 @@ class Mixer(QGroupBox):
         self.pH = InfoField(name = "pH [-]", 
                          layout = self.mainLayout)
  
-        self.mainLayout.addRow(self.H2.nameLabel, self.pH.nameLabel)
+        self.mainLayout.addRow(self.H2.name, self.pH.name)
         self.mainLayout.addRow(self.H2.spin, self.pH.spin)
 
 
@@ -170,7 +170,7 @@ class Mixer(QGroupBox):
         self.H2S = InfoField(name = "H2S [ppm]", 
                          layout = self.mainLayout)
  
-        self.mainLayout.addRow(self.H2S.nameLabel)
+        self.mainLayout.addRow(self.H2S.name)
         self.mainLayout.addRow(self.H2S.spin)
 
 
@@ -188,7 +188,7 @@ class Box(QGroupBox):
     #self.setTitle(name)
     super().__init__(name)
     self.layout = layout
-    self.name=name
+    self.opcName=name
     mainLayout=QFormLayout()
   
     self.led1=QLed(onColour=QLed.Green, shape=QLed.Circle)
@@ -248,9 +248,9 @@ class Box(QGroupBox):
     self.led1.value=False
     self.led2.value=False
   def update(self,val):
-    self.led1.value=val[self.name+'.Hand']
-    self.led2.value=val[self.name+'.AUS']
-    self.led3.value=val[self.name+'.AUTO']
+    self.led1.value=val[self.opcName+'.Hand']
+    self.led2.value=val[self.opcName+'.AUS']
+    self.led3.value=val[self.opcName+'.AUTO']
 
 
 class Led_6(QGroupBox):
