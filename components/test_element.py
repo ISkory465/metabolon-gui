@@ -3,7 +3,66 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
 from QLed import QLed
 
+class ToggleButton(QGroupBox):
+    """Groupelement that combines QLabel and QPushbutton with settings to them
+    :param QGroupBox: _description_
+    :type QGroupBox: _type_
+    """
+    def __init__(self, name, layout, opcID='None'):
+      super().__init__()
+      self.layout = layout
+      self.layout.setSpacing(0)
+      self.layout.setContentsMargins(0,0,0,0)
+      #self.setFixedHeight(250)
+      self.setFixedWidth(150)
 
+      #Header (QLabel) for the numerical field
+      self.name = QLabel(name)
+      self.layout.addWidget(self.name)
+      
+      # creating a push button
+      self.button = QPushButton("",self)
+  
+      # setting default color of button to light-grey
+      self.button.setStyleSheet("""
+        QPushButton{
+        background-color:'lightgrey';
+        }
+        """
+                                )               
+      # setting checkable to true
+      self.button.setCheckable(True)
+      # setting calling method by button 
+      self.button.clicked.connect(self.toggle)
+      self.button.clicked.connect(self.changeColor)
+      self.layout.addWidget(self.button)      
+      
+    #<-------------------------------------->
+    # action methods
+    def toggle(self):
+        if self.button.isChecked():
+           print("Button 1 clicked")
+       
+
+     # method called by button
+    def changeColor(self):
+        # if button is checked
+        if self.button.isChecked():
+            # setting background color to light-blue
+           self.button.setStyleSheet("""
+        QPushButton{
+        background-color:'green';
+        }
+        """
+                                      )
+        # if it is unchecked
+        else:
+            # set background color back to light-grey
+            self.button.setStyleSheet("QPushButton"
+                                      "{"
+                                        "background-color : lightgrey;"
+                                      "}"
+                                      )
 
 class InfoField(QGroupBox):
     """Groupelement that combines QLabel and QSpinBox with settings to them
@@ -12,7 +71,7 @@ class InfoField(QGroupBox):
     :type QGroupBox: _type_
     """
 
-    def __init__(self, name, layout, opcID='None'):
+    def __init__(self, name, layout, opcID='None', buttonSymbol=2):
         super().__init__(name)
         self.layout = layout
 
@@ -29,10 +88,10 @@ class InfoField(QGroupBox):
         self.spin.setAlignment(Qt.AlignRight)
 
         #Deleting the arrows
-        self.spin.setButtonSymbols(2)
+        self.spin.setButtonSymbols(buttonSymbol)
 
         #Setting size of the field
-        self.spin.setMaximumSize(35, 20)
+        self.spin.setMaximumSize(45, 30)
 
         #connect some function when value changed, source: https://www.pythonguis.com/tutorials/pyqt-basic-widgets/
         # temp1.valueChanged.connect(self.value_changed)
@@ -45,7 +104,7 @@ class InfoField(QGroupBox):
 # Default dec_num is 2
 
 class InfoFieldDouble(QGroupBox):
-    def __init__(self, name, layout, dec_num = 2, opcID='None'):
+    def __init__(self, name, layout, dec_num = 2, opcID='None', buttonSymbol=2):
         super().__init__(name)
         self.layout = layout
 
@@ -62,7 +121,7 @@ class InfoFieldDouble(QGroupBox):
         self.spin.setAlignment(Qt.AlignRight)
 
         #Deleting the arrows
-        self.spin.setButtonSymbols(2)
+        self.spin.setButtonSymbols(buttonSymbol)
 
         #Setting size of the field
         self.spin.setMaximumSize(70, 20)
@@ -98,8 +157,6 @@ class SingleLed(QGroupBox):
         self.setLayout(local_layout)
         self.layout.addWidget(self)
         
-
-
 
 class Mixer(QGroupBox):
     """Mixer set of elements for the Strasse 1 tab
@@ -173,8 +230,6 @@ class Mixer(QGroupBox):
         self.mainLayout.setLabelAlignment(Qt.AlignTop)
         
         self.setLayout(self.mainLayout)
-
-
 
 class Box(QGroupBox):
   def __init__(self,name, layout, opcID='opcID'):
@@ -343,3 +398,55 @@ class Led_8(QGroupBox):
 
         self.setLayout(local_layout)
         self.layout.addWidget(self)
+
+class Futter1():
+  """Mixer set of elements for the Strasse 1 tab
+    :param QGroupBox: _description_
+    :type QGroupBox: _type_
+  """
+    
+  def __init__(self, buttonName, sollwert11, solwert12, solwert21, solwert22, layout, opcID=None):
+        super().__init__()
+
+        self.layout = layout #vbox 
+        self.mainLayout=QHBoxLayout()
+        self.buttonLayout=QVBoxLayout()
+        self.vbox1=QVBoxLayout()
+        self.vbox2=QVBoxLayout()
+    
+        #<-------------------------------------->
+        #first row 
+        button=ToggleButton(name=buttonName, layout=self.buttonLayout)
+        #Left elements of the row
+        festSollwert11 = InfoField(name =sollwert11, 
+                         layout = self.vbox1, buttonSymbol=1)
+
+        #Right element of the row
+        festSollwert12 = InfoField(name = solwert12, 
+                         layout = self.vbox2)
+        
+        #<-------------------------------------->
+        #Second row
+        #Left 
+       
+        festSollwert21 = InfoField(name = solwert21, 
+                         layout = self.vbox1)
+
+        #Right
+        festSollwert22 = InfoField(name = solwert22, 
+                         layout = self.vbox2)
+        
+        self.buttonLayout.addWidget(button)
+        
+        #adding layouts to main layout
+        self.mainLayout.addLayout(self.buttonLayout)
+        self.mainLayout.addLayout(self.vbox1)
+        self.mainLayout.addLayout(self.vbox2)
+       
+        #setting for adjasting space between elements in layouts
+        self.vbox1.setSpacing(10)
+        self.vbox2.setSpacing(10)
+        self.mainLayout.setSpacing(10)
+       
+        self.layout.addLayout(self.mainLayout)
+        #self.layout.addStretch()
