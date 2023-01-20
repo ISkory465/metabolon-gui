@@ -8,8 +8,10 @@ from PyQt5.QtCore import *
 
 #app tabs import:
 # import components.app_tabs.Strasse_1 as Strasse1
-from components.app_tabs.Steuerung_Strasse_1 import St as St_Strasse_1
-import components.app_tabs.Steuerung_Strasse_2 as St_Strasse_2
+from components.app_tabs.Steuerung_Strasse_1 import Page as St_Strasse_1
+from components.app_tabs.Steuerung_Strasse_2 import Page as St_Strasse_2
+
+# Rework:
 import components.app_tabs.Fuetterung_Strasse_1 as Fuet_Strasse_1
 import components.app_tabs.Stoermeldungen_Strasse_2 as St_meld_Strasse_2
 import components.app_tabs.Betriebsstunden as Betriebsstunden
@@ -81,13 +83,13 @@ class Window(QWidget):
         #Third Tab
         self.tab3 = QWidget()
         self.tabs.addTab(self.tab3,"Steuerung Strasse 1")
-        self.st=St_Strasse_1()
-        self.st.UI(self)
+        self.page3=St_Strasse_1().UI(self)
+        
 
         #Fourth Tab
         self.tab4 = QWidget()
         self.tabs.addTab(self.tab4,"Steuerung Strasse 2")
-        St_Strasse_2.UI(self)
+        self.page4=St_Strasse_2().UI(self)
 
         #Fifth Tab
         self.tab5 = QWidget()
@@ -123,6 +125,9 @@ class Window(QWidget):
                 
         mainLayout.addWidget(self.tabs)
         self.setLayout(mainLayout)
+
+
+
 
     def runLongTask(self):
         """Create the Worker thread that runs periodically to update current list of OPC tags."""
