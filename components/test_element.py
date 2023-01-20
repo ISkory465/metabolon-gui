@@ -65,7 +65,7 @@ class ToggleButton(QGroupBox):
                                       )
 
 class InfoField(QGroupBox):
-    """Groupelement that combines QLabel and QSpinBox with settings to them
+    """Group element that combines QLabel and QSpinBox with settings to them
 
     :param QGroupBox: _description_
     :type QGroupBox: _type_
@@ -73,8 +73,10 @@ class InfoField(QGroupBox):
 
     def __init__(self, name, layout, opcID='None', buttonSymbol=2):
         super().__init__(name)
+
         self.layout = layout
         self.opcName=name
+
         #Header (QLabel) for the numerical field
         self.name = QLabel(name)
         self.layout.addWidget(self.name)
@@ -91,7 +93,7 @@ class InfoField(QGroupBox):
         self.spin.setButtonSymbols(buttonSymbol)
 
         #Setting size of the field
-        self.spin.setMaximumSize(45, 30)
+        self.spin.setMaximumSize(35, 25)
 
         #connect some function when value changed, source: https://www.pythonguis.com/tutorials/pyqt-basic-widgets/
         # temp1.valueChanged.connect(self.value_changed)
@@ -103,8 +105,8 @@ class InfoField(QGroupBox):
 
 
 # Field for Double parameter with decimal setting
-#Example if dec_num = 2 you get 10,00
-#If dec_num = 4 - 10,0000
+# Example if dec_num = 2 you get 10,00
+# If dec_num = 4 - 10,0000
 # Default dec_num is 2
 
 class InfoFieldDouble(QGroupBox):
@@ -277,7 +279,10 @@ class Box(QGroupBox):
     self.setLayout(mainLayout)
     self.layout.addWidget(self)
   
+
+
   def write1(self):
+
     if self.led1.value==False:
       print(self.opcID+': '+ self.radioBtn1.text())
 
@@ -302,6 +307,8 @@ class Box(QGroupBox):
     self.led3.value=True
     self.led1.value=False
     self.led2.value=False
+
+
   def update(self,val):
     self.led1.value=val[self.opcName+'.Hand']
     self.led2.value=val[self.opcName+'.AUS']
@@ -411,8 +418,7 @@ class Led_8(QGroupBox):
         self.setLayout(local_layout)
         self.layout.addWidget(self)
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 class Futter1():
   """Mixer set of elements for the Strasse 1 tab
     :param QGroupBox: _description_
@@ -464,9 +470,3 @@ class Futter1():
        
         self.layout.addLayout(self.mainLayout)
         #self.layout.addStretch()
-=======
-  
->>>>>>> OPC-Branch
-=======
-  
->>>>>>> OPC-Branch
