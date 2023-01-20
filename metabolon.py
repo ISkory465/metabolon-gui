@@ -1,13 +1,13 @@
 import sys
 from PyQt5.QtWidgets import *
-import OpenOPC
-import pywintypes
-from PyQt5.QtCore import QObject, QThread, pyqtSignal,QTimer
-pywintypes.datetime = pywintypes.TimeType
+# import OpenOPC
+# import pywintypes
+from PyQt5.QtCore import *
+# pywintypes.datetime = pywintypes.TimeType
 
 
 #app tabs import:
-import components.app_tabs.Strasse_1 as Strasse1
+# import components.app_tabs.Strasse_1 as Strasse1
 from components.app_tabs.Steuerung_Strasse_1 import St as St_Strasse_1
 import components.app_tabs.Steuerung_Strasse_2 as St_Strasse_2
 import components.app_tabs.Fuetterung_Strasse_1 as Fuet_Strasse_1
@@ -15,47 +15,47 @@ import components.app_tabs.Stoermeldungen_Strasse_2 as St_meld_Strasse_2
 import components.app_tabs.Betriebsstunden as Betriebsstunden
 
 opcPrefix='SIMATIC 300-Station.CPU 315-2 DP.'
-class Worker(QObject):
-    finished = pyqtSignal()
-    progress = pyqtSignal(dict)
-    #recieved = pyqtSignal(list)
+# class Worker(QObject):
+    # finished = pyqtSignal()
+    # progress = pyqtSignal(dict)
+    # #recieved = pyqtSignal(list)
     
-    def __init__(self, x:dict):
-      self.varDict=x
-      #self.client=client
-      super().__init__()
+    # def __init__(self, x:dict):
+    #   self.varDict=x
+    #   #self.client=client
+    #   super().__init__()
 
-    def run(self):
-        """Long-running task."""
-        #self.recieved.connect(self.rec)
-        try:
-            opc=OpenOPC.client()
-            #print('client')   
-            opc.connect("Matrikon.OPC.Simulation.1")
+    # def run(self):
+    #     """Long-running task."""
+    #     #self.recieved.connect(self.rec)
+    #     try:
+    #         opc=OpenOPC.client()
+    #         #print('client')   
+    #         opc.connect("Matrikon.OPC.Simulation.1")
 
-            if self.varDict=={}:
-                results={'Result':'No Values'}
-                print(results)
-            else:
-                results={}
-                keys=self.varDict.keys()
-                for x in keys:
-                    tagValues=opc[self.varDict[x]]
-                    #tagValues=str(tagValues)
-                    results[x]=tagValues
+    #         if self.varDict=={}:
+    #             results={'Result':'No Values'}
+    #             print(results)
+    #         else:
+    #             results={}
+    #             keys=self.varDict.keys()
+    #             for x in keys:
+    #                 tagValues=opc[self.varDict[x]]
+    #                 #tagValues=str(tagValues)
+    #                 results[x]=tagValues
             
-            #print(results)
+    #         #print(results)
 
             
-            #print(self.x)
-            self.progress.emit(results)
-            opc.close()
-            self.finished.emit()
-        except:
-            print('error')
-            x=['thread not working']
-            self.progress.emit(x)
-            self.finished.emit()
+    #         #print(self.x)
+    #         self.progress.emit(results)
+    #         opc.close()
+    #         self.finished.emit()
+    #     except:
+    #         print('error')
+    #         x=['thread not working']
+    #         self.progress.emit(x)
+    #         self.finished.emit()
 
 class Window(QWidget):
     def __init__(self):
@@ -104,10 +104,14 @@ class Window(QWidget):
         self.tabs.addTab(self.tab7,"Betriebsstunden")
         Betriebsstunden.UI(self)
 
+
+
         #OPC List update
         self.tabs.currentChanged.connect(self.updateOPCList)
+
         #Default OPC list for the first tab --> to be changed
         self.opclist={'First Tag':'Random.Int4','Second Tag':'Random.Int8'}
+
         # Define the timer for periodic update of tags
         self.timer = QTimer()
         self.timer.setInterval(10000)
