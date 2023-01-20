@@ -11,10 +11,12 @@ from PyQt5.QtCore import *
 from components.app_tabs.Steuerung_Strasse_1 import Page as St_Strasse_1
 from components.app_tabs.Steuerung_Strasse_2 import Page as St_Strasse_2
 
+from components.app_tabs.Betriebsstunden import Page as Betriebsstunden
+
 # Rework:
 import components.app_tabs.Fuetterung_Strasse_1 as Fuet_Strasse_1
 import components.app_tabs.Stoermeldungen_Strasse_2 as St_meld_Strasse_2
-import components.app_tabs.Betriebsstunden as Betriebsstunden
+
 
 opcPrefix='SIMATIC 300-Station.CPU 315-2 DP.'
 # class Worker(QObject):
@@ -104,7 +106,7 @@ class Window(QWidget):
         #Seventh Tab
         self.tab7 = QWidget()
         self.tabs.addTab(self.tab7,"Betriebsstunden")
-        Betriebsstunden.UI(self)
+        self.page7 = Betriebsstunden().UI(self)
 
 
 
