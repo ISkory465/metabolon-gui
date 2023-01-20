@@ -6,9 +6,9 @@ from ..test_element import Box
 from ..test_element import InfoField
 from ..test_element import SingleLed
 
-class St():
+class Page():
 
-    def UI(self,window:QMainWindow):
+    def UI(self, window:QMainWindow):
         
         #Main layout of the first window 'Steuerung_Strasse_2"
         vbox=QVBoxLayout()
@@ -162,7 +162,7 @@ class St():
         #settings for the vbox6:
         vbox6.setAlignment(Qt.AlignTop)
         vbox6.setSpacing(5)   
-        vbox6.setContentsMargins(0, 15, 0, 0)
+        vbox6.setContentsMargins(0, 15, 10, 0)
 
         #Settings for the hbox2:
         hbox2.setAlignment(Qt.AlignTop)
@@ -184,15 +184,51 @@ class St():
         #Assigning page layout to the window
         window.tab3.setLayout(vbox)
 
+
+
     def updateAll(self,inputs: dict):
         """method to update all objects in current tab periodically after reading the values in different thread
 
         :param inputs: tag values
         :type inputs: dict
         """
-        objectList=[self.box1,self.box2,self.box3,self.box4,self.box5,self.field1_1,self.field1_2,self.field1_3,self.field2_1,self.field2_2,self.field2_3,
-                    self.field2_4,self.field2_add,self.field3_1,self.field3_1a,self.field3_2,self.field3_2a,self.field3_3,self.field3_3a,self.field3_4,self.field3_4a,self.field4_1,
-                    self.field4_2,self.field4_3,self.field4_4,self.led1,self.led2]
+        objectList=[self.box1,
+                    self.box2,
+                    self.box3,
+                    self.box4,
+                    self.box5,
+                    
+                    self.field1_1,
+                    self.field1_2,
+                    self.field1_3,
+
+                    self.field2_1,
+                    self.field2_2,
+                    self.field2_3,
+                    self.field2_4,
+                    self.field2_add,
+
+                    self.field3_1,
+                    self.field3_1a,
+
+                    self.field3_2,
+                    self.field3_2a,
+
+                    self.field3_3,
+                    self.field3_3a,
+
+                    self.field3_4,
+                    self.field3_4a,
+
+                    self.field4_1,
+                    self.field4_2,
+                    self.field4_3,
+                    self.field4_4,
+
+                    self.led1,
+                    self.led2]
+
+
         for o in objectList:
             #iterate over an update method that should be added to all faceplate objects similar to box object
             o.update(inputs)
@@ -200,5 +236,7 @@ class St():
 
 
 if __name__=='__main__':
-    st=St()
-    st.UI()
+    # st=Page()
+    # Page()
+    # st.UI()
+    pass
