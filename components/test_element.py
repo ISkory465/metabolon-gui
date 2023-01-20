@@ -74,7 +74,7 @@ class InfoField(QGroupBox):
     def __init__(self, name, layout, opcID='None', buttonSymbol=2):
         super().__init__(name)
         self.layout = layout
-
+        self.opcName=name
         #Header (QLabel) for the numerical field
         self.name = QLabel(name)
         self.layout.addWidget(self.name)
@@ -97,6 +97,10 @@ class InfoField(QGroupBox):
         # temp1.valueChanged.connect(self.value_changed)
 
         self.layout.addWidget(self.spin)
+
+    def update(self,val:dict):
+        self.spin.value=val[self.opcName]
+
 
 # Field for Double parameter with decimal setting
 #Example if dec_num = 2 you get 10,00
@@ -135,7 +139,7 @@ class SingleLed(QGroupBox):
     def __init__(self, name, layout, opcID='opcID'):
         super().__init__()
         self.layout = layout
-
+        self.opcName=name
         local_layout = QFormLayout()
 
         self.name = QLabel(name)
@@ -156,6 +160,9 @@ class SingleLed(QGroupBox):
 
         self.setLayout(local_layout)
         self.layout.addWidget(self)
+
+    def update(self,val:dict):
+        self.led.value=val[self.opcName]
         
 
 class Mixer(QGroupBox):
@@ -236,7 +243,7 @@ class Box(QGroupBox):
     #self.setTitle(name)
     super().__init__(name)
     self.layout = layout
-
+    self.opcName=name
     mainLayout=QFormLayout()
   
     self.led1=QLed(onColour=QLed.Green, shape=QLed.Circle)
@@ -295,6 +302,11 @@ class Box(QGroupBox):
     self.led3.value=True
     self.led1.value=False
     self.led2.value=False
+  def update(self,val):
+    self.led1.value=val[self.opcName+'.Hand']
+    self.led2.value=val[self.opcName+'.AUS']
+    self.led3.value=val[self.opcName+'.AUTO']
+
 
 class Led_6(QGroupBox):
     def __init__(self, name, layout, opcID='opcID'):
@@ -399,6 +411,7 @@ class Led_8(QGroupBox):
         self.setLayout(local_layout)
         self.layout.addWidget(self)
 
+<<<<<<< HEAD
 class Futter1():
   """Mixer set of elements for the Strasse 1 tab
     :param QGroupBox: _description_
@@ -450,3 +463,6 @@ class Futter1():
        
         self.layout.addLayout(self.mainLayout)
         #self.layout.addStretch()
+=======
+  
+>>>>>>> OPC-Branch
