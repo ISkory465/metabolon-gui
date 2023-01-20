@@ -1,6 +1,5 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
-from QLed import QLed
 
 from ..test_element import Box
 from ..test_element import InfoField
@@ -8,7 +7,7 @@ from ..test_element import SingleLed
 
 class Page():
 
-    def UI(self, window:QMainWindow):
+    def UI(self,window:QMainWindow):
         
         #Main layout of the first window 'Steuerung_Strasse_2"
         vbox=QVBoxLayout()

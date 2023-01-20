@@ -69,7 +69,7 @@ class Page():
 
     #----------------------THRD COLUMN--------------------
         #Third column elements of vbox3 for the hbox1:
-        box3 = Box("SC21", vbox3)
+        self.box3 = Box("SC21", vbox3)
 
         #Settings for the vbox3 (Third Column of the hbox1)
         vbox3.setAlignment(Qt.AlignTop)
@@ -87,13 +87,13 @@ class Page():
         #hbox2
         #----------------------FIRST COLUMN--------------------
         #First column elements of vbox4 for the hbox2:
-        box4 = Box("HE22", vbox4)
+        self.box4 = Box("HE22", vbox4)
         
-        field3_1 = InfoField(name = "Nachgärer Temp.-Sollwert [\N{DEGREE SIGN}C]", 
+        self.field3_1 = InfoField(name = "Nachgärer Temp.-Sollwert [\N{DEGREE SIGN}C]", 
                             layout = vbox4)
-        field3_2 = InfoField(name = "Temp. Vorlauf Ng 2 [\N{DEGREE SIGN}C]", 
+        self.field3_2 = InfoField(name = "Temp. Vorlauf Ng 2 [\N{DEGREE SIGN}C]", 
                             layout = vbox4)
-        field3_3 = InfoField(name = "Temp. Ng 2 [\N{DEGREE SIGN}C]", 
+        self.field3_3 = InfoField(name = "Temp. Ng 2 [\N{DEGREE SIGN}C]", 
                             layout = vbox4)     
 
         #Settings for the vbox4 (First Column of the hbox2)
@@ -102,15 +102,15 @@ class Page():
         
         #----------------------SECOND COLUMN--------------------
         #Second column elements of vbox5 for the hbox2:
-        box5 = Box("RW24", vbox5)
+        self.box5 = Box("RW24", vbox5)
 
-        field4_1 = InfoField(name = "RW24 Pause Soll [min] ln", 
+        self.field4_1 = InfoField(name = "RW24 Pause Soll [min] ln", 
                             layout = vbox5)
-        field4_2 = InfoField(name = "RW24 Run Soll [min] ln", 
+        self.field4_2 = InfoField(name = "RW24 Run Soll [min] ln", 
                             layout = vbox5)
-        field4_3 = InfoField(name = "RW24 Auto Sollwert [%]", 
+        self.field4_3 = InfoField(name = "RW24 Auto Sollwert [%]", 
                             layout = vbox5)
-        field4_4 = InfoField(name = "RW24 Hand Soll [min] ln", 
+        self.field4_4 = InfoField(name = "RW24 Hand Soll [min] ln", 
                             layout = vbox5)                                                
     
         #Settings for the vbox5 (First Column of the hbox2)
@@ -156,25 +156,18 @@ class Page():
                     self.field2_3,
                     self.field2_4,
 
+                    self.box3,
+
+                    self.box4,
                     self.field3_1,
-                    self.field3_1a,
-
                     self.field3_2,
-                    self.field3_2a,
-
                     self.field3_3,
-                    self.field3_3a,
 
-                    self.field3_4,
-                    self.field3_4a,
-
+                    self.box5,
                     self.field4_1,
                     self.field4_2,
                     self.field4_3,
-                    self.field4_4,
-
-                    self.led1,
-                    self.led2]
+                    self.field4_4, ]
 
 
         for o in objectList:
@@ -183,5 +176,4 @@ class Page():
         
 
 if __name__=='__main__':
-    # UI()
     pass
