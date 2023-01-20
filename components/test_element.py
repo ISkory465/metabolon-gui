@@ -412,6 +412,7 @@ class Led_8(QGroupBox):
         self.layout.addWidget(self)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 class Futter1():
   """Mixer set of elements for the Strasse 1 tab
     :param QGroupBox: _description_
@@ -463,6 +464,9 @@ class Futter1():
        
         self.layout.addLayout(self.mainLayout)
         #self.layout.addStretch()
+=======
+  
+>>>>>>> OPC-Branch
 =======
   
 >>>>>>> OPC-Branch
