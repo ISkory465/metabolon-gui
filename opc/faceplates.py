@@ -4,14 +4,17 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import QObject, QThread, pyqtSignal,QTimer
 from PyQt5.QtGui import QPixmap
 from QLed import QLed
+import OpenOPC
 
 
 
 class Box(QGroupBox):
-  def __init__(self,name,opcID):
+  def __init__(self,name,layout, opcClient:OpenOPC.client = 'none',opcID='NONE'):
     #self.setTitle(name)
     self.name=name
+    self.client=opcClient
     super().__init__(self.name)
+    self.layout = layout
 
     mainLayout=QFormLayout()
   
@@ -36,10 +39,13 @@ class Box(QGroupBox):
 
 
     self.setLayout(mainLayout)
+    self.layout.addWidget(self)
+
   
   def write1(self):
     if self.led1.value==False:
       print(self.opcID+': '+ self.radioBtn1.text())
+      self.client.write(('Ack_All',False))
 
     self.led1.value=True
     self.led2.value=False

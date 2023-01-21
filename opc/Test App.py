@@ -4,6 +4,7 @@ from PyQt5.QtCore import QObject, QThread, pyqtSignal,QTimer
 import OpenOPC
 import pywintypes
 from faceplates import Box
+from Test_Tab import St as St_Strasse_1
 
 pywintypes.datetime = pywintypes.TimeType
 
@@ -67,7 +68,10 @@ class Window(QWidget):
         self.tabs.addTab(self.tab1,"Steuerung Straße 1")
         self.tabs.addTab(self.tab2,"Steuerung Straße 2")
         #self.tabs.addTab(self.tab3,"Last Tab")
-
+        self.tab3 = QWidget()
+        self.tabs.addTab(self.tab3,"Steuerung Strasse 1")
+        self.st=St_Strasse_1()
+        self.st.UI(self)
         ###################Widgets###############
         vbox=QVBoxLayout()
         vbox1=QVBoxLayout()
@@ -89,10 +93,10 @@ class Window(QWidget):
         #vbox.addWidget(self.btn1)
         hbox.addWidget(self.btn2)
         hbox.addWidget(self.listWidget2)
-        self.facePlate1=Box('HE11','DB5.HE11')
-        vbox1.addWidget(self.facePlate1)
-        self.facePlate2=Box('RW13','DB5.RW13')
-        vbox1.addWidget(self.facePlate2)
+        #self.facePlate1=Box('HE11','DB5.HE11')
+        #vbox1.addWidget(self.facePlate1)
+        #self.facePlate2=Box('RW13','DB5.RW13')
+       # vbox1.addWidget(self.facePlate2)
         hbox2.addLayout(vbox1,25)
         hbox2.addLayout(vbox2,75)
         vbox.addLayout(hbox2)
@@ -160,7 +164,7 @@ class Window(QWidget):
               self.listWidget2.addItem(str(n[k]))
               val2[k]=n[k]
 
-          self.facePlate1.update(val1)
+          #self.facePlate1.update(val1)
           #self.facePlate2.update(val2)
 
         except:
@@ -172,8 +176,8 @@ class Window(QWidget):
 
         #print(x)
         if x == 0:
-          self.opclist={'First Tag':'Random.Int1',self.facePlate1.name+'.Hand':'Random.Boolean',self.facePlate1.name+'.AUS':'Bucket Brigade.Boolean',self.facePlate1.name+'.AUTO':'Square Waves.Boolean'}
-
+          #self.opclist={'First Tag':'Random.Int1',self.facePlate1.name+'.Hand':'Random.Boolean',self.facePlate1.name+'.AUS':'Bucket Brigade.Boolean',self.facePlate1.name+'.AUTO':'Square Waves.Boolean'}
+            pass
           #self.listWidget.clear()
           #self.listWidget.addItems(self.opclist)
         elif x==1:
