@@ -101,7 +101,8 @@ class InfoField(QGroupBox):
         self.layout.addWidget(self.spin)
 
     def update(self,val:dict):
-        self.spin.value=val[self.opcName]
+        self.spin.setValue(val[self.opcName])
+        #print(self.opcName+' : '+str(val[self.opcName]))
 
 
 # Field for Double parameter with decimal setting
@@ -255,8 +256,8 @@ class Box(QGroupBox):
 
     self.radioBtn1=QRadioButton('Hand')
     self.radioBtn2=QRadioButton('AUS')
-    self.radioBtn2.setChecked(True)
-    self.led2.value = True
+    #self.radioBtn2.setChecked(True)
+    #self.led2.value = True
     self.radioBtn3=QRadioButton('AUTO')
 
     self.opcID=opcID
@@ -286,33 +287,65 @@ class Box(QGroupBox):
     if self.led1.value==False:
       print(self.opcID+': '+ self.radioBtn1.text())
 
-    self.led1.value=True
-    self.led2.value=False
-    self.led3.value=False
+    self.led1.setValue(True)
+    
+    #self.led2.value=False
+    #self.led3.value=False
 
   def write2(self):
 
     if self.led2.value==False:
       print(self.opcID+': '+ self.radioBtn2.text())
 
-    self.led2.value=True
-    self.led1.value=False
-    self.led3.value=False
+    self.led2.setValue(True)
+    self.led1.setValue(False)
+    self.led3.setValue(False)
 
   def write3(self):
 
     if self.led3.value==False:
       print(self.opcID+': '+ self.radioBtn3.text())
 
-    self.led3.value=True
-    self.led1.value=False
-    self.led2.value=False
+    self.led2.setValue(False)
+    self.led1.setValue(False)
+    self.led3.setValue(True)
 
 
   def update(self,val):
-    self.led1.value=val[self.opcName+'.Hand']
-    self.led2.value=val[self.opcName+'.AUS']
-    self.led3.value=val[self.opcName+'.AUTO']
+   
+    # self.led1.value=val[self.opcName+'.Hand']
+    # self.led2.value=val[self.opcName+'.AUS']
+    # self.led3.value=val[self.opcName+'.AUTO']
+    if (val[self.opcName+'.Hand']):
+      self.radioBtn2.setChecked(False)
+      self.radioBtn3.setChecked(False)
+      self.radioBtn1.setChecked(True)
+      
+      self.led2.setValue(False)
+      self.led3.setValue(False)
+      self.led1.setValue(True)
+
+      print("Led1 is true")
+
+    elif (val[self.opcName+'.AUS']):
+      self.radioBtn1.setChecked(False)
+      self.radioBtn2.setChecked(True)
+      self.radioBtn3.setChecked(False)
+      self.led1.setValue(False)
+      self.led2.setValue(True)
+      self.led3.setValue(False)
+      print("Led2 is true")
+
+    elif (val[self.opcName+'.AUTO']):
+      self.radioBtn1.setChecked(False)
+      self.radioBtn2.setChecked(False)
+      self.radioBtn3.setChecked(True)
+      self.led1.setValue(False)
+      self.led2.setValue(False)
+      self.led3.setValue(True)
+      print("Led3 is true")
+
+    #print(val[self.opcName+'.Hand'])
 
 
 class Led_6(QGroupBox):

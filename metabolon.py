@@ -33,7 +33,7 @@ class Worker(QObject):
         try:
             opc=OpenOPC.client()
             #print('client')   
-            opc.connect("Matrikon.OPC.Simulation.1")
+            opc.connect("OPC.SimaticNET")
 
             if self.varDict=={}:
                 results={'Result':'No Values'}
@@ -42,11 +42,13 @@ class Worker(QObject):
                 results={}
                 keys=self.varDict.keys()
                 for x in keys:
+                    #print(self.varDict[x])
                     tagValues=opc[self.varDict[x]]
+                    #print(tagValues)
                     #tagValues=str(tagValues)
                     results[x]=tagValues
             
-            #print(results)
+            print(results)
 
             
             #print(self.x)
@@ -83,7 +85,8 @@ class Window(QWidget):
         #Third Tab
         self.tab3 = QWidget()
         self.tabs.addTab(self.tab3,"Steuerung Strasse 1")
-        self.page3=St_Strasse_1().UI(self)
+        self.page3=St_Strasse_1()
+        self.page3.UI(self)
         
 
         #Fourth Tab
@@ -116,10 +119,10 @@ class Window(QWidget):
 
         # Define the timer for periodic update of tags
         self.timer = QTimer()
-        self.timer.setInterval(10000)
-        #self.timer.timeout.connect(self.runLongTask)
-        #self.timer.start()
-        #self.show()
+        self.timer.setInterval(5000)
+        self.timer.timeout.connect(self.runLongTask)
+        self.timer.start()
+        self.show()
 
                         
                 
@@ -183,8 +186,8 @@ class Window(QWidget):
                         'Nachgärer Temp.-Sollwert [\N{DEGREE SIGN}C]':opcPrefix+'DB84.TI16_NGA1.SW'}
 
           
-        #elif x==1:
-          #self.opclist={'First Tag':'Random.Int1','Second Tag':'Random.Real8'}
+        elif x==1:
+          self.opclist={'First Tag':'Random.Int1','Second Tag':'Random.Real8'}
 
     def reportProgress(self,tagValues:dict):
         """Defines the update of the tags after getting the new Values from the Worker thread
@@ -196,7 +199,7 @@ class Window(QWidget):
         try:
           x=self.tabs.currentIndex()
           keys=tagValues.keys()
-          print(keys)
+          #print(keys)
           val1={}
           val2={}
 
@@ -213,11 +216,12 @@ class Window(QWidget):
             for k in keys:
               #self.listWidget2.addItem(str(tagValues[k]))
               val2[k]=tagValues[k]
+          #print(str(val1))  
+          self.page3.updateAll(val1)
 
-          self.st.updateAll(val2)
-
-        except:
+        except Exception as e:
             print('no tagValues')
+            print(str(e))
             #self.listWidget.addItem('No Values')
             #print(tagValues)
           
