@@ -2,8 +2,7 @@
 from asyncio.windows_events import NULL
 from multiprocessing.sharedctypes import Value
 # import OpenOPC.OpenOPC as opc1
-# import OpenOPC.OpenOPC as opc1
-import OpenOPC as opc1 as opc1
+import OpenOPC as opc1
 import time
 
 import pywintypes
@@ -30,35 +29,6 @@ with open('opc\opcList.JSON') as json_file:
     #print('\N{DEGREE SIGN} C')
 
 # OPC connection
-'''client1=OpenOPC.client()
-list1=client1.servers()
-
-print(list1)
-name=list1[3]
-print(name)
-client1.connect(name)
-x=client1['Ack_All']
-tag='Ack_All'
-print(x)
-client1.write((tag,False))
-=======
->>>>>>> 9cd2ea8... Test files
-#opc=opc1
-opc=opc1.client()
-#opc
-opc.connect("OPC.SimaticNET")
-# list1=opc.servers()
-opc
-print(opc.info())
-
-print(list1)
-name=list1[3]
-print(name)
-client1.connect(name)
-x=client1['Ack_All']
-tag='Ack_All'
-print(x)
-client1.write((tag,False))
 #opc=opc1
 opc=opc1.client()
 #opc
