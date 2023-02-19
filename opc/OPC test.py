@@ -68,6 +68,22 @@ opc.connect("OPC.SimaticNET")
 opc
 print(opc.info())
 
+print(list1)
+name=list1[3]
+print(name)
+client1.connect(name)
+x=client1['Ack_All']
+tag='Ack_All'
+print(x)
+client1.write((tag,False))
+#opc=opc1
+opc=opc1.client()
+#opc
+opc.connect("OPC.SimaticNET")
+# list1=opc.servers()
+opc
+print(opc.info())
+
 #print(list1)
 #name=list1[3]
 #print(name)
