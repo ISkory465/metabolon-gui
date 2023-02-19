@@ -28,6 +28,7 @@ with open('opc\opcList.JSON') as json_file:
     #print('\N{DEGREE SIGN} C')
 
 # OPC connection
+<<<<<<< HEAD
 '''client1=OpenOPC.client()
 list1=client1.servers()
 
@@ -39,6 +40,8 @@ x=client1['Ack_All']
 tag='Ack_All'
 print(x)
 client1.write((tag,False))
+=======
+>>>>>>> 9cd2ea8... Test files
 #opc=opc1
 opc=opc1.client()
 #opc
