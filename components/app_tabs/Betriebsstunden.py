@@ -65,7 +65,7 @@ class Page():
     
 
         #Assigning to the tab
-        window.tab7.setLayout(grid)
+        window.tab8.setLayout(grid)
 
 
 
