@@ -1,14 +1,16 @@
 import sys
 from PyQt5.QtWidgets import *
-import OpenOPC
-import pywintypes
+# import OpenOPC
+# import pywintypes
 from PyQt5.QtCore import *
-pywintypes.datetime = pywintypes.TimeType
+# pywintypes.datetime = pywintypes.TimeType
 
 
 #app tabs import:
 from components.app_tabs.Steuerung_Strasse_1 import Page as St_Strasse_1
 from components.app_tabs.Steuerung_Strasse_2 import Page as St_Strasse_2
+from components.app_tabs.Stoermeldungen_Strasse_1 import Page as St_meld_1
+from components.app_tabs.Stoermeldungen_Strasse_2 import Page as St_meld_2
 from components.app_tabs.Betriebsstunden import Page as Betriebsstunden
 
 # Rework:
@@ -16,48 +18,48 @@ import components.app_tabs.Fuetterung_Strasse_1 as Fuet_Strasse_1
 import components.app_tabs.Stoermeldungen_Strasse_2 as St_meld_Strasse_2
 
 
-opcPrefix='SIMATIC 300-Station.CPU 315-2 DP.'
-class Worker(QObject):
-    finished = pyqtSignal()
-    progress = pyqtSignal(dict)
-    #recieved = pyqtSignal(list)
+# opcPrefix='SIMATIC 300-Station.CPU 315-2 DP.'
+# # class Worker(QObject):
+#     finished = pyqtSignal()
+#     progress = pyqtSignal(dict)
+#     #recieved = pyqtSignal(list)
     
-    def __init__(self, x:dict):
-      self.varDict=x
-      #self.client=client
-      super().__init__()
+#     def __init__(self, x:dict):
+#       self.varDict=x
+#       #self.client=client
+#       super().__init__()
 
-    def run(self):
-        """Long-running task."""
-        #self.recieved.connect(self.rec)
-        try:
-            opc=OpenOPC.client()
-            #print('client')   
-            opc.connect("Matrikon.OPC.Simulation.1")
+#     def run(self):
+#         """Long-running task."""
+#         #self.recieved.connect(self.rec)
+#         try:
+#             opc=OpenOPC.client()
+#             #print('client')   
+#             opc.connect("Matrikon.OPC.Simulation.1")
 
-            if self.varDict=={}:
-                results={'Result':'No Values'}
-                print(results)
-            else:
-                results={}
-                keys=self.varDict.keys()
-                for x in keys:
-                    tagValues=opc[self.varDict[x]]
-                    #tagValues=str(tagValues)
-                    results[x]=tagValues
+#             if self.varDict=={}:
+#                 results={'Result':'No Values'}
+#                 print(results)
+#             else:
+#                 results={}
+#                 keys=self.varDict.keys()
+#                 for x in keys:
+#                     tagValues=opc[self.varDict[x]]
+#                     #tagValues=str(tagValues)
+#                     results[x]=tagValues
             
-            #print(results)
+#             #print(results)
 
             
-            #print(self.x)
-            self.progress.emit(results)
-            opc.close()
-            self.finished.emit()
-        except:
-            print('error')
-            x=['thread not working']
-            self.progress.emit(x)
-            self.finished.emit()
+#             #print(self.x)
+#             self.progress.emit(results)
+#             opc.close()
+#             self.finished.emit()
+#         except:
+#             print('error')
+#             x=['thread not working']
+#             self.progress.emit(x)
+#             self.finished.emit()
 
 class Window(QWidget):
     def __init__(self):
@@ -83,13 +85,15 @@ class Window(QWidget):
         #Third Tab
         self.tab3 = QWidget()
         self.tabs.addTab(self.tab3,"Steuerung Strasse 1")
-        self.page3=St_Strasse_1().UI(self)
+        self.page3 = St_Strasse_1()
+        self.page3.UI(self)
         
 
         #Fourth Tab
         self.tab4 = QWidget()
         self.tabs.addTab(self.tab4,"Steuerung Strasse 2")
-        self.page4=St_Strasse_2().UI(self)
+        self.page4=St_Strasse_2()
+        self.page4.UI(self)
 
         #Fifth Tab
         self.tab5 = QWidget()
@@ -98,13 +102,21 @@ class Window(QWidget):
 
         #Sixth Tab
         self.tab6 = QWidget()
-        self.tabs.addTab(self.tab6,"Störmeldungen Straße 2")
-        St_meld_Strasse_2.UI(self)
-
+        self.tabs.addTab(self.tab6,"Störmeldungen Straße 1")
+        self.page6 = St_meld_1()
+        self.page6.UI(self)
+        
         #Seventh Tab
         self.tab7 = QWidget()
-        self.tabs.addTab(self.tab7,"Betriebsstunden")
-        self.page7 = Betriebsstunden().UI(self)
+        self.tabs.addTab(self.tab7,"Störmeldungen Straße 2")
+        self.page7 = St_meld_2()
+        self.page7.UI(self)
+
+        #Eight Tab
+        self.tab8 = QWidget()
+        self.tabs.addTab(self.tab8,"Betriebsstunden")
+        self.page8 = Betriebsstunden()
+        self.page8.UI(self)
 
 
 
@@ -214,7 +226,7 @@ class Window(QWidget):
               #self.listWidget2.addItem(str(tagValues[k]))
               val2[k]=tagValues[k]
 
-          self.st.updateAll(val2)
+          self.page3.updateAll(val2)
 
         except:
             print('no tagValues')
