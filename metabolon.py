@@ -135,7 +135,7 @@ class Window(QWidget):
         # Define the timer for periodic update of tags
         self.timer = QTimer()
         self.timer.setInterval(5000)
-        self.timer.timeout.connect(self.runLongTask)
+        #self.timer.timeout.connect(self.runLongTask)
         self.timer.start()
         self.show()
 
@@ -147,8 +147,8 @@ class Window(QWidget):
 
 
 
-    def runLongTask(self):
-        """Create the Worker thread that runs periodically to update current list of OPC tags."""
+    """ def runLongTask(self):
+        ""Create the Worker thread that runs periodically to update current list of OPC tags.""
         # Step 2: Create a QThread object
         self.thread = QThread()
         #x=[1,2,3]
@@ -171,7 +171,7 @@ class Window(QWidget):
         
         #print('Byee')
         # Step 6: Start the thread
-        self.thread.start()
+        self.thread.start() """
 
     def updateOPCList(self):
         """Change the list of OPC tags depending on the active tab
