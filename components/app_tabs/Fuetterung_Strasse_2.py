@@ -27,12 +27,12 @@ class Page():
     #hbox1
       #----------------------FIRST Part of the Tab--------------------
       #Elements of vbox1 for the hbox1:
-      self.futter1 = Futter1(buttonName="DB50.FES1.VW.FES", sollwert11='Feststoff Sollwert [kg/d]',solwert12='Feststoff Istwert [kg/d]', solwert21='Feststoff Sollwert [kg/Zyklus]',solwert22='Feststoff Istwert [kg/Zyklus]', layout=self.vbox1)
-      self.futter2 = Futter1(buttonName="DB50.FLU1.VW.FLU", sollwert11='Feststoff Sollwert [l/d]', solwert12='Feststoff Istwert [l/d]',  solwert21='Feststoff Sollwert [l/Zyklus]', solwert22='Feststoff Istwert [l/Zyklus]', layout=self.vbox1)
-      self.futter3 = Futter1(buttonName="DB50.MAI.VW.MAI", sollwert11='Maische Sollwert [l/d]',   solwert12='Maische Istwert [l/d]',    solwert21='Maische Sollwert [l/Zyklus]',   solwert22='Maische Istwert [l/Zyklus]', layout=self.vbox1)
+      self.futter1 = Futter1(buttonName="DB60.FES2.VW.FES", sollwert11='Feststoff Sollwert [kg/d]',solwert12='Feststoff Istwert [kg/d]', solwert21='Feststoff Sollwert [kg/Zyklus]',solwert22='Feststoff Istwert [kg/Zyklus]', layout=self.vbox1)
+      self.futter2 = Futter1(buttonName="DB60.FLU2.VW.FLU", sollwert11='Feststoff Sollwert [l/d]', solwert12='Feststoff Istwert [l/d]',  solwert21='Feststoff Sollwert [l/Zyklus]', solwert22='Feststoff Istwert [l/Zyklus]', layout=self.vbox1)
+      self.futter3 = Futter1(buttonName="DB60.MAI2.VW.MAI", sollwert11='Maische Sollwert [l/d]',   solwert12='Maische Istwert [l/d]',    solwert21='Maische Sollwert [l/Zyklus]',   solwert22='Maische Istwert [l/Zyklus]', layout=self.vbox1)
       self.futterungszyKlein = InfoField(name ='Futterungszyklein/Tag', layout = self.vbox2)
-      self.b50Flusw = InfoField(name ='DB50.MAIFLU1.FLUSW', layout = self.vbox3)
-      self.db50Fluw = InfoField(name ='DB50.MAIFLU1.FLUW', layout =self.vbox3)
+      self.b50Flusw = InfoField(name ='DB50.MAIFLU2.FLUSW', layout = self.vbox3)
+      self.db50Fluw = InfoField(name ='DB50.MAIFLU2.FLUW', layout =self.vbox3)
 
       #----------------------Second Part of the Tab--------------------
       self.feststoff1 = Feststoffbtn(firstElement="Gesamteintrag Feststoff 1 [kg]", 
@@ -115,7 +115,7 @@ class Page():
       self.vbox.addLayout(self.hbox2, 50)
 
       #Assigning to the tab
-      window.tab5.setLayout(self.vbox)
+      window.tab9.setLayout(self.vbox)
 
   def updateAll(self,inputs: dict):
         """method to update all objects in current tab periodically after reading the values in different thread

@@ -13,6 +13,7 @@ from components.app_tabs.Fuetterung_Strasse_1 import Page as Fuet_Strasse_1
 from components.app_tabs.Stoermeldungen_Strasse_1 import Page as St_Meld_1
 from components.app_tabs.Stoermeldungen_Strasse_2 import Page as St_Meld_2
 from components.app_tabs.Betriebsstunden import Page as Betriebsstunden
+from components.app_tabs.Fuetterung_Strasse_2 import Page as Fuet_Strasse_2
 
 # Rework:
 # import components.app_tabs.Fuetterung_Strasse_1 as Fuet_Strasse_1
@@ -123,7 +124,12 @@ class Window(QWidget):
         self.tabs.addTab(self.tab8,"Betriebsstunden")
         self.page8 = Betriebsstunden()
         self.page8.UI(self)
-
+        
+        #Ninth Tab
+        self.tab9 = QWidget()
+        self.tabs.addTab(self.tab9,"Fütterung Straße 2")
+        self.page9 = Fuet_Strasse_2()
+        self.page9.UI(self)
 
 
         #OPC List update
