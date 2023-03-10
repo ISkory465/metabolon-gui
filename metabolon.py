@@ -19,7 +19,7 @@ from components.app_tabs.Betriebsstunden import Page as Betriebsstunden
 # import components.app_tabs.Stoermeldungen_Strasse_2 as St_meld_Strasse_2
 
 
-# opcPrefix='SIMATIC 300-Station.CPU 315-2 DP.'
+opcPrefix='SIMATIC 300-Station.CPU 315-2 DP.'
 # class Worker(QObject):
 #     finished = pyqtSignal()
 #     progress = pyqtSignal(dict)
@@ -93,7 +93,6 @@ class Window(QWidget):
         self.page3 = St_Strasse_1()
         self.page3.UI(self)
         
-
         #Fourth Tab
         self.tab4 = QWidget()
         self.tabs.addTab(self.tab4,"Steuerung Strasse 2")
@@ -127,16 +126,16 @@ class Window(QWidget):
 
 
         #OPC List update
-        self.tabs.currentChanged.connect(self.updateOPCList)
+        # self.tabs.currentChanged.connect(self.updateOPCList)
 
         #Default OPC list for the first tab --> to be changed
         self.opclist={'First Tag':'Random.Int4','Second Tag':'Random.Int8'}
 
         # Define the timer for periodic update of tags
-        self.timer = QTimer()
-        self.timer.setInterval(5000)
-        self.timer.timeout.connect(self.runLongTask)
-        self.timer.start()
+        # self.timer = QTimer()
+        # self.timer.setInterval(5000)
+        # self.timer.timeout.connect(self.runLongTask)
+        # self.timer.start()
         self.show()
 
                         
@@ -154,20 +153,20 @@ class Window(QWidget):
         #x=[1,2,3]
         # Step 3: Create a worker object
         #results=['Random.Int4','Random.Int8']
-        self.worker = Worker(self.opclist)
+        # self.worker = Worker(self.opclist)
         # Step 4: Move worker to the thread
-        self.worker.moveToThread(self.thread)
+        # self.worker.moveToThread(self.thread)
 
         # Step 5: Connect signals and slots
         
         #print('Heyyy')
         
         
-        self.thread.started.connect(self.worker.run)
-        self.worker.finished.connect(self.thread.quit)
-        self.worker.finished.connect(self.worker.deleteLater)
+        # self.thread.started.connect(self.worker.run)
+        # self.worker.finished.connect(self.thread.quit)
+        # self.worker.finished.connect(self.worker.deleteLater)
         self.thread.finished.connect(self.thread.deleteLater)
-        self.worker.progress.connect(self.reportProgress)
+        # self.worker.progress.connect(self.reportProgress)
         
         #print('Byee')
         # Step 6: Start the thread
