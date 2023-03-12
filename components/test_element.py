@@ -503,3 +503,32 @@ class Futter1():
        
         self.layout.addLayout(self.mainLayout)
         #self.layout.addStretch()
+
+
+class Led(QGroupBox):
+    def __init__(self, name, layout, opcID='opcID'):
+        super().__init__()
+        self.layout = layout
+
+        self.led1=QLed(onColour=QLed.Green, shape=QLed.Circle)
+              
+        self.led1.value = True
+
+        self.led1.setFixedHeight(25)
+        
+        self.layout.addWidget(self.led1)
+        self.layout.addWidget(QLabel(name))
+
+class Led_DA(QGroupBox): #Description Above
+    def __init__(self, name, layout, opcID='opcID'):
+        super().__init__()
+        self.layout = layout
+
+        self.led1=QLed(onColour=QLed.Green, shape=QLed.Circle)
+              
+        self.led1.value = True
+
+        self.led1.setFixedHeight(25)
+        
+        self.layout.addWidget(QLabel(name))
+        self.layout.addWidget(self.led1, alignment = Qt.AlignLeft)
