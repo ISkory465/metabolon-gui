@@ -96,7 +96,6 @@ print(opc.info())
 # print(val)
 # client1.close_connection()
 
-'''
-'''
+
 
 
