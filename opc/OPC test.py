@@ -28,13 +28,8 @@ with open('opc\opcList.JSON') as json_file:
     #print('\N{DEGREE SIGN} C')
 
 # OPC connection
-#opc=opc1
-opc=opc1.client()
-#opc
-opc.connect("OPC.SimaticNET")
-# list1=opc.servers()
-opc
-print(opc.info())
+'''client1=OpenOPC.client()
+list1=client1.servers()
 
 print(list1)
 name=list1[3]
