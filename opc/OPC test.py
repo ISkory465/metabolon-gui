@@ -8,7 +8,6 @@ import time
 import pywintypes
 from OPC_Connection import OPC_Client
 import json
-import json
 pywintypes.datetime = pywintypes.TimeType
 with open('opc\opcList.JSON') as json_file:
     data = json.load(json_file)
@@ -96,6 +95,7 @@ print(opc.info())
 # print(val)
 # client1.close_connection()
 
+'''
 '''
 
 
