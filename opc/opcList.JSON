@@ -1,5 +1,5 @@
 {
-  "TAB1":
+  "TAB1":[
  {   
 "HE11.Hand":"SIMATIC 300-Station.CPU 315-2 DP.DB5.HE11.BF2",
 "HE11.AUTO":"SIMATIC 300-Station.CPU 315-2 DP.DB5.HE11.BF3",
@@ -37,8 +37,8 @@
 "RW14 Hand Sollwert [%]":"SIMATIC 300-Station.CPU 315-2 DP.DB10.RW14_SW.SW1",
 "RW14 Pause Soll [min] ln":"SIMATIC 300-Station.CPU 315-2 DP.DB30.RW14.SZ_PAU",
 "RW14 Run Soll [min] ln":"SIMATIC 300-Station.CPU 315-2 DP.DB30.RW14.SZ_EIN"
-},
-"TAB2":
+}],
+"TAB2":[
 {
 "HE21.Hand":"SIMATIC 300-Station.CPU 315-2 DP.DB5.HE21.BF2",
 "HE21.AUTO":"SIMATIC 300-Station.CPU 315-2 DP.DB5.HE21.BF3",
@@ -60,11 +60,25 @@
 "SC21.AUTO":"SIMATIC 300-Station.CPU 315-2 DP.DB5.SC21.BF3",
 "SC21.AUS":"SIMATIC 300-Station.CPU 315-2 DP.DB5.SC21.BF4",
 
-"Fermenter Temp.-Sollwert [\N{DEGREE SIGN}C]":"SIMATIC 300-Station.CPU 315-2 DP.DB84.TI25_FER1.SW",
-"D8400.HZG_REG.SZ_HE21":"SIMATIC 300-Station.CPU 315-2 DP.DB40.HZG_REG.SZ_HE21"
 
 
 
-}
+
+"RW23 Pause Soll [min] ln":"SIMATIC 300-Station.CPU 315-2 DP.DB40.RW23.SZ_PAU",
+"RW23 Run Soll [min] ln":"SIMATIC 300-Station.CPU 315-2 DP.DB40.RW23.SZ_EIN",
+"RW23 Auto Sollwert [%]":"SIMATIC 300-Station.CPU 315-2 DP.DB10.RW23_SW.SW2",
+"RW23 Hand Soll [min] ln":"SIMATIC 300-Station.CPU 315-2 DP.DB10.RW23_SW.SW1",
+
+
+
+"RW24 Pause Soll [min] ln":"SIMATIC 300-Station.CPU 315-2 DP.DB40.RW24.SZ_PAU",
+"RW24 Run Soll [min] ln":"SIMATIC 300-Station.CPU 315-2 DP.DB40.RW24.SZ_EIN",
+"RW24 Auto Sollwert [%]":"SIMATIC 300-Station.CPU 315-2 DP.DB10.RW24_SW.SW2",
+"RW24 Hand Soll [min] ln":"SIMATIC 300-Station.CPU 315-2 DP.DB10.RW24_SW.SW1"
+
+
+
+
+}]
 
 }
