@@ -82,10 +82,10 @@ class Page():
         grid.setVerticalSpacing(60)
         
         #Assigning to the tab
-        window.tab7.setLayout(grid)
+        window.tab6.setLayout(grid)
         #self.addWidget(self.tab6)
 
-    
+ 
       
 
 if __name__=='__main__':

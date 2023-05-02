@@ -28,7 +28,7 @@ with open('opc\opcList.JSON') as json_file:
     #print('\N{DEGREE SIGN} C')
 
 # OPC connection
-client1=OpenOPC.client()
+'''client1=OpenOPC.client()
 list1=client1.servers()
 
 #print(list1)
