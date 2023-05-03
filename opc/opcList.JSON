@@ -38,6 +38,8 @@
 "RW14 Pause Soll [min] ln":"SIMATIC 300-Station.CPU 315-2 DP.DB30.RW14.SZ_PAU",
 "RW14 Run Soll [min] ln":"SIMATIC 300-Station.CPU 315-2 DP.DB30.RW14.SZ_EIN"
 }],
+
+
 "TAB2":[
 {
 "HE21.Hand":"SIMATIC 300-Station.CPU 315-2 DP.DB5.HE21.BF2",
@@ -349,6 +351,7 @@
 
 
 }
+]
 
 }
 }
