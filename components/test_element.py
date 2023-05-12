@@ -10,6 +10,7 @@ class ToggleButton(QGroupBox):
     """
     def __init__(self, name, layout, opcID='None'):
       super().__init__()
+      self.setFlat(True) #remove QGroupBox frame
       self.layout = layout
       self.layout.setSpacing(0)
       self.layout.setContentsMargins(0,0,0,0)
@@ -73,7 +74,7 @@ class InfoField(QGroupBox):
 
     def __init__(self, name, layout, opcID='None', buttonSymbol=2):
         super().__init__(name)
-
+        self.setFlat(True)
         self.layout = layout
         self.opcName=name
 
@@ -532,3 +533,123 @@ class Led_DA(QGroupBox): #Description Above
         
         self.layout.addWidget(QLabel(name))
         self.layout.addWidget(self.led1, alignment = Qt.AlignLeft)
+class Feststoffbtn(QGroupBox):
+    def __init__(self, firstElement, secondElement, thirdElement, fourthElement, fifthElement, sixthElement, layout, opcID='opcID'):
+        super().__init__()
+        self.setFlat(True)
+        self.layout = layout #vbox 
+        self.mainLayout=QHBoxLayout()
+        self.buttonLayout=QVBoxLayout()
+        self.vbox1=QVBoxLayout()
+    
+        #<-------------------------------------->
+        #first row 
+        button1 = UnlabelledButton(layout=self.buttonLayout)
+        #Left elements of the row
+        firstElement = InfoField(name =firstElement, 
+                         layout = self.vbox1, buttonSymbol=2) 
+        
+        self.buttonLayout.addWidget(button1)
+        #<-------------------------------------->
+        #Second row
+        button2 = UnlabelledButton(layout=self.buttonLayout)
+        secondElement = InfoField(name =secondElement, 
+                         layout = self.vbox1, buttonSymbol=2)
+        
+        self.buttonLayout.addWidget(button2)
+        
+        #Third row
+        button3 = UnlabelledButton(layout=self.buttonLayout)
+        thirdElement = InfoField(name =thirdElement, 
+                         layout = self.vbox1, buttonSymbol=2)
+        
+        self.buttonLayout.addWidget(button3)
+       
+        #Fourth row
+        button4 = UnlabelledButton(layout=self.buttonLayout)
+        fourthElement = InfoField(name =fourthElement, 
+                         layout = self.vbox1, buttonSymbol=2)
+        
+        self.buttonLayout.addWidget(button4)
+
+        #Fifth row
+        button5 = UnlabelledButton(layout=self.buttonLayout)
+        fifthElement = InfoField(name =fifthElement, 
+                         layout = self.vbox1, buttonSymbol=2)
+        
+        self.buttonLayout.addWidget(button5)
+        
+        #Six row
+        button6 = UnlabelledButton(layout=self.buttonLayout)
+        sixthElement = InfoField(name = sixthElement, 
+                         layout = self.vbox1, buttonSymbol=2)
+        self.buttonLayout.addWidget(button6)
+         
+        #adding layouts to main layout
+        self.mainLayout.addLayout(self.buttonLayout)
+        self.mainLayout.addLayout(self.vbox1)
+       
+        #setting for adjasting space between elements in layouts
+        self.vbox1.setSpacing(5)
+        self.mainLayout.setSpacing(5)
+       
+        self.layout.addLayout(self.mainLayout)
+
+
+class UnlabelledButton(QGroupBox):
+    """Groupelement that combines QLabel and QPushbutton with settings to them
+    :param QGroupBox: _description_
+    :type QGroupBox: _type_
+    """
+
+    def __init__(self, layout, opcID='None'):
+      super().__init__()
+      self.setFlat(True)
+      self.layout = layout
+      self.layout.setSpacing(0)
+      self.layout.setContentsMargins(0,0,0,0)
+      self.setFixedHeight(20)
+      self.setFixedWidth(20)
+
+      # creating a push button
+      self.button = QPushButton("",self)
+      # setting default color of button to light-grey
+      self.button.setStyleSheet("""
+        QPushButton{
+        background-color:'lightgrey';
+        }
+        """
+                                )               
+      # setting checkable to true
+      self.button.setCheckable(True)
+      # setting calling method by button 
+      self.button.clicked.connect(self.toggle)
+      self.button.clicked.connect(self.changeColor)
+      self.layout.addWidget(self.button)      
+      
+    #<-------------------------------------->
+    # action methods
+    def toggle(self):
+        if self.button.isChecked():
+           print("Button 1 clicked")
+       
+
+     # method called by button
+    def changeColor(self):
+        # if button is checked
+        if self.button.isChecked():
+            # setting background color to light-blue
+           self.button.setStyleSheet("""
+        QPushButton{
+        background-color:'green';
+        }
+        """
+                                      )
+        # if it is unchecked
+        else:
+            # set background color back to light-grey
+            self.button.setStyleSheet("QPushButton"
+                                      "{"
+                                        "background-color : lightgrey;"
+                                      "}"
+                                      )
