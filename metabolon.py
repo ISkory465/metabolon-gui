@@ -20,7 +20,7 @@ from components.app_tabs.Fuetterung_Strasse_2 import Page as Fuet_Strasse_2
 # import components.app_tabs.Stoermeldungen_Strasse_2 as St_meld_Strasse_2
 
 
-# opcPrefix='SIMATIC 300-Station.CPU 315-2 DP.'
+opcPrefix='SIMATIC 300-Station.CPU 315-2 DP.'
 # class Worker(QObject):
 #     finished = pyqtSignal()
 #     progress = pyqtSignal(dict)
