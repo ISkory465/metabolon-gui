@@ -8,19 +8,41 @@ class Page():
     def UI(self, window:QMainWindow):
         
         #Main layout of the first tab 'Betriebsstunden"
+        grid = QGridLayout() 
+
+        #Page has 2 horizontal boxes; hbox1 contains 2 vertical layouts vbox1_1 and vbox1_2:       
+        hbox1=QHBoxLayout()     
         vbox1_1=QVBoxLayout()
         vbox1_2=QVBoxLayout()
 
+        #hbox2 contains 3 vertical layouts vbox2_1, vbox2_2 and vbox2_3:
+        hbox2=QHBoxLayout() 
         vbox2_1=QVBoxLayout()
         vbox2_2=QVBoxLayout()
         vbox2_3=QVBoxLayout()
 
-        hbox1=QHBoxLayout()
-        hbox2=QHBoxLayout()
+        #Layout relation 
+        vbox2_3.setAlignment(Qt.AlignTop)
 
-        grid = QGridLayout()
+        hbox1.addLayout(vbox1_1)
+        hbox1.addLayout(vbox1_2)
+
+        hbox2.addLayout(vbox2_1)
+        hbox2.addLayout(vbox2_2)
+        hbox2.addLayout(vbox2_3)
+
+        #Layout settings 
+        hbox1.setAlignment(Qt.AlignTop)
+        hbox1.setSpacing(5)
+
+        hbox2.setAlignment(Qt.AlignTop)
+        hbox2.setSpacing(5)
+
+        grid.setAlignment(Qt.AlignCenter)
+        grid.setSpacing(50)
 
 
+        #Elements of vbox1_*:
         self.field1_1 = InfoFieldDouble(name = "HE11_BH",
                             layout = vbox1_1, dec_num = 2)
         self.field1_2 = InfoFieldDouble(name = "HE12_BH",
@@ -30,7 +52,7 @@ class Page():
         self.field1_4 = InfoFieldDouble(name = "HE22_BH",
                             layout = vbox1_2, dec_num = 0)   
 
-
+        #Elements of vbox2_*:
         self.field2_1 = InfoFieldDouble(name = "PU11_BH",
                             layout = vbox2_1, dec_num = 3)
         self.field2_2 = InfoFieldDouble(name = "PU12_BH",
@@ -42,24 +64,9 @@ class Page():
         self.field2_5 = InfoFieldDouble(name = "PU31_BH",
                             layout = vbox2_3, dec_num = 4)   
 
-        vbox2_3.setAlignment(Qt.AlignTop)
 
-        hbox1.addLayout(vbox1_1)
-        hbox1.addLayout(vbox1_2)
-
-        hbox2.addLayout(vbox2_1)
-        hbox2.addLayout(vbox2_2)
-        hbox2.addLayout(vbox2_3)
-
-        hbox1.setAlignment(Qt.AlignTop)
-        hbox1.setSpacing(5)
-
-        hbox2.setAlignment(Qt.AlignTop)
-        hbox2.setSpacing(5)
-
-        grid.setAlignment(Qt.AlignCenter)
-        grid.setSpacing(50)
-
+       
+        #Grid layout  
         grid.addLayout(hbox1, *[1,0])
         grid.addLayout(hbox2, *[1,1])
     

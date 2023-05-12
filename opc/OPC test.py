@@ -10,18 +10,25 @@ from OPC_Connection import OPC_Client
 pywintypes.datetime = pywintypes.TimeType
 
 # OPC connection
-client1=OPC_Client()
-list1=client1.servernames()
+client1=OpenOPC.client()
+list1=client1.servers()
 
 print(list1)
+name=list1[3]
+print(name)
+client1.connect(name)
+x=client1['Ack_All']
+tag='Ack_All'
+print(x)
+client1.write((tag,False))
 #print(type(list1[5]))
-client1.start_connection(list1[5])
-d=client1.getInfo()
+# client1.start_connection(list1[5])
+# d=client1.getInfo()
 
 
-print(d)
-serverName=d['OPC Server']
-print(serverName)
+# print(d)
+# serverName=d['OPC Server']
+# print(serverName)
 # list2=client1.listValues()
 
 # print(list2)

@@ -125,11 +125,11 @@ class Page():
         #First column elements of vbox4 for the hbox2:
         self.box4 = Box("HE12", vbox4)
         
-        self.field3_1 = InfoField(name = "Nachgärer Temp.-Sollwert [\N{DEGREE SIGN}C]", 
+        self.field3_1b = InfoField(name = "Nachgärer Temp.-Sollwert [\N{DEGREE SIGN}C]", 
                             layout = vbox4)
-        self.field3_2 = InfoField(name = "Temp. Vorlauf Ng 1 [\N{DEGREE SIGN}C]", 
+        self.field3_2b = InfoField(name = "Temp. Vorlauf Ng 1 [\N{DEGREE SIGN}C]", 
                             layout = vbox4)
-        self.field3_3 = InfoField(name = "Temp. Ng 1 [\N{DEGREE SIGN}C]", 
+        self.field3_3b = InfoField(name = "Temp. Ng 1 [\N{DEGREE SIGN}C]", 
                             layout = vbox4)     
 
         #Settings for the vbox4 (First Column of the hbox2)
@@ -209,12 +209,15 @@ class Page():
 
                     self.field3_1,
                     self.field3_1a,
+                    self.field3_1b,
 
                     self.field3_2,
+                    self.field3_2a,
                     self.field3_2a,
 
                     self.field3_3,
                     self.field3_3a,
+                    self.field3_3b,
 
                     self.field3_4,
                     self.field3_4a,

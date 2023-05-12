@@ -11,6 +11,7 @@ from ..test_element import Led_8
 
 class Page():
 
+<<<<<<< HEAD
     def UI(self, window:QMainWindow):
         #Main layout of the first tab 'Störmeldungen Straße 2"
         grid = QGridLayout()
@@ -32,6 +33,25 @@ class Page():
 
         #Second column elements of vbox6 for the hbox2:
 
+=======
+class Page():
+
+    def UI(self,window:QMainWindow):
+
+        #Main layout of the first tab 'Störmeldungen Straße 2"
+        grid = QGridLayout()
+
+        #Page has 1 horizontal box:
+        hbox=QHBoxLayout()    
+        hbox.setAlignment(Qt.AlignCenter)
+
+        #Horizontal hbox contains 2 vertical layouts
+        vbox1=QVBoxLayout()
+        vbox2=QVBoxLayout()
+
+       
+        #Elements of vbox1 and vbox2 for the hbox:
+>>>>>>> Garaeva
         led_l = Led_6(name="PU21 Antriebsstörung +FE02\
                             ,PU21 Trockenlaufstörung +FE02\
                             ,PU21 MaxDruckstörung +FE02\
@@ -47,6 +67,7 @@ class Page():
                             ,RW24 Antriebsstörung +FE03\
                             ,RW24 FU-Störung +FE03", layout=vbox2)
 
+<<<<<<< HEAD
         
 
         #hbox.addLayout(vbox1,2)
@@ -75,19 +96,29 @@ class Page():
         
         
         #grid.setSpacing(10)
+=======
+        #Grid layout  
+        grid.addLayout(vbox1, *[0,0])
+        grid.addLayout(vbox2, *[0,1])
+
+        #Grid settings
+>>>>>>> Garaeva
         grid.setAlignment(Qt.AlignCenter)
         grid.setHorizontalSpacing(30)
         grid.setSpacing(20)
         grid.setVerticalSpacing(60)
         
         #Assigning to the tab
+<<<<<<< HEAD
         #self.tab6.setLayout(grid)
         #self.addWidget(self.tab6)
 
         window.tab7.setLayout(grid)
 
  
+=======
+        window.tab7.setLayout(grid) 
+>>>>>>> Garaeva
       
-
 if __name__=='__main__':
-    UI()
+    pass
