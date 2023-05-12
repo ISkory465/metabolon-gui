@@ -11,31 +11,6 @@ from ..test_element import Led_8
 
 class Page():
 
-<<<<<<< HEAD
-    def UI(self, window:QMainWindow):
-        #Main layout of the first tab 'Störmeldungen Straße 2"
-        grid = QGridLayout()
-        vbox1=QVBoxLayout()
-        vbox2=QVBoxLayout()
-
-        #test element:
-        hbox=QHBoxLayout()
-
-        board_layout = QFormLayout()
-        
-    
-        #label = QLabel('Marina')
-
-        hbox.setAlignment(Qt.AlignCenter)
-        # vbox1.setAlignment(Qt.AlignCenter)
-        # vbox2.setAlignment(Qt.AlignCenter)
-        #hbox.addWidget(label)
-
-        #Second column elements of vbox6 for the hbox2:
-
-=======
-class Page():
-
     def UI(self,window:QMainWindow):
 
         #Main layout of the first tab 'Störmeldungen Straße 2"
@@ -51,7 +26,6 @@ class Page():
 
        
         #Elements of vbox1 and vbox2 for the hbox:
->>>>>>> Garaeva
         led_l = Led_6(name="PU21 Antriebsstörung +FE02\
                             ,PU21 Trockenlaufstörung +FE02\
                             ,PU21 MaxDruckstörung +FE02\
@@ -67,58 +41,18 @@ class Page():
                             ,RW24 Antriebsstörung +FE03\
                             ,RW24 FU-Störung +FE03", layout=vbox2)
 
-<<<<<<< HEAD
-        
-
-        #hbox.addLayout(vbox1,2)
-        #hbox.addLayout(vbox2,1)
-
-        
-        #vbox1.add
-
-        #board_layout.addRow(vbox1)
-        #board_layout.addRow(vbox2)
-        #grid.setContentsMargins(10,10,20,20)
-        grid.addLayout(vbox1, *[0,0])
-        grid.addLayout(vbox2, *[0,1])
-
-    #grid.addWidget(led1)
-        #grid.addWidget(led2)
-
-
-        #self.sliderframe = QFrame(self.tab6)
-        #self.sliderframe.setFixedHeight(450)
-        #self.sliderframe.setFixedWidth(90)
-        #self.sliderframe.setStyleSheet("border: 1px solid grey; background: 0%;")
-        #self.sliderframe.setGeometry(200, 100, 450, 200)
-
-        #grid.addLayout(hbox, *[0,0])
-        
-        
-        #grid.setSpacing(10)
-=======
         #Grid layout  
         grid.addLayout(vbox1, *[0,0])
         grid.addLayout(vbox2, *[0,1])
 
         #Grid settings
->>>>>>> Garaeva
         grid.setAlignment(Qt.AlignCenter)
         grid.setHorizontalSpacing(30)
         grid.setSpacing(20)
         grid.setVerticalSpacing(60)
         
         #Assigning to the tab
-<<<<<<< HEAD
-        #self.tab6.setLayout(grid)
-        #self.addWidget(self.tab6)
-
-        window.tab7.setLayout(grid)
-
- 
-=======
         window.tab7.setLayout(grid) 
->>>>>>> Garaeva
       
 if __name__=='__main__':
     pass
