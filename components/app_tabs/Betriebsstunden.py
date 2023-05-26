@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
-from ..test_element import InfoField
-from ..test_element import InfoFieldDouble
+from ..facelpates_new import InfoField
+from ..facelpates_new import InfoFieldDouble
 
 class Page():
 

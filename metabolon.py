@@ -7,13 +7,14 @@ from PyQt5.QtCore import *
 
 
 #app tabs import:
-from components.app_tabs.Steuerung_Strasse_1 import Page as St_Strasse_1
-from components.app_tabs.Steuerung_Strasse_2 import Page as St_Strasse_2
-from components.app_tabs.Fuetterung_Strasse_1 import Page as Fuet_Strasse_1
+from components.app_tabs.Strasse_1                import Page as Strasse_1
+from components.app_tabs.Steuerung_Strasse_1      import Page as St_Strasse_1
+from components.app_tabs.Steuerung_Strasse_2      import Page as St_Strasse_2
+from components.app_tabs.Fuetterung_Strasse_1     import Page as Fuet_Strasse_1
 from components.app_tabs.Stoermeldungen_Strasse_1 import Page as St_Meld_1
 from components.app_tabs.Stoermeldungen_Strasse_2 import Page as St_Meld_2
-from components.app_tabs.Betriebsstunden import Page as Betriebsstunden
-from components.app_tabs.Fuetterung_Strasse_2 import Page as Fuet_Strasse_2
+from components.app_tabs.Betriebsstunden          import Page as Betriebsstunden
+from components.app_tabs.Fuetterung_Strasse_2     import Page as Fuet_Strasse_2
 
 # Rework:
 # import components.app_tabs.Fuetterung_Strasse_1 as Fuet_Strasse_1
@@ -80,9 +81,10 @@ class Window(QWidget):
 
         #first Tab
         self.tab1 = QWidget()
-        # self.tabs.addTab(self.tab1,"Strasse 1")
-        # Strasse1.UI(self)
-
+        self.tabs.addTab(self.tab1,"Strasse 1")
+        self.page1 = Strasse_1()
+        self.page1.UI(self)
+        
         #Second Tab
         self.tab2 = QWidget()
         # self.tabs.addTab(self.tab2,"Strasse 2")
