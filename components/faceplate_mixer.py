@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import *
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore    import Qt
 from .facelpates_new import InfoField
+from .faceplate_term import ThermometerWidget
 
 from QLed import QLed
 
@@ -37,6 +38,8 @@ class Mixer(QGroupBox):
         self.nm_2_column.setAlignment(Qt.AlignTop)
         self.grid.addLayout(self.numerical_data, *[0,0])
 
+        self.thermometer = ThermometerWidget() #add  self.name parameter in class termometer
+        self.grid.addWidget(self.thermometer, *[0,1])
 
         self.layout.addWidget(self)
         self.setLayout(self.grid)

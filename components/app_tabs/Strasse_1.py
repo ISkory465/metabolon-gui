@@ -1,7 +1,8 @@
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import Qt
-from ..facelpates_new import Box
-from ..faceplate_mixer import Mixer
+from PyQt5.QtWidgets    import *
+from PyQt5.QtCore       import Qt
+from ..facelpates_new   import Box
+from ..faceplate_mixer  import Mixer
+
 
 
 class Page():
@@ -35,10 +36,12 @@ class Page():
 
         window.tab1.setLayout(self.vbox)
 
-
+        
         # hbox1 Content
         self.mixer1 = Mixer(name="Fermenter", layout = self.vbox1_1)
         self.mixer2 = Mixer(name="Nachgärer", layout = self.vbox1_2)
+
+
 
 
 if __name__=='__main__':
