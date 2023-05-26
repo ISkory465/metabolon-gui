@@ -5,7 +5,7 @@ from PyQt5.QtCore import *
 class ThermometerWidget(QWidget):
     def __init__(self):
         super().__init__()
-        self.setMinimumSize(100, 400)
+        self.setMinimumSize(50, 200)
         self.temperature = 0
         # self.opcName = name 
 

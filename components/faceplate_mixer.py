@@ -1,7 +1,8 @@
 from PyQt5.QtWidgets import *
-from PyQt5.QtCore    import Qt
+from PyQt5.QtCore import Qt
 from .facelpates_new import InfoField
 from .faceplate_term import ThermometerWidget
+from .faceplate_playbtn import PlayButton
 
 from QLed import QLed
 
@@ -39,10 +40,21 @@ class Mixer(QGroupBox):
         self.grid.addLayout(self.numerical_data, *[0,0])
 
         self.thermometer = ThermometerWidget() #add  self.name parameter in class termometer
-        self.grid.addWidget(self.thermometer, *[0,1])
+        self.thermometer.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed) 
+        self.grid.addWidget(self.thermometer, *[0,2])
+
+        self.playbutton = PlayButton()
+        self.playbutton.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed) 
+        # self.spacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.grid.addWidget(self.playbutton, *[0,1])
+        # self.grid.addItem(self.spacer, *[0,1])
 
         self.layout.addWidget(self)
         self.setLayout(self.grid)
+
+
+        
+        # self.grid.addWidget(QLabel('  '), *[1,1])
 
 
 
