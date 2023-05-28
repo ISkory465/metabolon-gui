@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
 from .facelpates_new import InfoField
-from .faceplate_term import ThermometerWidget
+from .faceplate_therm import ThermometerWidget
 from .faceplate_playbtn import PlayButton
 
 from QLed import QLed
@@ -16,7 +16,7 @@ class Mixer(QGroupBox):
     
     def __init__(self, name, layout, opcID=None):
         
-        super().__init__(name)
+        super().__init__(name) 
         self.layout = layout
 
         #Main laout of the mixer with 2x2 element position
