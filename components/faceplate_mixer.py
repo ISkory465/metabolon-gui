@@ -3,6 +3,7 @@ from PyQt5.QtCore import Qt
 from .facelpates_new import InfoField
 from .faceplate_therm import ThermometerWidget
 from .faceplate_playbtn import PlayButton
+from .faceplate_gauge import Gauge
 
 from QLed import QLed
 
@@ -48,6 +49,11 @@ class Mixer(QGroupBox):
         # self.spacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
         self.grid.addWidget(self.playbutton, *[0,1])
         # self.grid.addItem(self.spacer, *[0,1])
+
+        self.gauge = Gauge() #add self.name parameter in class
+        self.gauge.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed) 
+        self.grid.addWidget(self.gauge, *[1,0])
+
 
         self.layout.addWidget(self)
         self.setLayout(self.grid)

@@ -1,14 +1,15 @@
-import sys, math
+import math
 from PyQt5.QtWidgets import QApplication, QWidget
 from PyQt5.QtGui import QPainter, QColor, QPen
 from PyQt5.QtCore import Qt
 
 
 class Gauge(QWidget):
-    def __init__(self):
+    def __init__(self, value=12):
         super().__init__()
-        self.setMinimumSize(200, 200)
-        self.value = 22
+        # self.setMinimumSize(200, 200)
+        self.setMinimumSize(100, 100)
+        self.value = value
 
     def paintEvent(self, event):
         painter = QPainter(self)
@@ -51,34 +52,12 @@ class Gauge(QWidget):
         x2, y2 = map(int, self._get_point(angle, 0.85))
         painter.drawLine(x1, y1, x2, y2)
 
-
-
-
-
     def _get_point(self, angle, radius):
         angle_rad = math.radians(495 - angle)
         x = 50 + math.cos(angle_rad) * 40 * radius
         y = 50 - math.sin(angle_rad) * 40 * radius
         return x, y
 
-
-
-
-
     def set_value(self, value):
         self.value = min(max(value, 0), 25)
         self.update()
-
-
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    gauge = Gauge()
-    gauge.show()
-
-    # Change the value of the gauge
-    gauge.set_value(10)
-
-    # Trigger a repaint of the gauge
-    gauge.update()
-
-    sys.exit(app.exec_())
