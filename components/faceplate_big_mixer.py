@@ -67,7 +67,7 @@ class CircularButton(QPushButton):
 class BigMixer(QWidget):
     def __init__(self, level=10):
         super().__init__()
-        self.setMinimumSize(400, 400)
+        self.setMinimumSize(300, 300)
         self.level = level
         self.state = 0  # Initial state for level
 
@@ -203,15 +203,3 @@ class BigMixer(QWidget):
 
     #     # Set the new position of the button
     #     self.circle.move(new_button_x, new_button_y)
-
-
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    tank = BigMixer()
-    tank.show()
-
-    tank.setState(1)
-    tank.setState(2)
-    tank.setLevel(100)
-
-    sys.exit(app.exec_())

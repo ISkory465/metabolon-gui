@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
+import sys
 
 
 
@@ -18,7 +19,8 @@ class PlayButton(QWidget):
         painter.setRenderHint(QPainter.Antialiasing)
 
         # Define the button's dimensions and colors
-        rect = QRect(10, 10, self.width() - 20, self.height() - 20)
+        # rect = QRect(10, 10, self.width() - 20, self.height() - 20)
+        rect = QRect(1, 1, self.width()-2, self.height()-2)
         background_color = Qt.green if self.active else Qt.gray
         icon_color = Qt.white if self.active else Qt.darkGray
 
@@ -31,10 +33,11 @@ class PlayButton(QWidget):
         painter.setPen(icon_color)
         painter.setBrush(icon_color)
         path = QPainterPath()
-        path.moveTo(rect.center().x() - 5, rect.center().y() - 10)
-        path.lineTo(rect.center().x() + 10, rect.center().y())
-        path.lineTo(rect.center().x() - 5, rect.center().y() + 10)
-        path.lineTo(rect.center().x() - 5, rect.center().y() - 10)
+
+        path.moveTo(rect.center().x() + int(self.width()*0.3), rect.center().y())
+        path.lineTo(rect.center().x() - int(self.width()*0.18), rect.center().y() - int(self.height()*0.3))
+        path.lineTo(rect.center().x() - int(self.width()*0.18), rect.center().y() + int(self.height()*0.3))
+        path.lineTo(rect.center().x() + int(self.width()*0.3), rect.center().y())
         painter.drawPath(path)
 
     def mousePressEvent(self, event):
@@ -46,3 +49,11 @@ class PlayButton(QWidget):
 
     def leaveEvent(self, event):
         QApplication.restoreOverrideCursor()
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    btn = PlayButton()
+    btn.show()
+
+    sys.exit(app.exec_())

@@ -4,6 +4,7 @@ from .facelpates_new import InfoField
 from .faceplate_therm import ThermometerWidget
 from .faceplate_playbtn import PlayButton
 from .faceplate_gauge import Gauge
+from .faceplate_big_mixer import BigMixer
 
 from QLed import QLed
 
@@ -41,18 +42,23 @@ class Mixer(QGroupBox):
         self.grid.addLayout(self.numerical_data, *[0,0])
 
         self.thermometer = ThermometerWidget() #add  self.name parameter in class termometer
-        self.thermometer.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed) 
-        self.grid.addWidget(self.thermometer, *[0,2])
+        self.thermometer.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed) 
+        # self.grid.addWidget(self.thermometer, *[0,2], alignment=Qt.AlignLeft)
+        self.grid.addWidget(self.thermometer, *[0,2], alignment=Qt.AlignCenter)
 
         self.playbutton = PlayButton()
-        self.playbutton.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed) 
+        self.playbutton.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed) 
         # self.spacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-        self.grid.addWidget(self.playbutton, *[0,1])
+        self.grid.addWidget(self.playbutton, *[0,1], alignment=Qt.AlignHCenter)
         # self.grid.addItem(self.spacer, *[0,1])
 
         self.gauge = Gauge() #add self.name parameter in class
         self.gauge.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed) 
         self.grid.addWidget(self.gauge, *[1,0])
+
+        self.big_mixer = BigMixer() #add self.name parameter in class
+        self.big_mixer.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed) 
+        self.grid.addWidget(self.big_mixer, 1, 1, 0, 2)
 
 
         self.layout.addWidget(self)
