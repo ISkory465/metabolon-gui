@@ -44,12 +44,12 @@ class Mixer(QGroupBox):
         self.thermometer = ThermometerWidget() #add  self.name parameter in class termometer
         self.thermometer.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed) 
         # self.grid.addWidget(self.thermometer, *[0,2], alignment=Qt.AlignLeft)
-        self.grid.addWidget(self.thermometer, *[0,2], alignment=Qt.AlignCenter)
+        self.grid.addWidget(self.thermometer, *[0,2], alignment=Qt.AlignLeft)
 
         self.playbutton = PlayButton()
         self.playbutton.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed) 
         # self.spacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-        self.grid.addWidget(self.playbutton, *[0,1], alignment=Qt.AlignHCenter)
+        self.grid.addWidget(self.playbutton, *[0,1], alignment=Qt.AlignLeft)
         # self.grid.addItem(self.spacer, *[0,1])
 
         self.gauge = Gauge() #add self.name parameter in class
