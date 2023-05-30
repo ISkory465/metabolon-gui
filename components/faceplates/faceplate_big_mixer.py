@@ -65,7 +65,11 @@ class CircularButton(QPushButton):
         painter.drawText(self.rect(), Qt.AlignCenter, "M")
 
 class BigMixer(QWidget):
-    def __init__(self, level=10):
+
+    global buffer
+    buffer = 20
+
+    def __init__(self, level=90):
         super().__init__()
         self.setMinimumSize(300, 300)
         self.level = level
@@ -74,7 +78,8 @@ class BigMixer(QWidget):
         self.initUI()
 
     def initUI(self):
-        buffer = 200
+        # buffer = 200
+        pass
 
         # # Create the circular button
         # button = CircularButton()
@@ -112,7 +117,7 @@ class BigMixer(QWidget):
         painter.fillRect(self.rect(), Qt.lightGray)
 
         # Calculate the scale position based on the level value
-        buffer = 200  # Adjust the buffer value to control the empty space at the top
+        # buffer = 200  # Adjust the buffer value to control the empty space at the top
         scale_height = int((self.height() - buffer - 20) * self.level / 100)
         scale_rect = QRect(10, self.height() - 10 - scale_height - 1, self.width() - 70, scale_height + 1)
         painter.fillRect(scale_rect, Qt.red)
@@ -203,3 +208,17 @@ class BigMixer(QWidget):
 
     #     # Set the new position of the button
     #     self.circle.move(new_button_x, new_button_y)
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    tank = BigMixer()
+    tank.show()
+
+    # tank.setState(1)
+    # tank.setState(2)
+    tank.setLevel(75)
+
+    # Trigger a repaint of the tank
+    tank.update()
+
+    sys.exit(app.exec_())
