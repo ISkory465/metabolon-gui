@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
 from QLed import QLed
 
-from ..facelpates_new import *
+from ..faceplates.facelpates_new import *
 
 
 class Page():

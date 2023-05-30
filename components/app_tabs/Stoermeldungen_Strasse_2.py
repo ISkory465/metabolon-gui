@@ -2,11 +2,11 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
 from QLed import QLed
 
-from ..facelpates_new import Box
-from ..facelpates_new import InfoField
-from ..facelpates_new import SingleLed
-from ..facelpates_new import Led_6
-from ..facelpates_new import Led_8
+from ..faceplates.facelpates_new import Box
+from ..faceplates.facelpates_new import InfoField
+from ..faceplates.facelpates_new import SingleLed
+from ..faceplates.facelpates_new import Led_6
+from ..faceplates.facelpates_new import Led_8
 
 
 class Page():
