@@ -66,29 +66,27 @@ class CircularButton(QPushButton):
 
 class BigMixer(QWidget):
 
-    global buffer
-    buffer = 20
-
     def __init__(self, level=90):
         super().__init__()
-        self.setMinimumSize(300, 300)
+        self.setMinimumSize(120, 80)
         self.level = level
         self.state = 0  # Initial state for level
+        self.buffer = 5 #int(self.height() * 0.2)
 
         self.initUI()
 
     def initUI(self):
-        # buffer = 200
+        # self.buffer = 200
         pass
 
         # # Create the circular button
         # button = CircularButton()
-        # button.setGeometry(120, buffer // 2 - 30, 60, 60)  # Set the position and size of the button using absolute positioning
+        # button.setGeometry(120, self.buffer // 2 - 30, 60, 60)  # Set the position and size of the button using absolute positioning
         # button.setParent(self)  # Set the widget as the parent of the button
 
         # # Create the circle widget
         # self.circle = CircleWidget()
-        # self.circle.setGeometry(self.width() - 120, self.height() + buffer - 85, 60, 60)  # Set the position and size of the button using absolute positioning
+        # self.circle.setGeometry(self.width() - 120, self.height() + self.buffer - 85, 60, 60)  # Set the position and size of the button using absolute positioning
         # # self.circle.setGeometry(30, 30, 60, 60)
         # self.circle.setParent(self)  # Set the widget as the parent of the button
     
@@ -117,16 +115,17 @@ class BigMixer(QWidget):
         painter.fillRect(self.rect(), Qt.lightGray)
 
         # Calculate the scale position based on the level value
-        # buffer = 200  # Adjust the buffer value to control the empty space at the top
-        scale_height = int((self.height() - buffer - 20) * self.level / 100)
+        # self.buffer = 200  # Adjust the self.buffer value to control the empty space at the top
+        scale_height = int((self.height() - self.buffer - 20) * self.level / 100)
         scale_rect = QRect(10, self.height() - 10 - scale_height - 1, self.width() - 70, scale_height + 1)
         painter.fillRect(scale_rect, Qt.red)
 
         # Draw small rectangles in the top corners
-        rectangle_size = 40
+        
+        rectangle_size = int(self.width() * 0.07)
         rectangle_spacing = 10
-        rectangle1 = QRect(rectangle_spacing + 10, buffer + rectangle_spacing + 8, rectangle_size + 20, rectangle_size)
-        rectangle2 = QRect(self.width() - rectangle_size - rectangle_spacing - 80, buffer + rectangle_spacing + 8, rectangle_size + 20, rectangle_size)
+        rectangle1 = QRect(rectangle_spacing + 10, self.buffer + rectangle_spacing, rectangle_size + 20, rectangle_size)
+        rectangle2 = QRect(self.width() - rectangle_size - rectangle_spacing - 80, self.buffer + rectangle_spacing, rectangle_size + 20, rectangle_size)
 
         # Determine the color based on the state
         rectangle1_color = Qt.green if self.state == 1 else Qt.gray
@@ -146,11 +145,11 @@ class BigMixer(QWidget):
         font.setPointSize(12)
         painter.setFont(font)
         tick_length = 5
-        tick_spacing = (self.height() - buffer - 20) / 100
+        tick_spacing = (self.height() - self.buffer - 20) / 100
         degree_spacing = 5
         for level in range(0, 101, degree_spacing):
             y = self.height() - 10 - int(level * tick_spacing)
-            # y = buffer + self.height() - 30 - int((level / 100) * (self.height() - buffer))  # Adjusted y coordinate calculation
+            # y = self.buffer + self.height() - 30 - int((level / 100) * (self.height() - self.buffer))  # Adjusted y coordinate calculation
             if level in [0, 50, 100]:  # Display labels for values 0, 50, and 100 only
                 label_font = painter.font()
                 label_font.setBold(True)
@@ -171,16 +170,16 @@ class BigMixer(QWidget):
             painter.drawLine(self.width() - tick_length - 40, y, self.width() - 60, y)
 
         # Draw the infinity sign
-        ellipse1 = QRectF(60, self.height() - 100, 100, 30)
-        ellipse2 = QRectF(140, self.height() - 100, 100, 30)
-        painter.drawEllipse(ellipse1)
-        painter.drawEllipse(ellipse2)
+        # ellipse1 = QRectF(60, self.height() - 100, 100, 30)
+        # ellipse2 = QRectF(140, self.height() - 100, 100, 30)
+        # painter.drawEllipse(ellipse1)
+        # painter.drawEllipse(ellipse2)
 
-        # Draw the perpendicular line
-        intersection_point = ellipse1.topRight().toPoint()
-        line_start = QPoint(150, self.height() - 85)
-        line_end = QPoint(150, buffer // 2)
-        painter.drawLine(line_start, line_end)
+        # # Draw the perpendicular line
+        # intersection_point = ellipse1.topRight().toPoint()
+        # line_start = QPoint(150, self.height() - 85)
+        # line_end = QPoint(150, self.buffer // 2)
+        # painter.drawLine(line_start, line_end)
 
 
     def onTurnedOn(self):
@@ -213,6 +212,11 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     tank = BigMixer()
     tank.show()
+
+    # window = QWidget()
+    # layout = QVBoxLayout()
+    # window.setLayout(layout)
+    # layout.addWidget(tank)
 
     # tank.setState(1)
     # tank.setState(2)
