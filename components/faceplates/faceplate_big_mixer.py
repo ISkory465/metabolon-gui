@@ -66,7 +66,7 @@ class CircularButton(QPushButton):
 
 class BigMixer(QWidget):
 
-    def __init__(self, level=90):
+    def __init__(self, level=100):
         super().__init__()
         self.setMinimumSize(120, 80)
         self.level = level
@@ -143,7 +143,7 @@ class BigMixer(QWidget):
 
         # Draw ticks and labels on the right side
         font = QFont()
-        font.setPointSize(12)
+        font.setPointSize(9)
         painter.setFont(font)
         tick_length = 5
         tick_spacing = (self.height() - self.buffer - 20) / 100
@@ -157,7 +157,7 @@ class BigMixer(QWidget):
                 painter.setFont(label_font)
                 metrics = QFontMetrics(label_font)
                 label_width = metrics.horizontalAdvance(str(level))
-                painter.drawText(self.width() - label_width - 12, y + 5, str(level))
+                painter.drawText(self.width() - label_width - 14, y + 2, str(level))
                 tick_length = 5  # Longer tick length for values 0, 50, and 100
                 pen = QPen(painter.pen())
                 pen.setWidth(2)  # Thicker pen for values 0, 50, and 100
@@ -221,7 +221,7 @@ if __name__ == '__main__':
 
     # tank.setState(1)
     # tank.setState(2)
-    tank.setLevel(75)
+    tank.setLevel(100)
 
     # Trigger a repaint of the tank
     tank.update()

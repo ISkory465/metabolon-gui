@@ -2,6 +2,7 @@ from PyQt5.QtWidgets    import *
 from PyQt5.QtCore       import Qt
 from ..faceplates.facelpates_new   import Box
 from ..faceplates.faceplate_mixer  import Mixer
+from ..faceplates.faceplate_endlager import Endlager
 
 
 
@@ -40,6 +41,7 @@ class Page():
         # hbox1 Content
         self.mixer1 = Mixer(name="Fermenter", layout = self.vbox1_1)
         self.mixer2 = Mixer(name="Nachgärer", layout = self.vbox1_2)
+        self.endlager = Endlager(name="Endlager", layout = self.vbox1_3)
 
 
 
