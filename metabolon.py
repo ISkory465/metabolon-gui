@@ -88,8 +88,9 @@ class Window(QWidget):
         #Second Tab
         self.tab2 = QWidget()
         # self.tabs.addTab(self.tab2,"Strasse 2")
-        # self.Tab_Strasse2()
-
+        # self.page2 = Strasse_2()
+        # self.page2.UI(self)
+        
         #Third Tab
         self.tab3 = QWidget()
         self.tabs.addTab(self.tab3,"Steuerung Strasse 1")
