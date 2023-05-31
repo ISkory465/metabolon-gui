@@ -71,7 +71,7 @@ class BigMixer(QWidget):
         self.setMinimumSize(120, 80)
         self.level = level
         self.state = 0  # Initial state for level
-        self.buffer = 3 #int(self.height() * 0.2)
+        self.buffer = int(self.height() * 0.055)
 
         self.initUI()
 
@@ -123,7 +123,7 @@ class BigMixer(QWidget):
 
         # Draw small rectangles in the top corners
         
-        rectangle_size = int(self.width() * 0.07)
+        rectangle_size = int(self.width() * 0.05)
         rectangle_spacing = 2
         rectangle1 = QRect(rectangle_spacing + 10, self.buffer + rectangle_spacing, rectangle_size + 20, rectangle_size)
         rectangle2 = QRect(self.width() - rectangle_size - rectangle_spacing - 80, self.buffer + rectangle_spacing, rectangle_size + 20, rectangle_size)
