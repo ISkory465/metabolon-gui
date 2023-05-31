@@ -34,10 +34,10 @@ class PlayButton(QWidget):
         painter.setBrush(icon_color)
         path = QPainterPath()
 
-        path.moveTo(rect.center().x() + int(self.width()*0.3), rect.center().y())
-        path.lineTo(rect.center().x() - int(self.width()*0.18), rect.center().y() - int(self.height()*0.3))
-        path.lineTo(rect.center().x() - int(self.width()*0.18), rect.center().y() + int(self.height()*0.3))
-        path.lineTo(rect.center().x() + int(self.width()*0.3), rect.center().y())
+        path.moveTo(rect.center().x() + int(self.width()*0.35), rect.center().y())
+        path.lineTo(rect.center().x() - int(self.width()*0.16), rect.center().y() - int(self.height()*0.3))
+        path.lineTo(rect.center().x() - int(self.width()*0.16), rect.center().y() + int(self.height()*0.3))
+        path.lineTo(rect.center().x() + int(self.width()*0.35), rect.center().y())
         painter.drawPath(path)
 
     def mousePressEvent(self, event):
