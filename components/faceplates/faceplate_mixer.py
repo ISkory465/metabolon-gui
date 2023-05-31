@@ -53,12 +53,12 @@ class Mixer(QGroupBox):
         # self.grid.addItem(self.spacer, *[0,1])
 
         self.gauge = Gauge() #add self.name parameter in class
-        self.gauge.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed) 
+        self.gauge.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed) 
         self.grid.addWidget(self.gauge, *[1,0])
 
         self.big_mixer = BigMixer() #add self.name parameter in class
-        self.big_mixer.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed) 
-        self.grid.addWidget(self.big_mixer, 1, 1, 0, 2)
+        self.big_mixer.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred) 
+        self.grid.addWidget(self.big_mixer, 1, 1, 2, 3)
 
 
         self.layout.addWidget(self)
