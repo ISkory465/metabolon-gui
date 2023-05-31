@@ -71,7 +71,7 @@ class BigMixer(QWidget):
         self.setMinimumSize(120, 80)
         self.level = level
         self.state = 0  # Initial state for level
-        self.buffer = 5 #int(self.height() * 0.2)
+        self.buffer = 3 #int(self.height() * 0.2)
 
         self.initUI()
 
@@ -118,12 +118,13 @@ class BigMixer(QWidget):
         # self.buffer = 200  # Adjust the self.buffer value to control the empty space at the top
         scale_height = int((self.height() - self.buffer - 20) * self.level / 100)
         scale_rect = QRect(10, self.height() - 10 - scale_height - 1, self.width() - 70, scale_height + 1)
-        painter.fillRect(scale_rect, Qt.red)
+        
+        painter.fillRect(scale_rect, QColor(62, 84, 230))
 
         # Draw small rectangles in the top corners
         
         rectangle_size = int(self.width() * 0.07)
-        rectangle_spacing = 10
+        rectangle_spacing = 2
         rectangle1 = QRect(rectangle_spacing + 10, self.buffer + rectangle_spacing, rectangle_size + 20, rectangle_size)
         rectangle2 = QRect(self.width() - rectangle_size - rectangle_spacing - 80, self.buffer + rectangle_spacing, rectangle_size + 20, rectangle_size)
 
