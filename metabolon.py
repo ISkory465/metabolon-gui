@@ -16,6 +16,9 @@ from components.app_tabs.Stoermeldungen_Strasse_2 import Page as St_Meld_2
 from components.app_tabs.Betriebsstunden          import Page as Betriebsstunden
 from components.app_tabs.Fuetterung_Strasse_2     import Page as Fuet_Strasse_2
 
+#Side bar
+from components.app_tabs.Side_bar                 import Page as Side_bar
+
 # Rework:
 # import components.app_tabs.Fuetterung_Strasse_1 as Fuet_Strasse_1
 # import components.app_tabs.Stoermeldungen_Strasse_2 as St_meld_Strasse_2
@@ -71,13 +74,22 @@ class Window(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Metabolon Station")
-        self.setGeometry(350,150,900,600)
+        self.setGeometry(350,100,1200,800)
         self.Tabs_UI()
 
     def Tabs_UI(self):
         
-        mainLayout = QVBoxLayout()
+        mainLayout = QHBoxLayout()
+        self.tabs_layout = QVBoxLayout()
+        self.sb_layout = QVBoxLayout()
         self.tabs = QTabWidget()
+
+        #Side Bar
+        self.sb_widget = QWidget()
+        self.sb_layout.addWidget(self.sb_widget)
+        self.side_bar = Side_bar()
+        self.side_bar.UI(self)
+
 
         #first Tab
         self.tab1 = QWidget()
@@ -148,8 +160,11 @@ class Window(QWidget):
         self.show()
 
                         
-                
-        mainLayout.addWidget(self.tabs)
+        
+        
+        self.tabs_layout.addWidget(self.tabs)
+        mainLayout.addLayout(self.tabs_layout, 0)
+        mainLayout.addLayout(self.sb_layout, 50)
         self.setLayout(mainLayout)
 
 
