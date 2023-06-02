@@ -1,30 +1,36 @@
 from PyQt5.QtWidgets    import *
 from PyQt5.QtCore       import Qt
+from components.faceplates.faceplate_side_bar import SideBarFaceplate
 
-from components.faceplates.faceplate_gauge import Gauge
+
+
 
 class SideBar(QWidget):
+
     def __init__(self):
         super().__init__()
         self.setMinimumWidth(200)
 
-        self.gauge = Gauge()
+        self.sb_layout = QVBoxLayout()
+        self.content = SideBarFaceplate(name="Control Panel", layout=self.sb_layout)
 
-        self.layout = QVBoxLayout()
-        self.setLayout(self.layout)
+        self.sb_layout.addWidget(self.content)
 
-        self.layout.addWidget(self.gauge)
 
+        
+        self.setLayout(self.sb_layout)
+
+        
     def addWidget(self, widget):
-        self.layout.addWidget(widget)
+        self.sb_layout.addWidget(widget)
 
 
 
-if __name__ == '__main__':
-    app = QApplication([])
-    window = QMainWindow()
-    window.setWindowTitle("Page Test")
-    page = Page()
-    page.UI(window)
-    window.show()
-    app.exec_()
+# if __name__ == '__main__':
+#     app = QApplication([])
+#     window = QMainWindow()
+#     window.setWindowTitle("Page Test")
+#     page = Page()
+#     page.UI(window)
+#     window.show()
+#     app.exec_()
