@@ -28,13 +28,10 @@ class Window(QMainWindow):
 
         # Side Bar
         self.side_bar = SideBar()
-        # self.side_bar.addWidget(QLabel("Side Bar Widget"))
 
         self.tabs = QTabWidget()
 
-        # Tabs...
-        # Your tabs initialization code goes here
-        #first Tab
+        # First Tab
         self.tab1 = QWidget()
         self.tabs.addTab(self.tab1,"Strasse 1")
         self.page1 = Strasse_1()

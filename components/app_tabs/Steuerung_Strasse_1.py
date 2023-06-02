@@ -155,6 +155,7 @@ class Page():
 
         #----------------------FIFTH COLUMN--------------------
         #Second column elements of vbox6 for the hbox2:
+        vbox3_3_2=QVBoxLayout()  # New QVBoxLayout
         self.led1 = SingleLed(name="Magentgasventill Fer 1", layout=vbox6)
         self.led2 = SingleLed(name="Magentgasventill Fer 2", layout=vbox6)
         
@@ -172,9 +173,7 @@ class Page():
         hbox2.addLayout(vbox4, 1)
         hbox2.addLayout(vbox5, 1)
         hbox2.addLayout(vbox6, 1)
-        hbox2.addLayout(vbox3_3, 1)
-
-
+        hbox2.addLayout(vbox3_3_2, 1)  # use vbox3_3_2 instead of vbox3_3
 
         #Adding two horizontal layouts (hbox1, hbox2) to the layout of the page
         vbox.addLayout(hbox1, 50)
@@ -182,6 +181,7 @@ class Page():
 
         #Assigning page layout to the window
         window.tab3.setLayout(vbox)
+
 
 
 
