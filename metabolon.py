@@ -11,8 +11,8 @@ from components.app_tabs.Stoermeldungen_Strasse_1 import Page as St_Meld_1
 from components.app_tabs.Stoermeldungen_Strasse_2 import Page as St_Meld_2
 from components.app_tabs.Betriebsstunden          import Page as Betriebsstunden
 from components.app_tabs.Fuetterung_Strasse_2     import Page as Fuet_Strasse_2
-from components.app_tabs.Side_Bar                 import SideBar
-# from components.app_tabs.Side_Bar import SideBar
+from components.app_tabs.Side_bar                 import SideBar
+
 
 
 
