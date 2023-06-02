@@ -19,11 +19,12 @@ class Page():
         vbox1=QVBoxLayout()
         vbox2=QVBoxLayout()
         vbox3=QVBoxLayout()
-        vbox3_3=QVBoxLayout() #Empty buffer to shift layout
+        vbox3_3_1=QVBoxLayout() #Empty buffer to shift layout for hbox1
 
         #Second horizontal hbox2 contains Two vertical layouts
         vbox4=QVBoxLayout()
         vbox5=QVBoxLayout()    
+        vbox3_3_2=QVBoxLayout() #Empty buffer to shift layout for hbox2
 
 
 
@@ -81,7 +82,7 @@ class Page():
         hbox1.addLayout(vbox1, 1)
         hbox1.addLayout(vbox2, 1)
         hbox1.addLayout(vbox3, 1)
-        hbox1.addLayout(vbox3_3, 2)
+        hbox1.addLayout(vbox3_3_1, 2) # vbox3_3_1 is used here
 
 
         #hbox2
@@ -122,10 +123,10 @@ class Page():
         hbox2.setSpacing(10)
         hbox2.setContentsMargins(0, 20, 0, 0)
 
-        #Add columns(vbox4, vbox5 vbox3_3(dummy)) to the hbox2
+        #Add columns(vbox4, vbox5 vbox3_3_2(dummy)) to the hbox2
         hbox2.addLayout(vbox4,1)
         hbox2.addLayout(vbox5,1)
-        hbox2.addLayout(vbox3_3, 2)
+        hbox2.addLayout(vbox3_3_2, 2) # vbox3_3_2 is used here
 
 
 
