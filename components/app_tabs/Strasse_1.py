@@ -42,9 +42,20 @@ class Page():
         self.mixer1 = Mixer(name="Fermenter", layout = self.vbox1_1)
         self.mixer2 = Mixer(name="Nachgärer", layout = self.vbox1_2)
         self.endlager = Endlager(name="Endlager", layout = self.vbox1_3)
+        
+        # hbox2 Content
+        self.box1 = Box("PU12", self.hbox2)
+        self.hbox2.setAlignment(Qt.AlignRight)
 
-
-
+        # hbox3 Content
+        self.box2 = Box("PU11", self.hbox3)
+        self.box3 = Box("RW11", self.hbox3)
+        self.box4 = Box("RW12", self.hbox3)
+        self.box5 = Box("AA11", self.hbox3)
+        self.box6 = Box("AA12", self.hbox3)
+        self.box7 = Box("AA13", self.hbox3)
+        self.box8 = Box("AA14", self.hbox3)
+        # self.hbox3.setAlignment(Qt.AlignBottom)
 
 if __name__=='__main__':
     pass
