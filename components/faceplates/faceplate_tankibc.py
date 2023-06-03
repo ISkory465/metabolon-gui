@@ -20,7 +20,7 @@ class TankIBC(QWidget):
     def setup_ui(self):
         self.setMinimumSize(200, 200)
 
-        self.label = QLabel("Tank Level")
+        self.label = QLabel("IBC")
         self.label.setAlignment(Qt.AlignCenter)
 
         layout = QVBoxLayout()
