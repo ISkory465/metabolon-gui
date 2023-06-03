@@ -12,13 +12,16 @@ class SideBar(QWidget):
         self.setMinimumWidth(200)
 
         self.sb_layout = QVBoxLayout()
+        
+        #COntent of the Control Panel
         self.content = SideBarFaceplate(name="Control Panel", layout=self.sb_layout)
 
         self.sb_layout.addWidget(self.content)
 
+        self.setLayout(self.sb_layout)
+
 
         
-        self.setLayout(self.sb_layout)
 
         
     def addWidget(self, widget):
