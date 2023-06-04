@@ -20,7 +20,7 @@ class ValveLabelWidget(QWidget):
         self.setLayout(self.layout)
 
         self.label = QLabel(self.valvename)
-        self.layout.setAlignment(Qt.AlignTop)
+        self.layout.setAlignment(Qt.AlignCenter)
 
         self.layout.addWidget(self.label)
         self.layout.addWidget(self.valve)

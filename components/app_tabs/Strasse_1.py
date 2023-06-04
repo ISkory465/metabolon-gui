@@ -5,6 +5,7 @@ from ..faceplates.faceplates import Box
 from ..faceplates.faceplate_mixer  import Mixer
 from ..faceplates.faceplate_endlager import Endlager
 from ..faceplates.faceplate_tankibc import TankIBC
+from ..faceplates.faceplate_pump import PumpWidget
 from ..faceplates.faceplate_valve import *
 
 
@@ -58,18 +59,27 @@ class Page():
          # Create the TankIBC widget
         self.hbox2.addWidget(self.tankIbc.get_widget(), 3, 0)  # Add the tank widget to the grid layout
         self.hbox2.setColumnStretch(0, 0)
-
+        
+        # Create Pump widget 
+        self.pumpWidget = PumpWidget(name="Pumpe PU11")
+        self.pumpWidget.set_mode("operational")
+        self.hbox2.addWidget(self.pumpWidget, 3, 1) # Add the Pump widget to the grid layout
+        
+        self.pumpWidget = PumpWidget(name="Pumpe PU12")
+        self.pumpWidget.set_mode("operational")
+        self.hbox2.addWidget(self.pumpWidget, 2, 5) 
+                
         # Create and add Valve Widgets
         self.valve1 = ValveLabelWidget("Ventil AA11")
         self.hbox2.addWidget(self.valve1, 3, 3)
         
-        self.valve2 = ValveLabelWidget("Ventil AA12")
+        self.valve2 = ValveLabelWidget("Ventil AA14")
         self.hbox2.addWidget(self.valve2, 0, 4)
 
         self.valve3 = ValveLabelWidget("Ventil AA13")
         self.hbox2.addWidget(self.valve3, 1, 4)
 
-        self.valve4 = ValveLabelWidget("Ventil AA14")
+        self.valve4 = ValveLabelWidget("Ventil AA12")
         self.hbox2.addWidget(self.valve4, 2, 4)
 
         # Create and add the Box widget
