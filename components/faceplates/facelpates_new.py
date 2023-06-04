@@ -72,11 +72,15 @@ class InfoField(QGroupBox):
     :type QGroupBox: _type_
     """
 
+    instances = []
+
     def __init__(self, name, layout, opcID='None', buttonSymbol=2):
         super().__init__(name)
+        self.instances.append(self)
         self.setFlat(True)
         self.layout = layout
-        self.opcName=name
+        self.opcName = name
+        self.state = False
 
         #Header (QLabel) for the numerical field
         self.name = QLabel(name)
@@ -84,6 +88,7 @@ class InfoField(QGroupBox):
 
         #Field for numerical Value
         self.spin = QSpinBox() #uses integers; for floats use QDoubleSpinBox
+        self.spin.setEnabled(self.state)
 
         #LOCK-----------------------------------!!!!!!!!
         
@@ -113,6 +118,12 @@ class InfoField(QGroupBox):
         self.spin.setValue(val[self.opcName])
         #print(self.opcName+' : '+str(val[self.opcName]))
 
+    @classmethod
+    def set_all_states(cls, state):
+        for instance in cls.instances:
+            instance.state = state
+            instance.spin.setEnabled(state)
+
 
 # Field for Double parameter with decimal setting
 # Example if dec_num = 2 you get 10,00
@@ -120,9 +131,14 @@ class InfoField(QGroupBox):
 # Default dec_num is 2
 
 class InfoFieldDouble(QGroupBox):
+    
+    instances = []
+
     def __init__(self, name, layout, dec_num = 2, opcID='None', buttonSymbol=2):
         super().__init__(name)
+        self.instances.append(self)
         self.layout = layout
+        self.state = False
 
         #Header (QLabel) for the numerical field
         self.name = QLabel(name)
@@ -130,6 +146,7 @@ class InfoFieldDouble(QGroupBox):
 
         #Field for numerical Value
         self.spin = QDoubleSpinBox(decimals = dec_num) #uses integers; for floats use QDoubleSpinBox
+        self.spin.setEnabled(self.state)
 
         #Check range of values in LabView
         self.spin.setMinimum(10)
@@ -146,6 +163,12 @@ class InfoFieldDouble(QGroupBox):
         # temp1.valueChanged.connect(self.value_changed)
 
         self.layout.addWidget(self.spin)
+
+    @classmethod
+    def set_all_states(cls, state):
+        for instance in cls.instances:
+            instance.state = state
+            instance.spin.setEnabled(state)
 
 class SingleLed(QGroupBox):
     def __init__(self, name, layout, opcID='opcID'):
@@ -178,12 +201,19 @@ class SingleLed(QGroupBox):
         
 
 class Box(QGroupBox):
+
+  instances = []
+
   def __init__(self, name, layout, opcID='opcID'):
     #self.setTitle(name)
     super().__init__(name)
+    self.instances.append(self)
     self.layout = layout
     self.opcName=name
-    mainLayout=QFormLayout()
+    mainLayout = QFormLayout()
+    self.state = False
+
+    self.setEnabled(self.state)
   
     self.led1=QLed(onColour=QLed.Green, shape=QLed.Circle)
     self.led2=QLed(onColour=QLed.Green, shape=QLed.Circle)
@@ -216,6 +246,11 @@ class Box(QGroupBox):
     self.setLayout(mainLayout)
     self.layout.addWidget(self)
   
+  @classmethod
+  def set_all_states(cls, state):
+        for instance in cls.instances:
+            instance.state = state
+            instance.setEnabled(state)
 
 
   def write1(self):
