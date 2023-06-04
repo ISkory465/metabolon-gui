@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets    import *
 from PyQt5.QtCore       import Qt
 from ..faceplates.facelpates_new import Box
-from ..faceplates.faceplates import Box
+# from ..faceplates.faceplates import Box
 from ..faceplates.faceplate_mixer  import Mixer
 from ..faceplates.faceplate_endlager import Endlager
 from ..faceplates.faceplate_tankibc import TankIBC
@@ -37,6 +37,7 @@ class Page():
         self.hbox1.addLayout(self.vbox1_2)
         self.hbox1.addLayout(self.vbox1_3)
         self.hbox1.setAlignment(Qt.AlignLeft)
+        self.hbox2.setAlignment(Qt.AlignTop)
 
 
         window.tab1.setLayout(self.vbox)
@@ -50,7 +51,7 @@ class Page():
         # hbox2 Content
         #self.box1 = Box("PU12", self.hbox2)
         self.tankIbc = TankIBC(max_level=100, min_level=15)
-        self.tankIbc.set_current_level(10)
+        self.tankIbc.set_current_level(70)
         self.tankIbc.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
         #self.hbox2.addWidget(self.tankIbc)
         #self.hbox2.setAlignment(Qt.AlignRight)
@@ -73,17 +74,17 @@ class Page():
         self.hbox2.addWidget(self.valve4, 2, 4)
 
         # Create and add the Box widget
-        self.box1 = Box("PU12")
+        self.box1 = Box("PU12", self.hbox3)
         self.hbox2.addWidget(self.box1, 3, 6)  # Add the box widget to the grid layout
         
         # hbox3 Content
-        self.box2 = Box("PU11")
-        self.box3 = Box("RW11")
-        self.box4 = Box("RW12")
-        self.box5 = Box("AA11")
-        self.box6 = Box("AA12")
-        self.box7 = Box("AA13")
-        self.box8 = Box("AA14")
+        self.box2 = Box("PU11", self.hbox3)
+        self.box3 = Box("RW11", self.hbox3)
+        self.box4 = Box("RW12", self.hbox3)
+        self.box5 = Box("AA11", self.hbox3)
+        self.box6 = Box("AA12", self.hbox3)
+        self.box7 = Box("AA13", self.hbox3)
+        self.box8 = Box("AA14", self.hbox3)
         
         self.hbox3.addWidget(self.box2, 0, 0)
         self.hbox3.addWidget(self.box3, 0, 1)
