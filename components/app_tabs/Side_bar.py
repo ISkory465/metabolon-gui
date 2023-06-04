@@ -12,6 +12,7 @@ class SideBar(QWidget):
         self.setMinimumWidth(200)
 
         self.sb_layout = QVBoxLayout()
+        self.sb_layout.setAlignment(Qt.AlignTop)
         
         #COntent of the Control Panel
         self.content = SideBarFaceplate(name="Control Panel", layout=self.sb_layout)
