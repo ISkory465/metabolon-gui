@@ -18,7 +18,7 @@ class Window(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Metabolon Station")
-        self.setGeometry(350,100,1200,800)
+        self.setGeometry(350,100,1200,600)
         self.Tabs_UI()
 
     def Tabs_UI(self):
