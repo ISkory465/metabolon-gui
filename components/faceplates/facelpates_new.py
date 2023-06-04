@@ -85,6 +85,14 @@ class InfoField(QGroupBox):
         #Field for numerical Value
         self.spin = QSpinBox() #uses integers; for floats use QDoubleSpinBox
 
+        #LOCK-----------------------------------!!!!!!!!
+        
+        # op=QGraphicsOpacityEffect(self)
+        # op.setOpacity(0.80)
+        # self.spin.setEnabled(False)
+        # self.spin.setGraphicsEffect(op)
+        # self.spin.setReadOnly(True)
+
         #Check range of values in LabView
         self.spin.setMinimum(10)
         self.spin.setMaximum(150)
