@@ -4,7 +4,7 @@ from PyQt5.QtCore import *
 import sys
 
 class ValveLabelWidget(QWidget):
-    def __init__(self, label="", size=100):
+    def __init__(self, label="", size=40):
         super().__init__()
         self.valve = ValveWidget(size)
         self.valvename = label
@@ -27,9 +27,9 @@ class ValveLabelWidget(QWidget):
 
 
 class ValveWidget(QWidget):
-    def __init__(self, size=100):
+    def __init__(self, size=40):
         super().__init__()
-        self.setMinimumSize(size-20, size+20)
+        self.setMinimumSize(size, size)
         self.valvesize = size
         self.status = 0
 
@@ -39,7 +39,7 @@ class ValveWidget(QWidget):
 
     def paintEvent(self, event):
         painter = QPainter(self)
-        painter.setPen(QPen(Qt.black,  5, Qt.SolidLine))
+        painter.setPen(QPen(Qt.black,  2, Qt.SolidLine))
 
         if self.status == 0:
             valvecolor = Qt.blue
