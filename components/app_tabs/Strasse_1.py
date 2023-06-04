@@ -1,8 +1,10 @@
 from PyQt5.QtWidgets    import *
 from PyQt5.QtCore       import Qt
-from ..faceplates.facelpates_new   import Box
+from ..faceplates.facelpates_new import Box
+from ..faceplates.faceplates import Box
 from ..faceplates.faceplate_mixer  import Mixer
 from ..faceplates.faceplate_endlager import Endlager
+from ..faceplates.faceplate_tankibc import TankIBC
 
 
 
@@ -16,8 +18,9 @@ class Page():
 
         #Tab is split into three horizontal boxes
         self.hbox1 = QHBoxLayout()
-        self.hbox2 = QHBoxLayout()
-        self.hbox3 = QHBoxLayout()
+        #self.hbox2 = QHBoxLayout()
+        self.hbox2 = QGridLayout()
+        self.hbox3 = QGridLayout()
 
         #First horizontal hbox1 layout contains three vertical boxes
         self.vbox1_1 = QVBoxLayout()
