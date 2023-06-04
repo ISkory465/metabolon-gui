@@ -32,6 +32,8 @@ class Box(QGroupBox):
     mainLayout.addRow(self.radioBtn3,self.led3)
     mainLayout.setVerticalSpacing(8)
     mainLayout.setFormAlignment(Qt.AlignLeft)
+    self.setFixedHeight(120)
+    self.setFixedWidth(165)
 
     self.setLayout(mainLayout)
   
