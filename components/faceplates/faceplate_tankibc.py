@@ -10,7 +10,7 @@ class TankIBC(QWidget):
 
         self.max_level = max_level
         self.min_level = min_level
-        self.current_level = 0
+        self.current_level = 55
 
         self.max_led_color = QColor(255, 0, 0)  # Red
         self.min_led_color = QColor(0, 255, 0)  # Green

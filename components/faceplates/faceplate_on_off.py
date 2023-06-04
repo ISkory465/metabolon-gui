@@ -4,6 +4,7 @@ from PyQt5.QtGui import QFont
 from .facelpates_new import InfoField, InfoFieldDouble, Box
 
 
+
 class OnOffButton(QWidget):
     
     def __init__(self):
