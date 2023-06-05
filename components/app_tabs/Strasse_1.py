@@ -8,7 +8,7 @@ from ..faceplates.faceplate_tankibc import TankIBC
 from ..faceplates.faceplate_pump import PumpWidget
 from ..faceplates.faceplate_valve import *
 from ..faceplates.faceplates_tankIBC_motor import *
-
+from ..faceplates.faceplates_infofieldV1 import *
 
 class Page:
 
@@ -51,18 +51,23 @@ class Page:
         self.tankIbc = TankIBC(name="IBC", max_level=100, min_level=15)
         self.tankIbc.set_current_level(10)
         self.tankIbc.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
-
-        """ # Create the MixerTank and  add it to the gridlayout  
-        self.tankMotor1 = TankMotor(nameTank="Flüssigvorl.", nameMotor="Rührwerk RW11", modeMotor="idle",
-                                    maxTank=120, minTank=15)
-        self.tankMotor2 = TankMotor(nameTank="Anmalschb", nameMotor="Rührwerk RW12", modeMotor="idle",
-                                    maxTank=120, minTank=15)
-
-        self.hbox2.addWidget(self.tankMotor1, 4, 2)
-        self.hbox2.addWidget(self.tankMotor2, 2, 3)  """
+        
         
         # Create the TankIBC widget
         self.hbox2.addWidget(self.tankIbc.get_widget(), 4, 0)  # Add the tank widget to the grid layout
+        
+        # Create infofield and add it to the grid 
+        self.infofieldNah = InfoFieldV1("Temp. Nahwärmenetz [C]")
+        #self.infofield.setStyleSheet("QGroupBox { border: none; }")
+        self.hbox2.addWidget(self.infofieldNah, 1, 0)
+        
+        self.infofieldWar = InfoFieldV1("Temp. Wärmetauscher [C]")
+        #self.infofield.setStyleSheet("QGroupBox { border: none; }")
+        self.hbox2.addWidget(self.infofieldWar, 2, 0)
+        
+        self.infofieldSub = InfoFieldV1("IDM_SUB1")
+        #self.infofield.setStyleSheet("QGroupBox { border: none; }")
+        self.hbox2.addWidget(self.infofieldSub, 0, 6)
         
         # Create Pump widget and add it to the grid layout
         self.pumpWidget = PumpWidget(name="Pumpe PU11")
@@ -134,3 +139,16 @@ class Page:
 
 if __name__ == '__main__':
     pass
+
+
+
+
+""" # Create the MixerTank and  add it to the gridlayout  
+        self.tankMotor1 = TankMotor(nameTank="Flüssigvorl.", nameMotor="Rührwerk RW11", modeMotor="idle",
+                                    maxTank=120, minTank=15)
+        self.tankMotor2 = TankMotor(nameTank="Anmalschb", nameMotor="Rührwerk RW12", modeMotor="idle",
+                                    maxTank=120, minTank=15)
+
+        self.hbox2.addWidget(self.tankMotor1, 4, 2)
+        self.hbox2.addWidget(self.tankMotor2, 2, 3)  
+"""
