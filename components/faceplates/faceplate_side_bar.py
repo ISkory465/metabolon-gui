@@ -1,7 +1,8 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
-from components.faceplates.faceplate_gauge import Gauge
+# from components.faceplates.faceplate_gauge import Gauge
 from components.faceplates.faceplate_on_off import OnOffButton
+from components.faceplates.faceplate_fault import FaultBox
 
 
 
@@ -18,20 +19,20 @@ class SideBarFaceplate(QGroupBox):
         self.layout = layout
 
         #Main laout of the side bar
-        self.hbox = QVBoxLayout()
-        self.hbox.setAlignment(Qt.AlignTop)
+        self.vbox = QVBoxLayout()
+        self.vbox.setAlignment(Qt.AlignTop)
 
         self.on_of_lock = OnOffButton()
-        self.hbox.addWidget(self.on_of_lock)
+        self.vbox.addWidget(self.on_of_lock)
 
-        self.gauge = Gauge()
-        self.hbox.addWidget(self.gauge)
+        self.fault_box = FaultBox()
+        self.vbox.addWidget(self.fault_box)
 
         
         
 
         self.layout.addWidget(self)
-        self.setLayout(self.hbox)
+        self.setLayout(self.vbox)
 
 
 
