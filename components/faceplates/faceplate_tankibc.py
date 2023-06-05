@@ -5,24 +5,23 @@ from PyQt5.QtCore import Qt, QRect
 
 
 class TankIBC(QWidget):
-    def __init__(self, max_level=100, min_level=15):
+    def __init__(self, name, max_level=100, min_level=15):
         super().__init__()
 
         self.max_level = max_level
         self.min_level = min_level
         self.current_level = 0
-
+          
+       
         self.max_led_color = QColor(255, 0, 0)  # Red
         self.min_led_color = QColor(0, 255, 0)  # Green
         self.led_off_color = QColor(64, 64, 64)  # Dark gray
-        self.setup_ui()
+        self.setup_ui(name)
 
-    def setup_ui(self):
-        self.setMinimumSize(200, 200)
-
-        self.label = QLabel("IBC")
+    def setup_ui(self, name):
+        self.setFixedSize(200, 200)
+        self.label = QLabel(name)
         self.label.setAlignment(Qt.AlignCenter)
-
         layout = QVBoxLayout()
         layout.addWidget(self.label)
         self.setLayout(layout)
@@ -32,7 +31,7 @@ class TankIBC(QWidget):
         painter.setRenderHint(QPainter.Antialiasing)
 
         # Draw the tank
-        tank_rect = QRect(30, 30, self.width() - 60, self.height() - 60)
+        tank_rect = QRect(30, 30, self.width() - 80, self.height() - 80)
         tank_color = QColor(128, 128, 128)  # Gray
         painter.setPen(QPen(Qt.NoPen))
         painter.setBrush(QBrush(tank_color))
@@ -91,6 +90,10 @@ class TankIBC(QWidget):
 
     def get_widget(self):
         return self
+    
+    def sizeHint(self):
+        return self.minimumSizeHint()
+
 
 
 if __name__ == "__main__":

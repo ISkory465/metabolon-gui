@@ -60,6 +60,8 @@ class PumpWidget(QWidget):
         painter.drawLine(center_x - radius * 0.88, center_y + radius * 0.45,
                          center_x + radius * 0.88, center_y + radius * 0.25)
 
+    def sizeHint(self):
+        return self.minimumSizeHint()
 
 
 if __name__ == "__main__":
