@@ -204,7 +204,7 @@ class Box(QGroupBox):
 
   instances = []
 
-  def __init__(self, name, layout, opcID='opcID'):
+  def __init__(self, name, layout, opcID='opcID', horizontal_spacing=55, width=165):
     #self.setTitle(name)
     super().__init__(name)
     self.instances.append(self)
@@ -238,9 +238,9 @@ class Box(QGroupBox):
     #Settings:
     mainLayout.setVerticalSpacing(8)
     mainLayout.setFormAlignment(Qt.AlignLeft)
-    mainLayout.setHorizontalSpacing(55)
+    mainLayout.setHorizontalSpacing(horizontal_spacing)
     self.setFixedHeight(120)
-    self.setFixedWidth(165)
+    self.setFixedWidth(width)
 
 
     self.setLayout(mainLayout)
@@ -254,14 +254,12 @@ class Box(QGroupBox):
 
 
   def write1(self):
-
     if self.led1.value==False:
-      print(self.opcID+': '+ self.radioBtn1.text())
-
+        print(self.opcID+': '+ self.radioBtn1.text())
     self.led1.setValue(True)
-    
-    #self.led2.value=False
-    #self.led3.value=False
+    self.led2.setValue(False)  # Add this line
+    self.led3.setValue(False)  # Add this line
+
 
   def write2(self):
 
