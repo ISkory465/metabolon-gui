@@ -2,6 +2,7 @@ import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 
+
 #app tabs import:
 from components.app_tabs.Strasse_1                import Page as Strasse_1
 from components.app_tabs.Steuerung_Strasse_1      import Page as St_Strasse_1

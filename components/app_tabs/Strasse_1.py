@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets    import *
 from PyQt5.QtCore       import Qt
-from ..faceplates.facelpates_new import Box
+from ..faceplates.faceplates_new import Box
 # from ..faceplates.faceplates import Box
 from ..faceplates.faceplate_mixer  import Mixer
 from ..faceplates.faceplate_endlager import Endlager

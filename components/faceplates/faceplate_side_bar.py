@@ -3,6 +3,7 @@ from PyQt5.QtCore import Qt
 # from components.faceplates.faceplate_gauge import Gauge
 from components.faceplates.faceplate_on_off import OnOffButton
 from components.faceplates.faceplate_fault import FaultBox
+from components.faceplates.faceplate_fackel import FackelBox
 
 
 
@@ -27,6 +28,8 @@ class SideBarFaceplate(QGroupBox):
 
         self.fault_box = FaultBox()
         self.vbox.addWidget(self.fault_box)
+
+        self.fackel_box = FackelBox(name="Fackel", layout = self.vbox)
 
         
         

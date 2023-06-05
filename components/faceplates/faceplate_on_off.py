@@ -1,7 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout
 from PyQt5.QtGui import QFont
-from .facelpates_new import InfoField, InfoFieldDouble, Box
+from .faceplates_new import InfoField, InfoFieldDouble, Box
 
 
 
