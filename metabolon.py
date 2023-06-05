@@ -5,6 +5,7 @@ from PyQt5.QtCore import *
 
 #app tabs import:
 from components.app_tabs.Strasse_1                import Page as Strasse_1
+from components.app_tabs.Strasse_2                import Page as Strasse_2
 from components.app_tabs.Steuerung_Strasse_1      import Page as St_Strasse_1
 from components.app_tabs.Steuerung_Strasse_2      import Page as St_Strasse_2
 from components.app_tabs.Fuetterung_Strasse_1     import Page as Fuet_Strasse_1
@@ -42,9 +43,9 @@ class Window(QMainWindow):
 
         #Second Tab
         self.tab2 = QWidget()
-        # self.innerTabs2.addTab(self.tab2, "Übersicht") #old name: "Strasse 2"
-        # self.page2 = Strasse_2()
-        # self.page2.UI(self)
+        self.innerTabs2.addTab(self.tab2, "Übersicht") #old name: "Strasse 2"
+        self.page2 = Strasse_2()
+        self.page2.UI(self)
 
         #Third Tab
         self.tab3 = QWidget()
