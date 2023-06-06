@@ -4,74 +4,16 @@ from PyQt5.QtGui import QPainter, QColor, QPen, QFont, QFontMetrics
 from PyQt5.QtCore import Qt, QRectF, QPoint, QRect, pyqtSignal
 from PyQt5.QtWidgets import QPushButton
 
-class CircleWidget(QWidget):
-    def __init__(self, parent=None):
-        super().__init__(parent)
-        self.setMinimumSize(100, 100)
-        self.active = False
-
-    def setActive(self, active):
-        self.active = active
-        self.update()
-
-    def paintEvent(self, event):
-        painter = QPainter(self)
-        painter.setRenderHint(QPainter.Antialiasing)
-
-        # Draw the background circle
-        painter.setPen(Qt.NoPen)
-        if self.active:
-            painter.setBrush(Qt.blue)
-        else:
-            painter.setBrush(Qt.gray)
-        painter.drawEllipse(self.rect())
-
-class CircularButton(QPushButton):
-    turnedOn = pyqtSignal()
-    turnedOff = pyqtSignal()
-
-    def __init__(self):
-        super().__init__()
-
-        self.active = False
-        self.setMinimumSize(200, 200)
-
-        self.clicked.connect(self.toggleActive)
-
-    def toggleActive(self):
-        self.active = not self.active
-        if self.active:
-            self.turnedOn.emit()
-        else:
-            self.turnedOff.emit()
-        self.update()
-
-    def paintEvent(self, event):
-        painter = QPainter(self)
-        painter.setRenderHint(QPainter.Antialiasing)
-
-        # Draw the background
-        painter.setPen(Qt.NoPen)
-        if self.active:
-            painter.setBrush(Qt.red)
-        else:
-            painter.setBrush(Qt.gray)
-        painter.drawEllipse(self.rect())
-
-        # Draw the "M" letter
-        painter.setPen(Qt.white)
-        font = QFont('Arial', 20, QFont.Bold)
-        painter.setFont(font)
-        painter.drawText(self.rect(), Qt.AlignCenter, "M")
-
 class BigMixer(QWidget):
 
     def __init__(self, level=100):
         super().__init__()
         self.setMinimumSize(120, 80)
         self.level = level
-        self.state = 0  # Initial state for level
-        self.buffer = int(self.height() * 0.055)
+        self.state = 0  # Initial state for level: 0 - OFF; 1 - ON
+        self.motor_state = 2 #3 states: 0 - RED(Faulty); 1 - BLUE(Idle); 2 - GREEN(Active)
+        self.heater_state = 0 #3 states: 0 - RED(Faulty); 1 - BLUE(Idle); 2 - GREEN(Active)
+        self.buffer = int(self.height() * 0.065)
 
         self.initUI()
 
@@ -125,7 +67,7 @@ class BigMixer(QWidget):
         
         rectangle_size = int(self.width() * 0.05)
         rectangle_spacing = 2
-        rectangle1 = QRect(rectangle_spacing + 10, self.buffer + rectangle_spacing, rectangle_size + 20, rectangle_size)
+        rectangle1 = QRect(rectangle_spacing + 10, self.buffer + rectangle_spacing + 5, rectangle_size + 20, rectangle_size)
         rectangle2 = QRect(self.width() - rectangle_size - rectangle_spacing - 80, self.buffer + rectangle_spacing, rectangle_size + 20, rectangle_size)
 
         # Determine the color based on the state
@@ -133,13 +75,13 @@ class BigMixer(QWidget):
         rectangle2_color = Qt.green if self.state == 2 else Qt.gray
 
         # Draw the outline/frame
-        outline_pen = QPen(Qt.black, 1)
-        painter.setPen(outline_pen)
-        painter.drawRect(rectangle1)
-        painter.drawRect(rectangle2)
+        outline_pen = QPen(Qt.black, 0.9)
+        # painter.setPen(outline_pen)
+        # painter.drawRect(rectangle1)
+        # painter.drawRect(rectangle2)
 
-        painter.fillRect(rectangle1.adjusted(1, 1, -1, -1), rectangle1_color)
-        painter.fillRect(rectangle2.adjusted(1, 1, -1, -1), rectangle2_color)
+        
+        # painter.fillRect(rectangle2.adjusted(1, 1, -1, -1), rectangle2_color)
 
         # Draw ticks and labels on the right side
         font = QFont()
@@ -170,17 +112,76 @@ class BigMixer(QWidget):
 
             painter.drawLine(self.width() - tick_length - 40, y, self.width() - 60, y)
 
-        # Draw the infinity sign
-        # ellipse1 = QRectF(60, self.height() - 100, 100, 30)
-        # ellipse2 = QRectF(140, self.height() - 100, 100, 30)
-        # painter.drawEllipse(ellipse1)
-        # painter.drawEllipse(ellipse2)
+        
+        # Draw small circles in the top corners
+        circle_radius = 11
+        circle_margin = 5
+        motor_circle = QPoint(circle_margin + circle_radius + int(self.width()*0.13) , self.buffer + circle_margin + circle_radius - int(self.height()*0.27))
+        heater_circle = QPoint(self.width() - circle_margin - circle_radius - 61, self.buffer + circle_margin + circle_radius + 33)
 
-        # # Draw the perpendicular line
+        
+        # Determine the color based on the state
+        if self.motor_state == 0:
+            motor_color = Qt.red
+        elif self.motor_state == 1:
+            motor_color = Qt.blue
+        else:
+            motor_color = Qt.green
+        
+
+        if self.heater_state == 0:
+            heater_color = Qt.red
+        elif self.heater_state == 1:
+            heater_color = Qt.blue
+        else:
+            heater_color = Qt.green
+
+        # motor_color = Qt.blue if self.motor_state == 1 else Qt.gray
+        # heater_color = Qt.green if self.motor_state == 2 else Qt.gray
+        
+        # Draw the perpendicular line
         # intersection_point = ellipse1.topRight().toPoint()
         # line_start = QPoint(150, self.height() - 85)
         # line_end = QPoint(150, self.buffer // 2)
-        # painter.drawLine(line_start, line_end)
+
+        end_x = QPoint(circle_margin + circle_radius + int(self.width()*0.13),  self.buffer + circle_margin + circle_radius + 30)
+
+        elipse_y_var = self.buffer + circle_margin + circle_radius + 30
+        painter.drawLine(motor_circle, end_x)
+        # painter.drawLine()
+
+        painter.setPen(outline_pen)
+        painter.drawRect(rectangle1)
+        painter.fillRect(rectangle1.adjusted(1, 1, -1, -1), rectangle1_color)
+
+        # Draw the circles
+        painter.setBrush(motor_color)
+        painter.drawEllipse(motor_circle, circle_radius, circle_radius)
+        painter.setBrush(heater_color)
+        painter.drawEllipse(heater_circle, circle_radius, circle_radius)
+
+         # Draw the "M" letter
+        if self.motor_state == 2:
+            painter.setPen(Qt.black)
+        else:
+            painter.setPen(Qt.white)
+        
+        font = QFont('Arial', 9, QFont.Bold)
+        painter.setFont(font)
+        text_point = (motor_circle- QPoint(10, 10), motor_circle)
+        painter.drawText(motor_circle- QPoint(5, -4), "M")
+
+        painter.setBrush(Qt.gray)
+        painter.setPen(Qt.black)
+        # Draw the infinity sign
+        ellipse1 = QRectF(19, elipse_y_var, 15, 7)
+        ellipse2 = QRectF(34, elipse_y_var, 15, 7)
+        painter.drawEllipse(ellipse1)
+        painter.drawEllipse(ellipse2)
+
+        # print(ellipse1)
+        # print(circle_margin + circle_radius + int(self.width()*0.13) )
+
 
 
     def onTurnedOn(self):
