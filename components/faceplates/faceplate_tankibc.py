@@ -38,9 +38,9 @@ class TankIBC(QWidget):
 
         # Draw the max LED
         max_led_rect = QRect(
-            tank_rect.left() + 20,
-            tank_rect.top() + 10,
-            tank_rect.width() - 40,
+            tank_rect.right() - 50,
+            tank_rect.top() + 5,
+            tank_rect.width() - 80,
             10
         )
         if self.current_level >= self.max_level:
@@ -51,9 +51,9 @@ class TankIBC(QWidget):
 
         # Draw the min LED
         min_led_rect = QRect(
-            tank_rect.left() + 20,
-            tank_rect.bottom() - 20,
-            tank_rect.width() - 40,
+            tank_rect.right() - 50,
+            tank_rect.bottom() - 15,
+            tank_rect.width() - 80,
             10
         )
         if self.current_level <= self.min_level:
