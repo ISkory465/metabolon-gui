@@ -63,7 +63,7 @@ class MotorWidget(QWidget):
 
         # Fill the circle with the mode color
         painter.setBrush(color[self.mode])
-        painter.drawEllipse(center_x - radius, center_y - radius, radius * 2, radius * 2)
+        painter.drawEllipse(int(center_x - radius), int(center_y - radius), int(radius * 2), int(radius * 2))
 
     def sizeHint(self):
         return self.minimumSizeHint()

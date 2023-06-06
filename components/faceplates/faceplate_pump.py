@@ -51,14 +51,15 @@ class PumpWidget(QWidget):
 
         # Fill the circle with the mode color
         painter.setBrush(color[self.mode])
-        painter.drawEllipse(center_x - radius, center_y - radius, radius * 2, radius * 2)
+        #painter.drawEllipse(center_x - radius, center_y - radius, radius * 2, radius * 2)
+        painter.drawEllipse(int(center_x - radius), int(center_y - radius), int(radius * 2), int(radius * 2))
 
         # Draw the pump symbol lines
         painter.setPen(QPen(Qt.black, 2))
-        painter.drawLine(center_x - radius * 0.88, center_y - radius * 0.45,
-                         center_x + radius * 0.88, center_y - radius * 0.25)
-        painter.drawLine(center_x - radius * 0.88, center_y + radius * 0.45,
-                         center_x + radius * 0.88, center_y + radius * 0.25)
+        painter.drawLine(int(center_x) - int(radius * 0.88), int(center_y) - int(radius * 0.45),
+                         int(center_x) + int(radius * 0.88), int(center_y) - int(radius * 0.25))
+        painter.drawLine(int(center_x) - int(radius * 0.88), int(center_y) + int(radius * 0.45),
+                         int(center_x) + int(radius * 0.88), int(center_y) + int(radius * 0.25))
 
     def sizeHint(self):
         return self.minimumSizeHint()
