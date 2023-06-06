@@ -1,61 +1,62 @@
-import sys
+# Importing necessary modules
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QLabel
 from PyQt5.QtGui import QFont
-
+from PyQt5.QtCore import Qt
 
 
 class EmailButton(QWidget):
+    """
+    EmailButton is a custom QWidget that represents a toggleable on/off button.
+    This button is used to control whether email notifications are on or off.
+    """
     
     def __init__(self):
         super().__init__()
+        self.setup_ui()
 
-        self.initUI()
-
-    def initUI(self):
+    def setup_ui(self):
+        # Set widget title
         self.setWindowTitle('Email Button')
-        
-        # Email notification label
+
+        # Initialize label
         self.label = QLabel("Email Notifications ON/OFF")
+        self.label.setAlignment(Qt.AlignCenter) # Moving the label to the center
 
-        # Create the on/off button
-        self.button = QPushButton('OFF', self)
+        # Initialize button
+        self.button = QPushButton('OFF')
         self.button.setCheckable(True)  # Make the button checkable
+        self.button.setChecked(False)  # Set the initial state to 'OFF'
+        self.button.clicked.connect(self.on_button_click)  # Connect the button's clicked signal to the handler
 
-        # Set the initial state to 'OFF'
-        self.button.setChecked(False)
-        self.button.clicked.connect(self.on_off_clicked)  # Connect the button's clicked signal to the handler
-
-        # Customize the font for the button
+        # Set font for the button
         font = QFont()
         font.setBold(True)
         self.button.setFont(font)
 
-        self.update_button_style()  # Set the initial button style
+        # Update button style for the first time
+        self.update_button_style()
 
-        # Create a layout and add the button to it
+        # Create a layout and add widgets to it
         layout = QVBoxLayout()
         layout.addWidget(self.label)
         layout.addWidget(self.button)
 
+        # Set layout for this widget
         self.setLayout(layout)
 
     def update_button_style(self):
+        """Update the text and style of the button based on its current state."""
         if self.button.isChecked():
             self.button.setText('ON')
             self.button.setStyleSheet('QPushButton { color: green; }')
-            # Do something when the button is turned on
         else:
             self.button.setText('OFF')
             self.button.setStyleSheet('QPushButton { color: red; }')
-            # Do something when the button is turned off
 
-    def on_off_clicked(self):
+    def on_button_click(self):
+        """Handle button click event."""
         self.update_button_style()
-        state = self.button.isChecked()  # True if button is 'ON', False if 'OFF'
-        #add email function
 
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    window = EmailButton()
-    window.show()
-    sys.exit(app.exec_())
+        # TODO: Call email function with the current state
+        # state = self.button.isChecked()  # True if button is 'ON', False if 'OFF'
+

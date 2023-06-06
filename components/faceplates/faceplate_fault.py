@@ -1,78 +1,62 @@
-import sys
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QHBoxLayout, QPushButton, QFormLayout
 from PyQt5.QtCore import Qt
-# from facelpates_new import SingleLed, Led
 from QLed import QLed
+
+# TODO: add OPC functionality
 
 class SingleLed(QWidget):
     def __init__(self, name, layout, opcID='opcID'):
         super().__init__()
-        self.layout = layout
-        self.opcName = name
         local_layout = QFormLayout()
-
-        self.name = QLabel(name)
-        self.led = QLed(onColour=QLed.Green, shape=QLed.Circle)
-
-        #add if-condition with opc input
-        self.led.value = True
-
-        # local_layout.addRow(self.name, self.led)
-        local_layout.addRow(self.led)
         
-
-        #Settings:
-        self.setFixedHeight(40)
-        self.setFixedWidth(40)
+        # LED setup
+        self.led = QLed(onColour=QLed.Green, shape=QLed.Circle)
+        self.led.value = True  # Start state of LED
+        
+        # Configuring the layout
+        local_layout.addRow(self.led)  # add LED to the layout
         local_layout.setVerticalSpacing(8)
         local_layout.setFormAlignment(Qt.AlignLeft)
         local_layout.setHorizontalSpacing(25)
-
         self.setLayout(local_layout)
-        self.layout.addWidget(self)
+        
+        # Configure widget size
+        self.setFixedHeight(40)
+        self.setFixedWidth(40)
+        
+        # Add widget to parent layout
+        layout.addWidget(self)
 
-    def update(self,val:dict):
-        self.led.value=val[self.opcName]
+    def update(self, val:dict):
+        self.led.value = val[self.opcName]  # Updates the LED status
+
 
 class FaultBox(QWidget):
     def __init__(self, opcID=None):
         super().__init__()
-
-        # Main layout for 2 horizontal boxes representing each row
-        main_vbox = QVBoxLayout()
+        main_vbox = QVBoxLayout()  # Main layout
         
+        # Create and add title label to the layout
         label = QLabel("Stoerung Quittieren")
         label.setAlignment(Qt.AlignCenter)
         main_vbox.addWidget(label)
 
-        # Second row
+        # Row for button and LED
         row2 = QHBoxLayout()
         
-        # Button
+        # Toggle button setup and connection to slot function
         self.button = QPushButton("Quittieren")
         self.button.clicked.connect(self.toggleActive)
         row2.addWidget(self.button)
         
-        # LED
+        # Single LED setup and adding to the layout
         self.led_layout = QVBoxLayout()
         self.single_led = SingleLed("LED", self.led_layout)
-        # self.single_led = Led("LED", self.led_layout)
         row2.addLayout(self.led_layout)
         
         main_vbox.addLayout(row2)
-
-        # parent_layout.addWidget(self)
         self.setLayout(main_vbox)
 
+    # Slot function to toggle the LED on button press
     def toggleActive(self):
         self.single_led.led.value = not self.single_led.led.value
-
-
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    window = QWidget()
-    layout = QVBoxLayout(window)
-    fault_box = FaultBox()
-    layout.addWidget(fault_box)
-    window.show()
-    sys.exit(app.exec_())

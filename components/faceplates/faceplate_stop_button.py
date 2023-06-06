@@ -1,55 +1,49 @@
-import sys
+# Importing necessary modules
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QLabel
 from PyQt5.QtGui import QFont
 
-
-
 class STOPButton(QWidget):
+    """STOPButton is a custom QWidget that represents a toggleable STOP/STOPPED button.
+    The button's style changes based on its current state.
+    """
     
     def __init__(self, name):
         super().__init__()
         self.name = name
-        self.initUI()
+        self.setup_ui()
 
-    def initUI(self):
+    def setup_ui(self):
+        # Set widget title
         self.setWindowTitle('STOP Button')
-        
-        # Email notification label
+
+        # Initialize label
         self.label = QLabel(self.name)
 
-        # Create the on/off button
-        self.button = QPushButton('STOP', self)
+        # Initialize button
+        self.button = QPushButton('STOP')
         self.button.setCheckable(True)  # Make the button checkable
+        self.button.setChecked(False)  # Set the initial state to 'OFF'
+        self.button.setMinimumHeight(27)  # Height adjustments
+        self.button.clicked.connect(self.on_button_click)  # Connect the button's clicked signal to the handler
 
-        # Set the initial state to 'OFF'
-        self.button.setChecked(False)
-        self.button.clicked.connect(self.on_off_clicked)  # Connect the button's clicked signal to the handler
-
-        # Customize the font for the button
+        # Set font for the button
         font = QFont()
         font.setBold(True)
         self.button.setFont(font)
 
-        self.update_button_style()  # Set the initial button style
+        # Update button style for the first time
+        self.update_button_style()
 
-        # Create a layout and add the button to it
+        # Create a layout and add widgets to it
         layout = QVBoxLayout()
         layout.addWidget(self.label)
         layout.addWidget(self.button)
 
+        # Set layout for this widget
         self.setLayout(layout)
 
-    # def update_button_style(self):
-    #     if self.button.isChecked():
-    #         self.button.setText('STOPPED')
-    #         self.button.setStyleSheet('QPushButton { color: black; background-color: red; }')
-    #         # Do something when the button is turned on
-    #     else:
-    #         self.button.setText('STOP')
-    #         self.button.setStyleSheet('QPushButton { color: red; }')
-    #         # Do something when the button is turned off
-
     def update_button_style(self):
+        """Update the text and style of the button based on its current state."""
         if self.button.isChecked():
             self.button.setText('STOPPED')
             self.button.setStyleSheet('''
@@ -75,14 +69,9 @@ class STOPButton(QWidget):
                 }
             ''')
 
-    def on_off_clicked(self):
+    def on_button_click(self):
+        """Handle button click event."""
         self.update_button_style()
-        state = self.button.isChecked()  # True if button is 'ON', False if 'OFF'
-        #add stopping function
 
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    app.setStyle('Fusion')
-    window = STOPButton("Stop 1")
-    window.show()
-    sys.exit(app.exec_())
+        # TODO: Call stopping function with the current state
+        # state = self.button.isChecked()  # True if button is 'ON', False if 'OFF'
