@@ -54,8 +54,19 @@ class SideBarFaceplate(QGroupBox):
         
         
 
-        self.layout.addWidget(self)
-        self.setLayout(self.vbox)
+        
+        # Set layout and add to scroll area
+        container = QWidget()
+        container.setLayout(self.vbox)
+
+        scroll = QScrollArea()
+        scroll.setWidget(container)
+        scroll.setWidgetResizable(True)
+        scroll.setMaximumWidth(400)  # Set maximum width here
+
+        # Set scroll as the layout of SideBarFaceplate
+        layout = QVBoxLayout(self)
+        layout.addWidget(scroll)
 
 
 

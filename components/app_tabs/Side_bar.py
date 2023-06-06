@@ -9,7 +9,7 @@ class SideBar(QWidget):
 
     def __init__(self):
         super().__init__()
-        self.setMinimumWidth(300)
+        self.setMinimumWidth(400)
 
         self.sb_layout = QVBoxLayout()
         self.sb_layout.setAlignment(Qt.AlignTop)

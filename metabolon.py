@@ -22,6 +22,19 @@ class Window(QMainWindow):
         self.setGeometry(350,100,1200,600)
         self.Tabs_UI()
 
+        # Center the window on the screen.
+        self.center_on_screen()
+
+    def center_on_screen(self):
+        # get the rectangle specifying the geometry of the main window
+        qr = self.frameGeometry()
+        # figure out the screen resolution
+        cp = QDesktopWidget().availableGeometry().center()
+        # move rectangle's center point into the center of the screen
+        qr.moveCenter(cp)
+        # top left of rectangle becomes top left of window centering it
+        self.move(qr.topLeft())
+
     def Tabs_UI(self):
 
         # Side Bar
@@ -100,8 +113,8 @@ class Window(QMainWindow):
         # Create a central widget to hold the mainLayout
         central_widget = QWidget()
         central_layout = QHBoxLayout()
-        central_layout.addWidget(self.tabs)
-        central_layout.addWidget(self.side_bar)
+        central_layout.addWidget(self.tabs, 1) # 1 stretch factor
+        central_layout.addWidget(self.side_bar, 0) # 0 stretch factor
         central_widget.setLayout(central_layout)
 
         # Set the central widget for the main window
