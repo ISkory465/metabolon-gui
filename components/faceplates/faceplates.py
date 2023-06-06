@@ -8,6 +8,10 @@ class Box(QGroupBox):
   def __init__(self,name, opcID='opcID'):
     #self.setTitle(name)
     super().__init__(name)
+    
+    instances = []
+    self.state = False
+    self.setEnabled(self.state)
 
     mainLayout=QFormLayout()
   
@@ -36,6 +40,12 @@ class Box(QGroupBox):
     self.setFixedWidth(165)
 
     self.setLayout(mainLayout)
+
+  @classmethod
+  def set_all_states(cls, state):
+        for instance in cls.instances:
+            instance.state = state
+            instance.setEnabled(state)
   
   def write1(self):
     if self.led1.value==False:

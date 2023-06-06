@@ -1,8 +1,8 @@
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import Qt
-from ..faceplates.facelpates_new import Box
+from PyQt5.QtWidgets    import *
+from PyQt5.QtCore       import Qt
+#from ..faceplates.faceplates_new import Box
 from ..faceplates.faceplates import Box
-from ..faceplates.faceplate_mixer import Mixer
+from ..faceplates.faceplate_mixer  import Mixer
 from ..faceplates.faceplate_endlager import Endlager
 from ..faceplates.faceplate_tankibc import TankIBC
 from ..faceplates.faceplate_pump import PumpWidget
@@ -36,6 +36,7 @@ class Page:
         self.hbox1.addLayout(self.vbox1_2)
         self.hbox1.addLayout(self.vbox1_3)
         self.hbox1.setAlignment(Qt.AlignLeft)
+        self.hbox2.setAlignment(Qt.AlignTop)
 
         window.tab1.setLayout(self.vbox)
 
@@ -112,13 +113,13 @@ class Page:
         #self.hbox2.addItem(spacer, 6, 5)
 
         # hbox3 Content
-        self.box2 = Box("PU11")
-        self.box3 = Box("RW11")
-        self.box4 = Box("RW12")
-        self.box5 = Box("AA11")
-        self.box6 = Box("AA12")
-        self.box7 = Box("AA13")
-        self.box8 = Box("AA14")
+        self.box2 = Box("PU11", self.hbox3)
+        self.box3 = Box("RW11", self.hbox3)
+        self.box4 = Box("RW12", self.hbox3)
+        self.box5 = Box("AA11", self.hbox3)
+        self.box6 = Box("AA12", self.hbox3)
+        self.box7 = Box("AA13", self.hbox3)
+        self.box8 = Box("AA14", self.hbox3)
         
         self.hbox3.addWidget(self.box2, 0, 0)
         self.hbox3.addWidget(self.box3, 0, 1)

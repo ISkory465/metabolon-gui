@@ -1,53 +1,76 @@
-import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout
+# Importing necessary modules
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QLabel
 from PyQt5.QtGui import QFont
+from PyQt5.QtCore import Qt
+
+# Importing necessary components
+from .faceplates_new import InfoField, InfoFieldDouble, Box
+
 
 class OnOffButton(QWidget):
+    """
+    A Widget that represents an On/Off button with a label.
+    """
     
     def __init__(self):
         super().__init__()
 
-        self.initUI()
-
-    def initUI(self):
+        # Widget's title
         self.setWindowTitle('On/Off Button')
 
-        # Create the on/off button
-        self.button = QPushButton('OFF', self)
-        self.button.setCheckable(True)  # Make the button checkable
+        # Setting up User Interface
+        self.initUI()
+    
+    def initUI(self):
+        # Creating a label
+        self.label = QLabel("User input")
+        self.label.setAlignment(Qt.AlignCenter) # Moving the label to the center
 
-        # Set the initial state to 'OFF'
-        self.button.setChecked(False)
-        self.button.clicked.connect(self.on_off_clicked)  # Connect the button's clicked signal to the handler
+        # Creating the On/Off button
+        self.button = QPushButton('Locked', self) # Default state
+        self.button.setCheckable(True)  # Making button checkable
+        self.button.clicked.connect(self.on_off_clicked)  # Connecting button click event to the handler
 
-        # Customize the font for the button
+        # Setting up the font for the button
         font = QFont()
         font.setBold(True)
         self.button.setFont(font)
 
-        self.update_button_style()  # Set the initial button style
+        # Setting initial button style
+        self.update_button_style()
 
-        # Create a layout and add the button to it
+        # Creating a layout and adding widgets to it
         layout = QVBoxLayout()
+        layout.addWidget(self.label)
         layout.addWidget(self.button)
 
+        # Setting the layout for this widget
         self.setLayout(layout)
 
     def update_button_style(self):
+        """
+        Updates the style of the button based on its state.
+        """
         if self.button.isChecked():
-            self.button.setText('ON')
+            self.button.setText('Unlocked')
             self.button.setStyleSheet('QPushButton { color: green; }')
-            # Do something when the button is turned on
         else:
-            self.button.setText('OFF')
+            self.button.setText('Locked')
             self.button.setStyleSheet('QPushButton { color: red; }')
-            # Do something when the button is turned off
 
     def on_off_clicked(self):
+        """
+        Event handler for button click event. 
+        Toggles the state of the button and updates the button style.
+        """
         self.update_button_style()
 
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    window = OnOffButton()
-    window.show()
-    sys.exit(app.exec_())
+        # Getting the current state of the button
+        state = self.button.isChecked()  # True if button is 'ON', False if 'OFF'
+
+        # Updating the state of all info fields and boxes by locking/unlocking them
+        InfoField.set_all_states(state)
+        InfoFieldDouble.set_all_states(state)
+        Box.set_all_states(state)
+
+

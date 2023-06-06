@@ -1,39 +1,65 @@
-from PyQt5.QtWidgets import *
+# Importing necessary modules
+from PyQt5.QtWidgets import QGroupBox, QVBoxLayout, QHBoxLayout, QWidget, QScrollArea
 from PyQt5.QtCore import Qt
-from components.faceplates.faceplate_gauge import Gauge
+
+# Importing necessary components
 from components.faceplates.faceplate_on_off import OnOffButton
+from components.faceplates.faceplate_fault import FaultBox
+from components.faceplates.faceplate_fackel import FackelBox
+from components.faceplates.faceplates_new import Led_5, SingleLed
+from components.faceplates.faceplate_email_button import EmailButton
+from components.faceplates.faceplate_stop_button import STOPButton
 
-
+# FIXME: Finish the documentation and make sure everything works
 
 class SideBarFaceplate(QGroupBox):
-    """Mixer set of elements for the Strasse 1 tab
-
-    :param QGroupBox: _description_
-    :type QGroupBox: _type_
     """
-    
+    The collection of side bar widgets put together.
+    Inherits from QGroupBox.
+    """
     def __init__(self, name, layout, opcID=None):
-        
         super().__init__(name) 
-        self.layout = layout
 
-        #Main laout of the side bar
-        self.hbox = QVBoxLayout()
-        self.hbox.setAlignment(Qt.AlignTop)
+        # Main layout of the sidebar
+        self.vbox = QVBoxLayout()
+        self.vbox.setAlignment(Qt.AlignTop)
 
-        self.on_of_lock = OnOffButton()
-        self.hbox.addWidget(self.on_of_lock)
+        # Instantiate components and add to the layout
+        self.on_off_lock = OnOffButton()
+        self.vbox.addWidget(self.on_off_lock)
 
-        self.gauge = Gauge()
-        self.hbox.addWidget(self.gauge)
+        self.fault_box = FaultBox()
+        self.vbox.addWidget(self.fault_box)
 
+        self.fackel_box = FackelBox(name="Fackel", layout=self.vbox)
         
+        self.stoerungBox = Led_5(box_name="Stoerungen", name="ML Sammelstoerung\
+                            ,FE01 (Einspeisung / Steuerspannung)\
+                            ,FE02 (Antriebe Pumpen / Diverse)\
+                            ,FE03 (Antriebe Ruehrwerke)\
+                            ,FE04 (SPS / MSR Technik)", layout=self.vbox)
         
+        self.pumpeLED = SingleLed(name="Pumpe PU31 (Mobil)", layout=self.vbox)
 
-        self.layout.addWidget(self)
-        self.setLayout(self.hbox)
+        self.email = EmailButton()
+        self.vbox.addWidget(self.email)
 
+        # Instantiate STOP buttons and add them to a horizontal layout
+        stop_hbox = QHBoxLayout()
+        self.stop1 = STOPButton(name="Stop 2")
+        self.stop2 = STOPButton(name="Stop")
+        stop_hbox.addWidget(self.stop1)
+        stop_hbox.addWidget(self.stop2)
+        self.vbox.addLayout(stop_hbox)
 
+        # Set layout in a container, add to a scroll area
+        container = QWidget()
+        container.setLayout(self.vbox)
+        scroll = QScrollArea()
+        scroll.setWidget(container)
+        scroll.setWidgetResizable(True)
+        scroll.setMaximumWidth(400)  # Set maximum width of the scroll area
 
-
-
+        # Set scroll area as the layout of SideBarFaceplate
+        layout = QVBoxLayout(self)
+        layout.addWidget(scroll)

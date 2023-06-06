@@ -4,6 +4,7 @@ from PyQt5.QtCore import *
 
 #app tabs import:
 from components.app_tabs.Strasse_1                import Page as Strasse_1
+from components.app_tabs.Strasse_2                import Page as Strasse_2
 from components.app_tabs.Steuerung_Strasse_1      import Page as St_Strasse_1
 from components.app_tabs.Steuerung_Strasse_2      import Page as St_Strasse_2
 from components.app_tabs.Fuetterung_Strasse_1     import Page as Fuet_Strasse_1
@@ -18,8 +19,21 @@ class Window(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Metabolon Station")
-        self.setGeometry(350,100,1200,800)
+        self.setGeometry(350,100,1200,600)
         self.Tabs_UI()
+
+        # Center the window on the screen.
+        self.center_on_screen()
+
+    def center_on_screen(self):
+        # get the rectangle specifying the geometry of the main window
+        qr = self.frameGeometry()
+        # figure out the screen resolution
+        cp = QDesktopWidget().availableGeometry().center()
+        # move rectangle's center point into the center of the screen
+        qr.moveCenter(cp)
+        # top left of rectangle becomes top left of window centering it
+        self.move(qr.topLeft())
 
     def Tabs_UI(self):
 
@@ -41,9 +55,9 @@ class Window(QMainWindow):
 
         #Second Tab
         self.tab2 = QWidget()
-        # self.innerTabs2.addTab(self.tab2, "Übersicht") #old name: "Strasse 2"
-        # self.page2 = Strasse_2()
-        # self.page2.UI(self)
+        self.innerTabs2.addTab(self.tab2, "Übersicht") #old name: "Strasse 2"
+        self.page2 = Strasse_2()
+        self.page2.UI(self)
 
         #Third Tab
         self.tab3 = QWidget()
@@ -99,8 +113,8 @@ class Window(QMainWindow):
         # Create a central widget to hold the mainLayout
         central_widget = QWidget()
         central_layout = QHBoxLayout()
-        central_layout.addWidget(self.tabs)
-        central_layout.addWidget(self.side_bar)
+        central_layout.addWidget(self.tabs, 1) # 1 stretch factor
+        central_layout.addWidget(self.side_bar, 0) # 0 stretch factor
         central_widget.setLayout(central_layout)
 
         # Set the central widget for the main window
@@ -110,5 +124,6 @@ class Window(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
+    # app.setStyle('Fusion')
     window = Window()
     sys.exit(app.exec_())
