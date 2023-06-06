@@ -2,7 +2,6 @@ import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 
-
 #app tabs import:
 from components.app_tabs.Strasse_1                import Page as Strasse_1
 from components.app_tabs.Strasse_2                import Page as Strasse_2
@@ -112,5 +111,6 @@ class Window(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
+    # app.setStyle('Fusion')
     window = Window()
     sys.exit(app.exec_())

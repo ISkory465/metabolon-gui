@@ -316,6 +316,48 @@ class Box(QGroupBox):
 
     #print(val[self.opcName+'.Hand'])
 
+class Led_5(QGroupBox):
+    def __init__(self, box_name, name, layout, opcID='opcID'):
+        super().__init__(box_name)
+        self.layout = layout
+
+        local_layout = QFormLayout()
+
+        #self.name = QLabel(name)
+        self.led1=QLed(onColour=QLed.Red, shape=QLed.Circle)
+        self.led2=QLed(onColour=QLed.Red, shape=QLed.Circle)
+        self.led3=QLed(onColour=QLed.Red, shape=QLed.Circle)
+        self.led4=QLed(onColour=QLed.Red, shape=QLed.Circle)
+        self.led5=QLed(onColour=QLed.Red, shape=QLed.Circle)
+        
+
+        #add if-condition with opc input
+        self.led1.value = False
+        self.led2.value = False
+        self.led3.value = True
+        self.led4.value = False
+        self.led5.value = False
+
+        #self.led1 = name.split(',')[0]
+
+
+        local_layout.addRow(self.led1, QLabel(name.split(',')[0]))
+        local_layout.addRow(self.led2, QLabel(name.split(',')[1]))
+        local_layout.addRow(self.led3, QLabel(name.split(',')[2]))
+        local_layout.addRow(self.led4, QLabel(name.split(',')[3]))
+        local_layout.addRow(self.led5, QLabel(name.split(',')[4]))
+        
+        
+
+        #Settings:
+        self.setFixedHeight(200)
+        self.setFixedWidth(300)
+        #local_layout.setVerticalSpacing(18)
+        local_layout.setFormAlignment(Qt.AlignLeft)
+        local_layout.setHorizontalSpacing(25)
+
+        self.setLayout(local_layout)
+        self.layout.addWidget(self)
 
 class Led_6(QGroupBox):
     def __init__(self, name, layout, opcID='opcID'):

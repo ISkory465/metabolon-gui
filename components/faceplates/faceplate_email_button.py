@@ -1,12 +1,10 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QLabel
 from PyQt5.QtGui import QFont
-from PyQt5.QtCore import Qt
-from .faceplates_new import InfoField, InfoFieldDouble, Box
 
 
 
-class OnOffButton(QWidget):
+class EmailButton(QWidget):
     
     def __init__(self):
         super().__init__()
@@ -14,14 +12,13 @@ class OnOffButton(QWidget):
         self.initUI()
 
     def initUI(self):
-        self.setWindowTitle('On/Off Button')
+        self.setWindowTitle('Email Button')
         
-        # Label
-        self.label = QLabel("User input")
-        self.label.setAlignment(Qt.AlignCenter)
+        # Email notification label
+        self.label = QLabel("Email Notifications ON/OFF")
 
         # Create the on/off button
-        self.button = QPushButton('Locked', self)
+        self.button = QPushButton('OFF', self)
         self.button.setCheckable(True)  # Make the button checkable
 
         # Set the initial state to 'OFF'
@@ -44,23 +41,21 @@ class OnOffButton(QWidget):
 
     def update_button_style(self):
         if self.button.isChecked():
-            self.button.setText('Unlocked')
+            self.button.setText('ON')
             self.button.setStyleSheet('QPushButton { color: green; }')
             # Do something when the button is turned on
         else:
-            self.button.setText('Locked')
+            self.button.setText('OFF')
             self.button.setStyleSheet('QPushButton { color: red; }')
             # Do something when the button is turned off
 
     def on_off_clicked(self):
         self.update_button_style()
         state = self.button.isChecked()  # True if button is 'ON', False if 'OFF'
-        InfoField.set_all_states(state)
-        InfoFieldDouble.set_all_states(state)
-        Box.set_all_states(state)
+        #add email function
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    window = OnOffButton()
+    window = EmailButton()
     window.show()
     sys.exit(app.exec_())
