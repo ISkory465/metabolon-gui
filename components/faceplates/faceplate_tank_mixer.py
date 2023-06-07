@@ -38,23 +38,23 @@ class TankMixerWidget(QWidget):
         tank_height = self.height()
 
         # Set the tank label position
-        tank_label_width = tank_width * 0.8
-        tank_label_height = tank_height * 0.1
-        tank_label_x = (tank_width - tank_label_width) / 2
-        tank_label_y = (tank_height - tank_label_height) / 2 - tank_height * 0.05
+        tank_label_width = int(tank_width * 0.8)
+        tank_label_height = int(tank_height * 0.1)
+        tank_label_x = int((tank_width - tank_label_width) / 2)
+        tank_label_y = int((tank_height - tank_label_height) / 2 - tank_height * 0.05)
         self.tank_label.setGeometry(tank_label_x, tank_label_y, tank_label_width, tank_label_height)
 
         # Set the motor label position
-        motor_radius = tank_height * 0.2
-        motor_x = (tank_width - motor_radius) / 2
-        motor_y = (tank_height - motor_radius) / 20
+        motor_radius = int(tank_height * 0.2)
+        motor_x = int((tank_width - motor_radius) / 2)
+        motor_y = int((tank_height - motor_radius) / 20)
         self.motor_label.setGeometry(motor_x, motor_y, motor_radius, motor_radius)
         
        # Set the Motor Name label position
-        motor_label_width = tank_width * 0.8
-        motor_label_height = tank_height * 0.05
-        motor_label_x = (tank_width - motor_label_width) / 2
-        motor_label_y = motor_y - motor_label_height * 0.8  # Adjust the vertical position above the motor
+        motor_label_width = int(tank_width * 0.8)
+        motor_label_height = int(tank_height * 0.05)
+        motor_label_x = int((tank_width - motor_label_width) / 2)
+        motor_label_y = int(motor_y - motor_label_height * 0.8)  # Adjust the vertical position above the motor
         self.motorName_label.setGeometry(motor_label_x, motor_label_y, motor_label_width, motor_label_height)
 
     def set_motorName_label(self, text):

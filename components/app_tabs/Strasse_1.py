@@ -9,7 +9,7 @@ from ..faceplates.faceplate_pump import PumpWidget
 from ..faceplates.faceplate_valve import *
 from ..faceplates.faceplates_infofieldV1 import *
 from ..faceplates.faceplate_tank_mixer import *
-
+from components.faceplates.faceplates_new import SingleLed
 class Page:
 
     def UI(self, window: QMainWindow):
@@ -114,6 +114,9 @@ class Page:
 
         self.valve4 = ValveLabelWidget("Ventil AA12")
         self.hbox2.addWidget(self.valve4, 2, 6)
+
+        self.pumpLED = SingleLed(name="PU12 Rezi (Maisch)", layout=(self.hbox2))
+        self.hbox2.addWidget(self.pumpLED, 1, 7)
         
         self.pumpWidget = PumpWidget(name="Pumpe PU12")
         self.pumpWidget.set_mode("operational")
