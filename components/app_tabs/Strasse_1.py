@@ -7,8 +7,8 @@ from ..faceplates.faceplate_endlager import Endlager
 from ..faceplates.faceplate_tankibc import TankIBC
 from ..faceplates.faceplate_pump import PumpWidget
 from ..faceplates.faceplate_valve import *
-from ..faceplates.faceplates_tankIBC_motor import *
 from ..faceplates.faceplates_infofieldV1 import *
+from ..faceplates.faceplate_tank_mixer import *
 
 class Page:
 
@@ -55,7 +55,7 @@ class Page:
         
         
         # Create the TankIBC widget
-        self.hbox2.addWidget(self.tankIbc.get_widget(), 4, 0)  # Add the tank widget to the grid layout
+        self.hbox2.addWidget(self.tankIbc.get_widget(), 4, 0, 1, 1)  # Add the tank widget to the grid layout
         
         # Create infofield and add it to the grid 
         self.infofieldNah = InfoFieldV1("Temp. Nahwärmenetz [C]")
@@ -68,49 +68,61 @@ class Page:
         
         self.infofieldSub = InfoFieldV1("IDM_SUB1")
         #self.infofield.setStyleSheet("QGroupBox { border: none; }")
-        self.hbox2.addWidget(self.infofieldSub, 0, 6)
+        self.hbox2.addWidget(self.infofieldSub, 0, 7)
         
         # Create Pump widget and add it to the grid layout
         self.pumpWidget = PumpWidget(name="Pumpe PU11")
         self.pumpWidget.set_mode("idle")
-        self.hbox2.addWidget(self.pumpWidget, 4, 1)  # Add the Pump widget to the grid layout
+        self.hbox2.addWidget(self.pumpWidget, 4, 2, 1, 1)  # Add the Pump widget to the grid layout
         
         
-        self.motor1 = MotorLabelWidget("Rührwerk RW11", size=70)
+        """ self.motor1 = MotorLabelWidget("Rührwerk RW11", size=70)
         self.tankMixer1 = TankIBC(name="Flüssigvorl.", max_level=100, min_level=15)
         self.motor2 = MotorLabelWidget("Rührwerk RW12", size=70)
-        self.tankMixer2 = TankIBC(name="Anmalschb", max_level=100, min_level=15)
+        self.tankMixer2 = TankIBC(name="Anmalschb", max_level=100, min_level=15) """
         
-        self.hbox2.addWidget(self.motor1, 2, 2)
-        self.hbox2.addWidget(self.tankMixer1, 4, 2)
+        self.tankMixer1 = TankMixerWidget()
+        self.tankMixer1.set_tank_label("Flüssigvorl.")  # Set the tank label to "My Tank"
+        self.tankMixer1.set_motor_mode('malfunction') 
+        self.tankMixer1.set_level(50) # Set the level 
+        self.tankMixer1.set_motorName_label("Rührwerk RW11")
+        
+        self.tankMixer2 = TankMixerWidget()
+        self.tankMixer2.set_tank_label("Anmalschb")  # Set the tank label to "My Tank"
+        self.tankMixer2.set_motor_mode('idle') 
+        self.tankMixer2.set_level(50) # Set the level 
+        self.tankMixer2.set_motorName_label("Rührwerk RW12")
+        
+        #self.hbox2.addWidget(self.motor1, 2, 2)
+        self.hbox2.addWidget(self.tankMixer1, 3, 4, 4, 1)
+        #self.hbox2.addWidget(self.motor2, 0, 3)
+        self.hbox2.addWidget(self.tankMixer2, 1, 5, 2, 1)
+        
+        #self.hbox2.setRowStretch(4, 0)
+        #self.hbox2.setRowStretch(3, 2)
         #self.hbox2.setColumnStretch(2, 1)
-        self.hbox2.addWidget(self.motor2, 0, 3)
-        self.hbox2.addWidget(self.tankMixer2, 1, 3)
-
+        
         # Create and add Valve Widgets
         self.valve1 = ValveLabelWidget("Ventil AA11")
-        self.hbox2.addWidget(self.valve1, 4, 3)
+        self.hbox2.addWidget(self.valve1, 4, 5, 1, 1)
 
         self.valve2 = ValveLabelWidget("Ventil AA14")
-        self.hbox2.addWidget(self.valve2, 0, 4)
+        self.hbox2.addWidget(self.valve2, 0, 6)
 
         self.valve3 = ValveLabelWidget("Ventil AA13")
-        self.hbox2.addWidget(self.valve3, 1, 4)
+        self.hbox2.addWidget(self.valve3, 1, 6)
 
         self.valve4 = ValveLabelWidget("Ventil AA12")
-        self.hbox2.addWidget(self.valve4, 2, 4)
+        self.hbox2.addWidget(self.valve4, 2, 6)
         
         self.pumpWidget = PumpWidget(name="Pumpe PU12")
         self.pumpWidget.set_mode("operational")
-        self.hbox2.addWidget(self.pumpWidget, 2, 5)
+        self.hbox2.addWidget(self.pumpWidget, 2, 7, 1, 1)
 
         # Create and add the Box widget
         self.box1 = Box("PU12")
-        self.hbox2.addWidget(self.box1, 4, 7)  # Add the box widget to the grid layout
+        self.hbox2.addWidget(self.box1, 4, 7, 1, 1)  # Add the box widget to the grid layout
         
-        # Add spacer item between hbox2 and hbox3
-        #spacer = QSpacerItem(100, 50, QSizePolicy.Minimum, QSizePolicy.Expanding)
-        #self.hbox2.addItem(spacer, 6, 5)
 
         # hbox3 Content
         self.box2 = Box("PU11", self.hbox3)
@@ -140,8 +152,6 @@ class Page:
 
 if __name__ == '__main__':
     pass
-
-
 
 
 """ # Create the MixerTank and  add it to the gridlayout  

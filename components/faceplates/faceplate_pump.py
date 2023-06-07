@@ -4,7 +4,7 @@ from PyQt5.QtCore import Qt
 import sys
 
 class PumpWidget(QWidget):
-    def __init__(self, name, size=80, parent=None):
+    def __init__(self, name, size=75, parent=None):
         super().__init__(parent)
 
         # Define the default mode as idle
@@ -42,9 +42,9 @@ class PumpWidget(QWidget):
         }
 
         # Calculate the position and size of the pump elements
-        radius = self.width() * 0.8 / 2
+        radius = self.width() * 0.5 / 2
         center_x = self.width() / 2
-        center_y = self.height() * 0.5 + self.label.height() * 0.5
+        center_y = self.height() * 0.5 + self.label.height() * 0.6
 
         # Draw the pump symbol
         painter.setPen(QPen(Qt.black, 2))
