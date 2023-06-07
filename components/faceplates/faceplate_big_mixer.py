@@ -6,46 +6,22 @@ from PyQt5.QtWidgets import QPushButton
 
 class BigMixer(QWidget):
 
-    def __init__(self, level=100):
+    def __init__(self, level=94):
         super().__init__()
         self.setMinimumSize(120, 80)
         self.level = level
-        self.state = 0  # Initial state for level: 0 - OFF; 1 - ON
         self.motor_state = 2 #3 states: 0 - RED(Faulty); 1 - BLUE(Idle); 2 - GREEN(Active)
-        self.heater_state = 0 #3 states: 0 - RED(Faulty); 1 - BLUE(Idle); 2 - GREEN(Active)
-        self.buffer = int(self.height() * 0.065)
-
-        self.initUI()
-
-    def initUI(self):
-        # self.buffer = 200
-        pass
-
-        # # Create the circular button
-        # button = CircularButton()
-        # button.setGeometry(120, self.buffer // 2 - 30, 60, 60)  # Set the position and size of the button using absolute positioning
-        # button.setParent(self)  # Set the widget as the parent of the button
-
-        # # Create the circle widget
-        # self.circle = CircleWidget()
-        # self.circle.setGeometry(self.width() - 120, self.height() + self.buffer - 85, 60, 60)  # Set the position and size of the button using absolute positioning
-        # # self.circle.setGeometry(30, 30, 60, 60)
-        # self.circle.setParent(self)  # Set the widget as the parent of the button
-    
-
-        # # Connect the button signals to custom methods
-        # button.turnedOn.connect(self.onTurnedOn)
-        # button.turnedOff.connect(self.onTurnedOff)
-
-        # # Connect the circle widget's mousePressEvent to a custom method
-        # self.circle.mousePressEvent = self.onCircleClicked
+        self.heater_state = 2 #3 states: 0 - RED(Faulty); 1 - BLUE(Idle); 2 - GREEN(Active)
+        self.buffer = int(self.height() * 0.065) #area above the tank water level
 
     def setLevel(self, val):
         self.level = val
         self.update()
 
     def setState(self, state):
-        self.state = state
+        if self.level >= 0.95:
+            self.rectangle1_color = Qt.green
+        else: self.rectangle1_color = Qt.gray
         self.update()
 
     def paintEvent(self, event):
@@ -55,33 +31,20 @@ class BigMixer(QWidget):
 
         # Draw the background
         painter.fillRect(self.rect(), Qt.lightGray)
+        print(self.rect())
 
         # Calculate the scale position based on the level value
-        # self.buffer = 200  # Adjust the self.buffer value to control the empty space at the top
         scale_height = int((self.height() - self.buffer - 20) * self.level / 100)
         scale_rect = QRect(10, self.height() - 10 - scale_height - 1, self.width() - 70, scale_height + 1)
-        
-        painter.fillRect(scale_rect, QColor(62, 84, 230))
+
+        #Color of the level in the tanks
+        rect_color = QColor(102, 153, 255) #light blue
+        painter.fillRect(scale_rect, rect_color)
 
         # Draw small rectangles in the top corners
-        
         rectangle_size = int(self.width() * 0.05)
         rectangle_spacing = 2
         rectangle1 = QRect(rectangle_spacing + 10, self.buffer + rectangle_spacing + 5, rectangle_size + 20, rectangle_size)
-        rectangle2 = QRect(self.width() - rectangle_size - rectangle_spacing - 80, self.buffer + rectangle_spacing, rectangle_size + 20, rectangle_size)
-
-        # Determine the color based on the state
-        rectangle1_color = Qt.green if self.state == 1 else Qt.gray
-        rectangle2_color = Qt.green if self.state == 2 else Qt.gray
-
-        # Draw the outline/frame
-        outline_pen = QPen(Qt.black, 0.9)
-        # painter.setPen(outline_pen)
-        # painter.drawRect(rectangle1)
-        # painter.drawRect(rectangle2)
-
-        
-        # painter.fillRect(rectangle2.adjusted(1, 1, -1, -1), rectangle2_color)
 
         # Draw ticks and labels on the right side
         font = QFont()
@@ -92,7 +55,6 @@ class BigMixer(QWidget):
         degree_spacing = 5
         for level in range(0, 101, degree_spacing):
             y = self.height() - 10 - int(level * tick_spacing)
-            # y = self.buffer + self.height() - 30 - int((level / 100) * (self.height() - self.buffer))  # Adjusted y coordinate calculation
             if level in [0, 50, 100]:  # Display labels for values 0, 50, and 100 only
                 label_font = painter.font()
                 label_font.setBold(True)
@@ -120,7 +82,7 @@ class BigMixer(QWidget):
         heater_circle = QPoint(self.width() - circle_margin - circle_radius - 61, self.buffer + circle_margin + circle_radius + 33)
 
         
-        # Determine the color based on the state
+        # Determine the color based on the state of the motor
         if self.motor_state == 0:
             motor_color = Qt.red
         elif self.motor_state == 1:
@@ -128,7 +90,7 @@ class BigMixer(QWidget):
         else:
             motor_color = Qt.green
         
-
+        # Determine the color based on the state of the heater
         if self.heater_state == 0:
             heater_color = Qt.red
         elif self.heater_state == 1:
@@ -136,31 +98,45 @@ class BigMixer(QWidget):
         else:
             heater_color = Qt.green
 
-        # motor_color = Qt.blue if self.motor_state == 1 else Qt.gray
-        # heater_color = Qt.green if self.motor_state == 2 else Qt.gray
-        
-        # Draw the perpendicular line
-        # intersection_point = ellipse1.topRight().toPoint()
-        # line_start = QPoint(150, self.height() - 85)
-        # line_end = QPoint(150, self.buffer // 2)
-
         end_x = QPoint(circle_margin + circle_radius + int(self.width()*0.13),  self.buffer + circle_margin + circle_radius + 30)
 
         elipse_y_var = self.buffer + circle_margin + circle_radius + 30
         painter.drawLine(motor_circle, end_x)
-        # painter.drawLine()
 
+
+        # Determine the color based on the state
+        if self.level >= 95:
+            self.rectangle1_color = Qt.green
+        else: self.rectangle1_color = Qt.gray
+
+        outline_pen = QPen(Qt.black, 0.9)
         painter.setPen(outline_pen)
         painter.drawRect(rectangle1)
-        painter.fillRect(rectangle1.adjusted(1, 1, -1, -1), rectangle1_color)
+        painter.fillRect(rectangle1.adjusted(1, 1, -1, -1), self.rectangle1_color)
 
-        # Draw the circles
+        # Draw the motor and heater circles
         painter.setBrush(motor_color)
         painter.drawEllipse(motor_circle, circle_radius, circle_radius)
         painter.setBrush(heater_color)
         painter.drawEllipse(heater_circle, circle_radius, circle_radius)
 
-         # Draw the "M" letter
+        #left heater line
+        x_heat_right = QPoint(self.width() - circle_margin - circle_radius*2 - 58, self.buffer + circle_margin + circle_radius + 36)
+        y_heat_right = QPoint(self.width() - circle_margin - circle_radius*2 - 58, self.buffer + circle_margin + circle_radius -5)
+        painter.drawLine(x_heat_right, y_heat_right)
+        
+        #right heater line
+        x_heat_left = QPoint(self.width() - circle_margin - circle_radius - 53, self.buffer + circle_margin + circle_radius + 36)
+        y_heat_left = QPoint(self.width() - circle_margin - circle_radius - 53, self.buffer + circle_margin + circle_radius -5)
+        painter.drawLine(x_heat_left, y_heat_left)
+
+        #Draw of the /\ element between the lines
+        #Central point is located few pixels above the center of the heater circle
+        heater_central_p = heater_circle - QPoint(0, 4)
+        painter.drawLine(x_heat_right, heater_central_p)
+        painter.drawLine(heater_central_p, x_heat_left)
+
+        # Draw the "M" letter
         if self.motor_state == 2:
             painter.setPen(Qt.black)
         else:
@@ -168,8 +144,8 @@ class BigMixer(QWidget):
         
         font = QFont('Arial', 9, QFont.Bold)
         painter.setFont(font)
-        text_point = (motor_circle- QPoint(10, 10), motor_circle)
-        painter.drawText(motor_circle- QPoint(5, -4), "M")
+        text_point = motor_circle- QPoint(5, -4)
+        painter.drawText(text_point, "M")
 
         painter.setBrush(Qt.gray)
         painter.setPen(Qt.black)
@@ -178,10 +154,6 @@ class BigMixer(QWidget):
         ellipse2 = QRectF(34, elipse_y_var, 15, 7)
         painter.drawEllipse(ellipse1)
         painter.drawEllipse(ellipse2)
-
-        # print(ellipse1)
-        # print(circle_margin + circle_radius + int(self.width()*0.13) )
-
 
 
     def onTurnedOn(self):
@@ -222,7 +194,7 @@ if __name__ == '__main__':
 
     # tank.setState(1)
     # tank.setState(2)
-    tank.setLevel(100)
+    tank.setLevel(95)
 
     # Trigger a repaint of the tank
     tank.update()
