@@ -31,7 +31,6 @@ class BigMixer(QWidget):
 
         # Draw the background
         painter.fillRect(self.rect(), Qt.lightGray)
-        print(self.rect())
 
         # Calculate the scale position based on the level value
         scale_height = int((self.height() - self.buffer - 20) * self.level / 100)
