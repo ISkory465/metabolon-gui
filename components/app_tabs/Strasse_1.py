@@ -86,12 +86,21 @@ class Page:
         self.tankMixer1.set_motor_mode('malfunction') 
         self.tankMixer1.set_level(50) # Set the level 
         self.tankMixer1.set_motorName_label("Rührwerk RW11")
+        self.tankMixer1.motorName_label.setMinimumHeight(15)
+        # self.tankMixer1.motorName_label.setContentsMargins(0,0,0,5)
+        # self.tankMixer1.motor_label.setMinimumHeight(10)
+        # self.tankMixer1.motor_label.setMargin(10)
+        # self.tankMixer1.motorName_label.setAlignment(Qt.AlignHCenter)
+        self.tankMixer1.setMinimumHeight(175)
+
         
         self.tankMixer2 = TankMixerWidget()
         self.tankMixer2.set_tank_label("Anmalschb")  # Set the tank label to "My Tank"
         self.tankMixer2.set_motor_mode('idle') 
         self.tankMixer2.set_level(50) # Set the level 
         self.tankMixer2.set_motorName_label("Rührwerk RW12")
+        self.tankMixer2.motorName_label.setMinimumHeight(15)
+        self.tankMixer2.setMinimumHeight(175)
         
         #self.hbox2.addWidget(self.motor1, 2, 2)
         self.hbox2.addWidget(self.tankMixer1, 3, 4, 4, 1)
@@ -104,7 +113,7 @@ class Page:
         
         # Create and add Valve Widgets
         self.valve1 = ValveLabelWidget("Ventil AA11")
-        self.hbox2.addWidget(self.valve1, 4, 5, 1, 1)
+        self.hbox2.addWidget(self.valve1, 4, 5)
 
         self.valve2 = ValveLabelWidget("Ventil AA14")
         self.hbox2.addWidget(self.valve2, 0, 6)
@@ -124,7 +133,7 @@ class Page:
 
         # Create and add the Box widget
         self.box1 = Box("PU12")
-        self.hbox2.addWidget(self.box1, 4, 7, 1, 1)  # Add the box widget to the grid layout
+        self.hbox2.addWidget(self.box1, 4, 7, 1, 1, alignment=Qt.AlignRight)  # Add the box widget to the grid layout
         
 
         # hbox3 Content
