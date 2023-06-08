@@ -4,6 +4,7 @@ from .faceplate_gauge import Gauge
 from .faceplate_endlager_tank import EndlagerTank
 import sys
 
+# TODO: add documentation and make sure it works properly
 
 class Endlager(QGroupBox):
     def __init__(self, name, layout, opcID=None):

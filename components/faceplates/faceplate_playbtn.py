@@ -3,7 +3,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 import sys
 
-
+# TODO: Make it into an indicator, add three states
 
 
 class PlayButton(QWidget):
