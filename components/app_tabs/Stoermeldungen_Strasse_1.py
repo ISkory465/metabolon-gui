@@ -5,9 +5,14 @@ from QLed import QLed
 from ..faceplates.faceplates_new import *
 
 
-class Page():
+class Page(QWidget):
 
-    def UI(self,window:QMainWindow):
+    def __init__(self) -> None:
+
+        super().__init__()
+        self.UI()
+
+    def UI(self):
         
         #Main layout of the first tab 'Störmeldungen Straße 1"
         grid = QGridLayout()
@@ -84,7 +89,7 @@ class Page():
         grid.setVerticalSpacing(60)
         
         #Assigning to the tab
-        window.tab6.setLayout(grid)
+        self.setLayout(grid)
     
 
 if __name__=='__main__':

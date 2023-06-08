@@ -5,9 +5,15 @@ from ..faceplates.faceplates_new import Box
 from ..faceplates.faceplates_new import InfoField
 from ..faceplates.faceplates_new import SingleLed
 
-class Page():
 
-    def UI(self,window:QMainWindow):
+class Page(QWidget):
+
+    def __init__(self) -> None:
+
+        super().__init__()
+        self.UI()
+
+    def UI(self):
         
         #Main layout of the first window 'Steuerung_Strasse_2"
         vbox=QVBoxLayout()
@@ -180,7 +186,7 @@ class Page():
         vbox.addLayout(hbox2, 50)
 
         #Assigning page layout to the window
-        window.tab3.setLayout(vbox)
+        self.setLayout(vbox)
 
 
 
