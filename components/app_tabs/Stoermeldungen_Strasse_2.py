@@ -9,9 +9,14 @@ from ..faceplates.faceplates_new import Led_6
 from ..faceplates.faceplates_new import Led_8
 
 
-class Page():
+class Page(QWidget):
 
-    def UI(self,window:QMainWindow):
+    def __init__(self) -> None:
+
+        super().__init__()
+        self.UI()
+
+    def UI(self):
 
         #Main layout of the first tab 'Störmeldungen Straße 2"
         grid = QGridLayout()
@@ -52,7 +57,7 @@ class Page():
         grid.setVerticalSpacing(60)
         
         #Assigning to the tab
-        window.tab7.setLayout(grid) 
+        self.setLayout(grid) 
       
 if __name__=='__main__':
     pass

@@ -3,9 +3,14 @@ from PyQt5.QtCore import Qt
 from ..faceplates.faceplates_new import InfoField
 from ..faceplates.faceplates_new import InfoFieldDouble
 
-class Page():
+class Page(QWidget):
 
-    def UI(self, window:QMainWindow):
+    def __init__(self) -> None:
+
+        super().__init__()
+        self.UI()
+
+    def UI(self):
         
         #Main layout of the first tab 'Betriebsstunden"
         grid = QGridLayout() 
@@ -72,7 +77,7 @@ class Page():
     
 
         #Assigning to the tab
-        window.tab8.setLayout(grid)
+        self.setLayout(grid)
 
 
 

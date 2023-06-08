@@ -4,9 +4,15 @@ from ..faceplates.faceplates_new import Box
 from ..faceplates.faceplates_new import InfoField
 
 
-class Page():
+class Page(QWidget):
 
-    def UI(self, window:QMainWindow):
+    def __init__(self) -> None:
+
+        super().__init__()
+        self.UI()
+
+
+    def UI(self):
         
         #Main layout of the first tab 'Steuerung_Strasse_2"
         vbox=QVBoxLayout()
@@ -135,7 +141,7 @@ class Page():
         vbox.addLayout(hbox2, 50)
 
         #Assigning page layout to the window
-        window.tab4.setLayout(vbox)
+        self.setLayout(vbox)
         
 
     def updateAll(self,inputs: dict):

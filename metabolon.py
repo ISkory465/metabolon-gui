@@ -25,82 +25,34 @@ class Window(QMainWindow):
         # Center the window on the screen.
         self.center_on_screen()
 
+
     def center_on_screen(self):
+
         # get the rectangle specifying the geometry of the main window
         qr = self.frameGeometry()
+
         # figure out the screen resolution
         cp = QDesktopWidget().availableGeometry().center()
+
         # move rectangle's center point into the center of the screen
         qr.moveCenter(cp)
+
         # top left of rectangle becomes top left of window centering it
         self.move(qr.topLeft())
+
 
     def Tabs_UI(self):
 
         # Side Bar
         self.side_bar = SideBar()
 
+        # main parent tab widget
         self.tabs = QTabWidget()
 
-        # Add an inner QTabWidget for each row of tabs
+        # self.tabs contains three tabs: 
         self.innerTabs1 = QTabWidget()
         self.innerTabs2 = QTabWidget()
         self.innerTabs3 = QTabWidget()
-
-        # First Tab
-        self.tab1 = QWidget()
-        self.innerTabs1.addTab(self.tab1, "Übersicht") # old name: "Strasse 1"
-        self.page1 = Strasse_1()
-        self.page1.UI(self)
-
-        #Second Tab
-        self.tab2 = QWidget()
-        self.innerTabs2.addTab(self.tab2, "Übersicht") #old name: "Strasse 2"
-        self.page2 = Strasse_2()
-        self.page2.UI(self)
-
-        #Third Tab
-        self.tab3 = QWidget()
-        self.innerTabs1.addTab(self.tab3, "Steuerung") #old name: "Steuerung Strasse 1"
-        self.page3 = St_Strasse_1()
-        self.page3.UI(self)
-
-        #Fourth Tab
-        self.tab4 = QWidget()
-        self.innerTabs2.addTab(self.tab4, "Steuerung") #old name: "Steuerung Strasse 2"
-        self.page4 = St_Strasse_2()
-        self.page4.UI(self)
-
-        #Fifth Tab
-        self.tab5 = QWidget()
-        self.innerTabs1.addTab(self.tab5, "Fütterung") #old name: "Fütterung Straße 1"
-        self.page5 = Fuet_Strasse_1()
-        self.page5.UI(self)
-
-        #Ninth Tab
-        self.tab9 = QWidget()
-        self.innerTabs2.addTab(self.tab9, "Fütterung") #old name: "Fütterung Straße 2"
-        self.page9 = Fuet_Strasse_2()
-        self.page9.UI(self)
-
-        #Sixth Tab
-        self.tab6 = QWidget()
-        self.innerTabs1.addTab(self.tab6, "Störmeldungen") #old name: "Störmeldungen Straße 1"
-        self.page6 = St_Meld_1()
-        self.page6.UI(self)
-
-        #Seventh Tab
-        self.tab7 = QWidget()
-        self.innerTabs2.addTab(self.tab7, "Störmeldungen") #old name: "Störmeldungen Straße 2"
-        self.page7 = St_Meld_2()
-        self.page7.UI(self)
-
-        #Eighth Tab
-        self.tab8 = QWidget()
-        self.innerTabs3.addTab(self.tab8, "Betriebsstunden")
-        self.page8 = Betriebsstunden()
-        self.page8.UI(self)
-        
 
         # Add the inner QTabWidgets to the outer QTabWidget
         self.tabs.addTab(self.innerTabs1, "Straße 1")
@@ -109,6 +61,22 @@ class Window(QMainWindow):
 
         # Hide the tab bar of the outer QTabWidget so only the inner tab bars are visible
         self.tabs.tabBar().setVisible(True)
+
+        # Tabs connection to the self.innerTabs1:
+        self.innerTabs1.addTab(Strasse_1(),       "Übersicht")       #old name: "Strasse 1"
+        self.innerTabs1.addTab(St_Strasse_1(),    "Steuerung")       #old name: "Steuerung Strasse 1"
+        self.innerTabs1.addTab(Fuet_Strasse_1(),  "Fütterung")       #old name: "Fütterung Straße 1"
+        self.innerTabs1.addTab(St_Meld_1(),       "Störmeldungen")   #old name: "Störmeldungen Straße 1"
+
+        # Tabs connection to the self.innerTabs2:      
+        self.innerTabs2.addTab(Strasse_2(),       "Übersicht")      #old name: "Strasse 2"
+        self.innerTabs2.addTab(St_Strasse_2(),    "Steuerung")      #old name: "Steuerung Strasse 2"
+        self.innerTabs2.addTab(Fuet_Strasse_2(),  "Fütterung")      #old name: "Fütterung Straße 2"
+        self.innerTabs2.addTab(St_Meld_2(),       "Störmeldungen")  #old name: "Störmeldungen Straße 2"
+
+        # Tab connection to the self.innerTabs3:
+        self.innerTabs3.addTab(Betriebsstunden(), "Betriebsstunden")
+
 
         # Create a central widget to hold the mainLayout
         central_widget = QWidget()
@@ -120,10 +88,16 @@ class Window(QMainWindow):
         # Set the central widget for the main window
         self.setCentralWidget(central_widget)
 
+        # Display the content of the central_widget
         self.show()
 
+
 if __name__ == '__main__':
+
     app = QApplication(sys.argv)
     # app.setStyle('Fusion')
     window = Window()
     sys.exit(app.exec_())
+
+
+#TODO Swap all german umlauts in the strings to a simplified form

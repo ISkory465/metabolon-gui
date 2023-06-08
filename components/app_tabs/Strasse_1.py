@@ -9,9 +9,13 @@ from ..faceplates.faceplate_valve import *
 
 
 
-class Page():
+class Page(QWidget):
 
-    def UI(self,window:QMainWindow):
+    def __init__(self) -> None:
+        super().__init__()
+        self.UI()
+
+    def UI(self):
 
         #Main layout of the first tab 'Straße 1"
         self.vbox=QVBoxLayout()
@@ -39,8 +43,8 @@ class Page():
         self.hbox1.setAlignment(Qt.AlignLeft)
         self.hbox2.setAlignment(Qt.AlignTop)
 
-
-        window.tab1.setLayout(self.vbox)
+        #Main layout assignment to the widget of the page
+        self.setLayout(self.vbox)
 
         
         # hbox1 Content
