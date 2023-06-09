@@ -4,7 +4,7 @@ from PyQt5.QtCore import *
 import sys
 
 
-class ThermometerWidget(QWidget):
+class EndThermometerWidget(QWidget):
     def __init__(self):
         super().__init__()
         self.setMinimumSize(70, 150)
@@ -22,7 +22,7 @@ class ThermometerWidget(QWidget):
         painter.fillRect(self.rect(), Qt.lightGray)
 
         # Calculate the scale position based on the temperature value
-        scale_height = int((self.height() - 20) * (self.temperature - 20) / (60 - 20))
+        scale_height = int((self.height() - 20) * (self.temperature - 5) / (40 - 5))
 
         # Limit the width of the scale rectangle
         max_scale_width = int(self.width() * 0.4)
@@ -35,23 +35,21 @@ class ThermometerWidget(QWidget):
         font.setPointSize(8)
         painter.setFont(font)
         tick_length = 5
-        tick_spacing = (self.height() - 20) / (60 - 20)
+        tick_spacing = (self.height() - 20) / (40 - 5)
         degree_spacing = 5
-        
-        for temperature in range(20, 61, degree_spacing):
-            y = self.height() - 10 - int((temperature - 20) * tick_spacing)
-            # y = buffer + self.height() - 30 - int((level / 100) * (self.height() - buffer))  # Adjusted y coordinate calculation
-            if temperature in [20, 40, 60]:  # Display labels for values 0, 50, and 100 only
+        for temperature in range(5, 41, degree_spacing):
+            y = self.height() - 10 - int((temperature - 5) * tick_spacing)
+
+            if temperature in [5, 20, 40]:  # Display labels for values 5, 20, and 40 only
                 label_font = painter.font()
                 label_font.setBold(True)
                 painter.setFont(label_font)
                 metrics = QFontMetrics(label_font)
                 label_width = metrics.horizontalAdvance(str(temperature))
                 painter.drawText(self.width() - tick_length - int(self.width()*0.37), y + 3, f"{temperature}°C")
-                # painter.drawText(self.width() - label_width - 12, y + 5, str(temperature))
-                tick_length = 8  # Longer tick length for values 0, 50, and 100
+                tick_length = 8  # Longer tick length for values 5, 20, and 40
                 pen = QPen(painter.pen())
-                pen.setWidth(2)  # Thicker pen for values 0, 50, and 100
+                pen.setWidth(2)  # Thicker pen for values 5, 20, and 40
                 painter.setPen(pen)
             else:
                 tick_length = 5
@@ -60,9 +58,6 @@ class ThermometerWidget(QWidget):
                 painter.setPen(pen)
 
             painter.drawLine(self.width() - tick_length - int(self.width()*0.57625), y, self.width() - int(self.width()*0.575), y)
-            # painter.drawText(self.width() - tick_length - int(self.width()*0.37), y + 3, f"{temperature}°C")
-            # painter.drawLine(self.width() - tick_length - 40, y, self.width() - 32, y)
-            # painter.drawText(self.width() - tick_length - 22, y + 3, f"{temperature}°C")
 
 
 if __name__ == '__main__':
@@ -74,14 +69,13 @@ if __name__ == '__main__':
     window.setLayout(layout)
 
     # Create the thermometer widget
-    thermometer = ThermometerWidget()
+    thermometer = EndThermometerWidget()
 
     # Add the thermometer widget to the layout
     layout.addWidget(thermometer)
-    # thermometer.setTemperature(33)
 
     window.show()
 
-    thermometer.setTemperature(40)
+    thermometer.setTemperature(40)  # This should be within the range [5, 40]
 
     sys.exit(app.exec_())

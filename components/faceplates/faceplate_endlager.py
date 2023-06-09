@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QApplication, QGroupBox, QVBoxLayout, QHBoxLayout, QWidget
-from .faceplate_therm import ThermometerWidget
+from .faceplate_therm_endlager import EndThermometerWidget
 from .faceplate_gauge import Gauge
 from .faceplate_endlager_tank import EndlagerTank
 import sys
@@ -13,7 +13,7 @@ class Endlager(QGroupBox):
 
         # Main layout for 2 horizontal boxes representing each row
         main_vbox = QVBoxLayout()
-        main_vbox.setSpacing(50)
+        main_vbox.setSpacing(10)
 
         # Two main horizontal layouts
         row1 = QHBoxLayout()
@@ -28,7 +28,7 @@ class Endlager(QGroupBox):
         tank.setLevel(50)
 
         # Create the thermometer widget
-        thermometer = ThermometerWidget()
+        thermometer = EndThermometerWidget()
         thermometer.setTemperature(35)
 
         # Create the gauge widget

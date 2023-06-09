@@ -41,8 +41,8 @@ class Mixer(QGroupBox):
         self.nm_2_column.setAlignment(Qt.AlignTop)
         self.grid.addLayout(self.numerical_data, *[0,0])
 
-        self.thermometer = ThermometerWidget() #add  self.name parameter in class termometer
-        # self.thermometer.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed) 
+        self.thermometer = ThermometerWidget() #add  self.name parameter in class thermometer
+        self.thermometer.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed) 
         self.grid.addWidget(self.thermometer, *[0,2], alignment=Qt.AlignLeft)
 
 
