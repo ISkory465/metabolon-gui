@@ -55,7 +55,7 @@ class Page(QWidget):
 
         # hbox2 Content
         #self.box1 = Box("PU12", self.hbox2)
-        self.tankIbc = TankIBC(max_level=100, min_level=15)
+        self.tankIbc = TankIBC(name="IBC",max_level=100, min_level=15)
         self.tankIbc.set_current_level(70)
         self.tankIbc.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
         #self.hbox2.addWidget(self.tankIbc)

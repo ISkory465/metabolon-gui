@@ -9,6 +9,7 @@ class ValveLabelWidget(QWidget):
         self.valve = ValveWidget(size)
         self.valvename = label
         self.valve.status = 0
+        #self.setContentsMargins(0, 50, 0, 0)
         self.__drawvalve()
 
     def setStatus(self, value):
@@ -20,7 +21,7 @@ class ValveLabelWidget(QWidget):
         self.setLayout(self.layout)
 
         self.label = QLabel(self.valvename)
-        self.layout.setAlignment(Qt.AlignTop)
+        self.layout.setAlignment(Qt.AlignCenter)
 
         self.layout.addWidget(self.label)
         self.layout.addWidget(self.valve)

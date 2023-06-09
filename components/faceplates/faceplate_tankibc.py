@@ -5,7 +5,7 @@ from PyQt5.QtCore import Qt, QRect
 
 
 class TankIBC(QWidget):
-    def __init__(self, max_level=100, min_level=15):
+    def __init__(self, name, max_level=100, min_level=15):
         super().__init__()
 
         self.max_level = max_level
@@ -15,14 +15,12 @@ class TankIBC(QWidget):
         self.max_led_color = QColor(255, 0, 0)  # Red
         self.min_led_color = QColor(0, 255, 0)  # Green
         self.led_off_color = QColor(64, 64, 64)  # Dark gray
-        self.setup_ui()
+        self.setup_ui(name)
 
-    def setup_ui(self):
-        self.setMinimumSize(200, 200)
-
-        self.label = QLabel("IBC")
+    def setup_ui(self, name):
+        self.setFixedSize(200, 200)
+        self.label = QLabel(name)
         self.label.setAlignment(Qt.AlignCenter)
-
         layout = QVBoxLayout()
         layout.addWidget(self.label)
         self.setLayout(layout)
@@ -32,7 +30,7 @@ class TankIBC(QWidget):
         painter.setRenderHint(QPainter.Antialiasing)
 
         # Draw the tank
-        tank_rect = QRect(30, 30, self.width() - 60, self.height() - 60)
+        tank_rect = QRect(30, 30, self.width() - 80, self.height() - 80)
         tank_color = QColor(128, 128, 128)  # Gray
         painter.setPen(QPen(Qt.NoPen))
         painter.setBrush(QBrush(tank_color))
@@ -40,9 +38,9 @@ class TankIBC(QWidget):
 
         # Draw the max LED
         max_led_rect = QRect(
-            tank_rect.left() + 20,
-            tank_rect.top() + 10,
-            tank_rect.width() - 40,
+            tank_rect.right() - 50,
+            tank_rect.top() + 5,
+            tank_rect.width() - 80,
             10
         )
         if self.current_level >= self.max_level:
@@ -53,9 +51,9 @@ class TankIBC(QWidget):
 
         # Draw the min LED
         min_led_rect = QRect(
-            tank_rect.left() + 20,
-            tank_rect.bottom() - 20,
-            tank_rect.width() - 40,
+            tank_rect.right() - 50,
+            tank_rect.bottom() - 15,
+            tank_rect.width() - 80,
             10
         )
         if self.current_level <= self.min_level:
@@ -91,6 +89,10 @@ class TankIBC(QWidget):
 
     def get_widget(self):
         return self
+    
+    def sizeHint(self):
+        return self.minimumSizeHint()
+
 
 
 if __name__ == "__main__":
