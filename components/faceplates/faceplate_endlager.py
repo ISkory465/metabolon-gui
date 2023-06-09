@@ -4,6 +4,7 @@ from .faceplate_gauge import Gauge
 from .faceplate_endlager_tank import EndlagerTank
 import sys
 
+# TODO: add documentation and make sure it works properly
 
 class Endlager(QGroupBox):
     def __init__(self, name, layout, opcID=None):
@@ -18,7 +19,7 @@ class Endlager(QGroupBox):
         row1 = QHBoxLayout()
         row2 = QHBoxLayout()
 
-
+        # Add two horizontal to main layout
         main_vbox.addLayout(row1)
         main_vbox.addLayout(row2)
 
@@ -38,6 +39,7 @@ class Endlager(QGroupBox):
         row1.addWidget(thermometer)
         row2.addWidget(gauge)
 
+        # Add all the elements to the main layout and set it as the default layout
         self.layout.addWidget(self)
         self.setLayout(main_vbox)
 

@@ -5,12 +5,11 @@ import sys
 
 
 
-
 class PlayButton(QWidget):
     def __init__(self):
         super().__init__()
 
-        self.active = False
+        self.state = 2 #3 states: 0 - RED(Faulty); 1 - BLUE(Idle); 2 - GREEN(Active)
         self.setMinimumSize(60, 60)
         self.setMouseTracking(True)
 
@@ -18,11 +17,20 @@ class PlayButton(QWidget):
         painter = QPainter(self)
         painter.setRenderHint(QPainter.Antialiasing)
 
+        # Determine the color based on the state of the indicator
+        if self.state == 0:
+            background_color = Qt.red
+            icon_color = Qt.black
+        elif self.state == 1:
+            background_color = Qt.blue
+            icon_color = Qt.white
+        else:
+            background_color = Qt.green
+            icon_color = Qt.darkGray
+
         # Define the button's dimensions and colors
         # rect = QRect(10, 10, self.width() - 20, self.height() - 20)
         rect = QRect(1, 1, self.width()-2, self.height()-2)
-        background_color = Qt.green if self.active else Qt.gray
-        icon_color = Qt.white if self.active else Qt.darkGray
 
         # Draw the button background
         painter.setPen(Qt.NoPen)
@@ -40,15 +48,6 @@ class PlayButton(QWidget):
         path.lineTo(rect.center().x() + int(self.width()*0.35), rect.center().y())
         painter.drawPath(path)
 
-    def mousePressEvent(self, event):
-        self.active = not self.active
-        self.update()
-
-    def enterEvent(self, event):
-        QApplication.setOverrideCursor(Qt.PointingHandCursor)
-
-    def leaveEvent(self, event):
-        QApplication.restoreOverrideCursor()
 
 
 if __name__ == '__main__':
