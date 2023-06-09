@@ -9,7 +9,7 @@ from ..faceplates.faceplate_pump import PumpWidget
 from ..faceplates.faceplate_valve import *
 from ..faceplates.faceplates_infofieldV1 import *
 from ..faceplates.faceplate_tank_mixer import *
-
+from components.faceplates.faceplates_new import SingleLed
 
 class Page(QWidget):
 
@@ -93,12 +93,21 @@ class Page(QWidget):
         self.tankMixer1.set_motor_mode('malfunction') 
         self.tankMixer1.set_level(50) # Set the level 
         self.tankMixer1.set_motorName_label("Rührwerk RW11")
+        self.tankMixer1.motorName_label.setMinimumHeight(15)
+        # self.tankMixer1.motorName_label.setContentsMargins(0,0,0,5)
+        # self.tankMixer1.motor_label.setMinimumHeight(10)
+        # self.tankMixer1.motor_label.setMargin(10)
+        # self.tankMixer1.motorName_label.setAlignment(Qt.AlignHCenter)
+        self.tankMixer1.setMinimumHeight(175)
+
         
         self.tankMixer2 = TankMixerWidget()
         self.tankMixer2.set_tank_label("Anmalschb")  # Set the tank label to "My Tank"
         self.tankMixer2.set_motor_mode('idle') 
         self.tankMixer2.set_level(50) # Set the level 
         self.tankMixer2.set_motorName_label("Rührwerk RW12")
+        self.tankMixer2.motorName_label.setMinimumHeight(15)
+        self.tankMixer2.setMinimumHeight(175)
         
         #self.hbox2.addWidget(self.motor1, 2, 2)
         self.hbox2.addWidget(self.tankMixer1, 3, 4, 4, 1)
@@ -111,7 +120,7 @@ class Page(QWidget):
         
         # Create and add Valve Widgets
         self.valve1 = ValveLabelWidget("Ventil AA11")
-        self.hbox2.addWidget(self.valve1, 4, 5, 1, 1)
+        self.hbox2.addWidget(self.valve1, 4, 5)
 
         self.valve2 = ValveLabelWidget("Ventil AA14")
         self.hbox2.addWidget(self.valve2, 0, 6)
@@ -121,6 +130,9 @@ class Page(QWidget):
 
         self.valve4 = ValveLabelWidget("Ventil AA12")
         self.hbox2.addWidget(self.valve4, 2, 6)
+
+        self.pumpLED = SingleLed(name="PU12 Rezi (Maisch)", layout=(self.hbox2))
+        self.hbox2.addWidget(self.pumpLED, 1, 7)
         
         self.pumpWidget = PumpWidget(name="Pumpe PU12")
         self.pumpWidget.set_mode("operational")
@@ -128,7 +140,7 @@ class Page(QWidget):
 
         # Create and add the Box widget
         self.box1 = Box("PU12")
-        self.hbox2.addWidget(self.box1, 4, 7, 1, 1)  # Add the box widget to the grid layout
+        self.hbox2.addWidget(self.box1, 4, 7, 1, 1, alignment=Qt.AlignRight)  # Add the box widget to the grid layout
         
 
         # hbox3 Content
