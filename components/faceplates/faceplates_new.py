@@ -42,7 +42,8 @@ class ToggleButton(QGroupBox):
     # action methods
     def toggle(self):
         if self.button.isChecked():
-           print("Button 1 clicked")
+           pass
+          #  print("Button 1 clicked")
        
 
      # method called by button
@@ -641,7 +642,8 @@ class UnlabelledButton(QGroupBox):
     # action methods
     def toggle(self):
         if self.button.isChecked():
-           print("Button 1 clicked")
+           pass
+          #  print("Button 1 clicked")
        
 
      # method called by button
