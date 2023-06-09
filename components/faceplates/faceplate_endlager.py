@@ -19,7 +19,7 @@ class Endlager(QGroupBox):
         row1 = QHBoxLayout()
         row2 = QHBoxLayout()
 
-
+        # Add two horizontal to main layout
         main_vbox.addLayout(row1)
         main_vbox.addLayout(row2)
 
@@ -39,6 +39,7 @@ class Endlager(QGroupBox):
         row1.addWidget(thermometer)
         row2.addWidget(gauge)
 
+        # Add all the elements to the main layout and set it as the default layout
         self.layout.addWidget(self)
         self.setLayout(main_vbox)
 
