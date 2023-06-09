@@ -11,7 +11,6 @@ class PlayButton(QWidget):
 
         self.state = 2 #3 states: 0 - RED(Faulty); 1 - BLUE(Idle); 2 - GREEN(Active)
         self.setMinimumSize(60, 60)
-        self.setMouseTracking(True)
 
     def paintEvent(self, event):
         painter = QPainter(self)

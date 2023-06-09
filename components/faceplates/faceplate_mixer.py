@@ -42,18 +42,27 @@ class Mixer(QGroupBox):
         self.grid.addLayout(self.numerical_data, *[0,0])
 
         self.thermometer = ThermometerWidget() #add  self.name parameter in class termometer
-        self.thermometer.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed) 
-        # self.grid.addWidget(self.thermometer, *[0,2], alignment=Qt.AlignLeft)
+        # self.thermometer.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed) 
         self.grid.addWidget(self.thermometer, *[0,2], alignment=Qt.AlignLeft)
 
+
+        # Schnecke VBox
+        schnecke_vbox = QVBoxLayout()
+
+        schnecke_vbox.addStretch(1)
+        self.schnecke_label = QLabel("Schnecke")
+        self.schnecke_label.setAlignment(Qt.AlignCenter)
+        schnecke_vbox.addWidget(self.schnecke_label)
+
         self.playbutton = PlayButton()
-        self.playbutton.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed) 
-        # self.spacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-        self.grid.addWidget(self.playbutton, *[0,1], alignment=Qt.AlignLeft)
-        # self.grid.addItem(self.spacer, *[0,1])
+        schnecke_vbox.addWidget(self.playbutton)
+        schnecke_vbox.addStretch(1)  # Pushes the PlayButton up
+
+        # self.playbutton.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed) 
+        self.grid.addLayout(schnecke_vbox, 0, 1)
 
         self.gauge = Gauge() #add self.name parameter in class
-        self.gauge.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed) 
+        # self.gauge.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed) 
         self.grid.addWidget(self.gauge, *[1,0])
 
         self.big_mixer = BigMixer() #add self.name parameter in class
