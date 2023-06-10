@@ -7,10 +7,9 @@ import sys
 # TODO: add documentation and make sure it works properly
 
 class Endlager(QGroupBox):
-    def __init__(self, name, layout, opcID=None):
+    def __init__(self, name, opcID=None):
         super().__init__(name)
-        self.layout = layout
-
+        
         # Main layout for 2 horizontal boxes representing each row
         main_vbox = QVBoxLayout()
         main_vbox.setSpacing(10)
@@ -40,7 +39,7 @@ class Endlager(QGroupBox):
         row2.addWidget(gauge)
 
         # Add all the elements to the main layout and set it as the default layout
-        self.layout.addWidget(self)
+        # self.layout.addWidget(self)
         self.setLayout(main_vbox)
 
 

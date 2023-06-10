@@ -5,7 +5,7 @@ from QLed import QLed
 # TODO: add OPC functionality
 
 class SingleLed(QWidget):
-    def __init__(self, name, layout, opcID='opcID'):
+    def __init__(self, name, opcID='opcID'):
         super().__init__()
         local_layout = QFormLayout()
         
@@ -24,8 +24,6 @@ class SingleLed(QWidget):
         self.setFixedHeight(40)
         self.setFixedWidth(40)
         
-        # Add widget to parent layout
-        layout.addWidget(self)
 
     def update(self, val:dict):
         self.led.value = val[self.opcName]  # Updates the LED status
@@ -51,7 +49,8 @@ class FaultBox(QWidget):
         
         # Single LED setup and adding to the layout
         self.led_layout = QVBoxLayout()
-        self.single_led = SingleLed("LED", self.led_layout)
+        self.single_led = SingleLed("LED")
+        self.led_layout.addWidget(self.single_led)
         row2.addLayout(self.led_layout)
         
         main_vbox.addLayout(row2)
