@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
-from ..widgets.infofield_dbl import InfoFieldDouble
+from ..widgets.infofield_dbl import InfoField
 
 class Page(QWidget):
 
@@ -47,25 +47,25 @@ class Page(QWidget):
 
 
         # Elements of vbox1_*:
-        self.field1_1 = InfoFieldDouble(name="HE11_BH", dec_num=2)
+        self.field1_1 = InfoField(name="HE11_BH", dec_num=2)
         vbox1_1.addWidget(self.field1_1)
-        self.field1_2 = InfoFieldDouble(name="HE12_BH", dec_num=0)
+        self.field1_2 = InfoField(name="HE12_BH", dec_num=0)
         vbox1_1.addWidget(self.field1_2)
-        self.field1_3 = InfoFieldDouble(name="HE21_BH", dec_num=0)
+        self.field1_3 = InfoField(name="HE21_BH", dec_num=0)
         vbox1_2.addWidget(self.field1_3)
-        self.field1_4 = InfoFieldDouble(name="HE22_BH", dec_num=0)
+        self.field1_4 = InfoField(name="HE22_BH", dec_num=0)
         vbox1_2.addWidget(self.field1_4)
 
         # Elements of vbox2_*:
-        self.field2_1 = InfoFieldDouble(name="PU11_BH", dec_num=3)
+        self.field2_1 = InfoField(name="PU11_BH", dec_num=3)
         vbox2_1.addWidget(self.field2_1)
-        self.field2_2 = InfoFieldDouble(name="PU12_BH", dec_num=4)
+        self.field2_2 = InfoField(name="PU12_BH", dec_num=4)
         vbox2_1.addWidget(self.field2_2)
-        self.field2_3 = InfoFieldDouble(name="PU21_BH")
+        self.field2_3 = InfoField(name="PU21_BH")
         vbox2_2.addWidget(self.field2_3)
-        self.field2_4 = InfoFieldDouble(name="PU22_BH", dec_num=4)
+        self.field2_4 = InfoField(name="PU22_BH", dec_num=4)
         vbox2_2.addWidget(self.field2_4)
-        self.field2_5 = InfoFieldDouble(name="PU31_BH", dec_num=4)
+        self.field2_5 = InfoField(name="PU31_BH", dec_num=4)
         vbox2_3.addWidget(self.field2_5)
 
 

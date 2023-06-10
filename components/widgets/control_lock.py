@@ -75,7 +75,7 @@ class OnOffButton(QWidget):
 
         # Updating the state of all info fields and boxes by locking/unlocking them
         InfoField.set_all_states(state)
-        InfoFieldDouble.set_all_states(state)
+        # InfoFieldDouble.set_all_states(state)
         Box.set_all_states(state)
 
 

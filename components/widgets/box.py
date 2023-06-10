@@ -8,7 +8,7 @@ class Box(QGroupBox):
 
   instances = []
 
-  def __init__(self, name, opcID='opcID', horizontal_spacing=55, width=165):
+  def __init__(self, name, opcID='opcID', horizontal_spacing=10, width=100):
     #self.setTitle(name)
     super().__init__(name)
     self.instances.append(self)
