@@ -6,7 +6,10 @@ from PyQt5.QtCore import Qt
 from components.faceplates.faceplate_on_off import OnOffButton
 from components.faceplates.faceplate_fault import FaultBox
 from components.faceplates.faceplate_fackel import FackelBox
+
+#TODO fix layout issues in self.stoerungBox and self.pumpeLED and its imported files
 from components.faceplates.faceplates_new import Led_5, SingleLed
+
 from components.faceplates.faceplate_email_button import EmailButton
 from components.faceplates.faceplate_stop_button import STOPButton
 
@@ -16,7 +19,7 @@ class SideBarFaceplate(QGroupBox):
     The collection of side bar widgets put together.
     Inherits from QGroupBox.
     """
-    def __init__(self, name, layout, opcID=None):
+    def __init__(self, name, opcID=None):
         super().__init__(name) 
 
         # Main layout of the sidebar
@@ -33,7 +36,8 @@ class SideBarFaceplate(QGroupBox):
         self.vbox.addWidget(self.fault_box)
 
         # Fackel (torch) operation block
-        self.fackel_box = FackelBox(name="Fackel", layout=self.vbox)
+        self.fackel_box = FackelBox(name="Fackel")
+        self.vbox.addWidget(self.fackel_box)
         
         # Controls box
         self.stoerungBox = Led_5(box_name="Stoerungen", name="ML Sammelstoerung\
@@ -41,7 +45,7 @@ class SideBarFaceplate(QGroupBox):
                             ,FE02 (Antriebe Pumpen / Diverse)\
                             ,FE03 (Antriebe Ruehrwerke)\
                             ,FE04 (SPS / MSR Technik)", layout=self.vbox)
-        
+
         # Pump status
         self.pumpeLED = SingleLed(name="Pumpe PU31 (Mobil)", layout=self.vbox)
 

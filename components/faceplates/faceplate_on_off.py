@@ -3,8 +3,13 @@ from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QLa
 from PyQt5.QtGui import QFont
 from PyQt5.QtCore import Qt
 
+
+#TODO update all elements for the lock method
 # Importing necessary components
-from .faceplates_new import InfoField, InfoFieldDouble, Box
+# from .faceplates_new import InfoField, InfoFieldDouble, Box
+from .faceplate_infofield_dbl import *
+from .faceplate_box import Box
+
 
 
 class OnOffButton(QWidget):

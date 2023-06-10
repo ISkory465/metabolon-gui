@@ -22,7 +22,7 @@ class SideBar(QWidget):
         self.sb_layout.setAlignment(Qt.AlignTop)
 
         # Create the content of the Control Panel
-        self.content = SideBarFaceplate(name="Control Panel", layout=self.sb_layout)
+        self.content = SideBarFaceplate(name="Control Panel")
 
         # Add the side bar faceplate to the SideBar's layout
         self.sb_layout.addWidget(self.content)

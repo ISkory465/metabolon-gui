@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
-from .faceplates_new import InfoField
+from .faceplate_infofield_dbl import InfoField
 from .faceplate_therm import ThermometerWidget
 from .faceplate_playbtn import PlayButton
 from .faceplate_gauge import Gauge
@@ -8,6 +8,7 @@ from .faceplate_big_mixer import BigMixer
 
 from QLed import QLed
 
+#TODO redo layouts in Infofield's instances from line 83 downwards
 
 class Mixer(QGroupBox):
     """Mixer set of elements for the Strasse 1 tab
@@ -16,11 +17,10 @@ class Mixer(QGroupBox):
     :type QGroupBox: _type_
     """
     
-    def __init__(self, name, layout, opcID=None):
+    def __init__(self, name, opcID=None):
         
         super().__init__(name) 
-        self.layout = layout
-
+        
         #Main laout of the mixer with 2x2 element position
         self.grid = QGridLayout()
         
@@ -70,7 +70,6 @@ class Mixer(QGroupBox):
         self.grid.addWidget(self.big_mixer, 1, 1, 2, 3)
 
 
-        self.layout.addWidget(self)
         self.setLayout(self.grid)
 
 
@@ -81,22 +80,23 @@ class Mixer(QGroupBox):
 
 
         #First (left) column content for the nm_1_column
-        self.ch4 = InfoField(name = "CH4 [%]", 
-                         layout = self.nm_1_column)
-        self.co2 = InfoField(name = "CO2 [%]", 
-                         layout = self.nm_1_column)
-        self.H2 = InfoField(name = "H2 [ppm]", 
-                         layout = self.nm_1_column)
-        self.H2S = InfoField(name = "H2S [ppm]", 
-                         layout = self.nm_1_column)
+        self.ch4 = InfoField(name = "CH4 [%]")
+        self.co2 = InfoField(name = "CO2 [%]")
+        self.H2 = InfoField(name = "H2 [ppm]")
+        self.H2S = InfoField(name = "H2S [ppm]")
+        
+        self.nm_1_column.addWidget(self.ch4)
+        self.nm_1_column.addWidget(self.co2)
+        self.nm_1_column.addWidget(self.H2)
+        self.nm_1_column.addWidget(self.H2S)
         
         #Second (right) column content for the nm_2_column
-        self.Qgas = InfoField(name = "Qgas [l/min]", 
-                         layout = self.nm_2_column)
-        self.Qgas1 = InfoField(name = "CH4 [%]", 
-                         layout = self.nm_2_column)
-        self.pH = InfoField(name = "pH [-]", 
-                         layout = self.nm_2_column)
+        self.Qgas = InfoField(name = "Qgas [l/min]")
+        self.Qgas1 = InfoField(name = "CH4 [%]")
+        self.pH = InfoField(name = "pH [-]")
 
+        self.nm_2_column.addWidget(self.Qgas)
+        self.nm_2_column.addWidget(self.Qgas1)
+        self.nm_2_column.addWidget(self.pH)
 
 

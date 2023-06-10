@@ -1,13 +1,13 @@
 from PyQt5.QtWidgets    import *
 from PyQt5.QtCore       import Qt
 #from ..faceplates.faceplates_new import Box
-from ..faceplates.faceplates import Box
+from ..faceplates.faceplate_box import Box
 from ..faceplates.faceplate_mixer  import Mixer
 from ..faceplates.faceplate_endlager import Endlager
 from ..faceplates.faceplate_tankibc import TankIBC
 from ..faceplates.faceplate_pump import PumpWidget
 from ..faceplates.faceplate_valve import *
-from ..faceplates.faceplates_infofieldV1 import *
+from ..faceplates.faceplate_infofield_dbl import *
 from ..faceplates.faceplate_tank_mixer import *
 from components.faceplates.faceplates_new import SingleLed
 
@@ -32,28 +32,6 @@ def create_group_box(title, boxes):
     group_box.setLayout(group_box_layout)
 
     return group_box
-
-
-# def create_group_box(title, boxes):
-#     # Create a group box
-#     group_box = QGroupBox(title)
-
-#     # Create a layout for the group box
-#     group_box_layout = QGridLayout()
-
-#     # Iterate over the boxes
-#     for i, box in enumerate(boxes):
-#         # Calculate the row and column indices
-#         row = i % 2
-#         col = i // 2
-#         # Add each box to the appropriate cell in the group box layout
-#         group_box_layout.addWidget(box, row, col)
-
-#     # Set the group box layout
-#     group_box.setLayout(group_box_layout)
-
-#     return group_box
-
 
 
 class Page(QWidget):
@@ -98,91 +76,12 @@ class Page(QWidget):
 
 
         # hbox1 Content
-        self.mixer1 = Mixer(name="Fermenter", layout=self.vbox1_1)
-        self.mixer2 = Mixer(name="Nachgärer", layout=self.vbox1_2)
-        self.endlager = Endlager(name="Endlager", layout=self.vbox1_3)
-
-
-
-########################################################################################
-
-
-
-        # ##### Control boxes #####
-
-        # # Create the boxes
-        # pump1 = Box("PU12")
-        # pump2 = Box("PU11")
-        # ruhr1 = Box("RW11")
-        # ruhr2 = Box("RW12")
-        # vent1 = Box("AA11")
-        # vent2 = Box("AA12")
-        # vent3 = Box("AA13")
-        # vent4 = Box("AA14")
-
-        # # Create QVBoxLayouts for each group
-        # ruhr_vbox = QVBoxLayout()
-        # pumpe_vbox = QVBoxLayout()
-
-        # # Create QHBoxLayouts for each group
-        # ruhr_hbox = QHBoxLayout()
-        # pumpe_hbox = QHBoxLayout()
-
-        # # Add labels to the QVBoxLayouts
-        # ruhr_label = QLabel("Ruehrwerke:")
-        # pumpe_label = QLabel("Pumpen:")
-
-        # ruhr_vbox.addWidget(ruhr_label)
-        # pumpe_vbox.addWidget(pumpe_label)
-
-        # # Add QHBoxLayouts to the QVBoxLayouts
-        # ruhr_vbox.addLayout(ruhr_hbox)
-        # pumpe_vbox.addLayout(pumpe_hbox)
-
-        # # Add QVBoxLayouts to the main layout
-        # self.vbox1_4.addLayout(ruhr_vbox)
-        # self.vbox1_4.addLayout(pumpe_vbox)
-
-        # # Add the boxes
-        # ruhr_hbox.addWidget(ruhr1)
-        # ruhr_hbox.addWidget(ruhr2)
-        # pumpe_hbox.addWidget(pump1)
-        # pumpe_hbox.addWidget(pump2)
-
-        # # Create QVBoxLayouts for each group
-        # vent1_vbox = QVBoxLayout()
-        # vent2_vbox = QVBoxLayout()
-
-        # # Create QHBoxLayouts for each group
-        # vent1_hbox = QHBoxLayout()
-        # vent2_hbox = QHBoxLayout()
-
-        # # Add labels to the QVBoxLayouts
-        # vent1_label = QLabel("Ventilator 1:")
-        # vent2_label = QLabel("Ventilator 2:")
-
-        # vent1_vbox.addWidget(vent1_label)
-        # vent2_vbox.addWidget(vent2_label)
-
-        # # Add QHBoxLayouts to the QVBoxLayouts
-        # vent1_vbox.addLayout(vent1_hbox)
-        # vent2_vbox.addLayout(vent2_hbox)
-
-        # # Add QVBoxLayouts to the main layout
-        # self.vbox1_5.addLayout(vent1_vbox)
-        # self.vbox1_5.addLayout(vent2_vbox)
-
-        # # Add the boxes
-        # vent1_hbox.addWidget(vent1)
-        # vent1_hbox.addWidget(vent2)
-        # vent2_hbox.addWidget(vent3)
-        # vent2_hbox.addWidget(vent4)
-
-
-        ###########################
-
-############################################################################################
-
+        self.mixer1 = Mixer(name="Fermenter")
+        self.vbox1_1.addWidget(self.mixer1)
+        self.mixer2 = Mixer(name="Nachgärer")
+        self.vbox1_2.addWidget(self.mixer2)
+        self.endlager = Endlager(name="Endlager")
+        self.vbox1_3.addWidget(self.endlager)
         self.controlbox = QGridLayout()
         self.hbox1.addLayout(self.controlbox)
 
@@ -225,15 +124,15 @@ class Page(QWidget):
         self.hbox2.addWidget(self.tankIbc.get_widget(), 4, 0, 1, 1)  # Add the tank widget to the grid layout
         
         # Create infofield and add it to the grid 
-        self.infofieldNah = InfoFieldV1("Temp. Nahwärmenetz [C]")
+        self.infofieldNah = InfoField("Temp. Nahwärmenetz [C]")
         #self.infofield.setStyleSheet("QGroupBox { border: none; }")
         self.hbox2.addWidget(self.infofieldNah, 1, 0)
         
-        self.infofieldWar = InfoFieldV1("Temp. Wärmetauscher [C]")
+        self.infofieldWar = InfoField("Temp. Wärmetauscher [C]")
         #self.infofield.setStyleSheet("QGroupBox { border: none; }")
         self.hbox2.addWidget(self.infofieldWar, 2, 0)
         
-        self.infofieldSub = InfoFieldV1("IDM_SUB1")
+        self.infofieldSub = InfoField("IDM_SUB1")
         #self.infofield.setStyleSheet("QGroupBox { border: none; }")
         self.hbox2.addWidget(self.infofieldSub, 0, 7)
         
@@ -298,36 +197,6 @@ class Page(QWidget):
         self.pumpWidget.set_mode("operational")
         self.hbox2.addWidget(self.pumpWidget, 2, 7, 1, 1)
 
-        # # Create and add the Box widget
-        # self.box1 = Box("PU12")
-        # self.hbox2.addWidget(self.box1, 4, 7, 1, 1, alignment=Qt.AlignRight)  # Add the box widget to the grid layout
-        
-
-        # # hbox3 Content
-        # self.box2 = Box("PU11", self.hbox3)
-        # self.box3 = Box("RW11", self.hbox3)
-        # # self.box4 = Box("RW12", self.hbox3)
-        # self.box5 = Box("AA11", self.hbox3)
-        # self.box6 = Box("AA12", self.hbox3)
-        # self.box7 = Box("AA13", self.hbox3)
-        # self.box8 = Box("AA14", self.hbox3)
-        
-        # # self.hbox3.addWidget(self.box2, 0, 0)
-        # # self.hbox3.addWidget(self.box3, 0, 1)
-        # # self.hbox3.addWidget(self.box4, 0, 3)
-        # self.hbox3.addWidget(self.box5, 0, 4)
-        # self.hbox3.addWidget(self.box6, 0, 5)
-        # self.hbox3.addWidget(self.box7, 0, 6)
-        # self.hbox3.addWidget(self.box8, 0, 7)
-        
-        # # Set stretch factors for hbox2 and hbox3
-        # #self.vbox.addStretch(1)
-        # #self.hbox2.setColumnStretch(0, 1)
-        # #self.hbox2.setColumnStretch(5, 3)  
-        # #self.hbox3.setColumnStretch(7, 3)  
-        
-        # self.hbox3.setContentsMargins(0, 50, 0, 0)
-        # self.hbox2.setContentsMargins(0, 0, 0, 10)
 
 if __name__ == '__main__':
     pass

@@ -30,7 +30,7 @@ class Indicator(QLabel):
 class FackelBox(QGroupBox):
     """FackelBox is a custom QGroupBox that encapsulates Fackel related UI elements."""
 
-    def __init__(self, name, layout, opcID=None):
+    def __init__(self, name, opcID=None):
         super().__init__(name)
 
         self.opcID = opcID  # TODO: add OPC functionality
@@ -58,6 +58,3 @@ class FackelBox(QGroupBox):
 
         # Initialize and add Fackel controls to col3
         self.fackel_controls = Box("Control mode", col3, horizontal_spacing=10, width=100)
-
-        # Add this group box to the parent layout
-        layout.addWidget(self)
