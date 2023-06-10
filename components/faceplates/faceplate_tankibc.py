@@ -18,7 +18,7 @@ class TankIBC(QWidget):
         self.setup_ui(name)
 
     def setup_ui(self, name):
-        self.setFixedSize(200, 200)
+        self.setMinimumSize(90, 140)
         self.label = QLabel(name)
         self.label.setAlignment(Qt.AlignCenter)
         layout = QVBoxLayout()
@@ -30,7 +30,7 @@ class TankIBC(QWidget):
         painter.setRenderHint(QPainter.Antialiasing)
 
         # Draw the tank
-        tank_rect = QRect(30, 30, self.width() - 80, self.height() - 80)
+        tank_rect = QRect(0, 0, self.width() - 0, self.height() - 0)
         tank_color = QColor(128, 128, 128)  # Gray
         painter.setPen(QPen(Qt.NoPen))
         painter.setBrush(QBrush(tank_color))
@@ -99,7 +99,7 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
 
     # Example usage in a different UI
-    tank = TankIBC(max_level=100, min_level=15)
+    tank = TankIBC(name='valera',max_level=100, min_level=15)
 
     # Create your main UI
     main_window = QWidget()
