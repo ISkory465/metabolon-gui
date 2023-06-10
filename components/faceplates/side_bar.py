@@ -3,15 +3,15 @@ from PyQt5.QtWidgets import QGroupBox, QVBoxLayout, QHBoxLayout, QWidget, QScrol
 from PyQt5.QtCore import Qt
 
 # Importing necessary components
-from components.faceplates.faceplate_on_off import OnOffButton
-from components.faceplates.faceplate_fault import FaultBox
-from components.faceplates.faceplate_fackel import FackelBox
+from components.widgets.control_lock import OnOffButton
+from components.faceplates.fault_reporting import FaultBox
+from components.faceplates.fackel import FackelBox
 
 #TODO fix layout issues in self.stoerungBox and self.pumpeLED and its imported files
 from components.faceplates.faceplates_new import Led_5, SingleLed
 
-from components.faceplates.faceplate_email_button import EmailButton
-from components.faceplates.faceplate_stop_button import STOPButton
+from components.widgets.email_button import EmailButton
+from components.widgets.stop_button import STOPButton
 
 
 class SideBarFaceplate(QGroupBox):

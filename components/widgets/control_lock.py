@@ -7,8 +7,8 @@ from PyQt5.QtCore import Qt
 #TODO update all elements for the lock method
 # Importing necessary components
 # from .faceplates_new import InfoField, InfoFieldDouble, Box
-from .faceplate_infofield_dbl import *
-from .faceplate_box import Box
+from .infofield_dbl import *
+from .box import Box
 
 
 

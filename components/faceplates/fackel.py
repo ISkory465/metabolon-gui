@@ -3,7 +3,8 @@ from PyQt5.QtWidgets import QLabel, QGroupBox, QHBoxLayout, QVBoxLayout
 from PyQt5.QtCore import Qt
 
 # Importing necessary components
-from components.faceplates.faceplates_new import InfoField, Box
+from components.widgets.box import Box
+from components.widgets.infofield_dbl import InfoField
 
 class Indicator(QLabel):
     """Indicator is a custom QLabel that changes its background color based on state. It represents the current state of the fackel"""

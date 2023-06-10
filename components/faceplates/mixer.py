@@ -1,12 +1,11 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
-from .faceplate_infofield_dbl import InfoField
-from .faceplate_therm import ThermometerWidget
-from .faceplate_playbtn import PlayButton
-from .faceplate_gauge import Gauge
-from .faceplate_big_mixer import BigMixer
+from ..widgets.infofield_dbl import InfoField
+from ..widgets.therm import ThermometerWidget
+from ..widgets.schnecke import PlayButton
+from ..widgets.gauge import Gauge
+from .mixer_n_heater import BigMixer
 
-from QLed import QLed
 
 #TODO redo layouts in Infofield's instances from line 83 downwards
 
