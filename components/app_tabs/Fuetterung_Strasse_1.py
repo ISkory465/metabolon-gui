@@ -1,7 +1,6 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
-from ..faceplates.faceplates_new import InfoField, ToggleButton, Futter1, Feststoffbtn
-
+from ..faceplates.Futter import *
 
 class Page(QWidget):
 
