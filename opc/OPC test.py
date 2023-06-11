@@ -3,6 +3,8 @@ from asyncio.windows_events import NULL
 from multiprocessing.sharedctypes import Value
 # import OpenOPC.OpenOPC as opc1
 import OpenOPC as opc1
+# import OpenOPC.OpenOPC as opc1
+import OpenOPC as opc1
 import time
 
 import pywintypes

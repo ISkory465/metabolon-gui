@@ -32,12 +32,14 @@ class Page(QWidget):
 
         #Elements of vbox1
         self.led_l = Led_6(name="PU11 Antriebsstörung +FE02\
+        self.led_l = Led_6(name="PU11 Antriebsstörung +FE02\
                             ,PU11 Trockenlaufstörung +FE02\
                             ,PU11 MaxDruckstörung +FE02\
                             ,PU12 Antriebsstörung +FE02\
                             ,PU12 Trockenlaufstörung +FE02\
                             ,PU12 MaxDruckstörung +FE02", layout=vbox1)
         #Elements of vbox2                            
+        self.led_r = Led_8(name="RW11 Antriebsstorung +FE03,RW11 FU-Störung +FE03\
         self.led_r = Led_8(name="RW11 Antriebsstorung +FE03,RW11 FU-Störung +FE03\
                             ,RW12 Antriebsstörung +FE03\
                             ,RW12 FU-Störung +FE03\
