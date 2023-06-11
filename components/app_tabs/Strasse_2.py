@@ -1,14 +1,14 @@
 from PyQt5.QtWidgets    import *
 from PyQt5.QtCore       import Qt
 #from ..faceplates.faceplates_new import Box
-from ..faceplates.faceplate_box import Box
-from ..faceplates.faceplate_mixer  import Mixer
-from ..faceplates.faceplate_endlager import Endlager
-from ..faceplates.faceplate_tankibc import TankIBC
-from ..faceplates.faceplate_pump import PumpWidget
-from ..faceplates.faceplate_valve import *
-from ..faceplates.faceplate_infofield_dbl import *
-from ..faceplates.faceplate_tank_mixer import *
+from ..widgets.box import Box
+from ..faceplates.mixer  import Mixer
+from ..faceplates.endlager import Endlager
+from ..faceplates.tankibc import TankIBC
+from ..widgets.pump import PumpWidget
+from ..widgets.valve import *
+from ..widgets.infofield_dbl import *
+from ..faceplates.tank_mixer import *
 from components.faceplates.faceplates_new import SingleLed
 
 def create_group_box(title, boxes):

@@ -1,10 +1,10 @@
 from PyQt5.QtWidgets import QApplication, QGroupBox, QVBoxLayout, QHBoxLayout, QWidget
-from .faceplate_therm_endlager import EndThermometerWidget
-from .faceplate_gauge import Gauge
-from .faceplate_endlager_tank import EndlagerTank
+from ..widgets.therm_endlager import EndThermometerWidget
+from ..widgets.gauge import Gauge
+from ..widgets.endlager_tank import EndlagerTank
 import sys
 
-# TODO: add documentation and make sure it works properly
+# TODO: add documentation and make sure it works properly, make gauge smaller
 
 class Endlager(QGroupBox):
     def __init__(self, name, opcID=None):

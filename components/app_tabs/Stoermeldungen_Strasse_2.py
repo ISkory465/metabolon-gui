@@ -1,10 +1,6 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
-from QLed import QLed
 
-from ..faceplates.faceplates_new import Box
-from ..faceplates.faceplates_new import InfoField
-from ..faceplates.faceplates_new import SingleLed
 from ..faceplates.faceplates_new import Led_6
 from ..faceplates.faceplates_new import Led_8
 

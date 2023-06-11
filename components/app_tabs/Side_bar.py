@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QWidget, QVBoxLayout
 from PyQt5.QtCore import Qt
 
 # Import necessary components
-from components.faceplates.faceplate_side_bar import SideBarFaceplate
+from components.faceplates.side_bar import SideBarFaceplate
 
 class SideBar(QWidget):
     """

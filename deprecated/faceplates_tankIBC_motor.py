@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QLabel, QVBoxLayout, QHBoxLayout, QApplication, QGroupBox, QSizePolicy
 from PyQt5.QtGui import QPainter, QColor, QPen, QBrush
-from ..components.faceplates.faceplate_tankibc import TankIBC
-from ..components.faceplates.faceplate_motor import MotorWidget, MotorLabelWidget
+from ..components.faceplates.tankibc import TankIBC
+from ..components.faceplates.motor import MotorWidget, MotorLabelWidget
 import sys
 
 
