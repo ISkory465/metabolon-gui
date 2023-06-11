@@ -4,7 +4,7 @@ from ..widgets.gauge import Gauge
 from ..widgets.endlager_tank import EndlagerTank
 import sys
 
-# TODO: add documentation and make sure it works properly
+# TODO: add documentation and make sure it works properly, make gauge smaller
 
 class Endlager(QGroupBox):
     def __init__(self, name, opcID=None):
