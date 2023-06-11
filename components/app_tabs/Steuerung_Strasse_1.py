@@ -52,8 +52,7 @@ class Page(QWidget):
         
         #Settings for the vbox1 (First Column of the hbox1)
         vbox1.setAlignment(Qt.AlignTop)
-        vbox1.setSpacing(5)
-        
+               
         
     #----------------------SECOND COLUMN--------------------
         #Second column elements of vbox1 for the hbox1:
@@ -71,16 +70,16 @@ class Page(QWidget):
 
         #Settings for the vbox2 (First Column of the hbox1)
         vbox2.setAlignment(Qt.AlignTop)
-        vbox2.setSpacing(5)
-
+        
 
     #----------------------THIRD COLUMN--------------------
+
         self.field2_add = InfoField(name="RW13.SW_AKT [%]")
         vbox2_2.addWidget(self.field2_add)
         
         #Settings for the vbox2_2 (Third Column of the hbox1)
         vbox2_2.setAlignment(Qt.AlignBottom)
-        vbox2_2.setSpacing(5)                    
+                         
 
     #----------------------FOURTH COLUMN--------------------
         #Fourth column elements of vbox3 for the hbox1:
@@ -98,10 +97,14 @@ class Page(QWidget):
 
         #Settings for the vbox3 (Third Column of the hbox1)
         vbox3.setAlignment(Qt.AlignTop)
-        vbox3.setSpacing(5)
-
+        
 
     #----------------------FIFTH COLUMN--------------------
+
+        #Spacer to shift content of the fifth column and allign it with other columns
+        verticalSpacer1 = QSpacerItem(20, 120, QSizePolicy.Minimum, QSizePolicy.Fixed) 
+        vbox3_3.addItem(verticalSpacer1)
+
         #Fifth column elements of vbox3_3 for the hbox1:
         
         self.field3_1a = InfoField(name="RW11 Auto Sollwert [%]")
@@ -114,17 +117,15 @@ class Page(QWidget):
         vbox3_3.addWidget(self.field3_4a)
 
         #Settings for the vbox3 (Third Column of the hbox1)
-        vbox3_3.setAlignment(Qt.AlignBottom)
-        vbox3_3.setSpacing(5)
-
+        vbox3_3.setAlignment(Qt.AlignTop)
+        
         #Settings for the hbox1:
-        hbox1.setAlignment(Qt.AlignTop)
-        hbox1.setSpacing(10)
-        hbox1.addLayout(vbox1, 2)
-        hbox1.addLayout(vbox2, 2)
-        hbox1.addLayout(vbox2_2, 1)
-        hbox1.addLayout(vbox3, 2)
-        hbox1.addLayout(vbox3_3, 2)
+        hbox1.setAlignment(Qt.AlignLeft)
+        hbox1.addLayout(vbox1)
+        hbox1.addLayout(vbox2)
+        hbox1.addLayout(vbox2_2)
+        hbox1.addLayout(vbox3)
+        hbox1.addLayout(vbox3_3)
 
 
 
@@ -144,7 +145,7 @@ class Page(QWidget):
 
         #Settings for the vbox4 (First Column of the hbox2)
         vbox4.setAlignment(Qt.AlignTop)
-        vbox4.setSpacing(5)                                            
+                                               
         
         #----------------------SECOND COLUMN--------------------
         #Second column elements of vbox5 for the hbox2:
@@ -161,9 +162,9 @@ class Page(QWidget):
         vbox5.addWidget(self.field4_4)
         #Settings for the vbox5 (First Column of the hbox2)
         vbox5.setAlignment(Qt.AlignTop)
-        vbox5.setSpacing(5)                    
+                         
 
-
+        #TODO: redo SingleLed instance so it won't use parent layout
         #----------------------FIFTH COLUMN--------------------
         #Second column elements of vbox6 for the hbox2:
         vbox3_3_2=QVBoxLayout()  # New QVBoxLayout
@@ -172,23 +173,22 @@ class Page(QWidget):
         
         #settings for the vbox6:
         vbox6.setAlignment(Qt.AlignTop)
-        vbox6.setSpacing(5)   
         vbox6.setContentsMargins(0, 15, 10, 0)
 
         #Settings for the hbox2:
-        hbox2.setAlignment(Qt.AlignTop)
-        hbox2.setSpacing(10)
+        hbox2.setAlignment(Qt.AlignLeft)
         hbox2.setContentsMargins(0, 10, 0, 0)
 
         #Add columns(vbox4, vbox5 vbox3_3(dummy)) to the hbox2
-        hbox2.addLayout(vbox4, 1)
-        hbox2.addLayout(vbox5, 1)
-        hbox2.addLayout(vbox6, 1)
-        hbox2.addLayout(vbox3_3_2, 1)  # use vbox3_3_2 instead of vbox3_3
+        hbox2.addLayout(vbox4)
+        hbox2.addLayout(vbox5)
+        hbox2.addLayout(vbox6)
+        hbox2.addLayout(vbox3_3_2)  # use vbox3_3_2 instead of vbox3_3
 
         #Adding two horizontal layouts (hbox1, hbox2) to the layout of the page
-        vbox.addLayout(hbox1, 50)
-        vbox.addLayout(hbox2, 50)
+        vbox.addLayout(hbox1)
+        vbox.addLayout(hbox2)
+        vbox.setAlignment(Qt.AlignTop)
 
         #Assigning page layout to the window
         self.setLayout(vbox)
@@ -249,11 +249,4 @@ class Page(QWidget):
 
 
 if __name__ == '__main__':
-    app = QApplication([])
-    window = QMainWindow()
-    window.setWindowTitle("Page Test")
-    page = Page()
-    page.UI()
-    window.setCentralWidget(page)
-    window.show()
-    app.exec_()
+    pass
