@@ -28,13 +28,11 @@ class Page(QWidget):
        
         #Elements of vbox1 and vbox2 for the hbox:
         self.led_l = Led_6(name="PU21 Antriebsstörung +FE02\
-        self.led_l = Led_6(name="PU21 Antriebsstörung +FE02\
                             ,PU21 Trockenlaufstörung +FE02\
                             ,PU21 MaxDruckstörung +FE02\
                             ,PU22 Antriebsstörung +FE02\
                             ,PU22 Trockenlaufstörung +FE02\
                             ,PU22 MaxDruckstörung +FE02", layout=vbox1)
-        self.led_r = Led_8(name="RW21 Antriebsstörung +FE03,RW21 FU-Störung +FE03\
         self.led_r = Led_8(name="RW21 Antriebsstörung +FE03,RW21 FU-Störung +FE03\
                             ,RW22 Antriebsstörung +FE03\
                             ,RW22 FU-Störung +FE03\
