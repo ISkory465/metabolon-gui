@@ -1,8 +1,9 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
-from ..faceplates.Futter import *
-from ..faceplates.faceplate_infofield_dbl import InfoField
+from ..faceplates.futter import *
+from ..widgets.infofield_dbl import InfoField
 
+#TODO: Correct design of buttons, correct some aspects of layout
 
 class Page(QWidget):
 
@@ -35,9 +36,13 @@ class Page(QWidget):
       #hbox1
         #----------------------FIRST Part of the Tab--------------------
         #Elements of vbox1 for the hbox1:
-        self.futter1 = Futter1(buttonName="DB50.FES1.VW.FES", sollwert11='Feststoff Sollwert [kg/d]',solwert12='Feststoff Istwert [kg/d]', solwert21='Feststoff Sollwert [kg/Zyklus]',solwert22='Feststoff Istwert [kg/Zyklus]', layout=self.vbox1)
-        self.futter2 = Futter1(buttonName="DB50.FLU1.VW.FLU", sollwert11='Feststoff Sollwert [l/d]', solwert12='Feststoff Istwert [l/d]',  solwert21='Feststoff Sollwert [l/Zyklus]', solwert22='Feststoff Istwert [l/Zyklus]', layout=self.vbox1)
-        self.futter3 = Futter1(buttonName="DB50.MAI.VW.MAI", sollwert11='Maische Sollwert [l/d]',   solwert12='Maische Istwert [l/d]',    solwert21='Maische Sollwert [l/Zyklus]',   solwert22='Maische Istwert [l/Zyklus]', layout=self.vbox1)
+        self.futter1 = Futter1(buttonName="DB50.FES1.VW.FES", sollwert11='Feststoff Sollwert [kg/d]',solwert12='Feststoff Istwert [kg/d]', solwert21='Feststoff Sollwert [kg/Zyklus]',solwert22='Feststoff Istwert [kg/Zyklus]')
+        self.vbox1.addWidget(self.futter1)
+        self.futter2 = Futter1(buttonName="DB50.FLU1.VW.FLU", sollwert11='Feststoff Sollwert [l/d]', solwert12='Feststoff Istwert [l/d]',  solwert21='Feststoff Sollwert [l/Zyklus]', solwert22='Feststoff Istwert [l/Zyklus]')
+        self.vbox1.addWidget(self.futter2)
+        self.futter3 = Futter1(buttonName="DB50.MAI.VW.MAI", sollwert11='Maische Sollwert [l/d]',   solwert12='Maische Istwert [l/d]',    solwert21='Maische Sollwert [l/Zyklus]',   solwert22='Maische Istwert [l/Zyklus]')
+        self.vbox1.addWidget(self.futter3)
+        
         self.futterungszyKlein = InfoField(name ='Futterungszyklein/Tag')
         self.vbox2.addWidget(self.futterungszyKlein)
         self.b50Flusw = InfoField(name ='DB50.MAIFLU1.FLUSW')
@@ -52,7 +57,8 @@ class Page(QWidget):
                                       fourthElement="Gesamteintrag Feststoff 4 [kg]", 
                                       fifthElement="Gesamteintrag Feststoff 5 [kg]",
                                       sixthElement="Gesamteintrag Feststoff 6 [kg]",
-                                        layout=self.vbox4)
+                                      )
+        self.vbox4.addWidget(self.feststoff1)
         self.feststoff1Nobtn = InfoField(name ='Gesamteintrag Feststoff 7 [kg]')
         self.vbox4.addWidget(self.feststoff1Nobtn)
 
@@ -62,14 +68,17 @@ class Page(QWidget):
                                       fourthElement="Gesamteintrag Fluessigkeit 4 [l]", 
                                       fifthElement="Gesamteintrag Fluessigkeit 5 [l]",
                                       sixthElement="Gesamteintrag Fluessigkeit 6 [l]",
-                                        layout=self.vbox5)
+                                      )
+        self.vbox5.addWidget(self.feststoff2)
         self.feststoff3 = Feststoffbtn(firstElement="Gesamteintrag Maische 1 [l]", 
                                       secondElement="Gesamteintrag Maische 2 [l]", 
                                       thirdElement="Gesamteintrag Maische 3 [l]",
                                       fourthElement="Gesamteintrag Maische 4 [l]", 
                                       fifthElement="Gesamteintrag Maische 5 [l]",
                                       sixthElement="Gesamteintrag Maische 6 [l]",
-                                        layout=self.vbox6)
+                                      )
+        self.vbox6.addWidget(self.feststoff3)
+        
         self.feststoff2Nobtn = InfoField(name ='Gesamteintrag Maische 7 [l]')
         self.feststoff3Nobtn = InfoField(name ='Feststoff Gesamteintrag [kg]')
         self.feststoff4Nobtn = InfoField(name ='Fluessigkeit Gesamteintrag [l]')
