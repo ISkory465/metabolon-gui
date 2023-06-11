@@ -52,7 +52,7 @@ class Page():
         
     #----------------------SECOND COLUMN--------------------
         #Second column elements of vbox1 for the hbox1:
-        self.box2 = Box("SC23", vbox2)
+        self.box2 = Box("RW23", vbox2)
         
         self.field2_1 = InfoField(name = "RW23 Pause Soll [min] ln", 
                             layout = vbox2)

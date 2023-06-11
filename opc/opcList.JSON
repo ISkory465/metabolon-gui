@@ -1,5 +1,5 @@
 {
-  "TAB1":[
+  "TAB1":
  {   
 "HE11.Hand":"SIMATIC 300-Station.CPU 315-2 DP.DB5.HE11.BF2",
 "HE11.AUTO":"SIMATIC 300-Station.CPU 315-2 DP.DB5.HE11.BF3",
@@ -37,10 +37,10 @@
 "RW14 Hand Sollwert [%]":"SIMATIC 300-Station.CPU 315-2 DP.DB10.RW14_SW.SW1",
 "RW14 Pause Soll [min] ln":"SIMATIC 300-Station.CPU 315-2 DP.DB30.RW14.SZ_PAU",
 "RW14 Run Soll [min] ln":"SIMATIC 300-Station.CPU 315-2 DP.DB30.RW14.SZ_EIN"
-}],
+},
 
 
-"TAB2":[
+"TAB2":
 {
 "HE21.Hand":"SIMATIC 300-Station.CPU 315-2 DP.DB5.HE21.BF2",
 "HE21.AUTO":"SIMATIC 300-Station.CPU 315-2 DP.DB5.HE21.BF3",
@@ -81,9 +81,9 @@
 
 
 
-}],
+},
 
-"Betriebsstunden":[
+"Betriebsstunden":
 {
   "HE11_BH":"SIMATIC 300-Station.CPU 315-2 DP.DB78.HE11_BH",
   "HE12_BH":"SIMATIC 300-Station.CPU 315-2 DP.DB78.HE12_BH",
@@ -96,8 +96,29 @@
   "PU31_BH":"SIMATIC 300-Station.CPU 315-2 DP.DB78.PU31_BH"
 
 }
-],
-"Stoermeldungen_Strasse_2":[
+,
+"Stoermeldungen_Strasse_1":
+{
+  "PU11 Antriebsstörung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M204_0",
+  "PU11 Trockenlaufstörung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M204_1",
+  "PU11 MaxDruckstörung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M204_2",
+  "PU12 Antriebsstörung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M204_4",
+  "PU12 Trockenlaufstörung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M204_5",
+  "PU12 MaxDruckstörung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M204_6",
+
+
+  "RW11 Antriebsstorung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M208_0",
+  "RW11 FU-Störung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M208_1",
+  "RW12 Antriebsstörung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M208_2",
+  "RW12 FU-Störung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M208_3",
+  "RW13 Antriebsstörung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M208_4",
+  "RW13 FU-Störung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M208_5",
+  "RW14 Antriebsstörung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M208_6",
+  "RW14 FU-Störung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M208_7"
+
+}
+,
+"Stoermeldungen_Strasse_2":
 {
   "PU21 Antriebsstörung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M205_0",
   "PU21 Trockenlaufstörung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M205_1",
@@ -117,6 +138,6 @@
   "RW24 FU-Störung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M209_7"
 
 }
-]
+
 
 }

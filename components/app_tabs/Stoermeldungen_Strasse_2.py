@@ -26,14 +26,13 @@ class Page():
 
        
         #Elements of vbox1 and vbox2 for the hbox:
-        led_l = Led_6(name="PU21 Antriebsstörung +FE02\
+        self.led_l = Led_6(name="PU21 Antriebsstörung +FE02\
                             ,PU21 Trockenlaufstörung +FE02\
                             ,PU21 MaxDruckstörung +FE02\
                             ,PU22 Antriebsstörung +FE02\
                             ,PU22 Trockenlaufstörung +FE02\
                             ,PU22 MaxDruckstörung +FE02", layout=vbox1)
-        led_r = Led_8(name="RW21 Antriebsstörung +FE03\
-                            ,RW21 FU-Störung +FE03\
+        self.led_r = Led_8(name="RW21 Antriebsstörung +FE03,RW21 FU-Störung +FE03\
                             ,RW22 Antriebsstörung +FE03\
                             ,RW22 FU-Störung +FE03\
                             ,RW23 Antriebsstörung +FE03\
@@ -53,6 +52,21 @@ class Page():
         
         #Assigning to the tab
         window.tab7.setLayout(grid) 
+    def updateAll(self,inputs: dict):
+        """method to update all objects in current tab periodically after reading the values in different thread
+
+        :param inputs: tag values
+        :type inputs: dict
+        """
+        objectList=[self.led_l,
+                    self.led_r
+                    
+                    ]
+
+
+        for o in objectList:
+            #iterate over an update method that should be added to all faceplate objects similar to box object
+            o.update(inputs)
       
 if __name__=='__main__':
     pass
