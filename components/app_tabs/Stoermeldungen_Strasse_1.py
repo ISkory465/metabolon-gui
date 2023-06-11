@@ -31,15 +31,14 @@ class Page(QWidget):
         hbox = QHBoxLayout()   
 
         #Elements of vbox1
-        led_l = Led_6(name="PU11 Antriebsstörung +FE02\
+        self.led_l = Led_6(name="PU11 Antriebsstörung +FE02\
                             ,PU11 Trockenlaufstörung +FE02\
                             ,PU11 MaxDruckstörung +FE02\
                             ,PU12 Antriebsstörung +FE02\
                             ,PU12 Trockenlaufstörung +FE02\
                             ,PU12 MaxDruckstörung +FE02", layout=vbox1)
         #Elements of vbox2                            
-        led_r = Led_8(name="RW11 Antriebsstörung +FE03\
-                            ,RW11 FU-Störung +FE03\
+        self.led_r = Led_8(name="RW11 Antriebsstorung +FE03,RW11 FU-Störung +FE03\
                             ,RW12 Antriebsstörung +FE03\
                             ,RW12 FU-Störung +FE03\
                             ,RW13 Antriebsstörung +FE03\
@@ -92,6 +91,28 @@ class Page(QWidget):
         # Assigning to the tab
         self.setLayout(grid)
     
+    def updateAll(self,inputs: dict):
+        """method to update all objects in current tab periodically after reading the values in different thread
 
+        :param inputs: tag values
+        :type inputs: dict
+        """
+        objectList=[self.led_l,
+                    self.led_r,
+                    
+                    self.led1,
+                    self.led2,
+                    self.led3,
+
+                    self.field1,
+                    self.field2,
+                    self.field3,
+                    self.field4
+                    ]
+
+
+        for o in objectList:
+            #iterate over an update method that should be added to all faceplate objects similar to box object
+            o.update(inputs)
 if __name__=='__main__':
     pass

@@ -116,8 +116,11 @@ class InfoField(QGroupBox):
         self.layout.addWidget(self.spin)
 
     def update(self,val:dict):
-        self.spin.setValue(val[self.opcName])
-        #print(self.opcName+' : '+str(val[self.opcName]))
+        try:
+          self.spin.setValue(val[self.opcName])
+        except:
+          self.spin.setValue(0)
+#print(self.opcName+' : '+str(val[self.opcName]))
 
     @classmethod
     def set_all_states(cls, state):
@@ -144,6 +147,7 @@ class InfoFieldDouble(QGroupBox):
         #Header (QLabel) for the numerical field
         self.name = QLabel(name)
         self.layout.addWidget(self.name)
+        self.opcName=name
 
         #Field for numerical Value
         self.spin = QDoubleSpinBox(decimals = dec_num) #uses integers; for floats use QDoubleSpinBox
@@ -164,6 +168,11 @@ class InfoFieldDouble(QGroupBox):
         # temp1.valueChanged.connect(self.value_changed)
 
         self.layout.addWidget(self.spin)
+    def update(self,val:dict):
+        try:
+          self.spin.setValue(val[self.opcName])
+        except:
+          self.spin.setValue(0)
 
     @classmethod
     def set_all_states(cls, state):
@@ -198,8 +207,10 @@ class SingleLed(QGroupBox):
         self.layout.addWidget(self)
 
     def update(self,val:dict):
-        self.led.value=val[self.opcName]
-        
+        try:
+          self.led.value=val[self.opcName]
+        except:
+          self.led.value=False
 
 class Box(QGroupBox):
 
@@ -286,34 +297,40 @@ class Box(QGroupBox):
     # self.led1.value=val[self.opcName+'.Hand']
     # self.led2.value=val[self.opcName+'.AUS']
     # self.led3.value=val[self.opcName+'.AUTO']
-    if (val[self.opcName+'.Hand']):
-      self.radioBtn2.setChecked(False)
-      self.radioBtn3.setChecked(False)
-      self.radioBtn1.setChecked(True)
-      
-      self.led2.setValue(False)
-      self.led3.setValue(False)
-      self.led1.setValue(True)
+    try:
+      if (val[self.opcName+'.Hand']):
+        self.radioBtn2.setChecked(False)
+        self.radioBtn3.setChecked(False)
+        self.radioBtn1.setChecked(True)
+        
+        self.led2.setValue(False)
+        self.led3.setValue(False)
+        self.led1.setValue(True)
 
-      print("Led1 is true")
+        #print("Led1 is true")
 
-    elif (val[self.opcName+'.AUS']):
-      self.radioBtn1.setChecked(False)
-      self.radioBtn2.setChecked(True)
-      self.radioBtn3.setChecked(False)
-      self.led1.setValue(False)
-      self.led2.setValue(True)
-      self.led3.setValue(False)
-      print("Led2 is true")
+      elif (val[self.opcName+'.AUS']):
+        self.radioBtn1.setChecked(False)
+        self.radioBtn2.setChecked(True)
+        self.radioBtn3.setChecked(False)
+        self.led1.setValue(False)
+        self.led2.setValue(True)
+        self.led3.setValue(False)
+        #print("Led2 is true")
 
-    elif (val[self.opcName+'.AUTO']):
-      self.radioBtn1.setChecked(False)
-      self.radioBtn2.setChecked(False)
-      self.radioBtn3.setChecked(True)
-      self.led1.setValue(False)
-      self.led2.setValue(False)
-      self.led3.setValue(True)
-      print("Led3 is true")
+      elif (val[self.opcName+'.AUTO']):
+        self.radioBtn1.setChecked(False)
+        self.radioBtn2.setChecked(False)
+        self.radioBtn3.setChecked(True)
+        self.led1.setValue(False)
+        self.led2.setValue(False)
+        self.led3.setValue(True)
+        #print("Led3 is true")
+    except Exception as e:
+        self.led1.setValue(False)
+        self.led2.setValue(False)
+        self.led3.setValue(False)
+        print(str(e))
 
     #print(val[self.opcName+'.Hand'])
 
@@ -397,6 +414,13 @@ class Led_6(QGroupBox):
         local_layout.addRow(self.led4, QLabel(name.split(',')[3]))
         local_layout.addRow(self.led5, QLabel(name.split(',')[4]))
         local_layout.addRow(self.led6, QLabel(name.split(',')[5]))
+        self.opcName=[]
+        self.opcName.append(name.split(',')[0])
+        self.opcName.append(name.split(',')[1])
+        self.opcName.append(name.split(',')[2])
+        self.opcName.append(name.split(',')[3])
+        self.opcName.append(name.split(',')[4])
+        self.opcName.append(name.split(',')[5])
         
         
 
@@ -410,6 +434,24 @@ class Led_6(QGroupBox):
 
         self.setLayout(local_layout)
         self.layout.addWidget(self)
+    def update(self,val:dict):
+        try:
+          self.led1.value=val[self.opcName[0]]
+          self.led2.value=val[self.opcName[1]]
+          self.led3.value=val[self.opcName[2]]
+          self.led4.value=val[self.opcName[3]]
+          self.led5.value=val[self.opcName[4]]
+          self.led6.value=val[self.opcName[5]]
+          
+
+        except:
+          self.led1.value = False
+          self.led2.value = False
+          self.led3.value = False
+          self.led4.value = False
+          self.led5.value = False
+          self.led6.value = False
+         
 
 class Led_8(QGroupBox):
     def __init__(self, name, layout, opcID='opcID'):
@@ -449,6 +491,16 @@ class Led_8(QGroupBox):
         local_layout.addRow(self.led6, QLabel(name.split(',')[5]))
         local_layout.addRow(self.led7, QLabel(name.split(',')[6]))
         local_layout.addRow(self.led8, QLabel(name.split(',')[7]))
+        self.opcName=[]
+        self.opcName.append(name.split(',')[0])
+        self.opcName.append(name.split(',')[1])
+        self.opcName.append(name.split(',')[2])
+        self.opcName.append(name.split(',')[3])
+        self.opcName.append(name.split(',')[4])
+        self.opcName.append(name.split(',')[5])
+        self.opcName.append(name.split(',')[6])
+        self.opcName.append(name.split(',')[7])
+
 
         #Settings:
         #self.setFixedHeight(106)
@@ -463,7 +515,27 @@ class Led_8(QGroupBox):
         self.setLayout(local_layout)
         self.layout.addWidget(self)
 
+    def update(self,val:dict):
+        try:
+          self.led1.value=val[self.opcName[0]]
+          self.led2.value=val[self.opcName[1]]
+          self.led3.value=val[self.opcName[2]]
+          self.led4.value=val[self.opcName[3]]
+          self.led5.value=val[self.opcName[4]]
+          self.led6.value=val[self.opcName[5]]
+          self.led7.value=val[self.opcName[6]]
+          self.led8.value=val[self.opcName[7]]
 
+        except Exception as e:
+          print(str(e))
+          self.led1.value = False
+          self.led2.value = False
+          self.led3.value = False
+          self.led4.value = False
+          self.led5.value = False
+          self.led6.value = False
+          self.led7.value = False
+          self.led8.value = False
 class Futter1():
   """Mixer set of elements for the Strasse 1 tab
     :param QGroupBox: _description_
@@ -521,7 +593,7 @@ class Led(QGroupBox):
     def __init__(self, name, layout, opcID='opcID'):
         super().__init__()
         self.layout = layout
-
+        self.opcName=name
         self.led1=QLed(onColour=QLed.Green, shape=QLed.Circle)
               
         self.led1.value = True
@@ -530,6 +602,11 @@ class Led(QGroupBox):
         
         self.layout.addWidget(self.led1)
         self.layout.addWidget(QLabel(name))
+    def update(self,val:dict):
+        try:
+          self.led1.value=val[self.opcName]
+        except:
+          self.led1.value=False
 
 class Led_DA(QGroupBox): #Description Above
     def __init__(self, name, layout, opcID='opcID'):
@@ -541,9 +618,17 @@ class Led_DA(QGroupBox): #Description Above
         self.led1.value = True
 
         self.led1.setFixedHeight(25)
+        self.opcName=name
         
         self.layout.addWidget(QLabel(name))
         self.layout.addWidget(self.led1, alignment = Qt.AlignLeft)
+    def update(self,val:dict):
+        try:
+          self.led1.value=val[self.opcName]
+        except:
+          self.led1.value=False
+
+
 class Feststoffbtn(QGroupBox):
     def __init__(self, firstElement, secondElement, thirdElement, fourthElement, fifthElement, sixthElement, layout, opcID='opcID'):
         super().__init__()
