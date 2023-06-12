@@ -5,9 +5,10 @@ from ..widgets.therm import ThermometerWidget
 from ..widgets.schnecke import PlayButton
 from ..widgets.gauge import Gauge
 from .mixer_n_heater import BigMixer
+import sys
 
 
-#TODO redo layouts in Infofield's instances from line 83 downwards
+#TODO make cleanning and comments
 
 class Mixer(QGroupBox):
     """Mixer set of elements for the Strasse 1 tab
@@ -21,61 +22,60 @@ class Mixer(QGroupBox):
         super().__init__(name) 
         
         #Main laout of the mixer with 2x2 element position
-        self.grid = QGridLayout()
-        
 
-        # [0.0] -----------------------------------------
-        #Numerical Fileds layout for [0,0] grid position
-        self.numerical_data = QHBoxLayout()
+        self.vbox = QVBoxLayout()
+        self.vbox.setAlignment(Qt.AlignTop)
+        self.hbox = QHBoxLayout()
+        self.hbox.setAlignment(Qt.AlignVCenter)
+        self.hbox1 = QHBoxLayout()
+        self.hbox1.setAlignment(Qt.AlignTop)
+
+        self.vbox.addLayout(self.hbox)
+        self.vbox.addLayout(self.hbox1)
 
         #numerical data box contains 2 vertical boxes
         self.nm_1_column = QVBoxLayout()
+        # print(self.nm_1_column.geometry())
         self.nm_2_column = QVBoxLayout()
         
         #Layout relation
-        self.numerical_data.addLayout(self.nm_1_column)
-        self.numerical_data.addLayout(self.nm_2_column)
-        self.numerical_data.setAlignment(Qt.AlignLeft)
+        self.hbox.addLayout(self.nm_1_column)
+        self.hbox.addLayout(self.nm_2_column)
         self.nm_1_column.setAlignment(Qt.AlignTop)
         self.nm_2_column.setAlignment(Qt.AlignTop)
-        self.grid.addLayout(self.numerical_data, *[0,0])
-
-        self.thermometer = ThermometerWidget() #add  self.name parameter in class thermometer
-        self.thermometer.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed) 
-        self.grid.addWidget(self.thermometer, *[0,2], alignment=Qt.AlignLeft)
-
-
+                
         # Schnecke VBox
         schnecke_vbox = QVBoxLayout()
+        schnecke_vbox.setAlignment(Qt.AlignTop)
 
-        schnecke_vbox.addStretch(1)
+        # schnecke_vbox.addStretch(1)
         self.schnecke_label = QLabel("Schnecke")
         self.schnecke_label.setAlignment(Qt.AlignCenter)
         schnecke_vbox.addWidget(self.schnecke_label)
+        self.hbox.addLayout(schnecke_vbox)
 
         self.playbutton = PlayButton()
         schnecke_vbox.addWidget(self.playbutton)
-        schnecke_vbox.addStretch(1)  # Pushes the PlayButton up
+        schnecke_vbox.setAlignment(Qt.AlignVCenter)
+        # schnecke_vbox.addStretch(1)  # Pushes the PlayButton up
+        
+        therm_layout = QVBoxLayout()
+        self.thermometer = ThermometerWidget() #add  self.name parameter in class thermometer
+        therm_layout.addWidget(self.thermometer)
+        therm_layout.setAlignment(Qt.AlignVCenter)
+        self.hbox.addLayout(therm_layout)
 
-        # self.playbutton.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed) 
-        self.grid.addLayout(schnecke_vbox, 0, 1)
+
 
         self.gauge = Gauge() #add self.name parameter in class
-        # self.gauge.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed) 
-        self.grid.addWidget(self.gauge, *[1,0])
+        self.hbox1.addWidget(self.gauge)
+        horizontalSpacer = QSpacerItem(75, 10, QSizePolicy.Minimum, QSizePolicy.Fixed) 
+        self.hbox1.addItem(horizontalSpacer)
 
         self.big_mixer = BigMixer() #add self.name parameter in class
-        self.big_mixer.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred) 
-        self.grid.addWidget(self.big_mixer, 1, 1, 2, 3)
+        self.hbox1.addWidget(self.big_mixer)
 
-
-        self.setLayout(self.grid)
-
-
-        
-        # self.grid.addWidget(QLabel('  '), *[1,1])
-
-
+        self.setLayout(self.vbox)
 
 
         #First (left) column content for the nm_1_column
@@ -83,7 +83,7 @@ class Mixer(QGroupBox):
         self.co2 = InfoField(name = "CO2 [%]")
         self.H2 = InfoField(name = "H2 [ppm]")
         self.H2S = InfoField(name = "H2S [ppm]")
-        
+
         self.nm_1_column.addWidget(self.ch4)
         self.nm_1_column.addWidget(self.co2)
         self.nm_1_column.addWidget(self.H2)
@@ -99,3 +99,5 @@ class Mixer(QGroupBox):
         self.nm_2_column.addWidget(self.pH)
 
 
+if __name__ == "__main__":
+    pass
