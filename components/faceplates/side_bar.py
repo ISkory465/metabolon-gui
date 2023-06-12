@@ -1,17 +1,18 @@
 # Importing necessary modules
 from PyQt5.QtWidgets import QGroupBox, QVBoxLayout, QHBoxLayout, QWidget, QScrollArea
 from PyQt5.QtCore import Qt
+from QLed import QLed
 
 # Importing necessary components
+## Buttons
 from components.widgets.control_lock import OnOffButton
-from components.faceplates.fault_reporting import FaultBox
-from components.faceplates.fackel import FackelBox
-
-#TODO fix layout issues in self.stoerungBox and self.pumpeLED and its imported files
-from components.faceplates.faceplates_new import Led_5, SingleLed
-
 from components.widgets.email_button import EmailButton
 from components.widgets.stop_button import STOPButton
+## Boxes
+from components.faceplates.fault_reporting import FaultBox
+from components.faceplates.fackel import FackelBox
+## LEDs
+from components.widgets.leds import SingleLed, LedGroupBox
 
 
 class SideBarFaceplate(QGroupBox):
@@ -40,14 +41,18 @@ class SideBarFaceplate(QGroupBox):
         self.vbox.addWidget(self.fackel_box)
         
         # Controls box
-        self.stoerungBox = Led_5(box_name="Stoerungen", name="ML Sammelstoerung\
-                            ,FE01 (Einspeisung / Steuerspannung)\
-                            ,FE02 (Antriebe Pumpen / Diverse)\
-                            ,FE03 (Antriebe Ruehrwerke)\
-                            ,FE04 (SPS / MSR Technik)", layout=self.vbox)
+        self.stoerungBox = LedGroupBox("Stoerungen", ["ML Sammelstoerung",
+                                                      "FE01 (Einspeisung / Steuerspannung)",
+                                                      "FE02 (Antriebe Pumpen / Diverse)",
+                                                      "FE03 (Antriebe Ruehrwerke)",
+                                                      "FE04 (SPS / MSR Technik)"], [QLed.Red] * 5)
+        self.vbox.addWidget(self.stoerungBox)
+        self.stoerungBox.set_led_state(0, True)
+
 
         # Pump status
-        self.pumpeLED = SingleLed(name="Pumpe PU31 (Mobil)", layout=self.vbox)
+        self.pumpeLED = SingleLed(name="Pumpe PU31 (Mobil)")
+        self.vbox.addWidget(self.pumpeLED)
 
         # Email notifications button
         self.email = EmailButton()

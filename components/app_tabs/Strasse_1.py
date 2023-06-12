@@ -9,7 +9,7 @@ from ..widgets.pump import PumpWidget
 from ..widgets.valve import *
 from ..widgets.infofield_dbl import *
 from ..faceplates.tank_mixer import *
-from components.faceplates.faceplates_new import SingleLed
+from components.widgets.leds import SingleLed
 
 def create_group_box(title, boxes):
     # Create a group box
@@ -190,7 +190,7 @@ class Page(QWidget):
         self.valve4 = ValveLabelWidget("Ventil AA12")
         self.hbox2.addWidget(self.valve4, 2, 6)
 
-        self.pumpLED = SingleLed(name="PU12 Rezi (Maisch)", layout=(self.hbox2))
+        self.pumpLED = SingleLed(name="PU12 Rezi (Maisch)")
         self.hbox2.addWidget(self.pumpLED, 1, 7)
         
         self.pumpWidget = PumpWidget(name="Pumpe PU12")

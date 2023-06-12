@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
 from QLed import QLed
 
-from ..faceplates.faceplates_new import Led, Led_6, Led_8, Led_DA
+from components.widgets.leds import SingleLed, LedGroupBox
 from ..widgets.infofield_dbl import InfoField
 
 
@@ -30,31 +30,48 @@ class Page(QWidget):
         hbox3 = QHBoxLayout()
         hbox = QHBoxLayout()   
 
-        #Elements of vbox1
-        led_l = Led_6(name="PU11 Antriebsstörung +FE02\
-                            ,PU11 Trockenlaufstörung +FE02\
-                            ,PU11 MaxDruckstörung +FE02\
-                            ,PU12 Antriebsstörung +FE02\
-                            ,PU12 Trockenlaufstörung +FE02\
-                            ,PU12 MaxDruckstörung +FE02", layout=vbox1)
-        #Elements of vbox2                            
-        led_r = Led_8(name="RW11 Antriebsstörung +FE03\
-                            ,RW11 FU-Störung +FE03\
-                            ,RW12 Antriebsstörung +FE03\
-                            ,RW12 FU-Störung +FE03\
-                            ,RW13 Antriebsstörung +FE03\
-                            ,RW13 FU-Störung +FE03\
-                            ,RW14 Antriebsstörung +FE03\
-                            ,RW14 FU-Störung +FE03", layout=vbox2)
+
+        led_l = LedGroupBox("", ["PU11 Antriebsstörung +FE02",
+                                 "PU11 Trockenlaufstörung +FE02",
+                                 "PU11 MaxDruckstörung +FE02",
+                                 "PU12 Antriebsstörung +FE02",
+                                 "PU12 Trockenlaufstörung +FE02",
+                                 "PU12 MaxDruckstörung +FE02"], [QLed.Green] * 6)
+        led_l.setFixedHeight(300)
+        led_l.setFixedWidth(250)
+        vbox1.addWidget(led_l)
+        #Testing
+        led_l.set_led_state(3, True)
+
+
+        led_r = LedGroupBox("", ["RW11 Antriebsstörung +FE03",
+                                 "RW11 FU-Störung +FE03",
+                                 "RW12 Antriebsstörung +FE03",
+                                 "RW12 FU-Störung +FE03",
+                                 "RW13 Antriebsstörung +FE03",
+                                 "RW13 FU-Störung +FE03",
+                                 "RW14 Antriebsstörung +FE03",
+                                 "RW14 FU-Störung +FE03"], [QLed.Green] * 8)
+        led_r.setFixedHeight(300)
+        led_r.setFixedWidth(250)
+        vbox2.addWidget(led_r)
+        #Testing
+        led_r.set_led_state(2, True)
+        led_r.set_led_state(4, True)
+
       
-        #Elements of hbox1 and hbox2:
-        self.led1 = Led(name="HE11 MaxTemp Störung +FE02", layout=hbox1)
-        self.led2 = Led(name="HE12 MaxTemp Störung +FE02", layout=hbox2)
+        # Elements of vbox3
+        HE_leds = LedGroupBox("", ["HE11 MaxTemp Störung +FE02", "HE12 MaxTemp Störung +FE02"], [QLed.Green] * 2)
+        HE_leds.setFixedHeight(100)
+        HE_leds.setFixedWidth(250)
+        vbox3.addWidget(HE_leds)
+
 
         # Elements of vbox4:        
         self.field1 = InfoField(name="DB84.TI15.FER1.SW", dec_num=4) 
         vbox4.addWidget(self.field1)
-        self.led3 = Led_DA(name="DB84.TI15.GW.SW", layout=vbox4) 
+        self.led3 = SingleLed(name="DB84.TI15.GW.SW")
+        vbox4.addWidget(self.led3)
 
         # Elements of vbox5: 
         self.field2 = InfoField(name="DB81.NIV.LI15.GW.Max", dec_num=4)

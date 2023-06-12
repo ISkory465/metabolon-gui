@@ -1,8 +1,8 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
+from QLed import QLed
 
-from ..faceplates.faceplates_new import Led_6
-from ..faceplates.faceplates_new import Led_8
+from components.widgets.leds import LedGroupBox
 
 
 class Page(QWidget):
@@ -25,22 +25,27 @@ class Page(QWidget):
         vbox1=QVBoxLayout()
         vbox2=QVBoxLayout()
 
-       
-        #Elements of vbox1 and vbox2 for the hbox:
-        led_l = Led_6(name="PU21 Antriebsstörung +FE02\
-                            ,PU21 Trockenlaufstörung +FE02\
-                            ,PU21 MaxDruckstörung +FE02\
-                            ,PU22 Antriebsstörung +FE02\
-                            ,PU22 Trockenlaufstörung +FE02\
-                            ,PU22 MaxDruckstörung +FE02", layout=vbox1)
-        led_r = Led_8(name="RW21 Antriebsstörung +FE03\
-                            ,RW21 FU-Störung +FE03\
-                            ,RW22 Antriebsstörung +FE03\
-                            ,RW22 FU-Störung +FE03\
-                            ,RW23 Antriebsstörung +FE03\
-                            ,RW23 FU-Störung +FE03\
-                            ,RW24 Antriebsstörung +FE03\
-                            ,RW24 FU-Störung +FE03", layout=vbox2)
+        
+        led_l = LedGroupBox("", ["PU21 Antriebsstörung +FE02", "PU21 Trockenlaufstörung +FE02",
+                                 "PU21 MaxDruckstörung +FE02", "PU22 Antriebsstörung +FE02",
+                                 "PU22 Trockenlaufstörung +FE02", "PU22 MaxDruckstörung +FE02"], [QLed.Green] * 6)
+        led_l.setFixedHeight(300)
+        led_l.setFixedWidth(250)
+        vbox1.addWidget(led_l)
+        # Testing
+        led_l.set_led_state(5, True)
+        
+        
+        led_r = LedGroupBox("", ["RW21 Antriebsstörung +FE03", "RW21 FU-Störung +FE03",
+                                 "RW22 Antriebsstörung +FE03", "RW22 FU-Störung +FE03",
+                                 "RW23 Antriebsstörung +FE03", "RW23 FU-Störung +FE03",
+                                 "RW24 Antriebsstörung +FE03", "RW24 FU-Störung +FE03"], [QLed.Green] * 8)
+        led_r.setFixedHeight(300)
+        led_r.setFixedWidth(250)
+        vbox2.addWidget(led_r)
+        # Testing
+        led_r.set_led_state(2, True)
+        led_r.set_led_state(4, True)
 
         #Grid layout  
         grid.addLayout(vbox1, *[0,0])

@@ -3,7 +3,7 @@ from PyQt5.QtCore import Qt
 
 from ..widgets.box import Box
 from ..widgets.infofield_dbl import InfoField
-from ..faceplates.faceplates_new import SingleLed
+from ..widgets.leds import SingleLed
 
 
 class Page(QWidget):
@@ -168,8 +168,10 @@ class Page(QWidget):
         #----------------------FIFTH COLUMN--------------------
         #Second column elements of vbox6 for the hbox2:
         vbox3_3_2=QVBoxLayout()  # New QVBoxLayout
-        self.led1 = SingleLed(name="Magentgasventill Fer 1", layout=vbox6)
-        self.led2 = SingleLed(name="Magentgasventill Fer 2", layout=vbox6)
+        self.led1 = SingleLed(name="Magentgasventill Fer 1")
+        vbox6.addWidget(self.led1)
+        self.led2 = SingleLed(name="Magentgasventill Fer 2")
+        vbox6.addWidget(self.led2)
         
         #settings for the vbox6:
         vbox6.setAlignment(Qt.AlignTop)

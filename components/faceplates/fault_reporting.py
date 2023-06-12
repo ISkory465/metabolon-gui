@@ -5,7 +5,7 @@ from QLed import QLed
 # TODO: add OPC functionality
 
 class SingleLed(QWidget):
-    def __init__(self, name, opcID='opcID'):
+    def __init__(self, opcID='opcID'):
         super().__init__()
         local_layout = QFormLayout()
         
