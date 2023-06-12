@@ -49,8 +49,7 @@ class Page(QWidget):
 
         # Settings for the vbox1 (First Column of the hbox1)
         vbox1.setAlignment(Qt.AlignTop)
-        vbox1.setSpacing(5)
-
+        
         # ----------------------SECOND COLUMN--------------------
         # Second column elements of vbox1 for the hbox1:
         self.box2 = Box("SC23")
@@ -67,7 +66,7 @@ class Page(QWidget):
 
         # Settings for the vbox2 (First Column of the hbox1)
         vbox2.setAlignment(Qt.AlignTop)
-        vbox2.setSpacing(5)
+        
 
         # ----------------------THIRD COLUMN--------------------
         # Third column elements of vbox3 for the hbox1:
@@ -76,15 +75,14 @@ class Page(QWidget):
 
         # Settings for the vbox3 (Third Column of the hbox1)
         vbox3.setAlignment(Qt.AlignTop)
-        vbox3.setSpacing(5)
+        
 
         # Settings for the hbox1:
-        hbox1.setAlignment(Qt.AlignTop)
-        hbox1.setSpacing(10)
-        hbox1.addLayout(vbox1, 1)
-        hbox1.addLayout(vbox2, 1)
-        hbox1.addLayout(vbox3, 1)
-        hbox1.addLayout(vbox3_3_1, 2)  # vbox3_3_1 is used here
+        hbox1.setAlignment(Qt.AlignLeft)
+        hbox1.addLayout(vbox1)
+        hbox1.addLayout(vbox2)
+        hbox1.addLayout(vbox3)
+        hbox1.addLayout(vbox3_3_1)  # vbox3_3_1 is used here
 
         # hbox2
         # ----------------------FIRST COLUMN--------------------
@@ -101,7 +99,7 @@ class Page(QWidget):
 
         # Settings for the vbox4 (First Column of the hbox2)
         vbox4.setAlignment(Qt.AlignTop)
-        vbox4.setSpacing(5)
+        
 
         # ----------------------SECOND COLUMN--------------------
         # Second column elements of vbox5 for the hbox2:
@@ -119,21 +117,21 @@ class Page(QWidget):
 
         # Settings for the vbox5 (First Column of the hbox2)
         vbox5.setAlignment(Qt.AlignTop)
-        vbox5.setSpacing(5)
+        
 
         # Settings for the hbox2:
-        hbox2.setAlignment(Qt.AlignTop)
-        hbox2.setSpacing(10)
+        hbox2.setAlignment(Qt.AlignLeft)
         hbox2.setContentsMargins(0, 20, 0, 0)
 
         # Add columns(vbox4, vbox5 vbox3_3_2(dummy)) to the hbox2
-        hbox2.addLayout(vbox4, 1)
-        hbox2.addLayout(vbox5, 1)
-        hbox2.addLayout(vbox3_3_2, 2)  # vbox3_3_2 is used here
+        hbox2.addLayout(vbox4)
+        hbox2.addLayout(vbox5)
+        hbox2.addLayout(vbox3_3_2)  # vbox3_3_2 is used here
 
         # Adding two horizontal layouts (hbox1, hbox2) to the layout of the page
-        vbox.addLayout(hbox1, 50)
-        vbox.addLayout(hbox2, 50)
+        vbox.addLayout(hbox1)
+        vbox.addLayout(hbox2)
+        vbox.setAlignment(Qt.AlignTop)
 
         # Assigning page layout to the window
         self.setLayout(vbox)
