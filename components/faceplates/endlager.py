@@ -20,7 +20,6 @@ class Endlager(QGroupBox):
         row1 = QHBoxLayout()
         row2 = QHBoxLayout()
         row1.setAlignment(Qt.AlignTop)
-        # verticalSpacer1 = QSpacerItem(20, 30, QSizePolicy.Minimum, QSizePolicy.Minimum) 
 
         # Add two horizontal to main layout
         main_vbox.addLayout(row1)
@@ -45,7 +44,6 @@ class Endlager(QGroupBox):
         row2.addWidget(gauge)
 
         # Add all the elements to the main layout and set it as the default layout
-        # self.layout.addWidget(self)
         self.setLayout(main_vbox)
 
 
