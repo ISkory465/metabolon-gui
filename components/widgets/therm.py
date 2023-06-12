@@ -7,7 +7,7 @@ import sys
 class ThermometerWidget(QWidget):
     def __init__(self):
         super().__init__()
-        self.setMinimumSize(70, 150)
+        self.setFixedSize(70, 150)
         self.temperature = 35
 
     def setTemperature(self, value):
@@ -79,7 +79,6 @@ if __name__ == '__main__':
     # Add the thermometer widget to the layout
     layout.addWidget(thermometer)
     # thermometer.setTemperature(33)
-
     window.show()
 
     thermometer.setTemperature(40)
