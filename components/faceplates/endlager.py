@@ -1,4 +1,5 @@
-from PyQt5.QtWidgets import QApplication, QGroupBox, QVBoxLayout, QHBoxLayout, QWidget
+from PyQt5.QtWidgets import QApplication, QGroupBox, QVBoxLayout, QHBoxLayout, QWidget, QSpacerItem, QSizePolicy
+from PyQt5.QtCore import Qt
 from ..widgets.therm_endlager import EndThermometerWidget
 from ..widgets.gauge import Gauge
 from ..widgets.endlager_tank import EndlagerTank
@@ -13,13 +14,17 @@ class Endlager(QGroupBox):
         # Main layout for 2 horizontal boxes representing each row
         main_vbox = QVBoxLayout()
         main_vbox.setSpacing(10)
+        main_vbox.setAlignment(Qt.AlignTop)
 
         # Two main horizontal layouts
         row1 = QHBoxLayout()
         row2 = QHBoxLayout()
+        row1.setAlignment(Qt.AlignTop)
+        # verticalSpacer1 = QSpacerItem(20, 30, QSizePolicy.Minimum, QSizePolicy.Minimum) 
 
         # Add two horizontal to main layout
         main_vbox.addLayout(row1)
+        # main_vbox.addItem(verticalSpacer1)
         main_vbox.addLayout(row2)
 
         # Create the endlager tank widget
@@ -32,6 +37,7 @@ class Endlager(QGroupBox):
 
         # Create the gauge widget
         gauge = Gauge()
+        gauge.setFixedSize(100,100)
 
         # Add the widgets to the rows
         row1.addWidget(tank)
