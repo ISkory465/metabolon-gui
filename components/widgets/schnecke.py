@@ -10,7 +10,7 @@ class PlayButton(QWidget):
         super().__init__()
 
         self.state = 2 #3 states: 0 - RED(Faulty); 1 - BLUE(Idle); 2 - GREEN(Active)
-        self.setMinimumSize(60, 60)
+        self.setFixedSize(60, 60)
 
     def paintEvent(self, event):
         painter = QPainter(self)
@@ -19,13 +19,13 @@ class PlayButton(QWidget):
         # Determine the color based on the state of the indicator
         if self.state == 0:
             background_color = Qt.red
-            icon_color = Qt.black
+            icon_color = Qt.white
         elif self.state == 1:
             background_color = Qt.blue
             icon_color = Qt.white
         else:
             background_color = Qt.green
-            icon_color = Qt.darkGray
+            icon_color = Qt.white
 
         # Define the button's dimensions and colors
         # rect = QRect(10, 10, self.width() - 20, self.height() - 20)
@@ -41,10 +41,10 @@ class PlayButton(QWidget):
         painter.setBrush(icon_color)
         path = QPainterPath()
 
-        path.moveTo(rect.center().x() + int(self.width()*0.35), rect.center().y())
-        path.lineTo(rect.center().x() - int(self.width()*0.16), rect.center().y() - int(self.height()*0.3))
+        path.moveTo(rect.center().x() + int(self.width()*0.33), rect.center().y())
+        path.lineTo(rect.center().x() - int(self.width()*0.16), rect.center().y() - int(self.height()*0.28))
         path.lineTo(rect.center().x() - int(self.width()*0.16), rect.center().y() + int(self.height()*0.3))
-        path.lineTo(rect.center().x() + int(self.width()*0.35), rect.center().y())
+        path.lineTo(rect.center().x() + int(self.width()*0.33), rect.center().y())
         painter.drawPath(path)
 
 
