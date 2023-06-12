@@ -1,5 +1,6 @@
 import math
-from PyQt5.QtWidgets import QWidget
+import sys
+from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QPainter, QPen
 from PyQt5.QtCore import Qt
 
@@ -7,8 +8,7 @@ from PyQt5.QtCore import Qt
 class Gauge(QWidget):
     def __init__(self, value=12):
         super().__init__()
-        # self.setMinimumSize(200, 200)
-        self.setMinimumSize(100, 100)
+        self.setFixedSize(100, 100)
         self.value = value
 
     def paintEvent(self, event):
@@ -27,7 +27,6 @@ class Gauge(QWidget):
         # Draw background
         painter.setBrush(Qt.white)
         painter.drawEllipse(5, 5, 90, 90)
-
 
         # Draw ticks and labels
         painter.setPen(QPen(Qt.black, 2))
@@ -67,3 +66,19 @@ class Gauge(QWidget):
     def set_value(self, value):
         self.value = min(max(value, 0), 25)
         self.update()
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = QWidget()
+
+    # Create a QVBoxLayout
+    layout = QVBoxLayout()
+    window.setLayout(layout)
+
+    gauge = Gauge()
+    layout.addWidget(gauge)
+    window.show()
+
+    
+
+    sys.exit(app.exec_())
