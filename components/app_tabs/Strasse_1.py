@@ -26,7 +26,9 @@ def create_group_box(title, boxes):
             box_layout.addWidget(box)
 
         # Add the box layout to the group box layout
+        box_layout.setAlignment(Qt.AlignTop)
         group_box_layout.addLayout(box_layout)
+        group_box_layout.setAlignment(Qt.AlignTop)
 
     # Set the group box layout
     group_box.setLayout(group_box_layout)
@@ -55,8 +57,7 @@ class Page(QWidget):
         self.vbox1_1 = QVBoxLayout()
         self.vbox1_2 = QVBoxLayout()
         self.vbox1_3 = QVBoxLayout()
-        self.vbox1_4 = QVBoxLayout()
-        self.vbox1_5 = QVBoxLayout()
+
 
         # Layout relation
         self.vbox.addLayout(self.hbox1)
@@ -66,8 +67,9 @@ class Page(QWidget):
         self.hbox1.addLayout(self.vbox1_1)
         self.hbox1.addLayout(self.vbox1_2)
         self.hbox1.addLayout(self.vbox1_3)
-        self.hbox1.addLayout(self.vbox1_4)
-        self.hbox1.addLayout(self.vbox1_5)
+        self.vbox1_1.setAlignment(Qt.AlignTop)
+        self.vbox1_2.setAlignment(Qt.AlignTop)
+        self.vbox1_3.setAlignment(Qt.AlignTop)
         self.hbox1.setAlignment(Qt.AlignLeft)
         self.hbox2.setAlignment(Qt.AlignTop)
 
@@ -78,12 +80,20 @@ class Page(QWidget):
         # hbox1 Content
         self.mixer1 = Mixer(name="Fermenter")
         self.vbox1_1.addWidget(self.mixer1)
+        
         self.mixer2 = Mixer(name="Nachgärer")
         self.vbox1_2.addWidget(self.mixer2)
+
         self.endlager = Endlager(name="Endlager")
         self.vbox1_3.addWidget(self.endlager)
-        self.controlbox = QGridLayout()
-        self.hbox1.addLayout(self.controlbox)
+
+        self.hbox1_4 = QHBoxLayout()
+        self.hbox1.addLayout(self.hbox1_4)
+
+        self.vbox_h_1_4 = QVBoxLayout() 
+        self.vbox_h_1_4.setAlignment(Qt.AlignTop)
+        self.hbox1_4.addLayout(self.vbox_h_1_4)
+        self.hbox1_4.setAlignment(Qt.AlignTop)
 
         # Create the boxes
         pump1 = Box("PU12")
@@ -100,11 +110,10 @@ class Page(QWidget):
         group_box_pumpe = create_group_box("Pumpe controls", [pump1, pump2])
         group_box_vents = create_group_box("Vents controls", [vent1, vent2, vent3, vent4])
 
-        # Add the group boxes to the control box layout
-        self.controlbox.addWidget(group_box_ruhr, 0, 0)
-        self.controlbox.addWidget(group_box_pumpe, 1, 0)
-        self.controlbox.addWidget(group_box_vents, 0, 1)
-        # self.controlbox.addWidget(group_box_vents, 0, 1, 2, 2)
+        self.vbox_h_1_4.addWidget(group_box_ruhr)
+        self.vbox_h_1_4.addWidget(group_box_pumpe)
+        self.vbox_h_1_4.setAlignment(Qt.AlignTop)
+        self.hbox1_4.addWidget(group_box_vents)
 
 
 
