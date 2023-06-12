@@ -8,11 +8,11 @@ class BigMixer(QWidget):
 
     def __init__(self, level=94):
         super().__init__()
-        self.setMinimumSize(120, 80)
+        self.setFixedSize(160, 110)
         self.level = level
         self.motor_state = 2 #3 states: 0 - RED(Faulty); 1 - BLUE(Idle); 2 - GREEN(Active)
         self.heater_state = 2 #3 states: 0 - RED(Faulty); 1 - BLUE(Idle); 2 - GREEN(Active)
-        self.buffer = int(self.height() * 0.065) #area above the tank water level
+        self.buffer = int(self.height() * 0.27) #area above the tank water level
 
     def setLevel(self, val):
         self.level = val
@@ -149,8 +149,8 @@ class BigMixer(QWidget):
         painter.setBrush(Qt.gray)
         painter.setPen(Qt.black)
         # Draw the infinity sign
-        ellipse1 = QRectF(19, elipse_y_var, 15, 7)
-        ellipse2 = QRectF(34, elipse_y_var, 15, 7)
+        ellipse1 = QRectF(21, elipse_y_var, 15, 7)
+        ellipse2 = QRectF(36, elipse_y_var, 15, 7)
         painter.drawEllipse(ellipse1)
         painter.drawEllipse(ellipse2)
 
