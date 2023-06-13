@@ -14,7 +14,7 @@ class Page(QWidget):
 
     def UI(self):
 
-        #Main layout of the first tab 'Störmeldungen Straße 2"
+        #Main layout of the first tab 'Stoermeldungen Straße 2"
         grid = QGridLayout()
 
         #Page has 1 horizontal box:
@@ -26,9 +26,9 @@ class Page(QWidget):
         vbox2=QVBoxLayout()
 
         
-        led_l = LedGroupBox("", ["PU21 Antriebsstörung +FE02", "PU21 Trockenlaufstörung +FE02",
-                                 "PU21 MaxDruckstörung +FE02", "PU22 Antriebsstörung +FE02",
-                                 "PU22 Trockenlaufstörung +FE02", "PU22 MaxDruckstörung +FE02"], [QLed.Green] * 6)
+        led_l = LedGroupBox("", ["PU21 Antriebsstoerung +FE02", "PU21 Trockenlaufstoerung +FE02",
+                                 "PU21 MaxDruckstoerung +FE02", "PU22 Antriebsstoerung +FE02",
+                                 "PU22 Trockenlaufstoerung +FE02", "PU22 MaxDruckstoerung +FE02"], [QLed.Green] * 6)
         led_l.setFixedHeight(300)
         led_l.setFixedWidth(250)
         vbox1.addWidget(led_l)
@@ -36,10 +36,10 @@ class Page(QWidget):
         led_l.set_led_state(5, True)
         
         
-        led_r = LedGroupBox("", ["RW21 Antriebsstörung +FE03", "RW21 FU-Störung +FE03",
-                                 "RW22 Antriebsstörung +FE03", "RW22 FU-Störung +FE03",
-                                 "RW23 Antriebsstörung +FE03", "RW23 FU-Störung +FE03",
-                                 "RW24 Antriebsstörung +FE03", "RW24 FU-Störung +FE03"], [QLed.Green] * 8)
+        led_r = LedGroupBox("", ["RW21 Antriebsstoerung +FE03", "RW21 FU-Stoerung +FE03",
+                                 "RW22 Antriebsstoerung +FE03", "RW22 FU-Stoerung +FE03",
+                                 "RW23 Antriebsstoerung +FE03", "RW23 FU-Stoerung +FE03",
+                                 "RW24 Antriebsstoerung +FE03", "RW24 FU-Stoerung +FE03"], [QLed.Green] * 8)
         led_r.setFixedHeight(300)
         led_r.setFixedWidth(250)
         vbox2.addWidget(led_r)
