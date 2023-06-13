@@ -93,16 +93,16 @@ class Page(QWidget):
         #----------------------Layout Settings---------------------------
         #settings for the vbox1:
         self.vbox1.setAlignment(Qt.AlignTop)
-        self.vbox1.setSpacing(10)   
+        self.vbox1.setSpacing(0)   
         self.vbox1.setContentsMargins(0, 0, 0, 0)
         #settings for the vbox2:
         self.vbox2.setAlignment(Qt.AlignTop)
-        self.vbox2.setSpacing(10)   
-        self.vbox2.setContentsMargins(0, 0, 0, 0)
+        self.vbox2.setSpacing(0)   
+        self.vbox2.setContentsMargins(0, 10, 0, 0)
         #settings for the vbox3:
         self.vbox3.setAlignment(Qt.AlignTop)
-        self.vbox3.setSpacing(10)  
-        self.vbox3.setContentsMargins(0, 0, 0, 0)
+        self.vbox3.setSpacing(0)  
+        self.vbox3.setContentsMargins(0, 10, 0, 0)
         
         #settings for the vbox4:
         self.vbox4.setAlignment(Qt.AlignTop)
@@ -118,8 +118,8 @@ class Page(QWidget):
         self.vbox6.setContentsMargins(0, 0, 0, 0)
         #settings for the vbox7:
         self.vbox7.setAlignment(Qt.AlignTop)
-        self.vbox7.setSpacing(10)   
-        self.vbox7.setContentsMargins(0, 0, 0, 0)
+        self.vbox7.setSpacing(5)   
+        self.vbox7.setContentsMargins(0, 8, 0, 0)
 
         #Settings for the hbox1:
         self.hbox1.setAlignment(Qt.AlignTop)
@@ -131,8 +131,8 @@ class Page(QWidget):
         
         #Settings for the hbox2:
         self.hbox2.setAlignment(Qt.AlignTop)
-        self.hbox2.setSpacing(10)
-        self.hbox2.setContentsMargins(0, 20, 20, 0)
+        self.hbox2.setSpacing(0)
+        self.hbox2.setContentsMargins(0, 20, 0, 0)
         self.hbox2.addLayout(self.vbox4, 1)
         self.hbox2.addLayout(self.vbox5, 1)
         self.hbox2.addLayout(self.vbox6, 1)
