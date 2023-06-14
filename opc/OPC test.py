@@ -5,12 +5,50 @@ from multiprocessing.sharedctypes import Value
 import OpenOPC as opc1
 # import OpenOPC.OpenOPC as opc1
 import OpenOPC as opc1
+# import OpenOPC.OpenOPC as opc1
+import OpenOPC as opc1
+# import OpenOPC.OpenOPC as opc1
+import OpenOPC as opc1
 import time
 
 import pywintypes
 from OPC_Connection import OPC_Client
 import json
 pywintypes.datetime = pywintypes.TimeType
+with open('opc\opcList.JSON') as json_file:
+    data = json.load(json_file)
+ 
+    # for reading nested data [0] represents
+    # the index value of the list
+    #print(data['TAB1'])
+    print(type(data['TAB1']))
+    x=data['TAB1']
+    mykeys = [*x]          #list of keys    y=x.keys()
+    k=mykeys[8]
+    st="Temp. Fer 1 (\N{DEGREE SIGN}C)"
+    print(k)
+    print(st)
+    if k==st:
+      print('yes')
+    #print(x['Temp. Fer 1 (°C)'])
+    #print('\N{DEGREE SIGN} C')
+with open('opc\opcList.JSON') as json_file:
+    data = json.load(json_file)
+ 
+    # for reading nested data [0] represents
+    # the index value of the list
+    #print(data['TAB1'])
+    print(type(data['TAB1']))
+    x=data['TAB1']
+    mykeys = [*x]          #list of keys    y=x.keys()
+    k=mykeys[8]
+    st="Temp. Fer 1 (\N{DEGREE SIGN}C)"
+    print(k)
+    print(st)
+    if k==st:
+      print('yes')
+    #print(x['Temp. Fer 1 (°C)'])
+    #print('\N{DEGREE SIGN} C')
 with open('opc\opcList.JSON') as json_file:
     data = json.load(json_file)
  
