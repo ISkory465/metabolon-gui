@@ -7,6 +7,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout, QHBoxLay
 class TankMixerWidget(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
+        self.setFixedSize(240, 150)
         self._max_level = 100  # Set the maximum level
         self._min_level = 20  # Set the minimum level
         self._current_level = 30  # Initial level of the tank
@@ -17,20 +18,20 @@ class TankMixerWidget(QWidget):
 
         self.tank_label = QLabel(self)  # Label for the tank
         self.tank_label.setAlignment(Qt.AlignCenter)
-        self.tank_label.setFont(QFont('Arial', 8))
+        self.tank_label.setFont(QFont('Arial', 9))
         self.tank_label.setStyleSheet('color: white')
         main_layout.addWidget(self.tank_label)
 
         self.motor_label = QLabel(self)  # Label for the motor
         self.motor_label.setAlignment(Qt.AlignCenter)
-        self.motor_label.setFont(QFont('Arial', 8, QFont.Bold))
+        self.motor_label.setFont(QFont('Arial', 9, QFont.Bold))
         self.motor_label.setText("M")
         main_layout.addWidget(self.motor_label)
         
         self.motorName_label = QLabel(self)  # Motor Name
         self.motorName_label.setAlignment(Qt.AlignCenter)
         self.motorName_label.setStyleSheet('color: black')
-        self.motorName_label.setFont(QFont('Arial', 8))
+        self.motorName_label.setFont(QFont('Arial', 9))
         main_layout.addWidget(self.motorName_label)
 
     def resizeEvent(self, event):
@@ -47,14 +48,14 @@ class TankMixerWidget(QWidget):
         # Set the motor label position
         motor_radius = int(tank_height * 0.2)
         motor_x = int((tank_width - motor_radius) / 2)
-        motor_y = int((tank_height - motor_radius) / 20)
+        motor_y = int((tank_height - motor_radius) / 20)+ 5
         self.motor_label.setGeometry(motor_x, motor_y, motor_radius, motor_radius)
         
        # Set the Motor Name label position
         motor_label_width = int(tank_width * 0.8)
         motor_label_height = int(tank_height * 0.05)
         motor_label_x = int((tank_width - motor_label_width) / 2)
-        motor_label_y = int(motor_y - motor_label_height * 0.8)  # Adjust the vertical position above the motor
+        motor_label_y = int(motor_y - motor_label_height * 1.4)  # Adjust the vertical position above the motor
         self.motorName_label.setGeometry(motor_label_x, motor_label_y, motor_label_width, motor_label_height)
 
     def set_motorName_label(self, text):
@@ -90,7 +91,7 @@ class TankMixerWidget(QWidget):
         # Draw the motor circle
         motor_radius = tank_height // 6
         motor_x = (tank_width - motor_radius) // 2
-        motor_y = tank_height // 20
+        motor_y = tank_height // 20 + 5
         motor_color = QColor(0, 0, 255) if self._motor_mode == 'idle' else QColor(255, 0, 0) if self._motor_mode == 'malfunction' else QColor(0, 255, 0)
         painter.setBrush(motor_color)
         painter.drawEllipse(motor_x, motor_y, motor_radius, motor_radius)
@@ -98,7 +99,7 @@ class TankMixerWidget(QWidget):
         # Draw the tank
         tank_color = QColor(192, 192, 192)  # Grey color
         tank_x = 0
-        tank_y = motor_y + motor_radius + tank_height // 20
+        tank_y = motor_y + motor_radius + tank_height // 20 
         painter.fillRect(tank_x, tank_y, tank_width, tank_height - tank_y - tank_height // 20, tank_color)
 
         # Line to the tank
