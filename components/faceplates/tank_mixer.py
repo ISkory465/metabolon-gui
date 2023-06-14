@@ -31,7 +31,7 @@ class TankMixerWidget(QWidget):
         self.motorName_label = QLabel(self)  # Motor Name
         self.motorName_label.setAlignment(Qt.AlignCenter)
         self.motorName_label.setStyleSheet('color: black')
-        self.motorName_label.setFont(QFont('Arial', 9))
+        self.motorName_label.setFont(QFont('Arial', 8))
         main_layout.addWidget(self.motorName_label)
 
     def resizeEvent(self, event):
@@ -55,7 +55,7 @@ class TankMixerWidget(QWidget):
         motor_label_width = int(tank_width * 0.8)
         motor_label_height = int(tank_height * 0.05)
         motor_label_x = int((tank_width - motor_label_width) / 2)
-        motor_label_y = int(motor_y - motor_label_height * 1.4)  # Adjust the vertical position above the motor
+        motor_label_y = int(motor_y - motor_label_height * 2)  # Adjust the vertical position above the motor
         self.motorName_label.setGeometry(motor_label_x, motor_label_y, motor_label_width, motor_label_height)
 
     def set_motorName_label(self, text):
@@ -145,7 +145,7 @@ class TankMixerWidget(QWidget):
         min_sensor_width = tank_width // 8
         min_sensor_height = current_level_height // 8
         min_sensor_x = tank_width - min_sensor_width - tank_width // 20  # Move away from the right border
-        min_sensor_y = tank_y + tank_height - min_sensor_height - tank_height // 3  # Move away from the bottom border
+        min_sensor_y = tank_y + tank_height - min_sensor_height - tank_height // 3 - 5  # Move away from the bottom border
         painter.setBrush(min_sensor_color)
         painter.drawRect(min_sensor_x, min_sensor_y, min_sensor_width, min_sensor_height)
 
