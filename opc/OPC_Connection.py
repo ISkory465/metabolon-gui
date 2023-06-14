@@ -3,7 +3,9 @@ import OpenOPC
 import time
 
 import pywintypes
-
+from PyQt5.QtWidgets import *
+import OpenOPC
+from PyQt5.QtCore import *
 pywintypes.datetime = pywintypes.TimeType
 
 class OPC_Client:
@@ -55,5 +57,48 @@ class OPC_Client:
   
 
 
+class Worker(QObject):
+    finished = pyqtSignal()
+    progress = pyqtSignal(dict)
+    #recieved = pyqtSignal(list)
+    
+    def __init__(self, x:dict):
+      self.varDict=x
+      #self.client=client
+      super().__init__()
+
+    def run(self):
+        """Long-running task."""
+        #self.recieved.connect(self.rec)
+        try:
+            opc=OpenOPC.client()
+            #print('client')   
+            opc.connect("OPC.SimaticNET")
+
+            if self.varDict=={}:
+                results={'Result':'No Values'}
+                print(results)
+            else:
+                results={}
+                keys=self.varDict.keys()
+                for x in keys:
+                    #print(self.varDict[x])
+                    tagValues=opc[self.varDict[x]]
+                    #print(tagValues)
+                    #tagValues=str(tagValues)
+                    results[x]=tagValues
+            
+            #print(results)
+
+            
+            #print(self.x)
+            self.progress.emit(results)
+            opc.close()
+            self.finished.emit()
+        except:
+            print('error')
+            x=['thread not working']
+            self.progress.emit(x)
+            self.finished.emit()
 
 

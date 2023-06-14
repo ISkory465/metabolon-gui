@@ -53,16 +53,16 @@ class Page(QWidget):
         
     #----------------------SECOND COLUMN--------------------
         #Second column elements of vbox1 for the hbox1:
-        self.box2 = Box("RW23", vbox2)
+        self.box2 = Box("RW23")
         
         self.field2_1 = InfoField(name = "RW23 Pause Soll [min] ln", 
-                            layout = vbox2)
+                            )
         self.field2_2 = InfoField(name = "RW23 Run Soll [min] ln", 
-                            layout = vbox2)
+                            )
         self.field2_3 = InfoField(name = "RW23 Auto Sollwert [%]", 
-                            layout = vbox2)
+                            )
         self.field2_4 = InfoField(name = "RW23 Hand Soll [min] ln", 
-                            layout = vbox2)
+                            )
 
         # Settings for the vbox2 (First Column of the hbox1)
         vbox2.setAlignment(Qt.AlignTop)
