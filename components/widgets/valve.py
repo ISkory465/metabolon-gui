@@ -4,9 +4,9 @@ from PyQt5.QtCore import *
 import sys
 
 class ValveLabelWidget(QWidget):
-    def __init__(self, label="", size=40):
+    def __init__(self, label="", sizeH=40, sizeW=30):
         super().__init__()
-        self.valve = ValveWidget(size)
+        self.valve = ValveWidget(sizeH, sizeW)
         self.valvename = label
         self.valve.status = 0
         #self.setContentsMargins(0, 50, 0, 0)
@@ -28,10 +28,11 @@ class ValveLabelWidget(QWidget):
 
 
 class ValveWidget(QWidget):
-    def __init__(self, size=40):
+    def __init__(self, sizeH=40, sizeW=20):
         super().__init__()
-        self.setMinimumSize(size, size)
-        self.valvesize = size
+        self.setMinimumSize(sizeH, sizeW)
+        self.valvesizeH = sizeH
+        self.valvesizeW = sizeW
         self.status = 0
 
     def setStatus(self, value):
@@ -53,9 +54,9 @@ class ValveWidget(QWidget):
 
         points = [
             QPoint(0,0),
-            QPoint(0,self.valvesize),
-            QPoint(self.valvesize,0),
-            QPoint(self.valvesize,self.valvesize)
+            QPoint(0,self.valvesizeW),
+            QPoint(self.valvesizeH,0),
+            QPoint(self.valvesizeH,self.valvesizeW)
             ]
         poly = QPolygon(points)
         painter.drawPolygon(poly)
@@ -72,7 +73,7 @@ if __name__ == '__main__':
 
     # Create the valve widget
     valve1 = ValveWidget()
-    valve2 = ValveLabelWidget("Test Name", 70)
+    valve2 = ValveLabelWidget("Test Name", 40, 20)
 
     # Add the valve widget to the layout
     layout.addWidget(valve1)

@@ -111,8 +111,8 @@ class TankMixerWidget(QWidget):
         infinity_color = QColor(64, 64, 64)  # Dark grey 
         infinity_fill_color = Qt.gray  # Grey
         infinity_width = 2
-        infinity_radius_x = 20
-        infinity_radius_y = 10
+        infinity_radius_x = 12
+        infinity_radius_y = 6
 
         # Calculate the position of the infinity symbol
         line_length = tank_center.x() - motor_center.x()
