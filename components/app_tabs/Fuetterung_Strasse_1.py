@@ -3,7 +3,6 @@ from PyQt5.QtCore import Qt
 from ..faceplates.futter import *
 from ..widgets.infofield_dbl import InfoField
 
-#TODO: Correct design of buttons, correct some aspects of layout
 
 class Page(QWidget):
 

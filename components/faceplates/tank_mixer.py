@@ -1,6 +1,6 @@
 import sys
-from PyQt5.QtCore import Qt, QPoint
-from PyQt5.QtGui import QColor, QPainter, QFont
+from PyQt5.QtCore import Qt, QPoint, QRectF
+from PyQt5.QtGui import QColor, QPainter, QFont, QPen
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout, QHBoxLayout
 
 
@@ -108,29 +108,35 @@ class TankMixerWidget(QWidget):
         painter.setPen(QColor(0, 0, 0)) 
         painter.drawLine(motor_center, tank_center)
 
-        # Elipse toucht position
-        ellipse_radius = 8
-        line_length = tank_center.x() - motor_center.x()  
-        touch_point = tank_center - QPoint(line_length, 0)  
+        infinity_color = QColor(64, 64, 64)  # Dark grey 
+        infinity_fill_color = Qt.gray  # Grey
+        infinity_width = 2
+        infinity_radius_x = 20
+        infinity_radius_y = 10
+
+        # Calculate the position of the infinity symbol
+        line_length = tank_center.x() - motor_center.x()
+        touch_point = tank_center - QPoint(line_length, 0)
+        infinity_center = touch_point
+
+        # Draw the infinity symbol
+        painter.setPen(QPen(infinity_color, infinity_width))
+
+        # Draw the first ellipse of the infinity symbol
+        first_ellipse_top_center = infinity_center + QPoint(infinity_radius_x, 0)
+        first_ellipse_bottom_center = infinity_center - QPoint(infinity_radius_x, 0)
+        painter.setBrush(infinity_fill_color)
+        painter.drawEllipse(first_ellipse_top_center, infinity_radius_x, infinity_radius_y)
+        painter.drawEllipse(first_ellipse_bottom_center, infinity_radius_x, infinity_radius_y)
+
+        # Draw the second ellipse of the infinity symbol
+        second_ellipse_top_center = infinity_center + QPoint(infinity_radius_x, 0)
+        second_ellipse_bottom_center = infinity_center - QPoint(infinity_radius_x, 0)
+        painter.setBrush(infinity_fill_color)
+        painter.drawEllipse(second_ellipse_top_center, infinity_radius_x, infinity_radius_y)
+        painter.drawEllipse(second_ellipse_bottom_center, infinity_radius_x, infinity_radius_y)
 
 
-        # Draw elipses 
-        ellipse_color = QColor(64, 64, 64)  # Dark grey
-        ellipse_1_center = touch_point - QPoint(ellipse_radius * 2, 0)  
-        ellipse_2_center = touch_point + QPoint(ellipse_radius * 2, 0) 
-        painter.setBrush(ellipse_color)
-        painter.drawEllipse(ellipse_1_center.x() - ellipse_radius, ellipse_1_center.y() - ellipse_radius, ellipse_radius * 2, ellipse_radius * 2)
-        painter.drawEllipse(ellipse_2_center.x() - ellipse_radius, ellipse_2_center.y() - ellipse_radius, ellipse_radius * 2, ellipse_radius * 2)
-
-        # Line connecting ellipses
-        line_1_start = ellipse_1_center + QPoint(ellipse_radius, 0)  
-        line_1_end = tank_center  
-        line_2_start = ellipse_2_center + QPoint(ellipse_radius, 0)  
-        line_2_end = tank_center 
-        painter.setPen(QColor(0, 0, 0))  #Black 
-        painter.drawLine(line_1_start, line_1_end)
-        painter.drawLine(line_2_start, line_2_end)
-        
         # Draw the max level sensor
         max_sensor_color = QColor(255, 0, 0) if current_level_height >= max_level_height else QColor(255, 255, 255)
         max_sensor_width = tank_width // 8
