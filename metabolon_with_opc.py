@@ -171,7 +171,7 @@ class Window(QMainWindow):
           elif inner_index1==1:
             self.opclist=tags['Steurung1']
           elif inner_index1==2:
-            self.opclist=tags['Steurung1']#Change to actaul Tab
+            self.opclist=tags['Futter1']
           elif inner_index1==3:
             self.opclist=tags['Stoermeldungen_Strasse_1']
 
@@ -181,7 +181,7 @@ class Window(QMainWindow):
           elif inner_index2==1:
             self.opclist=tags['Steurung2']
           elif inner_index2==2:
-            self.opclist=tags['Steurung2']#Change to actaul Tab
+            self.opclist=tags['Futter2']#Change to actaul Tab
           elif inner_index2==3:
             self.opclist=tags['Stoermeldungen_Strasse_2']
 
@@ -212,6 +212,10 @@ class Window(QMainWindow):
         val3={} #Values Dictionary to update steu_strasse_2
         val4={} #Values Dictionary to update steu_meld_starsse_2
         val5={} #Values Dictionary to update Betriebsstunden
+        val6={} #Values Dictionary to update Futter1
+        val7={} #Values Dictionary to update Futter2
+
+
         if outer_index == 0:
           if inner_index1==0:
             pass
@@ -219,6 +223,10 @@ class Window(QMainWindow):
             for i in keys:
               val1[i]=tagValues[i]
             self.steu_strasse_1.updateAll(val1)  
+          elif inner_index1==2:
+            for i in keys:
+              val6[i]=tagValues[i]
+            self.steu_strasse_1.updateAll(val6)
           elif inner_index1==3:
             for k in keys:
               val2[k]=tagValues[k]
@@ -230,7 +238,11 @@ class Window(QMainWindow):
           elif inner_index2==1:
             for i in keys:
               val3[i]=tagValues[i]
-            self.steu_strasse_2.updateAll(val3)  
+            self.steu_strasse_2.updateAll(val3)
+          elif inner_index2==2:
+            for i in keys:
+              val7[i]=tagValues[i]
+            self.steu_strasse_1.updateAll(val7)  
           elif inner_index1==3:
             for k in keys:
               val4[k]=tagValues[k]
