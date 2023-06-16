@@ -42,7 +42,8 @@ class ToggleButton(QGroupBox):
     # action methods
     def toggle(self):
         if self.button.isChecked():
-           print("Button 1 clicked")
+           pass
+          #  print("Button 1 clicked")
        
 
      # method called by button
@@ -72,11 +73,15 @@ class InfoField(QGroupBox):
     :type QGroupBox: _type_
     """
 
+    instances = []
+
     def __init__(self, name, layout, opcID='None', buttonSymbol=2):
         super().__init__(name)
+        self.instances.append(self)
         self.setFlat(True)
         self.layout = layout
-        self.opcName=name
+        self.opcName = name
+        self.state = False
 
         #Header (QLabel) for the numerical field
         self.name = QLabel(name)
@@ -84,6 +89,15 @@ class InfoField(QGroupBox):
 
         #Field for numerical Value
         self.spin = QSpinBox() #uses integers; for floats use QDoubleSpinBox
+        self.spin.setEnabled(self.state)
+
+        #LOCK-----------------------------------!!!!!!!!
+        
+        # op=QGraphicsOpacityEffect(self)
+        # op.setOpacity(0.80)
+        # self.spin.setEnabled(False)
+        # self.spin.setGraphicsEffect(op)
+        # self.spin.setReadOnly(True)
 
         #Check range of values in LabView
         self.spin.setMinimum(0)
@@ -108,6 +122,12 @@ class InfoField(QGroupBox):
           self.spin.setValue(0)
 #print(self.opcName+' : '+str(val[self.opcName]))
 
+    @classmethod
+    def set_all_states(cls, state):
+        for instance in cls.instances:
+            instance.state = state
+            instance.spin.setEnabled(state)
+
 
 # Field for Double parameter with decimal setting
 # Example if dec_num = 2 you get 10,00
@@ -115,9 +135,14 @@ class InfoField(QGroupBox):
 # Default dec_num is 2
 
 class InfoFieldDouble(QGroupBox):
+    
+    instances = []
+
     def __init__(self, name, layout, dec_num = 2, opcID='None', buttonSymbol=2):
         super().__init__(name)
+        self.instances.append(self)
         self.layout = layout
+        self.state = False
 
         #Header (QLabel) for the numerical field
         self.name = QLabel(name)
@@ -126,6 +151,7 @@ class InfoFieldDouble(QGroupBox):
 
         #Field for numerical Value
         self.spin = QDoubleSpinBox(decimals = dec_num) #uses integers; for floats use QDoubleSpinBox
+        self.spin.setEnabled(self.state)
 
         #Check range of values in LabView
         self.spin.setMinimum(10)
@@ -148,11 +174,17 @@ class InfoFieldDouble(QGroupBox):
         except:
           self.spin.setValue(0)
 
+    @classmethod
+    def set_all_states(cls, state):
+        for instance in cls.instances:
+            instance.state = state
+            instance.spin.setEnabled(state)
+
 class SingleLed(QGroupBox):
     def __init__(self, name, layout, opcID='opcID'):
         super().__init__()
         self.layout = layout
-        self.opcName=name
+        self.opcName = name
         local_layout = QFormLayout()
 
         self.name = QLabel(name)
@@ -180,86 +212,20 @@ class SingleLed(QGroupBox):
         except:
           self.led.value=False
 
-class Mixer(QGroupBox):
-    """Mixer set of elements for the Strasse 1 tab
-
-    :param QGroupBox: _description_
-    :type QGroupBox: _type_
-    """
-    
-    def __init__(self, name, layout, opcID=None):
-        super().__init__(name)
-
-        self.layout = layout
-        self.mainLayout=QFormLayout()
-
-        #<-------------------------------------->
-        #first row
-        #Left elements of the row
-
-        self.ch4 = InfoField(name = "CH4 [%]", 
-                         layout = self.mainLayout)
-
-        #Right element of the row
-        self.Qgas = InfoField(name = "Qgas [l/min]", 
-                         layout = self.mainLayout)
-
-        self.mainLayout.addRow(self.ch4.name, self.Qgas.name)
-        self.mainLayout.addRow(self.ch4.spin, self.Qgas.spin)
-        
-
-        #<-------------------------------------->
-        #Second row
-        #Left
-        self.co2 = InfoField(name = "CO2 [%]", 
-                         layout = self.mainLayout)
-
-        #Right
-        self.Qgas1 = InfoField(name = "CH4 [%]", 
-                         layout = self.mainLayout)
-
-        self.mainLayout.addRow(self.co2.name, self.Qgas1.name)
-        self.mainLayout.addRow(self.co2.spin, self.Qgas1.spin)
-
-
-        #<-------------------------------------->
-        #Third row
-        #Left
-        self.H2 = InfoField(name = "H2 [ppm]", 
-                         layout = self.mainLayout)
-  
-        #Right
-        self.pH = InfoField(name = "pH [-]", 
-                         layout = self.mainLayout)
- 
-        self.mainLayout.addRow(self.H2.name, self.pH.name)
-        self.mainLayout.addRow(self.H2.spin, self.pH.spin)
-
-
-        #<-------------------------------------->
-        #Fourth row
-        #Left
-        self.H2S = InfoField(name = "H2S [ppm]", 
-                         layout = self.mainLayout)
- 
-        self.mainLayout.addRow(self.H2S.name)
-        self.mainLayout.addRow(self.H2S.spin)
-
-
-        self.layout.addWidget(self)
-        # self.setAlignment(Qt.AlignTop)
-        self.mainLayout.setSpacing(0)
-        self.mainLayout.setLabelAlignment(Qt.AlignTop)
-        
-        self.setLayout(self.mainLayout)
-
 class Box(QGroupBox):
-  def __init__(self,name, layout, opcID='opcID'):
+
+  instances = []
+
+  def __init__(self, name, layout, opcID='opcID', horizontal_spacing=55, width=165):
     #self.setTitle(name)
     super().__init__(name)
+    self.instances.append(self)
     self.layout = layout
     self.opcName=name
-    mainLayout=QFormLayout()
+    mainLayout = QFormLayout()
+    self.state = False
+
+    self.setEnabled(self.state)
   
     self.led1=QLed(onColour=QLed.Green, shape=QLed.Circle)
     self.led2=QLed(onColour=QLed.Green, shape=QLed.Circle)
@@ -284,25 +250,28 @@ class Box(QGroupBox):
     #Settings:
     mainLayout.setVerticalSpacing(8)
     mainLayout.setFormAlignment(Qt.AlignLeft)
-    mainLayout.setHorizontalSpacing(55)
+    mainLayout.setHorizontalSpacing(horizontal_spacing)
     self.setFixedHeight(120)
-    self.setFixedWidth(165)
+    self.setFixedWidth(width)
 
 
     self.setLayout(mainLayout)
     self.layout.addWidget(self)
   
+  @classmethod
+  def set_all_states(cls, state):
+        for instance in cls.instances:
+            instance.state = state
+            instance.setEnabled(state)
 
 
   def write1(self):
-
     if self.led1.value==False:
-      print(self.opcID+': '+ self.radioBtn1.text())
-
+        print(self.opcID+': '+ self.radioBtn1.text())
     self.led1.setValue(True)
-    
-    #self.led2.value=False
-    #self.led3.value=False
+    self.led2.setValue(False)  # Add this line
+    self.led3.setValue(False)  # Add this line
+
 
   def write2(self):
 
@@ -365,6 +334,48 @@ class Box(QGroupBox):
 
     #print(val[self.opcName+'.Hand'])
 
+class Led_5(QGroupBox):
+    def __init__(self, box_name, name, layout, opcID='opcID'):
+        super().__init__(box_name)
+        self.layout = layout
+
+        local_layout = QFormLayout()
+
+        #self.name = QLabel(name)
+        self.led1=QLed(onColour=QLed.Red, shape=QLed.Circle)
+        self.led2=QLed(onColour=QLed.Red, shape=QLed.Circle)
+        self.led3=QLed(onColour=QLed.Red, shape=QLed.Circle)
+        self.led4=QLed(onColour=QLed.Red, shape=QLed.Circle)
+        self.led5=QLed(onColour=QLed.Red, shape=QLed.Circle)
+        
+
+        #add if-condition with opc input
+        self.led1.value = False
+        self.led2.value = False
+        self.led3.value = True
+        self.led4.value = False
+        self.led5.value = False
+
+        #self.led1 = name.split(',')[0]
+
+
+        local_layout.addRow(self.led1, QLabel(name.split(',')[0]))
+        local_layout.addRow(self.led2, QLabel(name.split(',')[1]))
+        local_layout.addRow(self.led3, QLabel(name.split(',')[2]))
+        local_layout.addRow(self.led4, QLabel(name.split(',')[3]))
+        local_layout.addRow(self.led5, QLabel(name.split(',')[4]))
+        
+        
+
+        #Settings:
+        self.setFixedHeight(200)
+        self.setFixedWidth(300)
+        #local_layout.setVerticalSpacing(18)
+        local_layout.setFormAlignment(Qt.AlignLeft)
+        local_layout.setHorizontalSpacing(25)
+
+        self.setLayout(local_layout)
+        self.layout.addWidget(self)
 
 class Led_6(QGroupBox):
     def __init__(self, name, layout, opcID='opcID'):
@@ -716,7 +727,8 @@ class UnlabelledButton(QGroupBox):
     # action methods
     def toggle(self):
         if self.button.isChecked():
-           print("Button 1 clicked")
+           pass
+          #  print("Button 1 clicked")
        
 
      # method called by button

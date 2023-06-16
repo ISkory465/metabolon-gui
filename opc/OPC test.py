@@ -3,6 +3,12 @@ from asyncio.windows_events import NULL
 from multiprocessing.sharedctypes import Value
 # import OpenOPC.OpenOPC as opc1
 import OpenOPC as opc1
+# import OpenOPC.OpenOPC as opc1
+import OpenOPC as opc1
+# import OpenOPC.OpenOPC as opc1
+import OpenOPC as opc1
+# import OpenOPC.OpenOPC as opc1
+import OpenOPC as opc1
 import time
 
 import pywintypes
@@ -26,9 +32,71 @@ with open('opc\opcList.JSON') as json_file:
     #  print('yes')
     #print(x['Temp. Fer 1 (°C)'])
     #print('\N{DEGREE SIGN} C')
+with open('opc\opcList.JSON') as json_file:
+    data = json.load(json_file)
+ 
+    # for reading nested data [0] represents
+    # the index value of the list
+    #print(data['TAB1'])
+    print(type(data['TAB1']))
+    x=data['TAB1']
+    mykeys = [*x]          #list of keys    y=x.keys()
+    k=mykeys[8]
+    st="Temp. Fer 1 (\N{DEGREE SIGN}C)"
+    print(k)
+    print(st)
+    if k==st:
+      print('yes')
+    #print(x['Temp. Fer 1 (°C)'])
+    #print('\N{DEGREE SIGN} C')
+with open('opc\opcList.JSON') as json_file:
+    data = json.load(json_file)
+ 
+    # for reading nested data [0] represents
+    # the index value of the list
+    #print(data['TAB1'])
+    print(type(data['TAB1']))
+    x=data['TAB1']
+    mykeys = [*x]          #list of keys    y=x.keys()
+    k=mykeys[8]
+    st="Temp. Fer 1 (\N{DEGREE SIGN}C)"
+    print(k)
+    print(st)
+    if k==st:
+      print('yes')
+    #print(x['Temp. Fer 1 (°C)'])
+    #print('\N{DEGREE SIGN} C')
+with open('opc\opcList.JSON') as json_file:
+    data = json.load(json_file)
+ 
+    # for reading nested data [0] represents
+    # the index value of the list
+    #print(data['TAB1'])
+    print(type(data['TAB1']))
+    x=data['TAB1']
+    mykeys = [*x]          #list of keys    y=x.keys()
+    #k=mykeys[8]
+    st="Temp. Fer 1 (\N{DEGREE SIGN}C)"
+    #print(k)
+    #print(st)
+    #if k==st:
+    #  print('yes')
+    #print(x['Temp. Fer 1 (°C)'])
+    #print('\N{DEGREE SIGN} C')
 
 # OPC connection
-'''#opc=opc1
+'''client1=OpenOPC.client()
+list1=client1.servers()
+
+print(list1)
+name=list1[3]
+print(name)
+client1.connect(name)
+x=client1['Ack_All']
+tag='Ack_All'
+print(x)
+client1.write((tag,False))
+#opc=opc1
 opc=opc1.client()
 #opc
 opc.connect("OPC.SimaticNET")

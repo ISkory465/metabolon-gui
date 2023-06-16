@@ -2,18 +2,19 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
 from QLed import QLed
 
-from ..test_element import Box
-from ..test_element import InfoField
-from ..test_element import SingleLed
-from ..test_element import Led_6
-from ..test_element import Led_8
+from components.widgets.leds import LedGroupBox
 
 
-class Page():
+class Page(QWidget):
 
-    def UI(self,window:QMainWindow):
+    def __init__(self) -> None:
 
-        #Main layout of the first tab 'Störmeldungen Straße 2"
+        super().__init__()
+        self.UI()
+
+    def UI(self):
+
+        #Main layout of the first tab 'Stoermeldungen Straße 2"
         grid = QGridLayout()
 
         #Page has 1 horizontal box:
@@ -24,21 +25,27 @@ class Page():
         vbox1=QVBoxLayout()
         vbox2=QVBoxLayout()
 
-       
-        #Elements of vbox1 and vbox2 for the hbox:
-        self.led_l = Led_6(name="PU21 Antriebsstörung +FE02\
-                            ,PU21 Trockenlaufstörung +FE02\
-                            ,PU21 MaxDruckstörung +FE02\
-                            ,PU22 Antriebsstörung +FE02\
-                            ,PU22 Trockenlaufstörung +FE02\
-                            ,PU22 MaxDruckstörung +FE02", layout=vbox1)
-        self.led_r = Led_8(name="RW21 Antriebsstörung +FE03,RW21 FU-Störung +FE03\
-                            ,RW22 Antriebsstörung +FE03\
-                            ,RW22 FU-Störung +FE03\
-                            ,RW23 Antriebsstörung +FE03\
-                            ,RW23 FU-Störung +FE03\
-                            ,RW24 Antriebsstörung +FE03\
-                            ,RW24 FU-Störung +FE03", layout=vbox2)
+        
+        self.led_l = LedGroupBox("", ["PU21 Antriebsstoerung +FE02", "PU21 Trockenlaufstoerung +FE02",
+                                 "PU21 MaxDruckstoerung +FE02", "PU22 Antriebsstoerung +FE02",
+                                 "PU22 Trockenlaufstoerung +FE02", "PU22 MaxDruckstoerung +FE02"], [QLed.Green] * 6)
+        self.led_l.setFixedHeight(300)
+        self.led_l.setFixedWidth(250)
+        vbox1.addWidget(self.led_l)
+        # Testing
+        self.led_l.set_led_state(5, True)
+        
+        
+        self.led_r = LedGroupBox("", ["RW21 Antriebsstoerung +FE03", "RW21 FU-Stoerung +FE03",
+                                 "RW22 Antriebsstoerung +FE03", "RW22 FU-Stoerung +FE03",
+                                 "RW23 Antriebsstoerung +FE03", "RW23 FU-Stoerung +FE03",
+                                 "RW24 Antriebsstoerung +FE03", "RW24 FU-Stoerung +FE03"], [QLed.Green] * 8)
+        self.led_r.setFixedHeight(300)
+        self.led_r.setFixedWidth(250)
+        vbox2.addWidget(self.led_r)
+        # Testing
+        self.led_r.set_led_state(2, True)
+        self.led_r.set_led_state(4, True)
 
         #Grid layout  
         grid.addLayout(vbox1, *[0,0])
@@ -51,7 +58,7 @@ class Page():
         grid.setVerticalSpacing(60)
         
         #Assigning to the tab
-        window.tab7.setLayout(grid) 
+        self.setLayout(grid) 
     def updateAll(self,inputs: dict):
         """method to update all objects in current tab periodically after reading the values in different thread
 
