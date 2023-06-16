@@ -51,9 +51,15 @@ class InfoField(QWidget):
 
     def update(self,val:dict):
         self.spin.setValue(val[self.opcName])
-
+    
+    def getValue(self): 
+        
+        return self.spin.value()
+    
+     
     @classmethod
     def set_all_states(cls, state):
         for instance in cls.instances:
             instance.state = state
             instance.spin.setEnabled(state)
+            

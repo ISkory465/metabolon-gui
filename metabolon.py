@@ -13,7 +13,7 @@ from components.app_tabs.Stoermeldungen_Strasse_2 import Page as St_Meld_2
 from components.app_tabs.Betriebsstunden          import Page as Betriebsstunden
 from components.app_tabs.Fuetterung_Strasse_2     import Page as Fuet_Strasse_2
 from components.app_tabs.Side_bar                 import SideBar
-
+from components.app_tabs.Betriebsstunden_test     import Page as Betriebsstunden2
 class Window(QMainWindow):
 
     def __init__(self):
@@ -94,10 +94,14 @@ class Window(QMainWindow):
         # <--self.innerTabs3-->
         #Page instances for the import to the self.innerTabs3
         self.betrieb = Betriebsstunden()
+        
 
         # Tab connection to the self.innerTabs3:
         self.innerTabs3.addTab(self.betrieb, "Betriebsstunden")
 
+
+        self.betrieb2 = Betriebsstunden2()
+        self.innerTabs3.addTab(self.betrieb2, "Betriebsstunden2")
 
         # Create a central widget to hold the mainLayout
         central_widget = QWidget()
