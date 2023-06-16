@@ -18,12 +18,12 @@ with open('opc\opcList.JSON') as json_file:
     print(type(data['TAB1']))
     x=data['TAB1']
     mykeys = [*x]          #list of keys    y=x.keys()
-    k=mykeys[8]
+    #k=mykeys[8]
     st="Temp. Fer 1 (\N{DEGREE SIGN}C)"
-    print(k)
-    print(st)
-    if k==st:
-      print('yes')
+    #print(k)
+    #print(st)
+    #if k==st:
+    #  print('yes')
     #print(x['Temp. Fer 1 (°C)'])
     #print('\N{DEGREE SIGN} C')
 
@@ -65,6 +65,6 @@ print(opc.info())
 # client1.close_connection()
 
 '''
-'''
+
 
 
