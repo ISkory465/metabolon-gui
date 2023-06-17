@@ -140,11 +140,48 @@
 },
 "Futter1":
 {
-
+  "Feststoff Sollwert [kg/d]":"",
+  "Feststoff Istwert [kg/d]":"",
+  "Feststoff Sollwert [kg/Zyklus]":"",
+  "Feststoff Istwert [kg/Zyklus]":"",
+  "Fluessigkeit Sollwert [l/d]":"",
+  "Fluessigkeit Istwert [l/d]":"",
+  "Fluessigkeit Sollwert [l/Zyklus]":"",
+  "Fluessigkeit Istwert [l/Zyklus]":"",
+  "Maische Sollwert [l/d]":"",
+  "Maische Istwert [l/d]":"",
+  "Maische Sollwert [l/Zyklus]":"",
+  "Maische Istwert [l/Zyklus]":"",
+  "Futterungszyklein/Tag":"",
+  "DB50.MAIFLU1.FLUSW":"",
+  "DB50.MAIFLU1.FLUW":"",
+  "Gesamteintrag Feststoff 1 [kg]":"",
+  "Gesamteintrag Feststoff 2 [kg]":"",
+  "Gesamteintrag Feststoff 3 [kg]":"",
+  "Gesamteintrag Feststoff 4 [kg]":"",
+  "Gesamteintrag Feststoff 5 [kg]":"",
+  "Gesamteintrag Feststoff 6 [kg]":"",
+  "Gesamteintrag Feststoff 7 [kg]":"",
+  "Gesamteintrag Fluessigkeit 1 [l]":"",
+  "Gesamteintrag Fluessigkeit 2 [l]":"",
+  "Gesamteintrag Fluessigkeit 3 [l]":"",
+  "Gesamteintrag Fluessigkeit 4 [l]":"",
+  "Gesamteintrag Fluessigkeit 5 [l]":"",
+  "Gesamteintrag Fluessigkeit 6 [l]":"",
+  "Gesamteintrag Maische 1 [l]":"",
+  "Gesamteintrag Maische 2 [l]":"",
+  "Gesamteintrag Maische 3 [l]":"",
+  "Gesamteintrag Maische 4 [l]":"",
+  "Gesamteintrag Maische 5 [l]":"",
+  "Gesamteintrag Maische 6 [l]":"",
+  "Gesamteintrag Maische 7 [l]":"",
+  "Feststoff Gesamteintrag [kg]":"",
+  "Fluessigkeit Gesamteintrag [l]":"",
+  "Maische Gesamteintrag [l]":""
 },
 "Futter2":
 {
-  
+
 }
 
 }
