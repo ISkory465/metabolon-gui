@@ -24,7 +24,7 @@ class Futter1(QWidget):
         self.vbox0.addWidget(self.button)
 
         # Left elements of the row
-        self.festSollwert11 = InfoField(name=sollwert11, buttonSymbol=1)
+        self.festSollwert11 = InfoField(name=sollwert11, buttonSymbol=1,dec_num=1)
         self.vbox1.addWidget(self.festSollwert11)
 
         # Right element of the row
@@ -33,7 +33,7 @@ class Futter1(QWidget):
 
         # Second row
         # Left
-        self.festSollwert21 = InfoField(name=solwert21)
+        self.festSollwert21 = InfoField(name=solwert21,dec_num=3)
         self.vbox1.addWidget(self.festSollwert21)
 
         # Right

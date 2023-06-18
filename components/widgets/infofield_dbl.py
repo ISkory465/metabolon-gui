@@ -33,7 +33,7 @@ class InfoField(QWidget):
         self.spin.setEnabled(self.state)
         
         #Check range of values in LabView
-        self.spin.setMinimum(10)
+        self.spin.setMinimum(0)
         self.spin.setMaximum(150)
         self.spin.setAlignment(Qt.AlignRight)
 

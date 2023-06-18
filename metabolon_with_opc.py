@@ -129,7 +129,7 @@ class Window(QMainWindow):
         self.timer = QTimer()
         self.timer.setInterval(5000)
         self.timer.timeout.connect(self.runLongTask)
-        #self.timer.start() # Remove comment to run OPC update
+        self.timer.start() # Remove comment to run OPC update
 
         # Display the content of the central_widget
         self.show()
@@ -181,7 +181,7 @@ class Window(QMainWindow):
           elif inner_index2==1:
             self.opclist=tags['Steurung2']
           elif inner_index2==2:
-            self.opclist=tags['Futter2']#Change to actaul Tab
+            self.opclist=tags['Futter2']
           elif inner_index2==3:
             self.opclist=tags['Stoermeldungen_Strasse_2']
 
@@ -226,7 +226,7 @@ class Window(QMainWindow):
           elif inner_index1==2:
             for i in keys:
               val6[i]=tagValues[i]
-            self.steu_strasse_1.updateAll(val6)
+            self.fuet_strasse_1.updateAll(val6)
           elif inner_index1==3:
             for k in keys:
               val2[k]=tagValues[k]
@@ -242,7 +242,7 @@ class Window(QMainWindow):
           elif inner_index2==2:
             for i in keys:
               val7[i]=tagValues[i]
-            self.steu_strasse_1.updateAll(val7)  
+            self.fuet_strasse_2.updateAll(val7)  
           elif inner_index1==3:
             for k in keys:
               val4[k]=tagValues[k]
