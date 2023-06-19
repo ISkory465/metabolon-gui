@@ -12,7 +12,7 @@ class InfoField(QWidget):
     def __init__(self, name, opcID='None', buttonSymbol=2, dec_num=None, max_width=None):
         super().__init__()
         self.instances.append(self)
-        self.opcName = name
+        self.opcName = name.replace("\N{DEGREE SIGN}", "" )
         self.state = False
         self.layout = QVBoxLayout()
         self.setLayout(self.layout)
