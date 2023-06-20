@@ -52,8 +52,11 @@ class InfoField(QWidget):
     def update(self,val:dict):
         try:
           self.spin.setValue(val[self.opcName])
-        except:
+        except Exception as e:
           self.spin.setValue(0)
+          print(self.opcName)
+          print(str(e))
+
 
     @classmethod
     def set_all_states(cls, state):

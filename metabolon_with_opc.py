@@ -86,7 +86,8 @@ class Window(QMainWindow):
         self.innerTabs1.addTab(self.steu_meld_starsse_1,    "Störmeldungen")   #old name: "Störmeldungen Straße 1"
         
         # Update OPC list when inner tab index changes 
-
+        global tags
+        self.opclist=tags['Steurung1']
         self.innerTabs1.currentChanged.connect(self.updateOPCList)
         # <--self.innerTabs2-->
         #Page instances for the import to the self.innerTabs2
@@ -127,7 +128,7 @@ class Window(QMainWindow):
 
         # Define the timer for periodic update of tags
         self.timer = QTimer()
-        self.timer.setInterval(5000)
+        self.timer.setInterval(3000)
         self.timer.timeout.connect(self.runLongTask)
         self.timer.start() # Remove comment to run OPC update
 
@@ -190,8 +191,6 @@ class Window(QMainWindow):
           if inner_index3==0:
             self.opclist=tags['Betriebsstunden']
           
-       
-
 
     def reportProgress(self,tagValues:dict):
         """Defines the update of the tags after getting the new Values from the Worker thread
