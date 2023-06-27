@@ -18,7 +18,7 @@ class TankIBC(QWidget):
         self.setup_ui(name)
 
     def setup_ui(self, name):
-        self.setMinimumSize(90, 140)
+        self.setFixedSize(90, 140)
         self.label = QLabel(name)
         self.label.setAlignment(Qt.AlignCenter)
         layout = QVBoxLayout()
@@ -38,10 +38,10 @@ class TankIBC(QWidget):
 
         # Draw the max LED
         max_led_rect = QRect(
-            tank_rect.right() - 50,
+            tank_rect.right() - 54,
             tank_rect.top() + 5,
-            tank_rect.width() - 80,
-            10
+            tank_rect.width() - 70,
+            8
         )
         if self.current_level >= self.max_level:
             painter.setBrush(QBrush(self.max_led_color))
@@ -51,10 +51,10 @@ class TankIBC(QWidget):
 
         # Draw the min LED
         min_led_rect = QRect(
-            tank_rect.right() - 50,
+            tank_rect.right() - 54,
             tank_rect.bottom() - 15,
-            tank_rect.width() - 80,
-            10
+            tank_rect.width() - 70,
+            8
         )
         if self.current_level <= self.min_level:
             painter.setBrush(QBrush(self.min_led_color))

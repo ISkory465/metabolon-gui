@@ -7,7 +7,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout, QHBoxLay
 class TankMixerWidget(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.setFixedSize(240, 150)
+        self.setFixedSize(120, 150)
         self._max_level = 100  # Set the maximum level
         self._min_level = 20  # Set the minimum level
         self._current_level = 30  # Initial level of the tank
@@ -139,8 +139,8 @@ class TankMixerWidget(QWidget):
 
         # Draw the max level sensor
         max_sensor_color = QColor(255, 0, 0) if current_level_height >= max_level_height else QColor(255, 255, 255)
-        max_sensor_width = tank_width // 8
-        max_sensor_height = current_level_height // 8
+        max_sensor_width = tank_width // 5
+        max_sensor_height = current_level_height // 14
         max_sensor_x = tank_width - max_sensor_width - tank_width // 20  # Move away from the right border
         max_sensor_y = tank_y + tank_height // 20  # Move away from the top border
         painter.setBrush(max_sensor_color)
@@ -148,8 +148,8 @@ class TankMixerWidget(QWidget):
 
         # Draw the min level sensor
         min_sensor_color = QColor(0, 255, 0) if current_level_height <= min_level_height else QColor(255, 255, 255)
-        min_sensor_width = tank_width // 8
-        min_sensor_height = current_level_height // 8
+        min_sensor_width = tank_width // 5
+        min_sensor_height = current_level_height // 14
         min_sensor_x = tank_width - min_sensor_width - tank_width // 20  # Move away from the right border
         min_sensor_y = tank_y + tank_height - min_sensor_height - tank_height // 3 - 5  # Move away from the bottom border
         painter.setBrush(min_sensor_color)

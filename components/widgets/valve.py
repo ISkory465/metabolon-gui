@@ -4,7 +4,7 @@ from PyQt5.QtCore import *
 import sys
 
 class ValveLabelWidget(QWidget):
-    def __init__(self, label="", sizeH=40, sizeW=30):
+    def __init__(self, label="", sizeH=60, sizeW=30):
         super().__init__()
         self.valve = ValveWidget(sizeH, sizeW)
         self.valvename = label
@@ -53,8 +53,8 @@ class ValveWidget(QWidget):
         painter.setBrush(QBrush(valvecolor, Qt.SolidPattern))
 
         points = [
-            QPoint(0,0),
-            QPoint(0,self.valvesizeW),
+            QPoint(8,0),
+            QPoint(8,self.valvesizeW),
             QPoint(self.valvesizeH,0),
             QPoint(self.valvesizeH,self.valvesizeW)
             ]
