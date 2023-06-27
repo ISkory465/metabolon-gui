@@ -31,7 +31,7 @@ class TankIBC(QWidget):
 
         # Draw the tank
         tank_rect = QRect(0, 0, self.width() - 0, self.height() - 0)
-        tank_color = QColor(128, 128, 128)  # Gray
+        tank_color = Qt.lightGray  # Gray
         painter.setPen(QPen(Qt.NoPen))
         painter.setBrush(QBrush(tank_color))
         painter.drawRect(tank_rect)

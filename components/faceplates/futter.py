@@ -56,11 +56,10 @@ class Futter1(QWidget):
 
 
 
-class Feststoffbtn(QGroupBox):
+class Feststoffbtn(QFrame):
     def __init__(self, firstElement, secondElement, thirdElement, fourthElement, fifthElement, sixthElement, opcID='opcID'):
         super().__init__()
-        self.setFlat(True)
-        #self.layout = QVBoxLayout #vbox 
+    
         self.mainLayout=QHBoxLayout()
         self.vbox0=QVBoxLayout()
         self.vbox1=QVBoxLayout()
@@ -73,7 +72,7 @@ class Feststoffbtn(QGroupBox):
                                  buttonSymbol=2) 
         self.vbox1.addWidget(firstElement)
         
-        self.vbox0.addWidget(button1)
+        self.vbox0.addWidget(button1, alignment=Qt.AlignVCenter)
         #<-------------------------------------->
         #Second row
         button2 = UnlabelledButton()
@@ -81,7 +80,7 @@ class Feststoffbtn(QGroupBox):
                                  buttonSymbol=2)
         self.vbox1.addWidget(secondElement)
         
-        self.vbox0.addWidget(button2)
+        self.vbox0.addWidget(button2, alignment=Qt.AlignVCenter)
         
         #Third row
         button3 = UnlabelledButton()
@@ -89,7 +88,7 @@ class Feststoffbtn(QGroupBox):
                           buttonSymbol=2)
         self.vbox1.addWidget(thirdElement)
         
-        self.vbox0.addWidget(button3)
+        self.vbox0.addWidget(button3, alignment=Qt.AlignVCenter)
        
         #Fourth row
         button4 = UnlabelledButton()
@@ -97,29 +96,30 @@ class Feststoffbtn(QGroupBox):
                                   buttonSymbol=2)
         self.vbox1.addWidget(fourthElement)
         
-        self.vbox0.addWidget(button4)
+        self.vbox0.addWidget(button4, alignment=Qt.AlignVCenter)
 
         #Fifth row
         button5 = UnlabelledButton()
         fifthElement = InfoField(name =fifthElement, 
                                  buttonSymbol=2)
         self.vbox1.addWidget(fifthElement)
-        self.vbox0.addWidget(button5)
+        self.vbox0.addWidget(button5, alignment=Qt.AlignVCenter)
         
         #Six row
         button6 = UnlabelledButton()
         sixthElement = InfoField(name = sixthElement, 
                                  buttonSymbol=2)
         self.vbox1.addWidget(sixthElement)
-        self.vbox0.addWidget(button6)
+        self.vbox0.addWidget(button6, alignment=Qt.AlignVCenter)
          
         #adding layouts to main layout
         self.mainLayout.addLayout(self.vbox0)
         self.mainLayout.addLayout(self.vbox1)
        
         #setting for adjasting space between elements in layouts
+        self.vbox0.setSpacing(0)
         self.vbox1.setSpacing(5)
-        self.mainLayout.setSpacing(5)
+        self.mainLayout.setSpacing(0)
        
         self.setLayout(self.mainLayout)
 
