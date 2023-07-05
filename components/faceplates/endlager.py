@@ -10,7 +10,7 @@ import sys
 class Endlager(QGroupBox):
     def __init__(self, name, opcID=None):
         super().__init__(name)
-        
+        self.opcName=name
         # Main layout for 2 horizontal boxes representing each row
         main_vbox = QVBoxLayout()
         main_vbox.setSpacing(10)
@@ -27,25 +27,45 @@ class Endlager(QGroupBox):
         main_vbox.addLayout(row2)
 
         # Create the endlager tank widget
-        tank = EndlagerTank()
-        tank.setLevel(50)
+        tankName=self.opcName + ' Tank'
+        self.tank = EndlagerTank(tankName)
+        self.tank.setLevel(50)
 
         # Create the thermometer widget
-        thermometer = EndThermometerWidget()
-        thermometer.setTemperature(35)
+        thermometerName=self.opcName+' Thermometer'
+
+        self.thermometer = EndThermometerWidget(thermometerName)
+        self.thermometer.setTemperature(35)
 
         # Create the gauge widget
-        gauge = Gauge()
-        gauge.setFixedSize(100,100)
+        gaugeName=self.opcName+' gauge'
+        self.gauge = Gauge(gaugeName)
+        self.gauge.setFixedSize(100,100)
 
         # Add the widgets to the rows
-        row1.addWidget(tank)
-        row1.addWidget(thermometer)
-        row2.addWidget(gauge)
+        row1.addWidget(self.tank)
+        row1.addWidget(self.thermometer)
+        row2.addWidget(self.gauge)
 
         # Add all the elements to the main layout and set it as the default layout
         self.setLayout(main_vbox)
+    def update(self,inputs: dict):
+        """method to update all objects in current tab periodically after reading the values in different thread
 
+        :param inputs: tag values
+        :type inputs: dict
+        """
+        objectList=[    #self.playbutton,
+                        self.tank,
+                        self.gauge,
+                        self.thermometer
+                    ]
+
+
+        for o in objectList:
+            #iterate over an update method that should be added to all faceplate objects similar to box object
+            o.update1(inputs)
+        
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

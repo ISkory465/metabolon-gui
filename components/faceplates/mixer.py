@@ -1,11 +1,13 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
-from ..widgets.infofield_dbl import InfoField
+from ..widgets.infofield_dbl import InfoField, InfoFieldV2
 from ..widgets.therm import ThermometerWidget
 from ..widgets.schnecke import PlayButton
 from ..widgets.gauge import Gauge
 from .mixer_n_heater import BigMixer
 import sys
+
+from components.widgets import gauge
 
 
 #TODO make cleanning and comments
@@ -20,7 +22,7 @@ class Mixer(QGroupBox):
     def __init__(self, name, opcID=None):
         
         super().__init__(name) 
-        
+        self.opcName=name
         #Main laout of the mixer with 2x2 element position
 
         self.vbox = QVBoxLayout()
@@ -53,36 +55,39 @@ class Mixer(QGroupBox):
         self.schnecke_label.setAlignment(Qt.AlignCenter)
         schnecke_vbox.addWidget(self.schnecke_label)
         self.hbox.addLayout(schnecke_vbox)
-
-        self.playbutton = PlayButton()
+        PlayButtonName=self.opcName+':Schnecke'
+        self.playbutton = PlayButton(PlayButtonName)
         schnecke_vbox.addWidget(self.playbutton)
         schnecke_vbox.setAlignment(Qt.AlignVCenter)
         # schnecke_vbox.addStretch(1)  # Pushes the PlayButton up
         
         therm_layout = QVBoxLayout()
-        self.thermometer = ThermometerWidget() #add  self.name parameter in class thermometer
+        thermometerName=self.opcName+':Thermometer'
+
+        self.thermometer = ThermometerWidget(thermometerName) #add  self.name parameter in class thermometer
         therm_layout.addWidget(self.thermometer)
         therm_layout.setAlignment(Qt.AlignVCenter)
         self.hbox.addLayout(therm_layout)
 
 
-
-        self.gauge = Gauge() #add self.name parameter in class
+        gaugeName=self.opcName+':gauge'
+        self.gauge = Gauge(gaugeName) #add self.name parameter in class
         self.hbox1.addWidget(self.gauge)
         horizontalSpacer = QSpacerItem(75, 10, QSizePolicy.Minimum, QSizePolicy.Fixed) 
         self.hbox1.addItem(horizontalSpacer)
-
-        self.big_mixer = BigMixer() #add self.name parameter in class
+        
+        bigMixerNamer=self.opcName+':bigMixer'
+        self.big_mixer = BigMixer(bigMixerNamer) #add self.name parameter in class
         self.hbox1.addWidget(self.big_mixer)
 
         self.setLayout(self.vbox)
 
 
         #First (left) column content for the nm_1_column
-        self.ch4 = InfoField(name = "CH4 [%]")
-        self.co2 = InfoField(name = "CO2 [%]")
-        self.H2 = InfoField(name = "H2 [ppm]")
-        self.H2S = InfoField(name = "H2S [ppm]")
+        self.ch4 = InfoFieldV2(opcID=self.opcName,name = "CH4 [%]")
+        self.co2 = InfoFieldV2(opcID=self.opcName,name = "CO2 [%]")
+        self.H2 = InfoFieldV2(opcID=self.opcName,name = "H2 [ppm]")
+        self.H2S = InfoFieldV2(opcID=self.opcName,name = "H2S [ppm]")
 
         self.nm_1_column.addWidget(self.ch4)
         self.nm_1_column.addWidget(self.co2)
@@ -90,14 +95,40 @@ class Mixer(QGroupBox):
         self.nm_1_column.addWidget(self.H2S)
         
         #Second (right) column content for the nm_2_column
-        self.Qgas = InfoField(name = "Qgas [l/min]")
-        self.Qgas1 = InfoField(name = "CH4 [%]")
-        self.pH = InfoField(name = "pH [-]")
+        self.Qgas = InfoFieldV2(opcID=self.opcName,name = "Qgas [l/min]")
+        self.Qgas1 = InfoFieldV2(opcID=self.opcName,name = "CH4 [%]")
+        self.pH = InfoFieldV2(opcID=self.opcName,name = "pH [-]")
 
         self.nm_2_column.addWidget(self.Qgas)
         self.nm_2_column.addWidget(self.Qgas1)
         self.nm_2_column.addWidget(self.pH)
+    def update(self,inputs: dict):
+        """method to update all objects in current tab periodically after reading the values in different thread
 
+        :param inputs: tag values
+        :type inputs: dict
+        """
+        objectList=[    #self.playbutton,
+                        self.thermometer,
+                        self.gauge,
+                        self.big_mixer
+                    ]
+
+
+        for o in objectList:
+            #iterate over an update method that should be added to all faceplate objects similar to box object
+            o.update1(inputs)
+        
+        objectList2=[self.ch4,
+                     self.co2,
+                     self.H2,
+                     self.H2S,
+                     self.Qgas,
+                     self.Qgas1,
+                     self.pH]
+    
+        for i in objectList2:
+            i.update(inputs)
 
 if __name__ == "__main__":
     pass

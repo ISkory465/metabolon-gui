@@ -6,17 +6,24 @@ from PyQt5.QtWidgets import QPushButton
 
 class BigMixer(QWidget):
 
-    def __init__(self, level=94):
+    def __init__(self,name, level=94):
         super().__init__()
         self.setFixedSize(160, 110)
         self.level = level
         self.motor_state = 2 #3 states: 0 - RED(Faulty); 1 - BLUE(Idle); 2 - GREEN(Active)
         self.heater_state = 2 #3 states: 0 - RED(Faulty); 1 - BLUE(Idle); 2 - GREEN(Active)
         self.buffer = int(self.height() * 0.27) #area above the tank water level
-
+        self.opcName=name
     def setLevel(self, val):
         self.level = val
         self.update()
+
+    def update1(self,val:dict):
+        try:
+          self.setLevel(val[self.opcName])
+        except Exception as e:
+          print(self.opcName)
+          print(str(e))
 
     def setState(self, state):
         if self.level >= 0.95:

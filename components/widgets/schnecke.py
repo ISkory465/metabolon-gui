@@ -6,9 +6,9 @@ import sys
 
 
 class PlayButton(QWidget):
-    def __init__(self):
+    def __init__(self,name):
         super().__init__()
-
+        self.opcName=name
         self.state = 2 #3 states: 0 - RED(Faulty); 1 - BLUE(Idle); 2 - GREEN(Active)
         self.setFixedSize(60, 60)
 
@@ -51,7 +51,7 @@ class PlayButton(QWidget):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    btn = PlayButton()
+    btn = PlayButton('Name')
     btn.show()
 
     sys.exit(app.exec_())
