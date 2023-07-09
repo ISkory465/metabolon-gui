@@ -9,17 +9,17 @@ from ..widgets.infofield_dbl import InfoField
 class Page(QWidget):
     fields = {
         'HE11_BH': {
-            'widget': None,
+            'value': None,
             'table': 'opcdb78',
             'column': 'he11_bh'
         },
         'HE12_BH': {
-            'widget': None,
+            'value': None,
             'table': 'opcdb78',
             'column': 'he12_bh'
         },
         'HE21_BH': {
-            'widget': None,
+            'value': None,
             'table': 'opcdb78',
             'column': 'he21_bh'
         },
@@ -29,6 +29,9 @@ class Page(QWidget):
     def __init__(self) -> None:
         super().__init__()
         self.UI()
+        db_handler = DatabaseHandler()
+        #db_handler.insert_record('opcdb78', '10')
+        
         self.setup_database_update()
 
     def UI(self):
@@ -88,12 +91,14 @@ class Page(QWidget):
         vbox2_2.addWidget(self.field2_4)
         self.field2_5 = InfoField(name="PU31_BH", dec_num=4)
         vbox2_3.addWidget(self.field2_5)
+    
         
-        # Assign the field widgets to the fields dictionary
-        self.fields['HE11_BH']['widget'] = self.field1_1
-        self.fields['HE12_BH']['widget'] = self.field1_2
-        self.fields['HE21_BH']['widget'] = self.field1_3
-
+        # Assign the field values to the fields dictionary
+        self.fields['HE11_BH']['value'] = self.field1_1.getValue()
+        self.fields['HE12_BH']['value'] = self.field1_2.getValue()
+        self.fields['HE21_BH']['value'] = self.field1_3.getValue()
+        print(self.fields)
+    
         # Grid layout  
         grid.addLayout(hbox1, 1, 0)
         grid.addLayout(hbox2, 1, 1)
@@ -107,24 +112,51 @@ class Page(QWidget):
         # Iterate over the fields dictionary
         for field_name, field_info in self.fields.items():
             # Get the current value of the field
-            field_widget = field_info['widget']
-            value = field_widget.getValue()
-            print(value)
+            field_value = field_info['value']
+            value = field_value.getValue()
             # Call the update_database method to update the value in the database
-            self.update_database(field_name, value, field_info['table'], field_info['column'])
-        
+            self.update_database(field_info['table'], field_info['column'], value, field_name)
+    
+    def insert_fields(self):
+    # Create a dictionary to hold the column-value pairs
+        record = {}
+
+    # Iterate over the fields dictionary
+        for field_name, field_info in self.fields.items():
+            # Get the current value of the field
+            field_value = field_info['value']
+            value = field_value
+
+             # Add the column-value pair to the record dictionary
+            record[field_info['column']] = value
+            print(record)
+
+             # Call the insert_record method to insert the record into the database
+            self.db_handler.insert_record(field_info['table'], record)
+    
+    
     def setup_database_update(self):
         # Instantiate the DatabaseHandler
         self.db_handler = DatabaseHandler()
 
         # Create a QTimer for periodic updates
         self.timer = QTimer(self)
-        self.timer.timeout.connect(self.update_fields)
+        self.timer.timeout.connect(self.insert_fields)
         self.timer.start(0.3 * 60 * 1000)  # 5 minutes in milliseconds
+        
+    def setup_database_insert(self):
+        # Instantiate the DatabaseHandler
+        self.db_handler = DatabaseHandler()
+
+        # Create a QTimer for periodic updates
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.update_fields)
+        self.timer.start(0.3 * 60 * 1000)  # 5 minutes in milliseconds    
 
     def update_database(self, field_name, value, table_name, column_name):
         # Perform the database update asynchronously
         asyncio.ensure_future(self.db_handler.update_record(table_name, column_name, value, f"{field_name} = %s"))
+        
 
     def closeEvent(self, event):
         # Stop the timer and close the database connection when the UI is closed
@@ -159,4 +191,5 @@ class Page(QWidget):
         
 
 if __name__=='__main__':
+    
     pass

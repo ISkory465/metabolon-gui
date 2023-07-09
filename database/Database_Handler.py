@@ -31,9 +31,10 @@ class DatabaseHandler:
 
     def insert_record(self, table_name, values):
         self.cursor = self.connection.cursor()
+        columns = ', '.join(values.keys())
         placeholders = ', '.join(['%s'] * len(values))
-        insert_query = f"INSERT INTO {table_name} VALUES ({placeholders});"
-        self.cursor.execute(insert_query, values)
+        insert_query = f"INSERT INTO {table_name} ({columns}) VALUES ({placeholders});"
+        self.cursor.execute(insert_query, tuple(values.values()))
         self.connection.commit()
         self.cursor.close()
 
@@ -43,6 +44,8 @@ class DatabaseHandler:
         self.cursor.execute(update_query, (new_value,))
         self.connection.commit()
         self.cursor.close()
+
+
 
     def get_records(self, table_name):
         self.cursor = self.connection.cursor()
@@ -61,4 +64,6 @@ class DatabaseHandler:
         
         
 if __name__ == "__main__":
-    DatabaseHandler()
+    db_handler = DatabaseHandler()
+    db_handler.update_record('opcdb78', 'he11_bh', '10')
+    
