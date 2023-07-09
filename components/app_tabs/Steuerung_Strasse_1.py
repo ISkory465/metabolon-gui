@@ -136,7 +136,7 @@ class Page(QWidget):
         self.box4 = Box("HE12")
         vbox4.addWidget(self.box4)
         
-        self.field3_1b = InfoField(name="Nachgärer Temp.-Sollwert [\N{DEGREE SIGN}C]")
+        self.field3_1b = InfoField(name="Nachgaerer Temp.-Sollwert [\N{DEGREE SIGN}C]")
         vbox4.addWidget(self.field3_1b)
         self.field3_2b = InfoField(name="Temp. Vorlauf Ng 1 [\N{DEGREE SIGN}C]")
         vbox4.addWidget(self.field3_2b)

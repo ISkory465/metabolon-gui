@@ -26,7 +26,9 @@ def create_group_box(title, boxes):
             box_layout.addWidget(box)
 
         # Add the box layout to the group box layout
+        box_layout.setAlignment(Qt.AlignTop)
         group_box_layout.addLayout(box_layout)
+        group_box_layout.setAlignment(Qt.AlignTop)
 
     # Set the group box layout
     group_box.setLayout(group_box_layout)
@@ -55,8 +57,7 @@ class Page(QWidget):
         self.vbox1_1 = QVBoxLayout()
         self.vbox1_2 = QVBoxLayout()
         self.vbox1_3 = QVBoxLayout()
-        self.vbox1_4 = QVBoxLayout()
-        self.vbox1_5 = QVBoxLayout()
+
 
         # Layout relation
         self.vbox.addLayout(self.hbox1)
@@ -66,8 +67,9 @@ class Page(QWidget):
         self.hbox1.addLayout(self.vbox1_1)
         self.hbox1.addLayout(self.vbox1_2)
         self.hbox1.addLayout(self.vbox1_3)
-        self.hbox1.addLayout(self.vbox1_4)
-        self.hbox1.addLayout(self.vbox1_5)
+        self.vbox1_1.setAlignment(Qt.AlignTop)
+        self.vbox1_2.setAlignment(Qt.AlignTop)
+        self.vbox1_3.setAlignment(Qt.AlignTop)
         self.hbox1.setAlignment(Qt.AlignLeft)
         self.hbox2.setAlignment(Qt.AlignTop)
 
@@ -78,12 +80,20 @@ class Page(QWidget):
         # hbox1 Content
         self.mixer1 = Mixer(name="Fermenter")
         self.vbox1_1.addWidget(self.mixer1)
-        self.mixer2 = Mixer(name="Nachgärer")
+        
+        self.mixer2 = Mixer(name="Nachgaerer")
         self.vbox1_2.addWidget(self.mixer2)
+
         self.endlager = Endlager(name="Endlager")
         self.vbox1_3.addWidget(self.endlager)
-        self.controlbox = QGridLayout()
-        self.hbox1.addLayout(self.controlbox)
+
+        self.hbox1_4 = QHBoxLayout()
+        self.hbox1.addLayout(self.hbox1_4)
+
+        self.vbox_h_1_4 = QVBoxLayout() 
+        self.vbox_h_1_4.setAlignment(Qt.AlignTop)
+        self.hbox1_4.addLayout(self.vbox_h_1_4)
+        self.hbox1_4.setAlignment(Qt.AlignTop)
 
         # Create the boxes
         pump1 = Box("PU12")
@@ -100,11 +110,10 @@ class Page(QWidget):
         group_box_pumpe = create_group_box("Pumpe controls", [pump1, pump2])
         group_box_vents = create_group_box("Vents controls", [vent1, vent2, vent3, vent4])
 
-        # Add the group boxes to the control box layout
-        self.controlbox.addWidget(group_box_ruhr, 0, 0)
-        self.controlbox.addWidget(group_box_pumpe, 1, 0)
-        self.controlbox.addWidget(group_box_vents, 0, 1)
-        # self.controlbox.addWidget(group_box_vents, 0, 1, 2, 2)
+        self.vbox_h_1_4.addWidget(group_box_ruhr)
+        self.vbox_h_1_4.addWidget(group_box_pumpe)
+        self.vbox_h_1_4.setAlignment(Qt.AlignTop)
+        self.hbox1_4.addWidget(group_box_vents)
 
 
 
@@ -124,11 +133,11 @@ class Page(QWidget):
         self.hbox2.addWidget(self.tankIbc.get_widget(), 4, 0, 1, 1)  # Add the tank widget to the grid layout
         
         # Create infofield and add it to the grid 
-        self.infofieldNah = InfoField("Temp. Nahwärmenetz [C]")
+        self.infofieldNah = InfoField("Temp. Nahwaermenetz [C]")
         #self.infofield.setStyleSheet("QGroupBox { border: none; }")
         self.hbox2.addWidget(self.infofieldNah, 1, 0)
         
-        self.infofieldWar = InfoField("Temp. Wärmetauscher [C]")
+        self.infofieldWar = InfoField("Temp. Waermetauscher [C]")
         #self.infofield.setStyleSheet("QGroupBox { border: none; }")
         self.hbox2.addWidget(self.infofieldWar, 2, 0)
         
@@ -142,16 +151,16 @@ class Page(QWidget):
         self.hbox2.addWidget(self.pumpWidget, 4, 2, 1, 1)  # Add the Pump widget to the grid layout
         
         
-        """ self.motor1 = MotorLabelWidget("Rührwerk RW11", size=70)
-        self.tankMixer1 = TankIBC(name="Flüssigvorl.", max_level=100, min_level=15)
-        self.motor2 = MotorLabelWidget("Rührwerk RW12", size=70)
+        """ self.motor1 = MotorLabelWidget("Ruehrwerk RW11", size=70)
+        self.tankMixer1 = TankIBC(name="Fluessigvorl.", max_level=100, min_level=15)
+        self.motor2 = MotorLabelWidget("Ruehrwerk RW12", size=70)
         self.tankMixer2 = TankIBC(name="Anmalschb", max_level=100, min_level=15) """
         
         self.tankMixer1 = TankMixerWidget()
-        self.tankMixer1.set_tank_label("Flüssigvorl.")  # Set the tank label to "My Tank"
+        self.tankMixer1.set_tank_label("Fluessigvorl.")  # Set the tank label to "My Tank"
         self.tankMixer1.set_motor_mode('malfunction') 
         self.tankMixer1.set_level(50) # Set the level 
-        self.tankMixer1.set_motorName_label("Rührwerk RW11")
+        self.tankMixer1.set_motorName_label("Ruehrwerk RW11")
         self.tankMixer1.motorName_label.setMinimumHeight(15)
         # self.tankMixer1.motorName_label.setContentsMargins(0,0,0,5)
         # self.tankMixer1.motor_label.setMinimumHeight(10)
@@ -164,7 +173,7 @@ class Page(QWidget):
         self.tankMixer2.set_tank_label("Anmalschb")  # Set the tank label to "My Tank"
         self.tankMixer2.set_motor_mode('idle') 
         self.tankMixer2.set_level(50) # Set the level 
-        self.tankMixer2.set_motorName_label("Rührwerk RW12")
+        self.tankMixer2.set_motorName_label("Ruehrwerk RW12")
         self.tankMixer2.motorName_label.setMinimumHeight(15)
         self.tankMixer2.setMinimumHeight(175)
         
@@ -203,9 +212,9 @@ if __name__ == '__main__':
 
 
 """ # Create the MixerTank and  add it to the gridlayout  
-        self.tankMotor1 = TankMotor(nameTank="Flüssigvorl.", nameMotor="Rührwerk RW11", modeMotor="idle",
+        self.tankMotor1 = TankMotor(nameTank="Fluessigvorl.", nameMotor="Ruehrwerk RW11", modeMotor="idle",
                                     maxTank=120, minTank=15)
-        self.tankMotor2 = TankMotor(nameTank="Anmalschb", nameMotor="Rührwerk RW12", modeMotor="idle",
+        self.tankMotor2 = TankMotor(nameTank="Anmalschb", nameMotor="Ruehrwerk RW12", modeMotor="idle",
                                     maxTank=120, minTank=15)
 
         self.hbox2.addWidget(self.tankMotor1, 4, 2)

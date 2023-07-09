@@ -49,20 +49,20 @@ class Page(QWidget):
 
         # Settings for the vbox1 (First Column of the hbox1)
         vbox1.setAlignment(Qt.AlignTop)
+        vbox1.setSpacing(5)
         
-        # ----------------------SECOND COLUMN--------------------
-        # Second column elements of vbox1 for the hbox1:
-        self.box2 = Box("SC23")
-        vbox2.addWidget(self.box2)
-
-        self.field2_1 = InfoField(name="RW23 Pause Soll [min] ln")
-        vbox2.addWidget(self.field2_1)
-        self.field2_2 = InfoField(name="RW23 Run Soll [min] ln")
-        vbox2.addWidget(self.field2_2)
-        self.field2_3 = InfoField(name="RW23 Auto Sollwert [%]")
-        vbox2.addWidget(self.field2_3)
-        self.field2_4 = InfoField(name="RW23 Hand Soll [min] ln")
-        vbox2.addWidget(self.field2_4)
+    #----------------------SECOND COLUMN--------------------
+        #Second column elements of vbox1 for the hbox1:
+        self.box2 = Box("RW23")
+        
+        self.field2_1 = InfoField(name = "RW23 Pause Soll [min] ln", 
+                            )
+        self.field2_2 = InfoField(name = "RW23 Run Soll [min] ln", 
+                            )
+        self.field2_3 = InfoField(name = "RW23 Auto Sollwert [%]", 
+                            )
+        self.field2_4 = InfoField(name = "RW23 Hand Soll [min] ln", 
+                            )
 
         # Settings for the vbox2 (First Column of the hbox1)
         vbox2.setAlignment(Qt.AlignTop)
@@ -90,7 +90,7 @@ class Page(QWidget):
         self.box4 = Box("HE22")
         vbox4.addWidget(self.box4)
 
-        self.field3_1 = InfoField(name="Nachgärer Temp.-Sollwert [\N{DEGREE SIGN}C]")
+        self.field3_1 = InfoField(name="Nachgaerer Temp.-Sollwert [\N{DEGREE SIGN}C]")
         vbox4.addWidget(self.field3_1)
         self.field3_2 = InfoField(name="Temp. Vorlauf Ng 2 [\N{DEGREE SIGN}C]")
         vbox4.addWidget(self.field3_2)
