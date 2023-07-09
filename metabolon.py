@@ -100,8 +100,8 @@ class Window(QMainWindow):
         self.innerTabs3.addTab(self.betrieb, "Betriebsstunden")
 
 
-        self.betrieb2 = Betriebsstunden2()
-        self.innerTabs3.addTab(self.betrieb2, "Betriebsstunden2")
+        #self.betrieb2 = Betriebsstunden2()
+        #self.innerTabs3.addTab(self.betrieb2, "Betriebsstunden2")
 
         # Create a central widget to hold the mainLayout
         central_widget = QWidget()

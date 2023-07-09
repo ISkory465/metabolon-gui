@@ -22,21 +22,13 @@ class DatabaseHandler:
         except (Exception, psycopg2.DatabaseError) as error:
             print(error)
 
-    def create_table(self, table_name, column_definitions):
+    def insert_record(self, table_name, column_name, value):
         self.cursor = self.connection.cursor()
-        create_table_query = f"CREATE TABLE IF NOT EXISTS {table_name} ({column_definitions});"
-        self.cursor.execute(create_table_query)
+        insert_query = f"INSERT INTO {table_name} ({column_name}) VALUES (%s);"
+        self.cursor.execute(insert_query, (value,))
         self.connection.commit()
         self.cursor.close()
 
-    def insert_record(self, table_name, values):
-        self.cursor = self.connection.cursor()
-        columns = ', '.join(values.keys())
-        placeholders = ', '.join(['%s'] * len(values))
-        insert_query = f"INSERT INTO {table_name} ({columns}) VALUES ({placeholders});"
-        self.cursor.execute(insert_query, tuple(values.values()))
-        self.connection.commit()
-        self.cursor.close()
 
     def update_record(self, table_name, column_name, new_value, condition):
         self.cursor = self.connection.cursor()
@@ -44,8 +36,6 @@ class DatabaseHandler:
         self.cursor.execute(update_query, (new_value,))
         self.connection.commit()
         self.cursor.close()
-
-
 
     def get_records(self, table_name):
         self.cursor = self.connection.cursor()
