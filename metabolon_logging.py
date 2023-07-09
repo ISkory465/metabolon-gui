@@ -2,7 +2,9 @@ import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 import json
-
+# Database Worker and Handler classes import
+from database.WorkerLog import *
+from database.Database_Handler import DatabaseHandler
 
 #app tabs import:
 from components.app_tabs.Strasse_1                import Page as Strasse_1
@@ -24,6 +26,8 @@ with open('opc\opcList.JSON') as json_file:
 # Connectiong OpcList of sensors 
 with open('opc\opcList.JSON') as json_sensors_file:
   sensor_dict= json.load(json_sensors_file)
+  
+
 class Window(QMainWindow):
 
     def __init__(self):
@@ -135,8 +139,39 @@ class Window(QMainWindow):
 
         # Display the content of the central_widget
         self.show()
+    
+    def setup_database_update(self):
+        # Instantiate the DatabaseHandler
+        self.db_handler = DatabaseHandler()
 
+        # Create a QTimer for periodic updates
+        self.timer1 = QTimer(self)
+        self.timer1.timeout.connect(self.runSensorLog)
+        self.timer1.start(0.3 * 60 * 100)  # 5 minutes in milliseconds
 
+    def runSensorLog(self):
+        #Create the Worker thread that runs periodically to update current list of OPC tags.""
+        # Step 2: Create a QThread object
+        global sensor_dict
+        self.thread1 = QThread()
+        #x=[1,2,3]
+        # Step 3: Create a worker object
+        #results=['Random.Int4','Random.Int8']
+        self.workerLog = WorkerLog(sensor_dict)
+        # Step 4: Move worker to the thread
+        self.workerLog.moveToThread(self.thread1)
+
+        # Step 5: Connect signals and slots
+        
+        self.thread1.started.connect(self.workerLog.run)
+        self.workerLog.finished.connect(self.thread1.quit)
+        self.workerLog.finished.connect(self.workerLog.deleteLater)
+        self.thread1.finished.connect(self.thread1.deleteLater)
+        
+        #print('Byee')
+        # Step 6: Start the thread
+        self.thread1.start() 
+        
     def runLongTask(self):
         #Create the Worker thread that runs periodically to update current list of OPC tags.""
         # Step 2: Create a QThread object
