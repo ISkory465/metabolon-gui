@@ -22,20 +22,28 @@ class DatabaseHandler:
         except (Exception, psycopg2.DatabaseError) as error:
             print(error)
 
-    def insert_record(self, table_name, column_name, value):
-        self.cursor = self.connection.cursor()
-        insert_query = f"INSERT INTO {table_name} ({column_name}) VALUES (%s);"
-        self.cursor.execute(insert_query, (value,))
-        self.connection.commit()
-        self.cursor.close()
+    def insert_record(self, table_name, values):
+        try:
+            self.cursor = self.connection.cursor()
+            columns = ', '.join(['"{0}"'.format(col) for col in values.keys()])
+            print('columns:'+ " " + columns )
+            placeholders = ', '.join(['%s'] * len(values))
+            print('placeholder:'+ " " + placeholders )
+            insert_query = f"INSERT INTO {table_name} ({columns}) VALUES ({placeholders});"
+            print(tuple(values.values()))
+            self.cursor.execute(insert_query, tuple(values.values()))
+            self.connection.commit()
+        except IndexError as e:
+            print(f"Tuple index out of range error occurred: {str(e)}")
+            self.connection.rollback()
+        except Exception as e:
+            print(f"Error occurred while inserting record: {str(e)}")
+            self.connection.rollback()
+        finally:
+            self.cursor.close()
 
 
-    def update_record(self, table_name, column_name, new_value, condition):
-        self.cursor = self.connection.cursor()
-        update_query = f"UPDATE {table_name} SET {column_name} = %s WHERE {condition};"
-        self.cursor.execute(update_query, (new_value,))
-        self.connection.commit()
-        self.cursor.close()
+
 
     def get_records(self, table_name):
         self.cursor = self.connection.cursor()

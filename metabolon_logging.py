@@ -24,7 +24,7 @@ with open('opc\opcList.JSON') as json_file:
   tags = json.load(json_file)
 
 # Connectiong OpcList of sensors 
-with open('opc\opcList.JSON') as json_sensors_file:
+with open('database\opcSensorList.json') as json_sensors_file:
   sensor_dict= json.load(json_sensors_file)
   
 
@@ -35,7 +35,7 @@ class Window(QMainWindow):
         self.setWindowTitle("Metabolon Station")
         self.setGeometry(350,100,1200,600)
         self.Tabs_UI()
-
+        self.setup_database_update()
         # Center the window on the screen.
         self.center_on_screen()
 
@@ -135,7 +135,7 @@ class Window(QMainWindow):
         self.timer = QTimer()
         self.timer.setInterval(5000)
         self.timer.timeout.connect(self.runLongTask)
-        self.timer.start()
+        #self.timer.start()
 
         # Display the content of the central_widget
         self.show()
@@ -147,7 +147,7 @@ class Window(QMainWindow):
         # Create a QTimer for periodic updates
         self.timer1 = QTimer(self)
         self.timer1.timeout.connect(self.runSensorLog)
-        self.timer1.start(0.3 * 60 * 100)  # 5 minutes in milliseconds
+        self.timer1.start(0.3 * 60 * 500)  # 5 minutes in milliseconds
 
     def runSensorLog(self):
         #Create the Worker thread that runs periodically to update current list of OPC tags.""
