@@ -26,18 +26,15 @@ class DatabaseHandler:
         try:
             self.cursor = self.connection.cursor()
             columns = ', '.join(['"{0}"'.format(col) for col in values.keys()])
-            print('columns:'+ " " + columns )
-            placeholders = ', '.join(['%s'] * len(values))
-            print('placeholder:'+ " " + placeholders )
-            insert_query = f"INSERT INTO {table_name} ({columns}) VALUES ({placeholders});"
-            print(tuple(values.values()))
+            print('columns:', columns)
+            placeholders = ', '.join(['%s' for _ in values])  
+            print('placeholders:', placeholders)
+            insert_query = f'INSERT INTO {table_name} ({columns}) VALUES ({placeholders});'
+            print('values:', tuple(values.values()))
             self.cursor.execute(insert_query, tuple(values.values()))
             self.connection.commit()
-        except IndexError as e:
-            print(f"Tuple index out of range error occurred: {str(e)}")
-            self.connection.rollback()
         except Exception as e:
-            print(f"Error occurred while inserting record: {str(e)}")
+            print('Error occurred while inserting record:', str(e))
             self.connection.rollback()
         finally:
             self.cursor.close()
