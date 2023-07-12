@@ -1,4 +1,34 @@
-{
+{ "Strasse1":
+ {
+
+"Fermenter:Thermometer":"SIMATIC 300-Station.CPU 315-2 DP.DB70.TI15_TMP_SK",
+"Fermenter:gauge":"SIMATIC 300-Station.CPU 315-2 DP.DB70.PI15_PIR_SK",
+"Fermenter:bigMixer":"SIMATIC 300-Station.CPU 315-2 DP.DB70.LI15_NIV_NM",
+"Fermenter:CH4 [%]":"SIMATIC 300-Station.CPU 315-2 DP.DB300.Methan1",
+"Fermenter:CO2 [%]":"SIMATIC 300-Station.CPU 315-2 DP.DB300.Kohlendioxid1",
+"Fermenter:H2 [ppm]":"SIMATIC 300-Station.CPU 315-2 DP.DB300.Wasserstoff1",
+"Fermenter:H2S [ppm]":"SIMATIC 300-Station.CPU 315-2 DP.DB300.Schwefelwasserstoff1",
+"Fermenter:Qgas [l/min]":"SIMATIC 300-Station.CPU 315-2 DP.DB70.FI15_FER1_SK",
+"Fermenter:Qgas [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB70.FI15_Gas_FER1",
+"Fermenter:pH [-]":"SIMATIC 300-Station.CPU 315-2 DP.DB302.PH_FER1",
+
+
+"Nachgaerer:Thermometer":"SIMATIC 300-Station.CPU 315-2 DP.DB70.TI16_TMP_SK",
+"Nachgaerer:gauge":"SIMATIC 300-Station.CPU 315-2 DP.DB70.PI16_PIR_SK",
+"Nachgaerer:bigMixer":"SIMATIC 300-Station.CPU 315-2 DP.DB70.LI16_NIV_NM",
+"Nachgaerer:CH4 [%]":"SIMATIC 300-Station.CPU 315-2 DP.DB300.Methan3",
+"Nachgaerer:CO2 [%]":"SIMATIC 300-Station.CPU 315-2 DP.DB300.Kohlendioxid3",
+"Nachgaerer:H2 [ppm]":"SIMATIC 300-Station.CPU 315-2 DP.DB300.Wasserstoff3",
+"Nachgaerer:H2S [ppm]":"SIMATIC 300-Station.CPU 315-2 DP.DB300.Schwefelwasserstoff3",
+"Nachgaerer:Qgas [l/min]":"SIMATIC 300-Station.CPU 315-2 DP.DB70.FI16_NGA1_SK",
+"Nachgaerer:Qgas [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB70.FI16_Gas_NGA1",
+"Nachgaerer:pH [-]":"SIMATIC 300-Station.CPU 315-2 DP.DB302.PH_NGA1",
+
+"Endlager:Tank":"SIMATIC 300-Station.CPU 315-2 DP.DB70.LI17_NIV_NM",
+"Endlager:Thermometer":"SIMATIC 300-Station.CPU 315-2 DP.DB70.TI17_TMP_SK",
+"Endlager:gauge":"SIMATIC 300-Station.CPU 315-2 DP.DB70.PI17_PIR_SK"
+
+ },
   "Steurung1":
  {   
 "HE11.Hand":"SIMATIC 300-Station.CPU 315-2 DP.DB5.HE11.BF2",

@@ -96,7 +96,7 @@ class Mixer(QGroupBox):
         
         #Second (right) column content for the nm_2_column
         self.Qgas = InfoFieldV2(opcID=self.opcName,name = "Qgas [l/min]")
-        self.Qgas1 = InfoFieldV2(opcID=self.opcName,name = "CH4 [%]")
+        self.Qgas1 = InfoFieldV2(opcID=self.opcName,name = "Qgas [l]")
         self.pH = InfoFieldV2(opcID=self.opcName,name = "pH [-]")
 
         self.nm_2_column.addWidget(self.Qgas)

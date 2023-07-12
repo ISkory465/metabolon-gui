@@ -97,14 +97,14 @@ class InfoFieldV2(QWidget):
         
         #Check range of values in LabView
         self.spin.setMinimum(0)
-        self.spin.setMaximum(150)
+        self.spin.setMaximum(500000)
         self.spin.setAlignment(Qt.AlignRight)
 
         #Deleting the arrows
         self.spin.setButtonSymbols(buttonSymbol)
 
         #Setting size of the field
-        self.spin.setMaximumSize(35 if dec_num is None else 70, 25 if dec_num is None else 20)
+        self.spin.setMaximumSize(55 if dec_num is None else 70, 25 if dec_num is None else 20)
 
         # Restrict the maximum width of the widget if max_width is specified
         if max_width is not None:

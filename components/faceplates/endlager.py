@@ -27,18 +27,18 @@ class Endlager(QGroupBox):
         main_vbox.addLayout(row2)
 
         # Create the endlager tank widget
-        tankName=self.opcName + ' Tank'
+        tankName=self.opcName + ':Tank'
         self.tank = EndlagerTank(tankName)
         self.tank.setLevel(50)
 
         # Create the thermometer widget
-        thermometerName=self.opcName+' Thermometer'
+        thermometerName=self.opcName+':Thermometer'
 
         self.thermometer = EndThermometerWidget(thermometerName)
         self.thermometer.setTemperature(35)
 
         # Create the gauge widget
-        gaugeName=self.opcName+' gauge'
+        gaugeName=self.opcName+':gauge'
         self.gauge = Gauge(gaugeName)
         self.gauge.setFixedSize(100,100)
 

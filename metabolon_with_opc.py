@@ -87,7 +87,7 @@ class Window(QMainWindow):
         
         # Update OPC list when inner tab index changes 
         global tags
-        self.opclist=tags['Steurung1']
+        self.opclist=tags['Strasse1']
         self.innerTabs1.currentChanged.connect(self.updateOPCList)
         # <--self.innerTabs2-->
         #Page instances for the import to the self.innerTabs2
@@ -168,7 +168,7 @@ class Window(QMainWindow):
         #print(x)
         if outer_index == 0:
           if inner_index1==0:
-            self.opclist=tags['Steurung1']#Change to actaul Tab
+            self.opclist=tags['Strasse1']#Change to actaul Tab
           elif inner_index1==1:
             self.opclist=tags['Steurung1']
           elif inner_index1==2:
@@ -213,11 +213,13 @@ class Window(QMainWindow):
         val5={} #Values Dictionary to update Betriebsstunden
         val6={} #Values Dictionary to update Futter1
         val7={} #Values Dictionary to update Futter2
-
+        val8={}
 
         if outer_index == 0:
           if inner_index1==0:
-            pass
+            for i in keys:
+              val8[i]=tagValues[i]
+            self.strasse_1.updateAll(val8)  
           elif inner_index1==1:
             for i in keys:
               val1[i]=tagValues[i]

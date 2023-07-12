@@ -19,7 +19,7 @@ class ThermometerWidget(QWidget):
         try:
           self.setTemperature(val[self.opcName])
         except Exception as e:
-          print(self.opcName)
+          print(val[self.opcName])
           print(str(e))
 
     def paintEvent(self, event):

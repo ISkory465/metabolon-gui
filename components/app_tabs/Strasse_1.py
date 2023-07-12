@@ -206,7 +206,22 @@ class Page(QWidget):
         self.pumpWidget.set_mode("operational")
         self.hbox2.addWidget(self.pumpWidget, 2, 7, 1, 1)
 
+    def updateAll(self, inputs: dict):
+        """method to update all objects in current tab periodically after reading the values in different thread
 
+        :param inputs: tag values
+        :type inputs: dict
+        """
+        objectList = [
+            self.mixer1,
+            self.mixer2,
+            self.endlager,
+            
+        ]
+
+        for o in objectList:
+            #iterate over an update method that should be added to all faceplate objects similar to box object
+            o.update(inputs)
 if __name__ == '__main__':
     pass
 
