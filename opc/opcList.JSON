@@ -26,7 +26,41 @@
 
 "Endlager:Tank":"SIMATIC 300-Station.CPU 315-2 DP.DB70.LI17_NIV_NM",
 "Endlager:Thermometer":"SIMATIC 300-Station.CPU 315-2 DP.DB70.TI17_TMP_SK",
-"Endlager:gauge":"SIMATIC 300-Station.CPU 315-2 DP.DB70.PI17_PIR_SK"
+"Endlager:gauge":"SIMATIC 300-Station.CPU 315-2 DP.DB70.PI17_PIR_SK",
+
+
+"PU12.Hand":"",
+"PU12.AUTO":"",
+"PU12.AUS":"",
+
+"PU11.Hand":"",
+"PU11.AUTO":"",
+"PU11.AUS":"",
+
+"RW11.Hand":"",
+"RW11.AUTO":"",
+"RW11.AUS":"",
+
+"RW12.Hand":"",
+"RW12.AUTO":"",
+"RW12.AUS":"",
+
+
+"AA11.Auf":"",
+"AA11.Zu":"",
+"AA11.AUTO":"",
+
+"AA12.Auf":"",
+"AA12.Zu":"",
+"AA12.AUTO":"",
+
+"AA13.Auf":"",
+"AA13.Zu":"",
+"AA13.AUTO":"",
+
+"AA14.Auf":"",
+"AA14.Zu":"",
+"AA14.AUTO":""
 
  },
   "Steurung1":

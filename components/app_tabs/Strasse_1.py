@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets    import *
 from PyQt5.QtCore       import Qt
 #from ..faceplates.faceplates_new import Box
-from ..widgets.box import Box
+from ..widgets.box import Box, BoxV2
 from ..faceplates.mixer  import Mixer
 from ..faceplates.endlager import Endlager
 from ..faceplates.tankibc import TankIBC
@@ -96,19 +96,19 @@ class Page(QWidget):
         self.hbox1_4.setAlignment(Qt.AlignTop)
 
         # Create the boxes
-        pump1 = Box("PU12")
-        pump2 = Box("PU11")
-        ruhr1 = Box("RW11")
-        ruhr2 = Box("RW12")
-        vent1 = Box("AA11")
-        vent2 = Box("AA12")
-        vent3 = Box("AA13")
-        vent4 = Box("AA14")
+        self.pump1 = Box("PU12")
+        self.pump2 = Box("PU11")
+        self.ruhr1 = Box("RW11")
+        self.ruhr2 = Box("RW12")
+        self.vent1 = BoxV2("AA11")
+        self.vent2 = BoxV2("AA12")
+        self.vent3 = BoxV2("AA13")
+        self.vent4 = BoxV2("AA14")
 
         # Create the group boxes
-        group_box_ruhr = create_group_box("Ruehrwerke controls", [ruhr1, ruhr2])
-        group_box_pumpe = create_group_box("Pumpe controls", [pump1, pump2])
-        group_box_vents = create_group_box("Vents controls", [vent1, vent2, vent3, vent4])
+        group_box_ruhr = create_group_box("Ruehrwerke controls", [self.ruhr1, self.ruhr2])
+        group_box_pumpe = create_group_box("Pumpe controls", [self.pump1, self.pump2])
+        group_box_vents = create_group_box("Vents controls", [self.vent1, self.vent2, self.vent3, self.vent4])
 
         self.vbox_h_1_4.addWidget(group_box_ruhr)
         self.vbox_h_1_4.addWidget(group_box_pumpe)
