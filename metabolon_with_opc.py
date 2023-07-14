@@ -178,7 +178,7 @@ class Window(QMainWindow):
 
         elif outer_index==1:
           if inner_index2==0:
-            self.opclist=tags['Steurung2']#Change to actaul Tab
+            self.opclist=tags['Strasse2']#Change to actaul Tab
           elif inner_index2==1:
             self.opclist=tags['Steurung2']
           elif inner_index2==2:
@@ -214,6 +214,7 @@ class Window(QMainWindow):
         val6={} #Values Dictionary to update Futter1
         val7={} #Values Dictionary to update Futter2
         val8={}
+        val9={}
 
         if outer_index == 0:
           if inner_index1==0:
@@ -235,7 +236,9 @@ class Window(QMainWindow):
         
         elif outer_index==1:
           if inner_index2==0:
-            pass
+            for i in keys:
+              val9[i]=tagValues[i]
+            self.strasse_2.updateAll(val9) 
           elif inner_index2==1:
             for i in keys:
               val3[i]=tagValues[i]

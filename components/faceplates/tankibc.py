@@ -11,6 +11,8 @@ class TankIBC(QWidget):
         self.max_level = max_level
         self.min_level = min_level
         self.current_level = 55
+        self.opcName=name
+
 
         self.max_led_color = QColor(255, 0, 0)  # Red
         self.min_led_color = QColor(0, 255, 0)  # Green
@@ -80,7 +82,13 @@ class TankIBC(QWidget):
 
         # Update LED colors based on current level
         self.update_led_colors()
-
+    
+    def update1(self,val:dict):
+        try:
+          self.set_current_level(val[self.opcName])
+        except Exception as e:
+          print(val[self.opcName])
+          print(str(e))
     def set_label_text(self, text):
         self.label.setText(text)
 

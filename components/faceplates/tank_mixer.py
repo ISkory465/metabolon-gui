@@ -5,12 +5,13 @@ from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout, QHBoxLay
 
 
 class TankMixerWidget(QWidget):
-    def __init__(self, parent=None):
+    def __init__(self,name, parent=None):
         super().__init__(parent)
         self._max_level = 100  # Set the maximum level
         self._min_level = 20  # Set the minimum level
         self._current_level = 30  # Initial level of the tank
         self._motor_mode = 'idle'  # Initial motor mode
+        self.opcName=name
 
         main_layout = QVBoxLayout()  
         self.setLayout(main_layout)
@@ -76,6 +77,13 @@ class TankMixerWidget(QWidget):
     def set_motor_mode(self, mode):
         self._motor_mode = mode
         self.update()
+
+    def update1(self,val:dict):
+        try:
+          self.set_level(val[self.opcName])
+        except Exception as e:
+          print(val[self.opcName])
+          print(str(e))
 
     def paintEvent(self, event):
         tank_width = self.width()

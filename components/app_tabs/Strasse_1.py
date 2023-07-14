@@ -133,15 +133,15 @@ class Page(QWidget):
         self.hbox2.addWidget(self.tankIbc.get_widget(), 4, 0, 1, 1)  # Add the tank widget to the grid layout
         
         # Create infofield and add it to the grid 
-        self.infofieldNah = InfoField("Temp. Nahwaermenetz [C]")
+        self.infofieldNah = InfoField("Temp. Nahwaermenetz [C]",dec_num=1)
         #self.infofield.setStyleSheet("QGroupBox { border: none; }")
         self.hbox2.addWidget(self.infofieldNah, 1, 0)
         
-        self.infofieldWar = InfoField("Temp. Waermetauscher [C]")
+        self.infofieldWar = InfoField("Temp. Waermetauscher [C]",dec_num=1)
         #self.infofield.setStyleSheet("QGroupBox { border: none; }")
         self.hbox2.addWidget(self.infofieldWar, 2, 0)
         
-        self.infofieldSub = InfoField("IDM_SUB1")
+        self.infofieldSub = InfoField("IDM_SUB1",dec_num=3)
         #self.infofield.setStyleSheet("QGroupBox { border: none; }")
         self.hbox2.addWidget(self.infofieldSub, 0, 7)
         
@@ -156,7 +156,7 @@ class Page(QWidget):
         self.motor2 = MotorLabelWidget("Ruehrwerk RW12", size=70)
         self.tankMixer2 = TankIBC(name="Anmalschb", max_level=100, min_level=15) """
         
-        self.tankMixer1 = TankMixerWidget()
+        self.tankMixer1 = TankMixerWidget(name='Fluessigvorl.')
         self.tankMixer1.set_tank_label("Fluessigvorl.")  # Set the tank label to "My Tank"
         self.tankMixer1.set_motor_mode('malfunction') 
         self.tankMixer1.set_level(50) # Set the level 
@@ -169,7 +169,7 @@ class Page(QWidget):
         self.tankMixer1.setMinimumHeight(175)
 
         
-        self.tankMixer2 = TankMixerWidget()
+        self.tankMixer2 = TankMixerWidget(name='Anmalschb')
         self.tankMixer2.set_tank_label("Anmalschb")  # Set the tank label to "My Tank"
         self.tankMixer2.set_motor_mode('idle') 
         self.tankMixer2.set_level(50) # Set the level 
@@ -216,12 +216,36 @@ class Page(QWidget):
             self.mixer1,
             self.mixer2,
             self.endlager,
+            self.pump1,
+            self.pump2,
+            self.ruhr1,
+            self.ruhr2,
+            self.vent1,
+            self.vent2,
+            self.vent3,
+            self.vent4,
+            self.infofieldNah,
+            self.infofieldWar,
+            self.infofieldSub
             
         ]
 
         for o in objectList:
             #iterate over an update method that should be added to all faceplate objects similar to box object
             o.update(inputs)
+        
+        # objectList2=[    #self.playbutton,
+        #                 self.tankIbc,
+        #                 self.tankMixer1,
+        #                 self.tankMixer2
+                        
+        #             ]
+
+
+        # for i in objectList2:
+        #     #iterate over an update method that should be added to all faceplate objects similar to box object
+        #     i.update1(inputs)
+        
 if __name__ == '__main__':
     pass
 
