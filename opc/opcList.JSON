@@ -11,6 +11,8 @@
 "Fermenter:Qgas [l/min]":"SIMATIC 300-Station.CPU 315-2 DP.DB70.FI15_FER1_SK",
 "Fermenter:Qgas [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB70.FI15_Gas_FER1",
 "Fermenter:pH [-]":"SIMATIC 300-Station.CPU 315-2 DP.DB302.PH_FER1",
+"Fermenter:Schnecke":"SIMATIC 300-Station.CPU 315-2 DP.A25_0",
+
 
 
 "Nachgaerer:Thermometer":"SIMATIC 300-Station.CPU 315-2 DP.DB70.TI16_TMP_SK",
@@ -64,7 +66,40 @@
 "Temp. Nahwaermenetz [C]":"SIMATIC 300-Station.CPU 315-2 DP.DB302.PT_100_NWN",
 "Temp. Waermetauscher [C]":"SIMATIC 300-Station.CPU 315-2 DP.DB302.PT_100_WTA",
 "IDM_SUB1":"SIMATIC 300-Station.CPU 315-2 DP.DB70.IDM_SUB1",
-"PU12 Rezi (Maisch)":"SIMATIC 300-Station.CPU 315-2 DP.DB5.PU12.BF4"
+"PU12 Rezi (Maisch)":"SIMATIC 300-Station.CPU 315-2 DP.DB5.PU12.BF4",
+
+"IBC:MaxNiv":"SIMATIC 300-Station.CPU 315-2 DP.E16_2",
+"IBC:MinNiv":"SIMATIC 300-Station.CPU 315-2 DP.E16_1",
+"Ventil AA11:Auf":"SIMATIC 300-Station.CPU 315-2 DP.A21_0",
+"Ventil AA11:error":"SIMATIC 300-Station.CPU 315-2 DP.M226_0",
+"Ventil AA12:Auf":"SIMATIC 300-Station.CPU 315-2 DP.A21_1",
+"Ventil AA12:error":"SIMATIC 300-Station.CPU 315-2 DP.M226_1",
+"Ventil AA13:Auf":"SIMATIC 300-Station.CPU 315-2 DP.A21_2",
+"Ventil AA13:error":"SIMATIC 300-Station.CPU 315-2 DP.M226_2",
+"Ventil AA14:Auf":"SIMATIC 300-Station.CPU 315-2 DP.A21_3",
+"Ventil AA14:error":"SIMATIC 300-Station.CPU 315-2 DP.M226_3",
+"Pumpe PU11:Auf":"SIMATIC 300-Station.CPU 315-2 DP.E4_3",
+"Pumpe PU11:error1":"SIMATIC 300-Station.CPU 315-2 DP.E4_2",
+"Pumpe PU11:error2":"SIMATIC 300-Station.CPU 315-2 DP.E4_1",
+"Pumpe PU11:error3":"SIMATIC 300-Station.CPU 315-2 DP.E4_0",
+"Pumpe PU12:Auf":"SIMATIC 300-Station.CPU 315-2 DP.E4_7",
+"Pumpe PU12:error1":"SIMATIC 300-Station.CPU 315-2 DP.E4_6",
+"Pumpe PU12:error2":"SIMATIC 300-Station.CPU 315-2 DP.E4_5",
+"Pumpe PU12:error3":"SIMATIC 300-Station.CPU 315-2 DP.E4_4",
+
+"Fluessigvorl:Auf":"SIMATIC 300-Station.CPU 315-2 DP.A28_0",
+"Fluessigvorl:error1":"SIMATIC 300-Station.CPU 315-2 DP.E12_0",
+"Fluessigvorl:error2":"SIMATIC 300-Station.CPU 315-2 DP.E12_2",
+
+"Fluessigvorl:MaxNiv":"SIMATIC 300-Station.CPU 315-2 DP.E16_4",
+"Fluessigvorl:MinNiv":"SIMATIC 300-Station.CPU 315-2 DP.E16_3",
+
+"Anmalschb:Auf":"SIMATIC 300-Station.CPU 315-2 DP.A28_2",
+"Anmalschb:error1":"SIMATIC 300-Station.CPU 315-2 DP.E12_4",
+"Anmalschb:error2":"SIMATIC 300-Station.CPU 315-2 DP.E12_6",
+
+"Anmalschb:MaxNiv":"SIMATIC 300-Station.CPU 315-2 DP.E16_6",
+"Anmalschb:MinNiv":"SIMATIC 300-Station.CPU 315-2 DP.E16_5"
 
  },
  "Strasse2":
@@ -80,6 +115,7 @@
 "Fermenter:Qgas [l/min]":"SIMATIC 300-Station.CPU 315-2 DP.DB70.FI25_FER2_SK",
 "Fermenter:Qgas [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB70.FI25_Gas_FER2",
 "Fermenter:pH [-]":"SIMATIC 300-Station.CPU 315-2 DP.DB302.PH_FER2",
+"Fermenter:Schnecke":"SIMATIC 300-Station.CPU 315-2 DP.A25_1",
 
 
 "Nachgaerer:Thermometer":"SIMATIC 300-Station.CPU 315-2 DP.DB70.TI26_TMP_SK",
@@ -133,7 +169,41 @@
 "Temp. Nahwaermenetz [C]":"SIMATIC 300-Station.CPU 315-2 DP.DB302.PT_100_NWN",
 "Temp. Waermetauscher [C]":"SIMATIC 300-Station.CPU 315-2 DP.DB302.PT_100_WTA",
 "IDM_SUB2":"SIMATIC 300-Station.CPU 315-2 DP.DB70.IDM_SUB2",
-"PU22 Rezi (Maisch)":"SIMATIC 300-Station.CPU 315-2 DP.DB5.PU22.BF4"
+"PU22 Rezi (Maisch)":"SIMATIC 300-Station.CPU 315-2 DP.DB5.PU22.BF4",
+
+"IBC:MaxNiv":"SIMATIC 300-Station.CPU 315-2 DP.E18_2",
+"IBC:MinNiv":"SIMATIC 300-Station.CPU 315-2 DP.E18_1",
+"Ventil AA21:Auf":"SIMATIC 300-Station.CPU 315-2 DP.A21_4",
+"Ventil AA21:error":"SIMATIC 300-Station.CPU 315-2 DP.M226_4",
+"Ventil AA22:Auf":"SIMATIC 300-Station.CPU 315-2 DP.A21_5",
+"Ventil AA22:error":"SIMATIC 300-Station.CPU 315-2 DP.M226_5",
+"Ventil AA23:Auf":"SIMATIC 300-Station.CPU 315-2 DP.A21_6",
+"Ventil AA23:error":"SIMATIC 300-Station.CPU 315-2 DP.M226_6",
+"Ventil AA24:Auf":"SIMATIC 300-Station.CPU 315-2 DP.A21_7",
+"Ventil AA24:error":"SIMATIC 300-Station.CPU 315-2 DP.M226_7",
+"Pumpe PU21:Auf":"SIMATIC 300-Station.CPU 315-2 DP.E5_3",
+"Pumpe PU21:error1":"SIMATIC 300-Station.CPU 315-2 DP.E5_2",
+"Pumpe PU21:error2":"SIMATIC 300-Station.CPU 315-2 DP.E5_1",
+"Pumpe PU21:error3":"SIMATIC 300-Station.CPU 315-2 DP.E5_0",
+"Pumpe PU22:Auf":"SIMATIC 300-Station.CPU 315-2 DP.E5_7",
+"Pumpe PU22:error1":"SIMATIC 300-Station.CPU 315-2 DP.E5_6",
+"Pumpe PU22:error2":"SIMATIC 300-Station.CPU 315-2 DP.E5_5",
+"Pumpe PU22:error3":"SIMATIC 300-Station.CPU 315-2 DP.E5_4",
+
+"Fluessigvorl:Auf":"SIMATIC 300-Station.CPU 315-2 DP.A29_0",
+"Fluessigvorl:error1":"SIMATIC 300-Station.CPU 315-2 DP.E14_0",
+"Fluessigvorl:error2":"SIMATIC 300-Station.CPU 315-2 DP.E14_2",
+
+"Fluessigvorl:MaxNiv":"SIMATIC 300-Station.CPU 315-2 DP.E18_4",
+"Fluessigvorl:MinNiv":"SIMATIC 300-Station.CPU 315-2 DP.E18_3",
+
+"Anmalschb:Auf":"SIMATIC 300-Station.CPU 315-2 DP.A29_2",
+"Anmalschb:error1":"SIMATIC 300-Station.CPU 315-2 DP.E14_4",
+"Anmalschb:error2":"SIMATIC 300-Station.CPU 315-2 DP.E14_6",
+
+"Anmalschb:MaxNiv":"SIMATIC 300-Station.CPU 315-2 DP.E18_6",
+"Anmalschb:MinNiv":"SIMATIC 300-Station.CPU 315-2 DP.E18_5"
+
 
  },
   "Steurung1":

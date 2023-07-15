@@ -80,9 +80,37 @@ class TankMixerWidget(QWidget):
 
     def update1(self,val:dict):
         try:
-          self.set_level(val[self.opcName])
+          Auf:bool
+          error1:bool
+          Auf=val[self.opcName+':Auf']
+          error1=val[self.opcName+':error1']
+          error2=val[self.opcName+':error2']
+
+
+          if error1 or error2:
+            self.set_motor_mode('malfunction')
+          elif Auf:
+            self.set_motor_mode('operational')
+          else:
+            self.set_motor_mode('idle')
+          #print('If Statement done')
+          MaxNiv:bool
+          MinNiv:bool
+          MaxNiv=val[self.opcName+':MaxNiv']
+          MinNiv=val[self.opcName+':MinNiv']
+         
+
+
+          if (MaxNiv==False):
+            self.set_level(160)
+          elif (MinNiv==True):
+            self.set_level(2)
+          else:
+            print('Neither')
+          #print('If Statement done')
         except Exception as e:
-          print(val[self.opcName])
+          print('Exception raised')
+          #print(val[self.opcName])
           print(str(e))
 
     def paintEvent(self, event):
@@ -159,7 +187,9 @@ class TankMixerWidget(QWidget):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    tank = TankMixerWidget()
+    tank = TankMixerWidget(name='My Tank')
+    tank.set_level(2)
+
     tank.set_tank_label("My Tank")  
     tank.show()
 
@@ -168,6 +198,6 @@ if __name__ == '__main__':
     tank.decrease_level(0.2)  # Decrease the level by 0.2
 
     #set the motor mode
-    tank.set_motor_mode('malfunction')  
+    tank.set_motor_mode('operational')  
     
     sys.exit(app.exec_())

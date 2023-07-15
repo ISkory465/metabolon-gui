@@ -108,7 +108,7 @@ class Mixer(QGroupBox):
         :param inputs: tag values
         :type inputs: dict
         """
-        objectList=[    #self.playbutton,
+        objectList=[    self.playbutton,
                         self.thermometer,
                         self.gauge,
                         self.big_mixer

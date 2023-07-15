@@ -146,9 +146,9 @@ class Page(QWidget):
         self.hbox2.addWidget(self.infofieldSub, 0, 7)
         
         # Create Pump widget and add it to the grid layout
-        self.pumpWidget = PumpWidget(name="Pumpe PU21")
-        self.pumpWidget.set_mode("idle")
-        self.hbox2.addWidget(self.pumpWidget, 4, 2, 1, 1)  # Add the Pump widget to the grid layout
+        self.pumpWidget1 = PumpWidget(name="Pumpe PU21")
+        self.pumpWidget1.set_mode("idle")
+        self.hbox2.addWidget(self.pumpWidget1, 4, 2, 1, 1)  # Add the Pump widget to the grid layout
         
         
         """ self.motor1 = MotorLabelWidget("Ruehrwerk RW11", size=70)
@@ -230,6 +230,24 @@ class Page(QWidget):
         for o in objectList:
             #iterate over an update method that should be added to all faceplate objects similar to box object
             o.update(inputs)
+        
+        objectList2=[    #self.playbutton,
+                        self.tankIbc,
+                        self.valve1,
+                        self.valve2,
+                        self.valve3,
+                        self.valve4,
+                        self.pumpWidget1,
+                        self.pumpWidget,
+                        self.tankMixer1,
+                        self.tankMixer2
+                        
+                    ]
+
+
+        for i in objectList2:
+            #iterate over an update method that should be added to all faceplate objects similar to box object
+            i.update1(inputs)
 
 if __name__ == '__main__':
     pass

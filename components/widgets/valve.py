@@ -8,13 +8,32 @@ class ValveLabelWidget(QWidget):
         super().__init__()
         self.valve = ValveWidget(size)
         self.valvename = label
-        self.valve.status = 0
+        self.opcName=label
+        self.valve.status = 2
         #self.setContentsMargins(0, 50, 0, 0)
         self.__drawvalve()
 
     def setStatus(self, value):
         self.valve.status = value
         self.valve.update()
+    def update1(self,val:dict):
+        try:
+          Auf:bool
+          error:bool
+          Auf=val[self.opcName+':Auf']
+          error=val[self.opcName+':error']
+
+          if error:
+            self.setStatus(2)
+          elif Auf:
+            self.setStatus(1)
+          else:
+            self.setStatus(0)
+          #print('If Statement done')
+        except Exception as e:
+          print('Exception raised')
+          #print(val[self.opcName])
+          print(str(e))
 
     def __drawvalve(self):
         self.layout = QVBoxLayout()
@@ -32,7 +51,7 @@ class ValveWidget(QWidget):
         super().__init__()
         self.setMinimumSize(size, size)
         self.valvesize = size
-        self.status = 0
+        self.status = 2
 
     def setStatus(self, value):
         self.status = value
