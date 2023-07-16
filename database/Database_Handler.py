@@ -26,9 +26,7 @@ class DatabaseHandler:
         try:
             self.cursor = self.connection.cursor()
             columns = ', '.join(['"{0}"'.format(col) for col in values.keys()])
-            print('columns:', columns)
             placeholders = ', '.join(['%s' for _ in values])  
-            print('placeholders:', placeholders)
             insert_query = f'INSERT INTO {table_name} ({columns}) VALUES ({placeholders});'
             print('values:', tuple(values.values()))
             self.cursor.execute(insert_query, tuple(values.values()))
@@ -38,9 +36,6 @@ class DatabaseHandler:
             self.connection.rollback()
         finally:
             self.cursor.close()
-
-
-
 
     def get_records(self, table_name):
         self.cursor = self.connection.cursor()

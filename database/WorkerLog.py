@@ -21,8 +21,7 @@ class WorkerLog(QObject):
         """Long-running task."""
         #self.recieved.connect(self.rec)
         try:
-            opc=OpenOPC.client()
-            #print('client')   
+            opc=OpenOPC.client() 
             opc.connect("OPC.SimaticNET")
 
             if self.varDict=={}:
@@ -35,23 +34,14 @@ class WorkerLog(QObject):
                 for x in keys:
                     #print(self.varDict[x])
                     tagValues=opc[self.varDict[x]]
-                    #tagValues=float(tagValues)
-                    #print(tagValues)
-                    #tagValues=str(tagValues)
                     results[x]=tagValues
-                    #print(x)
-                    #print(tagValues)
         
             db.insert_record('logging', results)   
             print(results)
-
-            #print(self.x)
-            #self.progress.emit(results)
             opc.close()
             self.finished.emit()
         except Exception as e:
             print('error')
             print(str(e))
             x=['thread not working']
-            #self.progress.emit(x)
             self.finished.emit()
