@@ -1,5 +1,5 @@
 {
-  "TAB1":
+  "Steurung1":
  {   
 "HE11.Hand":"SIMATIC 300-Station.CPU 315-2 DP.DB5.HE11.BF2",
 "HE11.AUTO":"SIMATIC 300-Station.CPU 315-2 DP.DB5.HE11.BF3",
@@ -10,7 +10,9 @@
 "RW13.Hand":"SIMATIC 300-Station.CPU 315-2 DP.DB5.RW13.BF2",
 "RW13.AUTO":"SIMATIC 300-Station.CPU 315-2 DP.DB5.RW13.BF3",
 "Temp. Fer 1 (C)":"SIMATIC 300-Station.CPU 315-2 DP.DB70.TI15_TMP_SK",
-
+"Temp. Ng 1 [C]":"SIMATIC 300-Station.CPU 315-2 DP.DB70.TI16_TMP_SK",
+"Temp. Vorlauf Fer 1 (C)":"SIMATIC 300-Station.CPU 315-2 DP.DB302.PT_100_FER1",
+"Temp. Vorlauf Ng 1 [C]":"SIMATIC 300-Station.CPU 315-2 DP.DB302.PT_100_NGA1",
 "RW13.AUS":"SIMATIC 300-Station.CPU 315-2 DP.DB5.RW13.BF4",
 "RW14.Hand":"SIMATIC 300-Station.CPU 315-2 DP.DB5.RW14.BF2",
 "RW14.AUTO":"SIMATIC 300-Station.CPU 315-2 DP.DB5.RW14.BF3",
@@ -20,6 +22,7 @@
 "SC11.AUS":"SIMATIC 300-Station.CPU 315-2 DP.DB5.SC11.BF4",
 "Magentgasventill Fer 1":"SIMATIC 300-Station.CPU 315-2 DP.A32_4",
 "Magentgasventill Fer 2":"SIMATIC 300-Station.CPU 315-2 DP.A32_5",
+"Fermenter Temp.-Sollwert (C)":"SIMATIC 300-Station.CPU 315-2 DP.DB84.TI15_FER1.SW",
 "RW13.SW_AKT [%]":"SIMATIC 300-Station.CPU 315-2 DP.DB10.RW13_SW.SW_AKT",
 "RW11 Auto Sollwert [%]":"SIMATIC 300-Station.CPU 315-2 DP.DB10.RW11_SW.SW2",
 "RW11 Hand Sollwert [%]":"SIMATIC 300-Station.CPU 315-2 DP.DB10.RW11_SW.SW1",
@@ -36,11 +39,12 @@
 "RW14 Auto Sollwert [%]":"SIMATIC 300-Station.CPU 315-2 DP.DB10.RW14_SW.SW2",
 "RW14 Hand Sollwert [%]":"SIMATIC 300-Station.CPU 315-2 DP.DB10.RW14_SW.SW1",
 "RW14 Pause Soll [min] ln":"SIMATIC 300-Station.CPU 315-2 DP.DB30.RW14.SZ_PAU",
-"RW14 Run Soll [min] ln":"SIMATIC 300-Station.CPU 315-2 DP.DB30.RW14.SZ_EIN"
+"RW14 Run Soll [min] ln":"SIMATIC 300-Station.CPU 315-2 DP.DB30.RW14.SZ_EIN",
+"Nachgaerer Temp.-Sollwert [C]":"SIMATIC 300-Station.CPU 315-2 DP.DB84.TI16_NGA1.SW"
 },
 
 
-"TAB2":
+"Steurung2":
 {
 "HE21.Hand":"SIMATIC 300-Station.CPU 315-2 DP.DB5.HE21.BF2",
 "HE21.AUTO":"SIMATIC 300-Station.CPU 315-2 DP.DB5.HE21.BF3",
@@ -62,6 +66,10 @@
 "SC21.AUTO":"SIMATIC 300-Station.CPU 315-2 DP.DB5.SC21.BF3",
 "SC21.AUS":"SIMATIC 300-Station.CPU 315-2 DP.DB5.SC21.BF4",
 
+"Fermenter Temp.-Sollwert [C]":"SIMATIC 300-Station.CPU 315-2 DP.DB84.TI25_FER2.SW",
+"D8400.HZG_REG.SZ_HE21":"SIMATIC 300-Station.CPU 315-2 DP.DB40.HZG_REG.SZ_HE21",
+"Temp. Vorlauf Fer 2 [C]":"SIMATIC 300-Station.CPU 315-2 DP.DB302.PT_100_FER2",
+"Temp. Fer 2 [C]":"SIMATIC 300-Station.CPU 315-2 DP.DB70.TI25_TMP_SK",
 
 
 
@@ -71,6 +79,9 @@
 "RW23 Auto Sollwert [%]":"SIMATIC 300-Station.CPU 315-2 DP.DB10.RW23_SW.SW2",
 "RW23 Hand Soll [min] ln":"SIMATIC 300-Station.CPU 315-2 DP.DB10.RW23_SW.SW1",
 
+"Nachgaerer Temp.-Sollwert [C]":"SIMATIC 300-Station.CPU 315-2 DP.DB84.TI26_NGA2.SW",
+"Temp. Vorlauf Ng 2 [C]":"SIMATIC 300-Station.CPU 315-2 DP.DB302.PT_100_NGA2",
+"Temp. Ng 2 [C]":"SIMATIC 300-Station.CPU 315-2 DP.DB70.TI26_TMP_SK",
 
 
 "RW24 Pause Soll [min] ln":"SIMATIC 300-Station.CPU 315-2 DP.DB40.RW24.SZ_PAU",
@@ -99,44 +110,138 @@
 ,
 "Stoermeldungen_Strasse_1":
 {
-  "PU11 Antriebsstörung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M204_0",
-  "PU11 Trockenlaufstörung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M204_1",
-  "PU11 MaxDruckstörung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M204_2",
-  "PU12 Antriebsstörung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M204_4",
-  "PU12 Trockenlaufstörung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M204_5",
-  "PU12 MaxDruckstörung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M204_6",
+  "PU11 Antriebsstoerung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M204_0",
+  "PU11 Trockenlaufstoerung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M204_1",
+  "PU11 MaxDruckstoerung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M204_2",
+  "PU12 Antriebsstoerung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M204_4",
+  "PU12 Trockenlaufstoerung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M204_5",
+  "PU12 MaxDruckstoerung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M204_6",
 
-  "RW11 Antriebsstorung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M208_0",
-  "RW11 FU-Störung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M208_1",
-  "RW12 Antriebsstörung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M208_2",
-  "RW12 FU-Störung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M208_3",
-  "RW13 Antriebsstörung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M208_4",
-  "RW13 FU-Störung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M208_5",
-  "RW14 Antriebsstörung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M208_6",
-  "RW14 FU-Störung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M208_7"
+
+  "RW11 Antriebsstoerung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M208_0",
+  "RW11 FU-Stoerung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M208_1",
+  "RW12 Antriebsstoerung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M208_2",
+  "RW12 FU-Stoerung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M208_3",
+  "RW13 Antriebsstoerung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M208_4",
+  "RW13 FU-Stoerung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M208_5",
+  "RW14 Antriebsstoerung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M208_6",
+  "RW14 FU-Stoerung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M208_7",
+
+  "DB84.TI15.FER1.SW":"SIMATIC 300-Station.CPU 315-2 DP.DB84.TI15_FER1.SW",
+  "DB84.TI15.GW.SW":"SIMATIC 300-Station.CPU 315-2 DP.DB84.TI15_GW.SW",
+  "DB81.NIV.LI15.GW.Max":"SIMATIC 300-Station.CPU 315-2 DP.DB81.NIV_LI15_GW.Max",
+  "DB81.NIV.LI15.GW.Mnn":"SIMATIC 300-Station.CPU 315-2 DP.DB81.NIV_LI15_GW.MinMin",
+  "DB81.NIV.LI15.GW.Mxx":"SIMATIC 300-Station.CPU 315-2 DP.DB81.NIV_LI15_GW.MaxMax",
+
+  
+  "HE11 MaxTemp Stoerung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M206_4",
+  "HE12 MaxTemp Stoerung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M206_5"
+
+  
 
 }
 ,
 "Stoermeldungen_Strasse_2":
 {
-  "PU21 Antriebsstörung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M205_0",
-  "PU21 Trockenlaufstörung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M205_1",
-  "PU21 MaxDruckstörung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M205_2",
-  "PU22 Antriebsstörung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M205_4",
-  "PU22 Trockenlaufstörung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M205_5",
-  "PU22 MaxDruckstörung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M205_6",
+  "PU21 Antriebsstoerung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M205_0",
+  "PU21 Trockenlaufstoerung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M205_1",
+  "PU21 MaxDruckstoerung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M205_2",
+  "PU22 Antriebsstoerung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M205_4",
+  "PU22 Trockenlaufstoerung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M205_5",
+  "PU22 MaxDruckstoerung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M205_6",
 
 
-  "RW21 Antriebsstörung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M209_0",
-  "RW21 FU-Störung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M209_1",
-  "RW22 Antriebsstörung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M209_2",
-  "RW22 FU-Störung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M209_3",
-  "RW23 Antriebsstörung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M209_4",
-  "RW23 FU-Störung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M209_5",
-  "RW24 Antriebsstörung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M209_6",
-  "RW24 FU-Störung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M209_7"
+  "RW21 Antriebsstoerung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M209_0",
+  "RW21 FU-Stoerung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M209_1",
+  "RW22 Antriebsstoerung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M209_2",
+  "RW22 FU-Stoerung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M209_3",
+  "RW23 Antriebsstoerung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M209_4",
+  "RW23 FU-Stoerung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M209_5",
+  "RW24 Antriebsstoerung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M209_6",
+  "RW24 FU-Stoerung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M209_7"
 
+},
+"Futter1":
+{
+  "Feststoff Sollwert [kg/d]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.FES_STR1.TAG_SW",
+  "Feststoff Istwert [kg/d]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.FES_STR1.ZYK_DAY",
+  "Feststoff Sollwert [kg/Zyklus]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.FES_STR1.ZYK_SW",
+  "Feststoff Istwert [kg/Zyklus]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.FES_STR1.ZYK_IW",
+  "Fluessigkeit Sollwert [l/d]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.FLU_STR1.TAG_SW",
+  "Fluessigkeit Istwert [l/d]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.FLU_STR1.ZYK_DAY",
+  "Fluessigkeit Sollwert [l/Zyklus]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.FLU_STR1.ZYK_SW",
+  "Fluessigkeit Istwert [l/Zyklus]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.FLU_STR1.ZYK_IW",
+  "Maische Sollwert [l/d]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.MAI_STR1.TAG_SW",
+  "Maische Istwert [l/d]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.MAI_STR1.ZYK_DAY",
+  "Maische Sollwert [l/Zyklus]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.MAI_STR1.ZYK_SW",
+  "Maische Istwert [l/Zyklus]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.MAI_STR1.ZYK_IW",
+  "Futterungszyklein/Tag":"SIMATIC 300-Station.CPU 315-2 DP.DB50.FUT_STR1.TAG_SWE",
+  "DB50.MAIFLU1.FLUSW":"SIMATIC 300-Station.CPU 315-2 DP.DB50.MAIFLU_STR1.FLU_SW",
+  "DB50.MAIFLU1.FLUW":"SIMATIC 300-Station.CPU 315-2 DP.DB50.MAIFLU_STR1.FLU_IW",
+  "Gesamteintrag Feststoff 1 [kg]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.FES_GES_STR1.FES1_IW",
+  "Gesamteintrag Feststoff 2 [kg]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.FES_GES_STR1.FES2_IW",
+  "Gesamteintrag Feststoff 3 [kg]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.FES_GES_STR1.FES3_IW",
+  "Gesamteintrag Feststoff 4 [kg]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.FES_GES_STR1.FES4_IW",
+  "Gesamteintrag Feststoff 5 [kg]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.FES_GES_STR1.FES5_IW",
+  "Gesamteintrag Feststoff 6 [kg]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.FES_GES_STR1.FES6_IW",
+  "Gesamteintrag Feststoff 7 [kg]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.FES_GES_STR1.FES7_IW",
+  "Gesamteintrag Fluessigkeit 1 [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.FLU_GES_STR1.FLU1_IW",
+  "Gesamteintrag Fluessigkeit 2 [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.FLU_GES_STR1.FLU2_IW",
+  "Gesamteintrag Fluessigkeit 3 [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.FLU_GES_STR1.FLU3_IW",
+  "Gesamteintrag Fluessigkeit 4 [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.FLU_GES_STR1.FLU4_IW",
+  "Gesamteintrag Fluessigkeit 5 [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.FLU_GES_STR1.FLU5_IW",
+  "Gesamteintrag Fluessigkeit 6 [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.FLU_GES_STR1.FLU6_IW",
+  "Gesamteintrag Maische 1 [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.MAI_GES_STR1.MAI1_IW",
+  "Gesamteintrag Maische 2 [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.MAI_GES_STR1.MAI2_IW",
+  "Gesamteintrag Maische 3 [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.MAI_GES_STR1.MAI3_IW",
+  "Gesamteintrag Maische 4 [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.MAI_GES_STR1.MAI4_IW",
+  "Gesamteintrag Maische 5 [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.MAI_GES_STR1.MAI5_IW",
+  "Gesamteintrag Maische 6 [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.MAI_GES_STR1.MAI6_IW",
+  "Gesamteintrag Maische 7 [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.MAI_GES_STR1.MAI7_IW",
+  "Feststoff Gesamteintrag [kg]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.FES_STR1.ZYK_GES",
+  "Fluessigkeit Gesamteintrag [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.FLU_STR1.ZYK_GES",
+  "Maische Gesamteintrag [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.MAI_STR1.ZYK_GES"
+},
+"Futter2":
+{
+  "Feststoff Sollwert [kg/d]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.FES_STR2.TAG_SW",
+  "Feststoff Istwert [kg/d]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.FES_STR2.ZYK_DAY",
+  "Feststoff Sollwert [kg/Zyklus]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.FES_STR2.ZYK_SW",
+  "Feststoff Istwert [kg/Zyklus]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.FES_STR2.ZYK_IW",
+  "Fluessigkeit Sollwert [l/d]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.FLU_STR2.TAG_SW",
+  "Fluessigkeit Istwert [l/d]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.FLU_STR2.ZYK_DAY",
+  "Fluessigkeit Sollwert [l/Zyklus]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.FLU_STR2.ZYK_SW",
+  "Fluessigkeit Istwert [l/Zyklus]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.FLU_STR2.ZYK_IW",
+  "Maische Sollwert [l/d]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.MAI_STR2.TAG_SW",
+  "Maische Istwert [l/d]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.MAI_STR2.ZYK_DAY",
+  "Maische Sollwert [l/Zyklus]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.MAI_STR2.ZYK_SW",
+  "Maische Istwert [l/Zyklus]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.MAI_STR2.ZYK_IW",
+  "Futterungszyklein/Tag":"SIMATIC 300-Station.CPU 315-2 DP.DB60.FUT_STR2.TAG_SWE",
+  "DB50.MAIFLU2.FLUSW":"SIMATIC 300-Station.CPU 315-2 DP.DB60.MAIFLU_STR2.FLU_SW",
+  "DB50.MAIFLU2.FLUW":"SIMATIC 300-Station.CPU 315-2 DP.DB60.MAIFLU_STR2.FLU_IW",
+  "Gesamteintrag Feststoff 1 [kg]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.FES_GES_STR2.FES1_IW",
+  "Gesamteintrag Feststoff 2 [kg]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.FES_GES_STR2.FES2_IW",
+  "Gesamteintrag Feststoff 3 [kg]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.FES_GES_STR2.FES3_IW",
+  "Gesamteintrag Feststoff 4 [kg]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.FES_GES_STR2.FES4_IW",
+  "Gesamteintrag Feststoff 5 [kg]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.FES_GES_STR2.FES5_IW",
+  "Gesamteintrag Feststoff 6 [kg]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.FES_GES_STR2.FES6_IW",
+  "Gesamteintrag Feststoff 7 [kg]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.FES_GES_STR2.FES7_IW",
+  "Gesamteintrag Fluessigkeit 1 [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.FLU_GES_STR2.FLU1_IW",
+  "Gesamteintrag Fluessigkeit 2 [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.FLU_GES_STR2.FLU2_IW",
+  "Gesamteintrag Fluessigkeit 3 [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.FLU_GES_STR2.FLU3_IW",
+  "Gesamteintrag Fluessigkeit 4 [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.FLU_GES_STR2.FLU4_IW",
+  "Gesamteintrag Fluessigkeit 5 [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.FLU_GES_STR2.FLU5_IW",
+  "Gesamteintrag Fluessigkeit 6 [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.FLU_GES_STR2.FLU6_IW",
+  "Gesamteintrag Maische 1 [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.MAI_GES_STR2.MAI1_IW",
+  "Gesamteintrag Maische 2 [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.MAI_GES_STR2.MAI2_IW",
+  "Gesamteintrag Maische 3 [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.MAI_GES_STR2.MAI3_IW",
+  "Gesamteintrag Maische 4 [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.MAI_GES_STR2.MAI4_IW",
+  "Gesamteintrag Maische 5 [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.MAI_GES_STR2.MAI5_IW",
+  "Gesamteintrag Maische 6 [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.MAI_GES_STR2.MAI6_IW",
+  "Gesamteintrag Maische 7 [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.MAI_GES_STR2.MAI7_IW",
+  "Feststoff Gesamteintrag [kg]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.FES_STR2.ZYK_GES",
+  "Fluessigkeit Gesamteintrag [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.FLU_STR2.ZYK_GES",
+  "Maische Gesamteintrag [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.MAI_STR2.ZYK_GES"
 }
-
 
 }

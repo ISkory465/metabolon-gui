@@ -227,7 +227,7 @@ class Page(QWidget):
 
             self.field3_2,
             self.field3_2a,
-            self.field3_2a,
+            self.field3_2b,
 
             self.field3_3,
             self.field3_3a,

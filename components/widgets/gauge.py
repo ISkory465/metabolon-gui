@@ -6,10 +6,11 @@ from PyQt5.QtCore import Qt
 
 
 class Gauge(QWidget):
-    def __init__(self, value=12):
+    def __init__(self,name, value=12):
         super().__init__()
         self.setFixedSize(100, 100)
         self.value = value
+        self.opcName=name
 
     def paintEvent(self, event):
         painter = QPainter(self)
@@ -66,6 +67,13 @@ class Gauge(QWidget):
     def set_value(self, value):
         self.value = min(max(value, 0), 25)
         self.update()
+    
+    def update1(self,val:dict):
+        try:
+          self.set_value(val[self.opcName])
+        except Exception as e:
+          print(self.opcName)
+          print(str(e))
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

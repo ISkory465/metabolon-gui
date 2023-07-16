@@ -37,7 +37,7 @@ class Page(QWidget):
         #Elements of vbox1 for the hbox1:
         self.futter1 = Futter1(buttonName="DB50.FES1.VW.FES", sollwert11='Feststoff Sollwert [kg/d]',solwert12='Feststoff Istwert [kg/d]', solwert21='Feststoff Sollwert [kg/Zyklus]',solwert22='Feststoff Istwert [kg/Zyklus]')
         self.vbox1.addWidget(self.futter1)
-        self.futter2 = Futter1(buttonName="DB50.FLU1.VW.FLU", sollwert11='Feststoff Sollwert [l/d]', solwert12='Feststoff Istwert [l/d]',  solwert21='Feststoff Sollwert [l/Zyklus]', solwert22='Feststoff Istwert [l/Zyklus]')
+        self.futter2 = Futter1(buttonName="DB50.FLU1.VW.FLU", sollwert11='Fluessigkeit Sollwert [l/d]', solwert12='Fluessigkeit Istwert [l/d]',  solwert21='Fluessigkeit Sollwert [l/Zyklus]', solwert22='Fluessigkeit Istwert [l/Zyklus]')
         self.vbox1.addWidget(self.futter2)
         self.futter3 = Futter1(buttonName="DB50.MAI.VW.MAI", sollwert11='Maische Sollwert [l/d]',   solwert12='Maische Istwert [l/d]',    solwert21='Maische Sollwert [l/Zyklus]',   solwert22='Maische Istwert [l/Zyklus]')
         self.vbox1.addWidget(self.futter3)

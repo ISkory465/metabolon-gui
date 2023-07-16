@@ -6,11 +6,12 @@ from PyQt5.QtWidgets import QPushButton
 
 class EndlagerTank(QWidget):
 
-    def __init__(self, level=100):
+    def __init__(self,name, level=100):
         super().__init__()
         self.setMinimumSize(100, 80)
         self.level = level
         self.buffer = 0
+        self.opcName=name
 
         self.initUI()
 
@@ -21,7 +22,13 @@ class EndlagerTank(QWidget):
         self.level = val
         self.update()
 
-
+    def update1(self,val:dict):
+        try:
+          self.setLevel(val[self.opcName])
+        except Exception as e:
+          print(self.opcName)
+          print(str(e))
+          
     def paintEvent(self, event):
         painter = QPainter(self)
         painter.setRenderHint(QPainter.Antialiasing)

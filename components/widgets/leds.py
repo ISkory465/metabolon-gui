@@ -29,7 +29,10 @@ class SingleLed(QGroupBox):
         self.setLayout(local_layout)
 
     def update(self,val:dict):
-        self.led.value=val[self.opcName]
+        try:
+          self.led.value=val[self.opcName]
+        except:
+          self.led.value=False
 
 
 
@@ -38,6 +41,7 @@ class LedGroupBox(QGroupBox):
         super().__init__(box_name)
 
         local_layout = QFormLayout()
+        self.led_names=led_names
 
         self.leds = []
 
@@ -69,3 +73,11 @@ class LedGroupBox(QGroupBox):
             self.leds[index].value = state
         else:
             print(f"Invalid LED index: {index}")
+    def update(self,val:dict):
+        try:
+          for i in range(len(self.leds)):  
+            self.leds[i].value=val[self.led_names[i]]
+          
+        except:
+          for i in range(len(self.leds)):  
+            self.leds[i].value=False
