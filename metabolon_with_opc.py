@@ -128,7 +128,7 @@ class Window(QMainWindow):
 
         # Define the timer for periodic update of tags
         self.timer = QTimer()
-        self.timer.setInterval(3000)
+        self.timer.setInterval(4000)
         self.timer.timeout.connect(self.runLongTask)
         self.timer.start() # Remove comment to run OPC update
 
@@ -215,6 +215,7 @@ class Window(QMainWindow):
         val7={} #Values Dictionary to update Futter2
         val8={}
         val9={}
+        val10={}
 
         if outer_index == 0:
           if inner_index1==0:
@@ -256,7 +257,9 @@ class Window(QMainWindow):
             val5[c]=tagValues[c]
           self.betrieb.updateAll(val5)
        
-
+        for i in keys:
+          val10[i]=tagValues[i]
+        self.side_bar.updateAll(val10)
 
           
 if __name__ == '__main__':

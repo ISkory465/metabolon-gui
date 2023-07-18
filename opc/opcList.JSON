@@ -99,7 +99,23 @@
 "Anmalschb:error2":"SIMATIC 300-Station.CPU 315-2 DP.E12_6",
 
 "Anmalschb:MaxNiv":"SIMATIC 300-Station.CPU 315-2 DP.E16_6",
-"Anmalschb:MinNiv":"SIMATIC 300-Station.CPU 315-2 DP.E16_5"
+"Anmalschb:MinNiv":"SIMATIC 300-Station.CPU 315-2 DP.E16_5",
+
+"Fackel Ein \nFer1 [mbar]":"SIMATIC 300-Station.CPU 315-2 DP.DB83.PI15_FER1.OGW",
+"Fackel Ein \nFer2 [mbar]":"SIMATIC 300-Station.CPU 315-2 DP.DB83.PI25_FER2.OGW",
+"[s]":"SIMATIC 300-Station.CPU 315-2 DP.DB96.Fackel.IZ_AUS",
+"Control mode.Hand":"SIMATIC 300-Station.CPU 315-2 DP.DB6.Fackel.BF2",
+"Control mode.AUTO":"SIMATIC 300-Station.CPU 315-2 DP.DB6.Fackel.BF3",
+"Control mode.AUS":"SIMATIC 300-Station.CPU 315-2 DP.DB6.Fackel.BF4",
+
+"Fackel Indicator:Auf":"SIMATIC 300-Station.CPU 315-2 DP.E2_1",
+"Fackel Indicator:error1":"SIMATIC 300-Station.CPU 315-2 DP.E2_0",
+"ML Sammelstoerung":"SIMATIC 300-Station.CPU 315-2 DP.A20_1",
+"FE01 (Einspeisung / Steuerspannung)":"SIMATIC 300-Station.CPU 315-2 DP.A20_0",
+"FE02 (Antriebe Pumpen / Diverse)":"SIMATIC 300-Station.CPU 315-2 DP.A24_0",
+"FE03 (Antriebe Ruehrwerke)":"SIMATIC 300-Station.CPU 315-2 DP.A25_7",
+"FE04 (SPS / MSR Technik)":"SIMATIC 300-Station.CPU 315-2 DP.A32_0",
+"Pumpe PU31 (Mobil)":"SIMATIC 300-Station.CPU 315-2 DP.A24_6"
 
  },
  "Strasse2":
@@ -202,7 +218,22 @@
 "Anmalschb:error2":"SIMATIC 300-Station.CPU 315-2 DP.E14_6",
 
 "Anmalschb:MaxNiv":"SIMATIC 300-Station.CPU 315-2 DP.E18_6",
-"Anmalschb:MinNiv":"SIMATIC 300-Station.CPU 315-2 DP.E18_5"
+"Anmalschb:MinNiv":"SIMATIC 300-Station.CPU 315-2 DP.E18_5",
+"Fackel Ein \nFer1 [mbar]":"SIMATIC 300-Station.CPU 315-2 DP.DB83.PI15_FER1.OGW",
+"Fackel Ein \nFer2 [mbar]":"SIMATIC 300-Station.CPU 315-2 DP.DB83.PI25_FER2.OGW",
+"[s]":"SIMATIC 300-Station.CPU 315-2 DP.DB96.Fackel.IZ_AUS",
+"Control mode.Hand":"SIMATIC 300-Station.CPU 315-2 DP.DB6.Fackel.BF2",
+"Control mode.AUTO":"SIMATIC 300-Station.CPU 315-2 DP.DB6.Fackel.BF3",
+"Control mode.AUS":"SIMATIC 300-Station.CPU 315-2 DP.DB6.Fackel.BF4",
+
+"Fackel Indicator:Auf":"SIMATIC 300-Station.CPU 315-2 DP.E2_1",
+"Fackel Indicator:error1":"SIMATIC 300-Station.CPU 315-2 DP.E2_0",
+"ML Sammelstoerung":"SIMATIC 300-Station.CPU 315-2 DP.A20_1",
+"FE01 (Einspeisung / Steuerspannung)":"SIMATIC 300-Station.CPU 315-2 DP.A20_0",
+"FE02 (Antriebe Pumpen / Diverse)":"SIMATIC 300-Station.CPU 315-2 DP.A24_0",
+"FE03 (Antriebe Ruehrwerke)":"SIMATIC 300-Station.CPU 315-2 DP.A25_7",
+"FE04 (SPS / MSR Technik)":"SIMATIC 300-Station.CPU 315-2 DP.A32_0",
+"Pumpe PU31 (Mobil)":"SIMATIC 300-Station.CPU 315-2 DP.A24_6"
 
 
  },
@@ -247,7 +278,23 @@
 "RW14 Hand Sollwert [%]":"SIMATIC 300-Station.CPU 315-2 DP.DB10.RW14_SW.SW1",
 "RW14 Pause Soll [min] ln":"SIMATIC 300-Station.CPU 315-2 DP.DB30.RW14.SZ_PAU",
 "RW14 Run Soll [min] ln":"SIMATIC 300-Station.CPU 315-2 DP.DB30.RW14.SZ_EIN",
-"Nachgaerer Temp.-Sollwert [C]":"SIMATIC 300-Station.CPU 315-2 DP.DB84.TI16_NGA1.SW"
+"Nachgaerer Temp.-Sollwert [C]":"SIMATIC 300-Station.CPU 315-2 DP.DB84.TI16_NGA1.SW",
+"Fackel Ein \nFer1 [mbar]":"SIMATIC 300-Station.CPU 315-2 DP.DB83.PI15_FER1.OGW",
+"Fackel Ein \nFer2 [mbar]":"SIMATIC 300-Station.CPU 315-2 DP.DB83.PI25_FER2.OGW",
+"[s]":"SIMATIC 300-Station.CPU 315-2 DP.DB96.Fackel.IZ_AUS",
+"Control mode.Hand":"SIMATIC 300-Station.CPU 315-2 DP.DB6.Fackel.BF2",
+"Control mode.AUTO":"SIMATIC 300-Station.CPU 315-2 DP.DB6.Fackel.BF3",
+"Control mode.AUS":"SIMATIC 300-Station.CPU 315-2 DP.DB6.Fackel.BF4",
+
+"Fackel Indicator:Auf":"SIMATIC 300-Station.CPU 315-2 DP.E2_1",
+"Fackel Indicator:error1":"SIMATIC 300-Station.CPU 315-2 DP.E2_0",
+"ML Sammelstoerung":"SIMATIC 300-Station.CPU 315-2 DP.A20_1",
+"FE01 (Einspeisung / Steuerspannung)":"SIMATIC 300-Station.CPU 315-2 DP.A20_0",
+"FE02 (Antriebe Pumpen / Diverse)":"SIMATIC 300-Station.CPU 315-2 DP.A24_0",
+"FE03 (Antriebe Ruehrwerke)":"SIMATIC 300-Station.CPU 315-2 DP.A25_7",
+"FE04 (SPS / MSR Technik)":"SIMATIC 300-Station.CPU 315-2 DP.A32_0",
+"Pumpe PU31 (Mobil)":"SIMATIC 300-Station.CPU 315-2 DP.A24_6"
+
 },
 
 
@@ -294,7 +341,23 @@
 "RW24 Pause Soll [min] ln":"SIMATIC 300-Station.CPU 315-2 DP.DB40.RW24.SZ_PAU",
 "RW24 Run Soll [min] ln":"SIMATIC 300-Station.CPU 315-2 DP.DB40.RW24.SZ_EIN",
 "RW24 Auto Sollwert [%]":"SIMATIC 300-Station.CPU 315-2 DP.DB10.RW24_SW.SW2",
-"RW24 Hand Soll [min] ln":"SIMATIC 300-Station.CPU 315-2 DP.DB10.RW24_SW.SW1"
+"RW24 Hand Soll [min] ln":"SIMATIC 300-Station.CPU 315-2 DP.DB10.RW24_SW.SW1",
+"Fackel Ein \nFer1 [mbar]":"SIMATIC 300-Station.CPU 315-2 DP.DB83.PI15_FER1.OGW",
+"Fackel Ein \nFer2 [mbar]":"SIMATIC 300-Station.CPU 315-2 DP.DB83.PI25_FER2.OGW",
+"[s]":"SIMATIC 300-Station.CPU 315-2 DP.DB96.Fackel.IZ_AUS",
+"Control mode.Hand":"SIMATIC 300-Station.CPU 315-2 DP.DB6.Fackel.BF2",
+"Control mode.AUTO":"SIMATIC 300-Station.CPU 315-2 DP.DB6.Fackel.BF3",
+"Control mode.AUS":"SIMATIC 300-Station.CPU 315-2 DP.DB6.Fackel.BF4",
+
+"Fackel Indicator:Auf":"SIMATIC 300-Station.CPU 315-2 DP.E2_1",
+"Fackel Indicator:error1":"SIMATIC 300-Station.CPU 315-2 DP.E2_0",
+"ML Sammelstoerung":"SIMATIC 300-Station.CPU 315-2 DP.A20_1",
+"FE01 (Einspeisung / Steuerspannung)":"SIMATIC 300-Station.CPU 315-2 DP.A20_0",
+"FE02 (Antriebe Pumpen / Diverse)":"SIMATIC 300-Station.CPU 315-2 DP.A24_0",
+"FE03 (Antriebe Ruehrwerke)":"SIMATIC 300-Station.CPU 315-2 DP.A25_7",
+"FE04 (SPS / MSR Technik)":"SIMATIC 300-Station.CPU 315-2 DP.A32_0",
+"Pumpe PU31 (Mobil)":"SIMATIC 300-Station.CPU 315-2 DP.A24_6"
+
 
 
 
@@ -311,7 +374,23 @@
   "PU12_BH":"SIMATIC 300-Station.CPU 315-2 DP.DB78.PU12_BH",
   "PU21_BH":"SIMATIC 300-Station.CPU 315-2 DP.DB78.PU21_BH",
   "PU22_BH":"SIMATIC 300-Station.CPU 315-2 DP.DB78.PU22_BH",
-  "PU31_BH":"SIMATIC 300-Station.CPU 315-2 DP.DB78.PU31_BH"
+  "PU31_BH":"SIMATIC 300-Station.CPU 315-2 DP.DB78.PU31_BH",
+  "Fackel Ein \nFer1 [mbar]":"SIMATIC 300-Station.CPU 315-2 DP.DB83.PI15_FER1.OGW",
+  "Fackel Ein \nFer2 [mbar]":"SIMATIC 300-Station.CPU 315-2 DP.DB83.PI25_FER2.OGW",
+  "[s]":"SIMATIC 300-Station.CPU 315-2 DP.DB96.Fackel.IZ_AUS",
+  "Control mode.Hand":"SIMATIC 300-Station.CPU 315-2 DP.DB6.Fackel.BF2",
+  "Control mode.AUTO":"SIMATIC 300-Station.CPU 315-2 DP.DB6.Fackel.BF3",
+  "Control mode.AUS":"SIMATIC 300-Station.CPU 315-2 DP.DB6.Fackel.BF4",
+
+  "Fackel Indicator:Auf":"SIMATIC 300-Station.CPU 315-2 DP.E2_1",
+  "Fackel Indicator:error1":"SIMATIC 300-Station.CPU 315-2 DP.E2_0",
+  "ML Sammelstoerung":"SIMATIC 300-Station.CPU 315-2 DP.A20_1",
+  "FE01 (Einspeisung / Steuerspannung)":"SIMATIC 300-Station.CPU 315-2 DP.A20_0",
+  "FE02 (Antriebe Pumpen / Diverse)":"SIMATIC 300-Station.CPU 315-2 DP.A24_0",
+  "FE03 (Antriebe Ruehrwerke)":"SIMATIC 300-Station.CPU 315-2 DP.A25_7",
+  "FE04 (SPS / MSR Technik)":"SIMATIC 300-Station.CPU 315-2 DP.A32_0",
+  "Pumpe PU31 (Mobil)":"SIMATIC 300-Station.CPU 315-2 DP.A24_6"
+
 
 }
 ,
@@ -342,7 +421,23 @@
 
   
   "HE11 MaxTemp Stoerung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M206_4",
-  "HE12 MaxTemp Stoerung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M206_5"
+  "HE12 MaxTemp Stoerung +FE02":"SIMATIC 300-Station.CPU 315-2 DP.M206_5",
+  "Fackel Ein \nFer1 [mbar]":"SIMATIC 300-Station.CPU 315-2 DP.DB83.PI15_FER1.OGW",
+  "Fackel Ein \nFer2 [mbar]":"SIMATIC 300-Station.CPU 315-2 DP.DB83.PI25_FER2.OGW",
+  "[s]":"SIMATIC 300-Station.CPU 315-2 DP.DB96.Fackel.IZ_AUS",
+  "Control mode.Hand":"SIMATIC 300-Station.CPU 315-2 DP.DB6.Fackel.BF2",
+  "Control mode.AUTO":"SIMATIC 300-Station.CPU 315-2 DP.DB6.Fackel.BF3",
+  "Control mode.AUS":"SIMATIC 300-Station.CPU 315-2 DP.DB6.Fackel.BF4",
+
+  "Fackel Indicator:Auf":"SIMATIC 300-Station.CPU 315-2 DP.E2_1",
+  "Fackel Indicator:error1":"SIMATIC 300-Station.CPU 315-2 DP.E2_0",
+  "ML Sammelstoerung":"SIMATIC 300-Station.CPU 315-2 DP.A20_1",
+  "FE01 (Einspeisung / Steuerspannung)":"SIMATIC 300-Station.CPU 315-2 DP.A20_0",
+  "FE02 (Antriebe Pumpen / Diverse)":"SIMATIC 300-Station.CPU 315-2 DP.A24_0",
+  "FE03 (Antriebe Ruehrwerke)":"SIMATIC 300-Station.CPU 315-2 DP.A25_7",
+  "FE04 (SPS / MSR Technik)":"SIMATIC 300-Station.CPU 315-2 DP.A32_0",
+  "Pumpe PU31 (Mobil)":"SIMATIC 300-Station.CPU 315-2 DP.A24_6"
+
 
   
 
@@ -365,7 +460,23 @@
   "RW23 Antriebsstoerung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M209_4",
   "RW23 FU-Stoerung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M209_5",
   "RW24 Antriebsstoerung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M209_6",
-  "RW24 FU-Stoerung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M209_7"
+  "RW24 FU-Stoerung +FE03":"SIMATIC 300-Station.CPU 315-2 DP.M209_7",
+  "Fackel Ein \nFer1 [mbar]":"SIMATIC 300-Station.CPU 315-2 DP.DB83.PI15_FER1.OGW",
+  "Fackel Ein \nFer2 [mbar]":"SIMATIC 300-Station.CPU 315-2 DP.DB83.PI25_FER2.OGW",
+  "[s]":"SIMATIC 300-Station.CPU 315-2 DP.DB96.Fackel.IZ_AUS",
+  "Control mode.Hand":"SIMATIC 300-Station.CPU 315-2 DP.DB6.Fackel.BF2",
+  "Control mode.AUTO":"SIMATIC 300-Station.CPU 315-2 DP.DB6.Fackel.BF3",
+  "Control mode.AUS":"SIMATIC 300-Station.CPU 315-2 DP.DB6.Fackel.BF4",
+
+  "Fackel Indicator:Auf":"SIMATIC 300-Station.CPU 315-2 DP.E2_1",
+  "Fackel Indicator:error1":"SIMATIC 300-Station.CPU 315-2 DP.E2_0",
+  "ML Sammelstoerung":"SIMATIC 300-Station.CPU 315-2 DP.A20_1",
+  "FE01 (Einspeisung / Steuerspannung)":"SIMATIC 300-Station.CPU 315-2 DP.A20_0",
+  "FE02 (Antriebe Pumpen / Diverse)":"SIMATIC 300-Station.CPU 315-2 DP.A24_0",
+  "FE03 (Antriebe Ruehrwerke)":"SIMATIC 300-Station.CPU 315-2 DP.A25_7",
+  "FE04 (SPS / MSR Technik)":"SIMATIC 300-Station.CPU 315-2 DP.A32_0",
+  "Pumpe PU31 (Mobil)":"SIMATIC 300-Station.CPU 315-2 DP.A24_6"
+
 
 },
 "Futter1":
@@ -407,7 +518,23 @@
   "Gesamteintrag Maische 7 [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.MAI_GES_STR1.MAI7_IW",
   "Feststoff Gesamteintrag [kg]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.FES_STR1.ZYK_GES",
   "Fluessigkeit Gesamteintrag [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.FLU_STR1.ZYK_GES",
-  "Maische Gesamteintrag [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.MAI_STR1.ZYK_GES"
+  "Maische Gesamteintrag [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB50.MAI_STR1.ZYK_GES",
+  "Fackel Ein \nFer1 [mbar]":"SIMATIC 300-Station.CPU 315-2 DP.DB83.PI15_FER1.OGW",
+  "Fackel Ein \nFer2 [mbar]":"SIMATIC 300-Station.CPU 315-2 DP.DB83.PI25_FER2.OGW",
+  "[s]":"SIMATIC 300-Station.CPU 315-2 DP.DB96.Fackel.IZ_AUS",
+  "Control mode.Hand":"SIMATIC 300-Station.CPU 315-2 DP.DB6.Fackel.BF2",
+  "Control mode.AUTO":"SIMATIC 300-Station.CPU 315-2 DP.DB6.Fackel.BF3",
+  "Control mode.AUS":"SIMATIC 300-Station.CPU 315-2 DP.DB6.Fackel.BF4",
+
+  "Fackel Indicator:Auf":"SIMATIC 300-Station.CPU 315-2 DP.E2_1",
+  "Fackel Indicator:error1":"SIMATIC 300-Station.CPU 315-2 DP.E2_0",
+  "ML Sammelstoerung":"SIMATIC 300-Station.CPU 315-2 DP.A20_1",
+  "FE01 (Einspeisung / Steuerspannung)":"SIMATIC 300-Station.CPU 315-2 DP.A20_0",
+  "FE02 (Antriebe Pumpen / Diverse)":"SIMATIC 300-Station.CPU 315-2 DP.A24_0",
+  "FE03 (Antriebe Ruehrwerke)":"SIMATIC 300-Station.CPU 315-2 DP.A25_7",
+  "FE04 (SPS / MSR Technik)":"SIMATIC 300-Station.CPU 315-2 DP.A32_0",
+  "Pumpe PU31 (Mobil)":"SIMATIC 300-Station.CPU 315-2 DP.A24_6"
+
 },
 "Futter2":
 {
@@ -448,7 +575,22 @@
   "Gesamteintrag Maische 7 [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.MAI_GES_STR2.MAI7_IW",
   "Feststoff Gesamteintrag [kg]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.FES_STR2.ZYK_GES",
   "Fluessigkeit Gesamteintrag [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.FLU_STR2.ZYK_GES",
-  "Maische Gesamteintrag [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.MAI_STR2.ZYK_GES"
+  "Maische Gesamteintrag [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB60.MAI_STR2.ZYK_GES",
+  "Fackel Ein \nFer1 [mbar]":"SIMATIC 300-Station.CPU 315-2 DP.DB83.PI15_FER1.OGW",
+  "Fackel Ein \nFer2 [mbar]":"SIMATIC 300-Station.CPU 315-2 DP.DB83.PI25_FER2.OGW",
+  "[s]":"SIMATIC 300-Station.CPU 315-2 DP.DB96.Fackel.IZ_AUS",
+  "Control mode.Hand":"SIMATIC 300-Station.CPU 315-2 DP.DB6.Fackel.BF2",
+  "Control mode.AUTO":"SIMATIC 300-Station.CPU 315-2 DP.DB6.Fackel.BF3",
+  "Control mode.AUS":"SIMATIC 300-Station.CPU 315-2 DP.DB6.Fackel.BF4",
+
+  "Fackel Indicator:Auf":"SIMATIC 300-Station.CPU 315-2 DP.E2_1",
+  "Fackel Indicator:error1":"SIMATIC 300-Station.CPU 315-2 DP.E2_0",
+  "ML Sammelstoerung":"SIMATIC 300-Station.CPU 315-2 DP.A20_1",
+  "FE01 (Einspeisung / Steuerspannung)":"SIMATIC 300-Station.CPU 315-2 DP.A20_0",
+  "FE02 (Antriebe Pumpen / Diverse)":"SIMATIC 300-Station.CPU 315-2 DP.A24_0",
+  "FE03 (Antriebe Ruehrwerke)":"SIMATIC 300-Station.CPU 315-2 DP.A25_7",
+  "FE04 (SPS / MSR Technik)":"SIMATIC 300-Station.CPU 315-2 DP.A32_0",
+  "Pumpe PU31 (Mobil)":"SIMATIC 300-Station.CPU 315-2 DP.A24_6"
 }
 
 }

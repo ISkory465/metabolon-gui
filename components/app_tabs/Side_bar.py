@@ -29,3 +29,5 @@ class SideBar(QWidget):
 
         # Set the layout for the SideBar
         self.setLayout(self.sb_layout)
+    def updateAll(self,inputs:dict):
+        self.content.updateAll(inputs)

@@ -4,13 +4,21 @@ from PyQt5.QtCore import Qt
 from ..widgets.box import Box
 from ..widgets.infofield_dbl import InfoField
 from ..widgets.leds import SingleLed
+import OpenOPC
+import json
+
+
 
 
 class Page(QWidget):
 
     def __init__(self) -> None:
-
+        with open('opc\opcList.JSON') as json_file:
+            tags = json.load(json_file)
+        self.parentDict=tags['Steurung1']
         super().__init__()
+        self.client=OpenOPC.client()
+        self.client.connect("OPC.SimaticNET")
         self.UI()
 
     def UI(self):
@@ -40,9 +48,9 @@ class Page(QWidget):
         #----------------------FIRST COLUMN--------------------
         #First column elements of vbox1 for the hbox1:
 
-        self.box1 = Box("HE11")
+        self.box1 = Box("HE11",opcClient=self.client,parentDict=self.parentDict)
         vbox1.addWidget(self.box1)
-        
+    
         self.field1_1 = InfoField(name="Fermenter Temp.-Sollwert (\N{DEGREE SIGN}C)")
         vbox1.addWidget(self.field1_1)
         self.field1_2 = InfoField(name="Temp. Vorlauf Fer 1 (\N{DEGREE SIGN}C)")
@@ -56,7 +64,7 @@ class Page(QWidget):
         
     #----------------------SECOND COLUMN--------------------
         #Second column elements of vbox1 for the hbox1:
-        self.box2 = Box("RW13")
+        self.box2 = Box("RW13",opcClient=self.client,parentDict=self.parentDict)
         vbox2.addWidget(self.box2)
         
         self.field2_1 = InfoField(name="RW13 Auto Sollwert [%]")
@@ -83,7 +91,7 @@ class Page(QWidget):
 
     #----------------------FOURTH COLUMN--------------------
         #Fourth column elements of vbox3 for the hbox1:
-        self.box3 = Box("SC11")
+        self.box3 = Box("SC11",opcClient=self.client,parentDict=self.parentDict)
         vbox3.addWidget(self.box3)
 
         self.field3_1 = InfoField(name="RW12 Auto Sollwert [%]")
@@ -133,7 +141,7 @@ class Page(QWidget):
         #hbox2
         #----------------------FIRST COLUMN--------------------
         #First column elements of vbox4 for the hbox2:
-        self.box4 = Box("HE12")
+        self.box4 = Box("HE12",opcClient=self.client,parentDict=self.parentDict)
         vbox4.addWidget(self.box4)
         
         self.field3_1b = InfoField(name="Nachgaerer Temp.-Sollwert [\N{DEGREE SIGN}C]")
@@ -149,7 +157,7 @@ class Page(QWidget):
         
         #----------------------SECOND COLUMN--------------------
         #Second column elements of vbox5 for the hbox2:
-        self.box5 = Box("RW14")
+        self.box5 = Box("RW14",opcClient=self.client,parentDict=self.parentDict)
         vbox5.addWidget(self.box5)
 
         self.field4_1 = InfoField(name="RW14 Auto Sollwert [%]")

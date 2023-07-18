@@ -78,3 +78,20 @@ class SideBarFaceplate(QGroupBox):
         # Set scroll area as the layout of SideBarFaceplate
         layout = QVBoxLayout(self)
         layout.addWidget(scroll)
+    def updateAll(self, inputs: dict):
+        """method to update all objects in current tab periodically after reading the values in different thread
+
+        :param inputs: tag values
+        :type inputs: dict
+        """
+        objectList = [
+            self.fackel_box,
+            self.stoerungBox,
+            self.pumpeLED
+
+        ]
+
+        for o in objectList:
+            #iterate over an update method that should be added to all faceplate objects similar to box object
+            o.update(inputs)
+        

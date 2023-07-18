@@ -10,7 +10,8 @@ from ..widgets.valve import *
 from ..widgets.infofield_dbl import *
 from ..faceplates.tank_mixer import *
 from components.widgets.leds import SingleLed
-
+import OpenOPC
+import json
 def create_group_box(title, boxes):
     # Create a group box
     group_box = QGroupBox(title)
@@ -39,7 +40,12 @@ def create_group_box(title, boxes):
 class Page(QWidget):
 
     def __init__(self) -> None:
+        with open('opc\opcList.JSON') as json_file:
+            tags = json.load(json_file)
+        self.parentDict=tags['Strasse1']
         super().__init__()
+        self.client=OpenOPC.client()
+        self.client.connect("OPC.SimaticNET")
         self.UI()
 
     def UI(self):
@@ -96,14 +102,14 @@ class Page(QWidget):
         self.hbox1_4.setAlignment(Qt.AlignTop)
 
         # Create the boxes
-        self.pump1 = Box("PU12")
-        self.pump2 = Box("PU11")
-        self.ruhr1 = Box("RW11")
-        self.ruhr2 = Box("RW12")
-        self.vent1 = BoxV2("AA11")
-        self.vent2 = BoxV2("AA12")
-        self.vent3 = BoxV2("AA13")
-        self.vent4 = BoxV2("AA14")
+        self.pump1 = Box("PU12",opcClient=self.client,parentDict=self.parentDict)
+        self.pump2 = Box("PU11",opcClient=self.client,parentDict=self.parentDict)
+        self.ruhr1 = Box("RW11",opcClient=self.client,parentDict=self.parentDict)
+        self.ruhr2 = Box("RW12",opcClient=self.client,parentDict=self.parentDict)
+        self.vent1 = BoxV2("AA11",opcClient=self.client,parentDict=self.parentDict)
+        self.vent2 = BoxV2("AA12",opcClient=self.client,parentDict=self.parentDict)
+        self.vent3 = BoxV2("AA13",opcClient=self.client,parentDict=self.parentDict)
+        self.vent4 = BoxV2("AA14",opcClient=self.client,parentDict=self.parentDict)
 
         # Create the group boxes
         group_box_ruhr = create_group_box("Ruehrwerke controls", [self.ruhr1, self.ruhr2])
