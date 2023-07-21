@@ -61,9 +61,16 @@ class Box(QGroupBox):
 
   def write1(self):
     if self.led1.value==False:
-        print(self.opcID+': '+ self.radioBtn1.text())
+        #print(self.opcID+': '+ self.radioBtn1.text())
         tag=self.tags[self.opcName+'.Hand']
+        tag1=self.tags[self.opcName+'.AUTO']
+        tag2=self.tags[self.opcName+'.AUS']
+
+        self.opcClient.write((tag1,False))
+        self.opcClient.write((tag2,False))
+
         self.opcClient.write((tag,True))
+
     self.led1.setValue(True)
     self.led2.setValue(False)  # Add this line
     self.led3.setValue(False)  # Add this line
@@ -74,6 +81,11 @@ class Box(QGroupBox):
     if self.led2.value==False:
       print(self.opcID+': '+ self.radioBtn2.text())
       tag=self.tags[self.opcName+'.AUS']
+      tag1=self.tags[self.opcName+'.Hand']
+      tag2=self.tags[self.opcName+'.AUTO']
+
+      self.opcClient.write((tag1,False))
+      self.opcClient.write((tag2,False))
       self.opcClient.write((tag,True))
     self.led2.setValue(True)
     self.led1.setValue(False)
@@ -84,6 +96,11 @@ class Box(QGroupBox):
     if self.led3.value==False:
       print(self.opcID+': '+ self.radioBtn3.text())
       tag=self.tags[self.opcName+'.AUTO']
+      tag1=self.tags[self.opcName+'.Hand']
+      tag2=self.tags[self.opcName+'.AUS']
+
+      self.opcClient.write((tag1,False))
+      self.opcClient.write((tag2,False))
       self.opcClient.write((tag,True))
     self.led2.setValue(False)
     self.led1.setValue(False)
@@ -186,6 +203,12 @@ class BoxV2(QGroupBox):
     if self.led1.value==False:
         print(self.opcID+': '+ self.radioBtn1.text())
         tag=self.tags[self.opcName+'.Auf']
+        tag1=self.tags[self.opcName+'.Zu']
+        tag2=self.tags[self.opcName+'.AUTO']
+
+        self.opcClient.write((tag1,False))
+        self.opcClient.write((tag2,False))
+
         self.opcClient.write((tag,True))
     self.led1.setValue(True)
     self.led2.setValue(False)  # Add this line
@@ -195,8 +218,14 @@ class BoxV2(QGroupBox):
   def write2(self):
 
     if self.led2.value==False:
-      print(self.opcID+': '+ self.radioBtn2.text())
+      print(self.opcID+': '+ self.radioBtn1.text())
       tag=self.tags[self.opcName+'.Zu']
+      tag1=self.tags[self.opcName+'.Auf']
+      tag2=self.tags[self.opcName+'.AUTO']
+
+      self.opcClient.write((tag1,False))
+      self.opcClient.write((tag2,False))
+
       self.opcClient.write((tag,True))
     self.led2.setValue(True)
     self.led1.setValue(False)
@@ -205,8 +234,14 @@ class BoxV2(QGroupBox):
   def write3(self):
 
     if self.led3.value==False:
-      print(self.opcID+': '+ self.radioBtn3.text())
+      print(self.opcID+': '+ self.radioBtn1.text())
       tag=self.tags[self.opcName+'.AUTO']
+      tag1=self.tags[self.opcName+'.Auf']
+      tag2=self.tags[self.opcName+'.Zu']
+
+      self.opcClient.write((tag1,False))
+      self.opcClient.write((tag2,False))
+
       self.opcClient.write((tag,True))
     self.led2.setValue(False)
     self.led1.setValue(False)

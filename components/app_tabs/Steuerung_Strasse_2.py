@@ -43,9 +43,9 @@ class Page(QWidget):
         self.box1 = Box("HE21",opcClient=self.client,parentDict=self.parentDict)
         vbox1.addWidget(self.box1)
 
-        self.field1_1 = InfoField(name="Fermenter Temp.-Sollwert [\N{DEGREE SIGN}C]")
+        self.field1_1 = InfoField(name="Fermenter Temp.-Sollwert [\N{DEGREE SIGN}C]",enable=True,opcClient=self.client,parentDict=self.parentDict)
         vbox1.addWidget(self.field1_1)
-        self.field1_2 = InfoField(name="D8400.HZG_REG.SZ_HE21")
+        self.field1_2 = InfoField(name="D8400.HZG_REG.SZ_HE21",enable=True,opcClient=self.client,parentDict=self.parentDict)
         vbox1.addWidget(self.field1_2)
         self.field1_3 = InfoField(name="Temp. Vorlauf Fer 2 [\N{DEGREE SIGN}C]")
         vbox1.addWidget(self.field1_3)
@@ -62,13 +62,13 @@ class Page(QWidget):
         #Second column elements of vbox1 for the hbox1:
         self.box2 = Box("RW23",opcClient=self.client,parentDict=self.parentDict)
         
-        self.field2_1 = InfoField(name = "RW23 Pause Soll [min] ln", 
+        self.field2_1 = InfoField(name = "RW23 Pause Soll [min] ln",enable=True,opcClient=self.client,parentDict=self.parentDict 
                             )
-        self.field2_2 = InfoField(name = "RW23 Run Soll [min] ln", 
+        self.field2_2 = InfoField(name = "RW23 Run Soll [min] ln",enable=True,opcClient=self.client,parentDict=self.parentDict 
                             )
-        self.field2_3 = InfoField(name = "RW23 Auto Sollwert [%]", 
+        self.field2_3 = InfoField(name = "RW23 Auto Sollwert [%]",enable=True,opcClient=self.client,parentDict=self.parentDict 
                             )
-        self.field2_4 = InfoField(name = "RW23 Hand Soll [min] ln", 
+        self.field2_4 = InfoField(name = "RW23 Hand Soll [min] ln",enable=True,opcClient=self.client,parentDict=self.parentDict 
                             )
 
         # Settings for the vbox2 (First Column of the hbox1)
@@ -97,7 +97,7 @@ class Page(QWidget):
         self.box4 = Box("HE22",opcClient=self.client,parentDict=self.parentDict)
         vbox4.addWidget(self.box4)
 
-        self.field3_1 = InfoField(name="Nachgaerer Temp.-Sollwert [\N{DEGREE SIGN}C]")
+        self.field3_1 = InfoField(name="Nachgaerer Temp.-Sollwert [\N{DEGREE SIGN}C]",enable=True,opcClient=self.client,parentDict=self.parentDict)
         vbox4.addWidget(self.field3_1)
         self.field3_2 = InfoField(name="Temp. Vorlauf Ng 2 [\N{DEGREE SIGN}C]")
         vbox4.addWidget(self.field3_2)
@@ -113,13 +113,13 @@ class Page(QWidget):
         self.box5 = Box("RW24",opcClient=self.client,parentDict=self.parentDict)
         vbox5.addWidget(self.box5)
 
-        self.field4_1 = InfoField(name="RW24 Pause Soll [min] ln")
+        self.field4_1 = InfoField(name="RW24 Pause Soll [min] ln",enable=True,opcClient=self.client,parentDict=self.parentDict)
         vbox5.addWidget(self.field4_1)
-        self.field4_2 = InfoField(name="RW24 Run Soll [min] ln")
+        self.field4_2 = InfoField(name="RW24 Run Soll [min] ln",enable=True,opcClient=self.client,parentDict=self.parentDict)
         vbox5.addWidget(self.field4_2)
-        self.field4_3 = InfoField(name="RW24 Auto Sollwert [%]")
+        self.field4_3 = InfoField(name="RW24 Auto Sollwert [%]",enable=True,opcClient=self.client,parentDict=self.parentDict)
         vbox5.addWidget(self.field4_3)
-        self.field4_4 = InfoField(name="RW24 Hand Soll [min] ln")
+        self.field4_4 = InfoField(name="RW24 Hand Soll [min] ln",enable=True,opcClient=self.client,parentDict=self.parentDict)
         vbox5.addWidget(self.field4_4)
 
         # Settings for the vbox5 (First Column of the hbox2)

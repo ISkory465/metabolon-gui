@@ -1,7 +1,7 @@
 from threading import local
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
-
+import OpenOPC
 
 class InfoField(QWidget):
     """Group element that combines QLabel and QSpinBox with settings to them
@@ -9,11 +9,14 @@ class InfoField(QWidget):
 
     instances = []
 
-    def __init__(self, name, opcID='None', buttonSymbol=2, dec_num=None, max_width=None):
+    def __init__(self, name,enable:bool=False,opcClient:OpenOPC.client='none',parentDict:dict={}, opcID='None', buttonSymbol=2, dec_num=None, max_width=None):
         super().__init__()
         self.instances.append(self)
         self.opcName = name.replace("\N{DEGREE SIGN}", "" )
+        self.enable=enable
         self.state = False
+        self.opcClient=opcClient
+        self.tags=parentDict
         self.layout = QVBoxLayout()
         self.setLayout(self.layout)
 
@@ -43,12 +46,19 @@ class InfoField(QWidget):
         #Setting size of the field
         self.spin.setMaximumSize(35 if dec_num is None else 70, 25 if dec_num is None else 20)
 
+        #Write method for Info Field
+        self.spin.editingFinished.connect(self.write)
+
         # Restrict the maximum width of the widget if max_width is specified
         if max_width is not None:
             self.setMaximumWidth(max_width)
 
         self.layout.addWidget(self.spin)
-
+    def write(self):
+        value=self.spin.value()
+        tag=self.tags[self.opcName]
+        self.opcClient.write((tag,value))
+        print(value)
     def update(self,val:dict):
         try:
           self.spin.setValue(val[self.opcName])
@@ -61,8 +71,9 @@ class InfoField(QWidget):
     @classmethod
     def set_all_states(cls, state):
         for instance in cls.instances:
-            instance.state = state
-            instance.spin.setEnabled(state)
+            if instance.enable:
+                instance.state = state
+                instance.spin.setEnabled(state)
 
 
 class InfoFieldV2(QWidget):
