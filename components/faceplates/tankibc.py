@@ -107,7 +107,7 @@ class TankIBC(QWidget):
           #print('If Statement done')
         except Exception as e:
           print('Exception raised')
-          print(val[self.opcName])
+          #print(val[self.opcName])
           print(str(e))
 
 

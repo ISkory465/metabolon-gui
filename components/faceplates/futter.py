@@ -4,27 +4,29 @@ from PyQt5.QtCore import Qt
 from QLed import QLed
 from ..widgets.infofield_dbl import InfoField
 from ..widgets.toggle_button import ToggleButton, UnlabelledButton
-
+import OpenOPC
 class Futter1(QWidget):
     """Mixer set of elements for the Strasse 1 tab
     :param QGroupBox: _description_
     :type QGroupBox: _type_
     """
     
-    def __init__(self, buttonName, sollwert11, solwert12, solwert21, solwert22, opcID=None):
+    def __init__(self, buttonName, sollwert11, solwert12, solwert21, solwert22,opcClient:OpenOPC.client='none',parentDict:dict={}, opcID=None):
         super().__init__()
 
         self.mainLayout = QHBoxLayout()
         self.vbox0 = QVBoxLayout()
         self.vbox1 = QVBoxLayout()
         self.vbox2 = QVBoxLayout()
+        self.client=opcClient
+        self.parentDict=parentDict
 
         # First row 
         self.button = ToggleButton(name=buttonName)
         self.vbox0.addWidget(self.button)
 
         # Left elements of the row
-        self.festSollwert11 = InfoField(name=sollwert11, buttonSymbol=1,dec_num=1)
+        self.festSollwert11 = InfoField(name=sollwert11, buttonSymbol=1,dec_num=1,enable=True,opcClient=self.client,parentDict=self.parentDict)
         self.vbox1.addWidget(self.festSollwert11)
 
         # Right element of the row

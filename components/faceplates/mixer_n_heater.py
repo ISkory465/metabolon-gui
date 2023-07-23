@@ -139,7 +139,7 @@ class BigMixer(QWidget):
         # if self.level >= 95:
         #     self.rectangle1_color = Qt.green
         # else: self.rectangle1_color = Qt.gray
-
+        self.rectangle1_color = Qt.gray
         outline_pen = QPen(Qt.black, 0.9)
         painter.setPen(outline_pen)
         painter.drawRect(rectangle1)
