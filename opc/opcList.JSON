@@ -12,6 +12,12 @@
 "Fermenter:Qgas [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB70.FI15_Gas_FER1",
 "Fermenter:pH [-]":"SIMATIC 300-Station.CPU 315-2 DP.DB302.PH_FER1",
 "Fermenter:Schnecke":"SIMATIC 300-Station.CPU 315-2 DP.A25_0",
+"Fermenter:bigMixer:Heater":"SIMATIC 300-Station.CPU 315-2 DP.A25_3",
+"Fermenter:bigMixer:MotorOn":"SIMATIC 300-Station.CPU 315-2 DP.A28_4",
+"Fermenter:bigMixer:MotorError1":"SIMATIC 300-Station.CPU 315-2 DP.E13_0",
+"Fermenter:bigMixer:MotorError2":"SIMATIC 300-Station.CPU 315-2 DP.E13_2",
+"Fermenter:bigMixer:MaxNiv":"SIMATIC 300-Station.CPU 315-2 DP.E17_0",
+
 
 
 
@@ -25,6 +31,11 @@
 "Nachgaerer:Qgas [l/min]":"SIMATIC 300-Station.CPU 315-2 DP.DB70.FI16_NGA1_SK",
 "Nachgaerer:Qgas [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB70.FI16_Gas_NGA1",
 "Nachgaerer:pH [-]":"SIMATIC 300-Station.CPU 315-2 DP.DB302.PH_NGA1",
+"Nachgaerer:bigMixer:Heater":"SIMATIC 300-Station.CPU 315-2 DP.A25_4",
+"Nachgaerer:bigMixer:MotorOn":"SIMATIC 300-Station.CPU 315-2 DP.A28_6",
+"Nachgaerer:bigMixer:MotorError1":"SIMATIC 300-Station.CPU 315-2 DP.E13_4",
+"Nachgaerer:bigMixer:MotorError2":"SIMATIC 300-Station.CPU 315-2 DP.E13_6",
+"Nachgaerer:bigMixer:MaxNiv":"SIMATIC 300-Station.CPU 315-2 DP.E17_2",
 
 "Endlager:Tank":"SIMATIC 300-Station.CPU 315-2 DP.DB70.LI17_NIV_NM",
 "Endlager:Thermometer":"SIMATIC 300-Station.CPU 315-2 DP.DB70.TI17_TMP_SK",
@@ -132,7 +143,11 @@
 "Fermenter:Qgas [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB70.FI25_Gas_FER2",
 "Fermenter:pH [-]":"SIMATIC 300-Station.CPU 315-2 DP.DB302.PH_FER2",
 "Fermenter:Schnecke":"SIMATIC 300-Station.CPU 315-2 DP.A25_1",
-
+"Fermenter:bigMixer:Heater":"SIMATIC 300-Station.CPU 315-2 DP.A25_5",
+"Fermenter:bigMixer:MotorOn":"SIMATIC 300-Station.CPU 315-2 DP.A29_4",
+"Fermenter:bigMixer:MotorError1":"SIMATIC 300-Station.CPU 315-2 DP.E15_0",
+"Fermenter:bigMixer:MotorError2":"SIMATIC 300-Station.CPU 315-2 DP.E15_2",
+"Fermenter:bigMixer:MaxNiv":"SIMATIC 300-Station.CPU 315-2 DP.E19_0",
 
 "Nachgaerer:Thermometer":"SIMATIC 300-Station.CPU 315-2 DP.DB70.TI26_TMP_SK",
 "Nachgaerer:gauge":"SIMATIC 300-Station.CPU 315-2 DP.DB70.PI26_PIR_SK",
@@ -144,6 +159,11 @@
 "Nachgaerer:Qgas [l/min]":"SIMATIC 300-Station.CPU 315-2 DP.DB70.FI26_NGA2_SK",
 "Nachgaerer:Qgas [l]":"SIMATIC 300-Station.CPU 315-2 DP.DB70.FI26_Gas_NGA2",
 "Nachgaerer:pH [-]":"SIMATIC 300-Station.CPU 315-2 DP.DB302.PH_NGA2",
+"Nachgaerer:bigMixer:Heater":"SIMATIC 300-Station.CPU 315-2 DP.A25_6",
+"Nachgaerer:bigMixer:MotorOn":"SIMATIC 300-Station.CPU 315-2 DP.A29_6",
+"Nachgaerer:bigMixer:MotorError1":"SIMATIC 300-Station.CPU 315-2 DP.E15_4",
+"Nachgaerer:bigMixer:MotorError2":"SIMATIC 300-Station.CPU 315-2 DP.E15_6",
+"Nachgaerer:bigMixer:MaxNiv":"SIMATIC 300-Station.CPU 315-2 DP.E19_2",
 
 "Endlager:Tank":"SIMATIC 300-Station.CPU 315-2 DP.DB70.LI27_NIV_NM",
 "Endlager:Thermometer":"SIMATIC 300-Station.CPU 315-2 DP.DB70.TI27_TMP_SK",
