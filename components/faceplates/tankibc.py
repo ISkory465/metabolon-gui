@@ -11,10 +11,12 @@ class TankIBC(QWidget):
         self.max_level = max_level
         self.min_level = min_level
         self.current_level = 55
+        self.opcName=name
+
 
         self.max_led_color = QColor(255, 0, 0)  # Red
         self.min_led_color = QColor(0, 255, 0)  # Green
-        self.led_off_color = QColor(64, 64, 64)  # Dark gray
+        self.led_off_color = QColor(0, 255, 0)  # Dark gray
         self.setup_ui(name)
 
     def setup_ui(self, name):
@@ -49,7 +51,7 @@ class TankIBC(QWidget):
             painter.setBrush(QBrush(self.led_off_color))
         painter.drawRect(max_led_rect)
 
-        # Draw the min LED
+        # # Draw the min LED
         min_led_rect = QRect(
             tank_rect.right() - 54,
             tank_rect.bottom() - 15,
@@ -80,6 +82,34 @@ class TankIBC(QWidget):
 
         # Update LED colors based on current level
         self.update_led_colors()
+    
+    def update1(self,val:dict):
+        try:
+          MaxNiv:bool
+          MinNiv:bool
+          MaxNiv=val[self.opcName+':MaxNiv']
+          MinNiv=val[self.opcName+':MinNiv']
+         
+
+
+          if (MaxNiv==True):
+            self.set_current_level(160)
+            self.set_max_led_color(QColor(255, 0, 0))
+            self.set_min_led_color(QColor(0, 255, 0))
+          elif (MinNiv==True):
+            self.set_current_level(2)
+            self.set_max_led_color(QColor(0, 255, 0))
+            self.set_min_led_color(QColor(255, 0, 0))
+          else:
+            print('Neither')
+            self.set_max_led_color(QColor(64, 64, 64))
+            self.set_min_led_color(QColor(64, 64, 64))  
+          #print('If Statement done')
+        except Exception as e:
+          print('Exception raised')
+          #print(val[self.opcName])
+          print(str(e))
+
 
     def set_label_text(self, text):
         self.label.setText(text)
@@ -113,7 +143,7 @@ if __name__ == "__main__":
     tank.set_led_off_color(QColor(64, 64, 64))  # Dark gray
 
     # Set the tank level and label text (example)
-    tank.set_current_level(15)
+    tank.set_current_level(50)
     tank.set_label_text("IBC")
 
     main_window.show()

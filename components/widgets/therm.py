@@ -5,14 +5,23 @@ import sys
 
 
 class ThermometerWidget(QWidget):
-    def __init__(self):
+    def __init__(self,name):
         super().__init__()
         self.setFixedSize(70, 150)
         self.temperature = 35
+        self.opcName=name
 
     def setTemperature(self, value):
         self.temperature = value
         self.update()
+
+    def update1(self,val:dict):
+        try:
+          self.setTemperature(val[self.opcName])
+        except Exception as e:
+          print(str(e))
+
+          #print(val[self.opcName])
 
     def paintEvent(self, event):
         painter = QPainter(self)

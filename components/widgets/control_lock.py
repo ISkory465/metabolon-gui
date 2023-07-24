@@ -8,7 +8,7 @@ from PyQt5.QtCore import Qt
 # Importing necessary components
 # from .faceplates_new import InfoField, InfoFieldDouble, Box
 from .infofield_dbl import *
-from .box import Box
+from .box import Box,BoxV2
 
 
 
@@ -77,5 +77,7 @@ class OnOffButton(QWidget):
         InfoField.set_all_states(state)
         # InfoFieldDouble.set_all_states(state)
         Box.set_all_states(state)
+        BoxV2.set_all_states(state)
+
 
 
