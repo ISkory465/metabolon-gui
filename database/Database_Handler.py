@@ -1,11 +1,11 @@
 import psycopg2
 from configparser import ConfigParser
-from .db_config import configDB
+from .db_config import ConfigDB
 
 class DatabaseHandler:
     def __init__(self):
         self.connection = None
-        self.params = configDB()
+        self.params = ConfigDB.credential()
         self.cursor = None
         
         try:
