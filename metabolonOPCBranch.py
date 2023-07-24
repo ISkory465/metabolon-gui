@@ -5,6 +5,9 @@ import pywintypes
 from PyQt5.QtCore import *
 pywintypes.datetime = pywintypes.TimeType
 import json
+# Database Worker and Handler classes import
+from database.WorkerLog import *
+from database.Database_Handler import DatabaseHandler
 
 #app tabs import:
 from components.app_tabs.Steuerung_Strasse_1 import Page as St_Strasse_1
@@ -22,6 +25,11 @@ from components.app_tabs.Fuetterung_Strasse_2 import Page as Fuet_Strasse_2
 with open('opc\opcList.JSON') as json_file:
   tags = json.load(json_file)
 opcPrefix='SIMATIC 300-Station.CPU 315-2 DP.'
+
+# Connectiong OpcList of sensors 
+with open('opc\opcList.JSON') as json_sensors_file:
+  sensor_dict= json.load(json_sensors_file)
+
 class Worker(QObject):
     finished = pyqtSignal()
     progress = pyqtSignal(dict)
@@ -72,6 +80,7 @@ class Window(QWidget):
         super().__init__()
         self.setWindowTitle("Metabolon Station")
         self.setGeometry(350,150,900,600)
+        self.setup_database_update()
         self.Tabs_UI()
 
     def Tabs_UI(self):
@@ -143,6 +152,7 @@ class Window(QWidget):
         self.timer.setInterval(5000)
         self.timer.timeout.connect(self.runLongTask)
         self.timer.start()
+        
         self.show()
 
                         
@@ -150,9 +160,40 @@ class Window(QWidget):
         mainLayout.addWidget(self.tabs)
         self.setLayout(mainLayout)
 
+    def setup_database_update(self):
+        # Instantiate the DatabaseHandler
+        self.db_handler = DatabaseHandler()
 
+        # Create a QTimer for periodic updates
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.runSensorLog)
+        self.timer.start(0.3 * 60 * 1000)  # 5 minutes in milliseconds
 
+    def runSensorLog(self):
+        #Create the Worker thread that runs periodically to update current list of OPC tags.""
+        # Step 2: Create a QThread object
+        self.thread = QThread()
+        #x=[1,2,3]
+        # Step 3: Create a worker object
+        #results=['Random.Int4','Random.Int8']
+        self.worker = WorkerLog(sensor_dict)
+        # Step 4: Move worker to the thread
+        self.worker.moveToThread(self.thread)
 
+        # Step 5: Connect signals and slots
+        
+        #print('Heyyy')
+        
+        
+        self.thread.started.connect(self.worker.run)
+        self.worker.finished.connect(self.thread.quit)
+        self.worker.finished.connect(self.worker.deleteLater)
+        self.thread.finished.connect(self.thread.deleteLater)
+        
+        #print('Byee')
+        # Step 6: Start the thread
+        self.thread.start() 
+        
     def runLongTask(self):
         #Create the Worker thread that runs periodically to update current list of OPC tags.""
         # Step 2: Create a QThread object

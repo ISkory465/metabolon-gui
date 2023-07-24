@@ -2,7 +2,9 @@ import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 import json
-
+# Database Worker and Handler classes import
+from database.WorkerLog import *
+from database.Database_Handler import DatabaseHandler
 
 #app tabs import:
 from components.app_tabs.Strasse_1                import Page as Strasse_1
@@ -22,8 +24,10 @@ with open('opc\opcList.JSON') as json_file:
   tags = json.load(json_file)
 
 # Connectiong OpcList of sensors 
-with open('opc\opcList.JSON') as json_sensors_file:
+with open('database\opcSensorList.json') as json_sensors_file:
   sensor_dict= json.load(json_sensors_file)
+  
+
 class Window(QMainWindow):
 
     def __init__(self):
@@ -31,7 +35,7 @@ class Window(QMainWindow):
         self.setWindowTitle("Metabolon Station")
         self.setGeometry(350,100,1200,600)
         self.Tabs_UI()
-
+        self.setup_database_update()
         # Center the window on the screen.
         self.center_on_screen()
 
@@ -88,8 +92,7 @@ class Window(QMainWindow):
         self.innerTabs1.addTab(self.steu_meld_starsse_1,    "Störmeldungen")   #old name: "Störmeldungen Straße 1"
         
         # Update OPC list when inner tab index changes 
-        global tags
-        self.opclist=tags['Strasse1']
+
         self.innerTabs1.currentChanged.connect(self.updateOPCList)
         # <--self.innerTabs2-->
         #Page instances for the import to the self.innerTabs2
@@ -130,14 +133,45 @@ class Window(QMainWindow):
 
         # Define the timer for periodic update of tags
         self.timer = QTimer()
-        self.timer.setInterval(4000)
+        self.timer.setInterval(5000)
         self.timer.timeout.connect(self.runLongTask)
-        self.timer.start() # Remove comment to run OPC update
+        #self.timer.start()
 
         # Display the content of the central_widget
         self.show()
+    
+    def setup_database_update(self):
+        # Instantiate the DatabaseHandler
+        self.db_handler = DatabaseHandler()
 
+        # Create a QTimer for periodic updates
+        self.timer1 = QTimer(self)
+        self.timer1.timeout.connect(self.runSensorLog)
+        self.timer1.start(0.3 * 60 * 500)  # 5 minutes in milliseconds
 
+    def runSensorLog(self):
+        #Create the Worker thread that runs periodically to update current list of OPC tags.""
+        # Step 2: Create a QThread object
+        global sensor_dict
+        self.thread1 = QThread()
+        #x=[1,2,3]
+        # Step 3: Create a worker object
+        #results=['Random.Int4','Random.Int8']
+        self.workerLog = WorkerLog(sensor_dict)
+        # Step 4: Move worker to the thread
+        self.workerLog.moveToThread(self.thread1)
+
+        # Step 5: Connect signals and slots
+        
+        self.thread1.started.connect(self.workerLog.run)
+        self.workerLog.finished.connect(self.thread1.quit)
+        self.workerLog.finished.connect(self.workerLog.deleteLater)
+        self.thread1.finished.connect(self.thread1.deleteLater)
+        
+        #print('Byee')
+        # Step 6: Start the thread
+        self.thread1.start() 
+        
     def runLongTask(self):
         #Create the Worker thread that runs periodically to update current list of OPC tags.""
         # Step 2: Create a QThread object
@@ -161,39 +195,38 @@ class Window(QMainWindow):
         """Change the list of OPC tags depending on the active tab
 
         """
-        outer_index=self.tabs.currentIndex()
-        inner_index1=self.innerTabs1.currentIndex()
-        inner_index2=self.innerTabs2.currentIndex()
-        inner_index3=self.innerTabs3.currentIndex()
+        a=self.tabs.currentIndex()
+        x=self.innerTabs1.currentIndex()
+        y=self.innerTabs2.currentIndex()
+        z=self.innerTabs3.currentIndex()
 
         global tags
         #print(x)
-        if outer_index == 0:
-          if inner_index1==0:
-            self.opclist=tags['Strasse1']#Change to actaul Tab
-          elif inner_index1==1:
-            self.opclist=tags['Steurung1']
-          elif inner_index1==2:
-            self.opclist=tags['Futter1']
-          elif inner_index1==3:
-            self.opclist=tags['Stoermeldungen_Strasse_1']
+        if a == 0:
+          if x==0:
+            self.opclist=tags['TAB1']
+          elif x==1:
+            self.opclist=tags['TAB1']
+          elif x==2:
+            self.opclist=tags['TAB1']
 
-        elif outer_index==1:
-          if inner_index2==0:
-            self.opclist=tags['Strasse2']#Change to actaul Tab
-          elif inner_index2==1:
-            self.opclist=tags['Steurung2']
-          elif inner_index2==2:
-            self.opclist=tags['Futter2']
-          elif inner_index2==3:
-            self.opclist=tags['Stoermeldungen_Strasse_2']
+        elif a==1:
+          if y==0:
+            self.opclist=tags['TAB1']
+          elif y==1:
+            self.opclist=tags['TAB1']
+          elif y==2:
+            self.opclist=tags['TAB1']
 
         
-        elif outer_index==2:
-          if inner_index3==0:
-            self.opclist=tags['Betriebsstunden']
-          
-
+        elif a==2:
+          if z==0:
+            self.opclist=tags['TAB1']
+          elif z==1:
+            self.opclist=tags['TAB1']
+          elif z==2:
+            self.opclist=tags['TAB1']
+        
     def reportProgress(self,tagValues:dict):
         """Defines the update of the tags after getting the new Values from the Worker thread
 
@@ -202,66 +235,37 @@ class Window(QMainWindow):
         """
         #print(tagValues)
         #try:
-        outer_index=self.tabs.currentIndex()
-        inner_index1=self.innerTabs1.currentIndex()
-        inner_index2=self.innerTabs2.currentIndex()
-        inner_index3=self.innerTabs3.currentIndex()
-
+        x=self.tabs.currentIndex()
         keys=tagValues.keys()
-        val1={} #Values Dictionary to update steu_strasse_1
-        val2={} #Values Dictionary to update steu_meld_starsse_1
-        val3={} #Values Dictionary to update steu_strasse_2
-        val4={} #Values Dictionary to update steu_meld_starsse_2
-        val5={} #Values Dictionary to update Betriebsstunden
-        val6={} #Values Dictionary to update Futter1
-        val7={} #Values Dictionary to update Futter2
-        val8={}
-        val9={}
-        val10={}
-
-        if outer_index == 0:
-          if inner_index1==0:
-            for i in keys:
-              val8[i]=tagValues[i]
-            self.strasse_1.updateAll(val8)  
-          elif inner_index1==1:
-            for i in keys:
-              val1[i]=tagValues[i]
-            self.steu_strasse_1.updateAll(val1)  
-          elif inner_index1==2:
-            for i in keys:
-              val6[i]=tagValues[i]
-            self.fuet_strasse_1.updateAll(val6)
-          elif inner_index1==3:
-            for k in keys:
-              val2[k]=tagValues[k]
-            self.steu_meld_starsse_1.updateAll(val2)  
-        
-        elif outer_index==1:
-          if inner_index2==0:
-            for i in keys:
-              val9[i]=tagValues[i]
-            self.strasse_2.updateAll(val9) 
-          elif inner_index2==1:
-            for i in keys:
-              val3[i]=tagValues[i]
-            self.steu_strasse_2.updateAll(val3)
-          elif inner_index2==2:
-            for i in keys:
-              val7[i]=tagValues[i]
-            self.fuet_strasse_2.updateAll(val7)  
-          elif inner_index1==3:
-            for k in keys:
-              val4[k]=tagValues[k]
-            self.steu_meld_starsse_2.updateAll(val4)  
-        elif outer_index==2:
+        #print(keys)
+        val1={}
+        val2={}
+        val3={}
+        val4={}
+        #print(x)
+        if x == 0:
+          #self.listWidget.clear()
+          for i in keys:
+            val1[i]=tagValues[i]
+          self.page3.updateAll(val1)          #print('Success')
+        elif x==1: 
+          for k in keys:
+            
+            val2[k]=tagValues[k]
+          #print(val2)
+          self.page4.updateAll(val2)
+        elif x==2:
+           print('noda')
+        elif x==3:
           for c in keys:
-            val5[c]=tagValues[c]
-          self.betrieb.updateAll(val5)
-       
-        for i in keys:
-          val10[i]=tagValues[i]
-        self.side_bar.updateAll(val10)
+            val3[c]=tagValues[c]
+          self.page6.updateAll(val3)
+        elif x==4:
+          for j in keys:
+            val4[j]=tagValues[j]
+          self.page7.updateAll(val4)
+          print(val4)
+
 
           
 if __name__ == '__main__':
