@@ -11,6 +11,8 @@ from ..widgets.infofield_dbl import *
 from ..faceplates.tank_mixer import *
 from components.widgets.leds import SingleLed
 
+
+
 def create_group_box(title, boxes):
     # Create a group box
     group_box = QGroupBox(title)
