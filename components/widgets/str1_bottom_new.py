@@ -27,7 +27,7 @@ class LineDrawer(QWidget):
 
         # Set the pen to use for drawing
         pen = QPen()
-        pen.setWidth(3)
+        pen.setWidth(2)
         pen.setColor(Qt.black)
         painter.setPen(pen)
 
@@ -49,7 +49,7 @@ class Str1(LineDrawer):  # Str1 now inherits from LineDrawer
         # Create the TankIBC widget
         self.tankIbc = TankIBC(name="IBC", max_level=100, min_level=15)
         self.tankIbc.set_current_level(10)
-        self.tankIbc.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
+        # self.tankIbc.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
         # tankIbc_center = self.tankIbc.mapToGlobal(self.tankIbc.geometry().center())
         # tankIbc_center_x = tankIbc_center.x()
         # tankIbc_center_y = tankIbc_center.y()
@@ -61,11 +61,11 @@ class Str1(LineDrawer):  # Str1 now inherits from LineDrawer
         # Create infofield and add it to the grid 
         self.infofieldNah = InfoField("Temp. Nahwaermenetz [C]")
         #self.infofield.setStyleSheet("QGroupBox { border: none; }")
-        self.main_layout.addWidget(self.infofieldNah, 1, 0)
+        self.main_layout.addWidget(self.infofieldNah, 0, 0)
         
         self.infofieldWar = InfoField("Temp. Waermetauscher [C]")
         #self.infofield.setStyleSheet("QGroupBox { border: none; }")
-        self.main_layout.addWidget(self.infofieldWar, 2, 0)
+        self.main_layout.addWidget(self.infofieldWar, 1, 0)
         
         self.infofieldSub = InfoField("IDM_SUB1")
         #self.infofield.setStyleSheet("QGroupBox { border: none; }")
@@ -107,13 +107,23 @@ class Str1(LineDrawer):  # Str1 now inherits from LineDrawer
         self.tankMixer2.setMinimumHeight(175)
         
         #self.main_layout.addWidget(self.motor1, 2, 2)
-        self.main_layout.addWidget(self.tankMixer1, 4, 4, 2, 1)
+        self.main_layout.addWidget(self.tankMixer1, 4, 3, 2, 1)
         #self.main_layout.addWidget(self.motor2, 0, 3)
         self.main_layout.addWidget(self.tankMixer2, 1, 5, 2, 1)
         
+        self.main_layout.setRowStretch(1, 0)
+        self.main_layout.setRowStretch(2, 0)
+        self.main_layout.setRowStretch(3, 0)
         self.main_layout.setRowStretch(4, 0)
-        self.main_layout.setRowStretch(3, 2)
-        self.main_layout.setColumnStretch(2, 1)
+        # self.main_layout.setRowStretch(3, 2)
+        # self.main_layout.setColumnStretch(2, 1)
+        self.main_layout.setColumnStretch(1, 0)
+        self.main_layout.setColumnStretch(2, 0)
+        self.main_layout.setColumnStretch(3, 0)
+        self.main_layout.setColumnStretch(4, 0)
+        self.main_layout.setColumnStretch(5, 0)
+        self.main_layout.setColumnStretch(6, 0)
+        self.main_layout.setColumnStretch(7, 0)
         
         # Create and add Valve Widgets
         self.valve1 = ValveLabelWidget("Ventil AA11")
@@ -149,9 +159,15 @@ class Str1(LineDrawer):  # Str1 now inherits from LineDrawer
         pumpWidget11_center_x = pumpWidget11_center.x()
         pumpWidget11_center_y = pumpWidget11_center.y()
 
+        tankMixer1_center = self.tankMixer1.geometry().center()
+        tankMixer1_center_x = tankMixer1_center.x()
+        tankMixer1_center_y = tankMixer1_center.y()
+
         # Update lines to draw
         self.lines = []
-        self.add_line(tankIbc_center_x, tankIbc_center_y, pumpWidget11_center_x, pumpWidget11_center_y)
+        self.add_line(tankIbc_center_x, tankIbc_center_y+9, pumpWidget11_center_x, pumpWidget11_center_y+9)
+        self.add_line(pumpWidget11_center_x, pumpWidget11_center_y+9, pumpWidget11_center_x+30, pumpWidget11_center_y+9)
+        self.add_line(pumpWidget11_center_x+30, pumpWidget11_center_y+9, pumpWidget11_center_x+30, tankMixer1_center_y+20)
         
         # Trigger a repaint to see the lines
         self.update()
