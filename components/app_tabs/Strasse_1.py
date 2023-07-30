@@ -11,6 +11,9 @@ from ..widgets.infofield_dbl import *
 from ..faceplates.tank_mixer import *
 from components.widgets.leds import SingleLed
 
+#custom import of the bottom layout
+from components.widgets.str1_bottom_new import Str1
+
 
 
 def create_group_box(title, boxes):
@@ -43,6 +46,7 @@ class Page(QWidget):
     def __init__(self) -> None:
         super().__init__()
         self.UI()
+         
 
     def UI(self):
 
@@ -63,7 +67,7 @@ class Page(QWidget):
 
         # Layout relation
         self.vbox.addLayout(self.hbox1)
-        self.vbox.addLayout(self.hbox2)
+        # self.vbox.addLayout(self.hbox2)
         self.vbox.addLayout(self.hbox3)
         self.vbox.setAlignment(Qt.AlignTop)
         self.hbox1.addLayout(self.vbox1_1)
@@ -74,6 +78,10 @@ class Page(QWidget):
         self.vbox1_3.setAlignment(Qt.AlignTop)
         self.hbox1.setAlignment(Qt.AlignLeft)
         self.hbox2.setAlignment(Qt.AlignTop)
+
+        self.bottom_widget = Str1()
+        self.hbox3.addWidget(self.bottom_widget)
+        self.hbox3.setAlignment(Qt.AlignTop)
 
         #Main layout assignment to the widget of the page
         self.setLayout(self.vbox)
