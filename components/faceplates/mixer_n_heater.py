@@ -14,6 +14,10 @@ class BigMixer(QWidget):
         self.heater_state = 2 #3 states: 0 - RED(Faulty); 1 - BLUE(Idle); 2 - GREEN(Active)
         self.buffer = int(self.height() * 0.27) #area above the tank water level
 
+        #Heater and motor Alarm states
+        self.motorAlarm = False
+        self.heaterAlarm = True
+
     def setLevel(self, val):
         self.level = val
         self.update()
@@ -40,10 +44,13 @@ class BigMixer(QWidget):
         rect_color = QColor(102, 153, 255) #light blue
         painter.fillRect(scale_rect, rect_color)
 
-        # Draw small rectangles in the top corners
+        # Draw small rectangle in the left top corner (Alarm for the Motor)
         rectangle_size = int(self.width() * 0.05)
         rectangle_spacing = 2
         rectangle1 = QRect(rectangle_spacing + 10, self.buffer + rectangle_spacing + 5, rectangle_size + 20, rectangle_size)
+
+        # Draw small rectangle in the right top corner (Alarm for the Heater)
+        rectangle2 = QRect(rectangle_spacing + 68, self.buffer + rectangle_spacing + 5, rectangle_size + 20, rectangle_size)
 
         # Draw ticks and labels on the right side
         font = QFont()
@@ -103,15 +110,26 @@ class BigMixer(QWidget):
         painter.drawLine(motor_circle, end_x)
 
 
-        # Determine the color based on the state
-        if self.level >= 95:
+        # Determine the color based on the stateof the motorAlarm
+        if self.motorAlarm == True:
             self.rectangle1_color = Qt.green
         else: self.rectangle1_color = Qt.gray
 
+        # Determine the color based on the stateof the motorAlarm
+        if self.heaterAlarm == True:
+            self.rectangle2_color = Qt.green
+        else: self.rectangle12_color = Qt.gray
+
+
+        #Draw rectangle for the motorAlarm
         outline_pen = QPen(Qt.black, 0.9)
         painter.setPen(outline_pen)
         painter.drawRect(rectangle1)
         painter.fillRect(rectangle1.adjusted(1, 1, -1, -1), self.rectangle1_color)
+        
+        
+
+        
 
         # Draw the motor and heater circles
         painter.setBrush(motor_color)
@@ -128,6 +146,10 @@ class BigMixer(QWidget):
         x_heat_left = QPoint(self.width() - circle_margin - circle_radius - 53, self.buffer + circle_margin + circle_radius + 36)
         y_heat_left = QPoint(self.width() - circle_margin - circle_radius - 53, self.buffer + circle_margin + circle_radius -5)
         painter.drawLine(x_heat_left, y_heat_left)
+
+        #Draw rectangle for the heaterAlarm
+        painter.drawRect(rectangle2)
+        painter.fillRect(rectangle2.adjusted(1, 1, -1, -1), self.rectangle2_color)
 
         #Draw of the /\ element between the lines
         #Central point is located few pixels above the center of the heater circle
