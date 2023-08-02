@@ -28,7 +28,7 @@ class LineDrawer(QWidget):
 
         # Set the pen to use for drawing
         pen = QPen()
-        pen.setWidth(2)
+        pen.setWidth(5)
         pen.setColor(Qt.black)
         painter.setPen(pen)
 
@@ -227,7 +227,7 @@ class Page(LineDrawer):
         self.pumpLED = SingleLed(name="PU12 Rezi (Maisch)")
         self.hbox2.addWidget(self.pumpLED, 1, 8)
         
-        self.pumpWidget = PumpWidget(name="Pumpe PU12")
+        self.pumpWidget = PumpWidget(name="Pumpe   PU12")
         self.pumpWidget.set_mode("operational")
         self.hbox2.addWidget(self.pumpWidget, 2, 7)
 
@@ -326,8 +326,8 @@ class Page(LineDrawer):
 
         # Top
         self.add_line(fermenter_center_x+100, fermenter_center_y+210, nah_center_x-100, nah_center_y+210)
-        self.add_line(fermenter_center_x+100, fermenter_center_y+210, fermenter_center_x+100, fermenter_center_y+197)
-        self.add_line(nah_center_x-100, nah_center_y+210, nah_center_x-100, nah_center_y+197)
+        self.add_line(fermenter_center_x+100, fermenter_center_y+210, fermenter_center_x+100, fermenter_center_y+198)
+        self.add_line(nah_center_x-100, nah_center_y+210, nah_center_x-100, nah_center_y+198)
 
         self.add_line(fermenter_center_x+185, fermenter_center_y+210, fermenter_center_x+185, fermenter_center_y+225)
         self.add_line(fermenter_center_x+185, fermenter_center_y+225, endlager_center_x, fermenter_center_y+225)
