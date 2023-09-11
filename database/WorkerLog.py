@@ -35,13 +35,13 @@ class WorkerLog(QObject):
                     #print(self.varDict[x])
                     tagValues=opc[self.varDict[x]]
                     results[x]=tagValues
-        
+            #print(results)
             db.insert_record('logging', results)   
             print(results)
             opc.close()
             self.finished.emit()
         except Exception as e:
-            print('error')
+            print('error in DB')
             print(str(e))
             x=['thread not working']
             self.finished.emit()
