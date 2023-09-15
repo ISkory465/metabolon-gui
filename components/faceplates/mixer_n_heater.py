@@ -14,7 +14,11 @@ class BigMixer(QWidget):
         self.heater_state = 2 #3 states: 0 - RED(Faulty); 1 - BLUE(Idle); 2 - GREEN(Active)
         self.buffer = int(self.height() * 0.27) #area above the tank water level
         self.opcName=name
+        self.maxLevel=100
     def setLevel(self, val):
+        if val >=self.maxLevel:
+            val=self.maxLevel
+
         self.level = val
         self.update()
 
@@ -226,7 +230,7 @@ if __name__ == '__main__':
     tank.motor_state=0
     tank.heater_state=1
     #tank.setState(2)
-    tank.setLevel(150)
+    tank.setLevel(80)
 
     # Trigger a repaint of the tank
     tank.update()
