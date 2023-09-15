@@ -184,7 +184,7 @@ class Page(LineDrawer):
         
         self.infofieldSub = InfoField("IDM_SUB1",dec_num=3)
         #self.infofield.setStyleSheet("QGroupBox { border: none; }")
-        self.hbox2.addWidget(self.infofieldSub, 0, 7)
+        self.hbox2.addWidget(self.infofieldSub, 0, 8)
         
         # Create Pump widget and add it to the grid layout
         self.pumpWidget1 = PumpWidget(name="Pumpe PU11")

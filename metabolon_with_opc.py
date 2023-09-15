@@ -242,59 +242,59 @@ class Window(QMainWindow):
 
         keys=tagValues.keys()
         val1={} #Values Dictionary to update steu_strasse_1
-        val2={} #Values Dictionary to update steu_meld_starsse_1
-        val3={} #Values Dictionary to update steu_strasse_2
-        val4={} #Values Dictionary to update steu_meld_starsse_2
-        val5={} #Values Dictionary to update Betriebsstunden
-        val6={} #Values Dictionary to update Futter1
-        val7={} #Values Dictionary to update Futter2
-        val8={}
-        val9={}
-        val10={}
+        # val2={} #Values Dictionary to update steu_meld_starsse_1
+        # val3={} #Values Dictionary to update steu_strasse_2
+        # val4={} #Values Dictionary to update steu_meld_starsse_2
+        # val5={} #Values Dictionary to update Betriebsstunden
+        # val6={} #Values Dictionary to update Futter1
+        # val7={} #Values Dictionary to update Futter2
+        # val8={}
+        # val9={}
+        # val10={}
 
         if outer_index == 0:
           if inner_index1==0:
             for i in keys:
-              val8[i]=tagValues[i]
-            self.strasse_1.updateAll(val8)  
+              val1[i]=tagValues[i]
+            self.strasse_1.updateAll(val1)  
           elif inner_index1==1:
             for i in keys:
               val1[i]=tagValues[i]
             self.steu_strasse_1.updateAll(val1)  
           elif inner_index1==2:
             for i in keys:
-              val6[i]=tagValues[i]
-            self.fuet_strasse_1.updateAll(val6)
+              val1[i]=tagValues[i]
+            self.fuet_strasse_1.updateAll(val1)
           elif inner_index1==3:
             for k in keys:
-              val2[k]=tagValues[k]
-            self.steu_meld_starsse_1.updateAll(val2)  
+              val1[k]=tagValues[k]
+            self.steu_meld_starsse_1.updateAll(val1)  
         
         elif outer_index==1:
           if inner_index2==0:
             for i in keys:
-              val9[i]=tagValues[i]
-            self.strasse_2.updateAll(val9) 
+              val1[i]=tagValues[i]
+            self.strasse_2.updateAll(val1) 
           elif inner_index2==1:
             for i in keys:
-              val3[i]=tagValues[i]
-            self.steu_strasse_2.updateAll(val3)
+              val1[i]=tagValues[i]
+            self.steu_strasse_2.updateAll(val1)
           elif inner_index2==2:
             for i in keys:
-              val7[i]=tagValues[i]
-            self.fuet_strasse_2.updateAll(val7)  
+              val1[i]=tagValues[i]
+            self.fuet_strasse_2.updateAll(val1)  
           elif inner_index1==3:
             for k in keys:
-              val4[k]=tagValues[k]
-            self.steu_meld_starsse_2.updateAll(val4)  
+              val1[k]=tagValues[k]
+            self.steu_meld_starsse_2.updateAll(val1)  
         elif outer_index==2:
           for c in keys:
-            val5[c]=tagValues[c]
-          self.betrieb.updateAll(val5)
+            val1[c]=tagValues[c]
+          self.betrieb.updateAll(val1)
        
         for i in keys:
-          val10[i]=tagValues[i]
-        self.side_bar.updateAll(val10)
+          val1[i]=tagValues[i]
+        self.side_bar.updateAll(val1)
 
           
 if __name__ == '__main__':

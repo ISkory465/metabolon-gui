@@ -9,20 +9,16 @@ class BigMixer(QWidget):
     def __init__(self,name, level=94):
         super().__init__()
         self.setFixedSize(160, 110)
+        self.opcName=name
         self.level = level
         self.motor_state = 2 #3 states: 0 - RED(Faulty); 1 - BLUE(Idle); 2 - GREEN(Active)
         self.heater_state = 2 #3 states: 0 - RED(Faulty); 1 - BLUE(Idle); 2 - GREEN(Active)
         self.buffer = int(self.height() * 0.27) #area above the tank water level
-<<<<<<< HEAD
 
         #Heater and motor Alarm states
         self.motorAlarm = False
         self.heaterAlarm = True
 
-=======
-        self.opcName=name
-        self.maxLevel=100
->>>>>>> main
     def setLevel(self, val):
         if val >=self.maxLevel:
             val=self.maxLevel
@@ -150,7 +146,6 @@ class BigMixer(QWidget):
         painter.drawLine(motor_circle, end_x)
 
 
-<<<<<<< HEAD
         # Determine the color based on the stateof the motorAlarm
         if self.motorAlarm == True:
             self.rectangle1_color = Qt.green
@@ -163,13 +158,6 @@ class BigMixer(QWidget):
 
 
         #Draw rectangle for the motorAlarm
-=======
-        # Determine the color based on the state
-        # if self.level >= 95:
-        #     self.rectangle1_color = Qt.green
-        # else: self.rectangle1_color = Qt.gray
-        self.rectangle1_color = Qt.gray
->>>>>>> main
         outline_pen = QPen(Qt.black, 0.9)
         painter.setPen(outline_pen)
         painter.drawRect(rectangle1)
