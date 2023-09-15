@@ -6,10 +6,10 @@ import sys
 
 
 class PlayButton(QWidget):
-    def __init__(self):
+    def __init__(self,name):
         super().__init__()
-
-        self.state = 2 #3 states: 0 - RED(Faulty); 1 - BLUE(Idle); 2 - GREEN(Active)
+        self.opcName=name
+        self.state = 5 #3 states: 0 - RED(Faulty); 1 - BLUE(Idle); 2 - GREEN(Active)
         self.setFixedSize(60, 60)
 
     def paintEvent(self, event):
@@ -21,10 +21,13 @@ class PlayButton(QWidget):
             background_color = Qt.red
             icon_color = Qt.white
         elif self.state == 1:
+            background_color = Qt.green
+            icon_color = Qt.white
+        elif self.state==2:
             background_color = Qt.blue
             icon_color = Qt.white
         else:
-            background_color = Qt.green
+            background_color = Qt.gray
             icon_color = Qt.white
 
         # Define the button's dimensions and colors
@@ -46,12 +49,26 @@ class PlayButton(QWidget):
         path.lineTo(rect.center().x() - int(self.width()*0.16), rect.center().y() + int(self.height()*0.3))
         path.lineTo(rect.center().x() + int(self.width()*0.33), rect.center().y())
         painter.drawPath(path)
-
+    def update1(self,val:dict):
+        try:
+          Auf:bool
+          error1:bool
+          Auf=val[self.opcName]
+        
+          if Auf:
+            self.state=1
+          elif not Auf:
+            self.state=2
+          
+          self.update()
+          #print('If Statement done')
+        except Exception as e:
+          pass
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    btn = PlayButton()
+    btn = PlayButton('Name')
     btn.show()
 
     sys.exit(app.exec_())

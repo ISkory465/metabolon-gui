@@ -2,12 +2,19 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
 from ..faceplates.futter import *
 from ..widgets.infofield_dbl import InfoField
-
+import OpenOPC
+import json
+#TODO: Correct design of buttons, correct some aspects of layout
 
 class Page(QWidget):
 
     def __init__(self) -> None:
-
+        with open('opc\opcList.JSON') as json_file:
+            tags = json.load(json_file)
+        self.parentDict=tags['Futter1']
+        super().__init__()
+        self.client=OpenOPC.client()
+        self.client.connect("OPC.SimaticNET")
         super().__init__()
         self.UI()
 
@@ -35,11 +42,11 @@ class Page(QWidget):
       #hbox1
         #----------------------FIRST Part of the Tab--------------------
         #Elements of vbox1 for the hbox1:
-        self.futter1 = Futter1(buttonName="DB50.FES1.VW.FES", sollwert11='Feststoff Sollwert [kg/d]',solwert12='Feststoff Istwert [kg/d]', solwert21='Feststoff Sollwert [kg/Zyklus]',solwert22='Feststoff Istwert [kg/Zyklus]')
+        self.futter1 = Futter1(buttonName="DB50.FES1.VW.FES", sollwert11='Feststoff Sollwert [kg/d]',solwert12='Feststoff Istwert [kg/d]', solwert21='Feststoff Sollwert [kg/Zyklus]',solwert22='Feststoff Istwert [kg/Zyklus]',opcClient=self.client,parentDict=self.parentDict)
         self.vbox1.addWidget(self.futter1)
-        self.futter2 = Futter1(buttonName="DB50.FLU1.VW.FLU", sollwert11='Feststoff Sollwert [l/d]', solwert12='Feststoff Istwert [l/d]',  solwert21='Feststoff Sollwert [l/Zyklus]', solwert22='Feststoff Istwert [l/Zyklus]')
+        self.futter2 = Futter1(buttonName="DB50.FLU1.VW.FLU", sollwert11='Fluessigkeit Sollwert [l/d]', solwert12='Fluessigkeit Istwert [l/d]',  solwert21='Fluessigkeit Sollwert [l/Zyklus]', solwert22='Fluessigkeit Istwert [l/Zyklus]',opcClient=self.client,parentDict=self.parentDict)
         self.vbox1.addWidget(self.futter2)
-        self.futter3 = Futter1(buttonName="DB50.MAI.VW.MAI", sollwert11='Maische Sollwert [l/d]',   solwert12='Maische Istwert [l/d]',    solwert21='Maische Sollwert [l/Zyklus]',   solwert22='Maische Istwert [l/Zyklus]')
+        self.futter3 = Futter1(buttonName="DB50.MAI.VW.MAI", sollwert11='Maische Sollwert [l/d]',   solwert12='Maische Istwert [l/d]',    solwert21='Maische Sollwert [l/Zyklus]',   solwert22='Maische Istwert [l/Zyklus]',opcClient=self.client,parentDict=self.parentDict)
         self.vbox1.addWidget(self.futter3)
         
         self.futterungszyKlein = InfoField(name ='Futterungszyklein/Tag')

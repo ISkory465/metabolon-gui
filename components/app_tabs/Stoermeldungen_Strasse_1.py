@@ -31,20 +31,20 @@ class Page(QWidget):
         hbox = QHBoxLayout()   
 
 
-        led_l = LedGroupBox("", ["PU11 Antriebsstoerung +FE02",
+        self.led_l = LedGroupBox("", ["PU11 Antriebsstoerung +FE02",
                                  "PU11 Trockenlaufstoerung +FE02",
                                  "PU11 MaxDruckstoerung +FE02",
                                  "PU12 Antriebsstoerung +FE02",
                                  "PU12 Trockenlaufstoerung +FE02",
                                  "PU12 MaxDruckstoerung +FE02"], [QLed.Green] * 6)
-        led_l.setFixedHeight(300)
-        led_l.setFixedWidth(250)
-        vbox1.addWidget(led_l)
+        self.led_l.setFixedHeight(300)
+        self.led_l.setFixedWidth(250)
+        vbox1.addWidget(self.led_l)
         #Testing
-        led_l.set_led_state(3, True)
+        self.led_l.set_led_state(3, True)
 
 
-        led_r = LedGroupBox("", ["RW11 Antriebsstoerung +FE03",
+        self.led_r = LedGroupBox("", ["RW11 Antriebsstoerung +FE03",
                                  "RW11 FU-Stoerung +FE03",
                                  "RW12 Antriebsstoerung +FE03",
                                  "RW12 FU-Stoerung +FE03",
@@ -52,19 +52,19 @@ class Page(QWidget):
                                  "RW13 FU-Stoerung +FE03",
                                  "RW14 Antriebsstoerung +FE03",
                                  "RW14 FU-Stoerung +FE03"], [QLed.Green] * 8)
-        led_r.setFixedHeight(300)
-        led_r.setFixedWidth(250)
-        vbox2.addWidget(led_r)
+        self.led_r.setFixedHeight(300)
+        self.led_r.setFixedWidth(250)
+        vbox2.addWidget(self.led_r)
         #Testing
-        led_r.set_led_state(2, True)
-        led_r.set_led_state(4, True)
+        self.led_r.set_led_state(2, True)
+        self.led_r.set_led_state(4, True)
 
       
         # Elements of vbox3
-        HE_leds = LedGroupBox("", ["HE11 MaxTemp Stoerung +FE02", "HE12 MaxTemp Stoerung +FE02"], [QLed.Green] * 2)
-        HE_leds.setFixedHeight(100)
-        HE_leds.setFixedWidth(250)
-        vbox3.addWidget(HE_leds)
+        self.HE_leds = LedGroupBox("", ["HE11 MaxTemp Stoerung +FE02", "HE12 MaxTemp Stoerung +FE02"], [QLed.Green] * 2)
+        self.HE_leds.setFixedHeight(100)
+        self.HE_leds.setFixedWidth(250)
+        vbox3.addWidget(self.HE_leds)
 
 
         # Elements of vbox4:        
@@ -109,6 +109,27 @@ class Page(QWidget):
         # Assigning to the tab
         self.setLayout(grid)
     
+    def updateAll(self,inputs: dict):
+        """method to update all objects in current tab periodically after reading the values in different thread
 
+        :param inputs: tag values
+        :type inputs: dict
+        """
+        objectList=[self.led_l,
+                    self.led_r,
+                    
+                    self.HE_leds,
+                    self.led3,
+
+                    self.field1,
+                    self.field2,
+                    self.field3,
+                    self.field4
+                    ]
+
+
+        for o in objectList:
+            #iterate over an update method that should be added to all faceplate objects similar to box object
+            o.update(inputs)
 if __name__=='__main__':
     pass

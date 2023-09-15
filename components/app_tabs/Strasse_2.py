@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets    import *
 from PyQt5.QtCore       import Qt
 #from ..faceplates.faceplates_new import Box
-from ..widgets.box import Box
+from ..widgets.box import Box,BoxV2
 from ..faceplates.mixer  import Mixer
 from ..faceplates.endlager import Endlager
 from ..faceplates.tankibc import TankIBC
@@ -10,6 +10,10 @@ from ..widgets.valve import *
 from ..widgets.infofield_dbl import *
 from ..faceplates.tank_mixer import *
 from components.widgets.leds import SingleLed
+
+
+import OpenOPC
+import json
 
 
 class LineDrawer(QWidget):
@@ -43,7 +47,6 @@ def half_dist_coor(coor1, coor2):
         return int((coor2-coor1)/2)
 
 
-
 def create_group_box(title, boxes):
     # Create a group box
     group_box = QGroupBox(title)
@@ -72,7 +75,12 @@ def create_group_box(title, boxes):
 class Page(LineDrawer):
 
     def __init__(self) -> None:
+        with open('opc\opcList.JSON') as json_file:
+            tags = json.load(json_file)
+        self.parentDict=tags['Strasse2']
         super().__init__()
+        self.client=OpenOPC.client()
+        self.client.connect("OPC.SimaticNET")        
         self.UI()
 
     def UI(self):
@@ -129,19 +137,19 @@ class Page(LineDrawer):
         self.hbox1_4.setAlignment(Qt.AlignTop)
 
         # Create the boxes
-        pump1 = Box("PU12")
-        pump2 = Box("PU11")
-        ruhr1 = Box("RW11")
-        ruhr2 = Box("RW12")
-        vent1 = Box("AA11")
-        vent2 = Box("AA12")
-        vent3 = Box("AA13")
-        vent4 = Box("AA14")
+        self.pump1 = Box("PU22",opcClient=self.client,parentDict=self.parentDict)
+        self.pump2 = Box("PU21",opcClient=self.client,parentDict=self.parentDict)
+        self.ruhr1 = Box("RW21",opcClient=self.client,parentDict=self.parentDict)
+        self.ruhr2 = Box("RW22",opcClient=self.client,parentDict=self.parentDict)
+        self.vent1 = BoxV2("AA21",opcClient=self.client,parentDict=self.parentDict)
+        self.vent2 = BoxV2("AA22",opcClient=self.client,parentDict=self.parentDict)
+        self.vent3 = BoxV2("AA23",opcClient=self.client,parentDict=self.parentDict)
+        self.vent4 = BoxV2("AA24",opcClient=self.client,parentDict=self.parentDict)
 
         # Create the group boxes
-        group_box_ruhr = create_group_box("Ruehrwerke controls", [ruhr1, ruhr2])
-        group_box_pumpe = create_group_box("Pumpe controls", [pump1, pump2])
-        group_box_vents = create_group_box("Vents controls", [vent1, vent2, vent3, vent4])
+        group_box_ruhr = create_group_box("Ruehrwerke controls", [self.ruhr1, self.ruhr2])
+        group_box_pumpe = create_group_box("Pumpe controls", [self.pump1, self.pump2])
+        group_box_vents = create_group_box("Vents controls", [self.vent1, self.vent2, self.vent3, self.vent4])
 
         self.vbox_h_1_4.addWidget(group_box_ruhr)
         self.vbox_h_1_4.addWidget(group_box_pumpe)
@@ -165,14 +173,22 @@ class Page(LineDrawer):
         # Create the TankIBC widget
         self.hbox2.addWidget(self.tankIbc.get_widget(), 4, 0, 1, 1)  # Add the tank widget to the grid layout
         
+        # # Create infofield and add it to the grid 
+        # self.infofieldNah = InfoField("Temp. Nahwaermenetz [C]")
+        # #self.infofield.setStyleSheet("QGroupBox { border: none; }")
+        # self.hbox2.addWidget(self.infofieldNah, 1, 0)
         
-        self.infofieldSub = InfoField("IDM_SUB1")
+        # self.infofieldWar = InfoField("Temp. Waermetauscher [C]")
+        # #self.infofield.setStyleSheet("QGroupBox { border: none; }")
+        # self.hbox2.addWidget(self.infofieldWar, 2, 0)
+        
+        self.infofieldSub = InfoField("IDM_SUB2",dec_num=3)
         #self.infofield.setStyleSheet("QGroupBox { border: none; }")
         self.hbox2.addWidget(self.infofieldSub, 0, 8)
 
         
         # Create Pump widget and add it to the grid layout
-        self.pumpWidget1 = PumpWidget(name="Pumpe PU11")
+        self.pumpWidget1 = PumpWidget(name="Pumpe PU21")
         self.pumpWidget1.set_mode("idle")
         self.hbox2.addWidget(self.pumpWidget1, 4, 2, 1, 1)  # Add the Pump widget to the grid layout
         
@@ -182,11 +198,11 @@ class Page(LineDrawer):
         self.motor2 = MotorLabelWidget("Ruehrwerk RW12", size=70)
         self.tankMixer2 = TankIBC(name="Anmalschb", max_level=100, min_level=15) """
         
-        self.tankMixer1 = TankMixerWidget()
+        self.tankMixer1 = TankMixerWidget(name='Fluessigvorl')
         self.tankMixer1.set_tank_label("Fluessigvorl.")  # Set the tank label to "My Tank"
         self.tankMixer1.set_motor_mode('malfunction') 
         self.tankMixer1.set_level(50) # Set the level 
-        self.tankMixer1.set_motorName_label("Ruehrwerk RW11")
+        self.tankMixer1.set_motorName_label("Ruehrwerk RW21")
         self.tankMixer1.motorName_label.setMinimumHeight(15)
         # self.tankMixer1.motorName_label.setContentsMargins(0,0,0,5)
         # self.tankMixer1.motor_label.setMinimumHeight(10)
@@ -195,11 +211,11 @@ class Page(LineDrawer):
         self.tankMixer1.setMinimumHeight(175)
 
         
-        self.tankMixer2 = TankMixerWidget()
+        self.tankMixer2 = TankMixerWidget(name='Anmalschb')
         self.tankMixer2.set_tank_label("Anmalschb")  # Set the tank label to "My Tank"
         self.tankMixer2.set_motor_mode('idle') 
         self.tankMixer2.set_level(50) # Set the level 
-        self.tankMixer2.set_motorName_label("Ruehrwerk RW12")
+        self.tankMixer2.set_motorName_label("Ruehrwerk RW22")
         self.tankMixer2.motorName_label.setMinimumHeight(15)
         self.tankMixer2.setMinimumHeight(175)
         
@@ -213,16 +229,16 @@ class Page(LineDrawer):
         self.hbox2.setColumnStretch(2, 1)
         
         # Create and add Valve Widgets
-        self.valve1 = ValveLabelWidget("Ventil AA11")
+        self.valve1 = ValveLabelWidget("Ventil AA21")
         self.hbox2.addWidget(self.valve1, 4, 5)
 
         self.valve2 = ValveLabelWidget("Ventil AA14")
         self.hbox2.addWidget(self.valve2, 0, 6, 1, 3)
 
-        self.valve3 = ValveLabelWidget("Ventil AA13")
+        self.valve3 = ValveLabelWidget("Ventil AA23")
         self.hbox2.addWidget(self.valve3, 1, 6)
 
-        self.valve4 = ValveLabelWidget("Ventil AA12")
+        self.valve4 = ValveLabelWidget("Ventil AA22")
         self.hbox2.addWidget(self.valve4, 2, 6)
 
         self.pumpLED = SingleLed(name="PU12 Rezi (Maisch)")
@@ -349,7 +365,49 @@ class Page(LineDrawer):
         self.update()
 
 
+    def updateAll(self, inputs: dict):
+        """method to update all objects in current tab periodically after reading the values in different thread
 
+        :param inputs: tag values
+        :type inputs: dict
+        """
+        objectList = [
+            self.mixer1,
+            self.mixer2,
+            self.endlager,
+            self.pump1,
+            self.pump2,
+            self.ruhr1,
+            self.ruhr2,
+            self.vent1,
+            self.vent2,
+            self.vent3,
+            self.vent4,
+            self.infofieldSub
+            
+        ]
+
+        for o in objectList:
+            #iterate over an update method that should be added to all faceplate objects similar to box object
+            o.update(inputs)
+        
+        objectList2=[    #self.playbutton,
+                        self.tankIbc,
+                        self.valve1,
+                        self.valve2,
+                        self.valve3,
+                        self.valve4,
+                        self.pumpWidget1,
+                        self.pumpWidget,
+                        self.tankMixer1,
+                        self.tankMixer2
+                        
+                    ]
+
+
+        for i in objectList2:
+            #iterate over an update method that should be added to all faceplate objects similar to box object
+            i.update1(inputs)
 
 if __name__ == '__main__':
     pass

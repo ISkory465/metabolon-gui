@@ -9,6 +9,7 @@ class PumpWidget(QWidget):
 
         # Define the default mode as idle
         self.mode = "idle"
+        self.opcName=name
 
         # Set the fixed size of the widget
         self.setFixedSize(size, size)
@@ -63,6 +64,29 @@ class PumpWidget(QWidget):
 
     def sizeHint(self):
         return self.minimumSizeHint()
+    
+    def update1(self,val:dict):
+        try:
+          Auf:bool
+          error1:bool
+          Auf=val[self.opcName+':Auf']
+          error1=val[self.opcName+':error1']
+          error2=val[self.opcName+':error2']
+          error3=val[self.opcName+':error3']
+
+
+          if error1 or error2 or error3:
+            self.set_mode('malfunction')
+          elif Auf:
+            self.set_mode('operational')
+          else:
+            self.set_mode('idle')
+          #print('If Statement done')
+        except Exception as e:
+          print('Exception raised')
+          #print(val[self.opcName])
+          print(str(e))
+
 
 
 if __name__ == "__main__":

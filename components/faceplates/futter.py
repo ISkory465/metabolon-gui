@@ -4,43 +4,45 @@ from PyQt5.QtCore import Qt
 from QLed import QLed
 from ..widgets.infofield_dbl import InfoField
 from ..widgets.toggle_button import ToggleButton, UnlabelledButton
-
+import OpenOPC
 class Futter1(QWidget):
     """Mixer set of elements for the Strasse 1 tab
     :param QGroupBox: _description_
     :type QGroupBox: _type_
     """
     
-    def __init__(self, buttonName, sollwert11, solwert12, solwert21, solwert22, opcID=None):
+    def __init__(self, buttonName, sollwert11, solwert12, solwert21, solwert22,opcClient:OpenOPC.client='none',parentDict:dict={}, opcID=None):
         super().__init__()
 
         self.mainLayout = QHBoxLayout()
         self.vbox0 = QVBoxLayout()
         self.vbox1 = QVBoxLayout()
         self.vbox2 = QVBoxLayout()
+        self.client=opcClient
+        self.parentDict=parentDict
 
         # First row 
-        button = ToggleButton(name=buttonName)
-        self.vbox0.addWidget(button)
+        self.button = ToggleButton(name=buttonName)
+        self.vbox0.addWidget(self.button)
 
         # Left elements of the row
-        festSollwert11 = InfoField(name=sollwert11, buttonSymbol=1)
-        self.vbox1.addWidget(festSollwert11)
+        self.festSollwert11 = InfoField(name=sollwert11, buttonSymbol=1,dec_num=1,enable=True,opcClient=self.client,parentDict=self.parentDict)
+        self.vbox1.addWidget(self.festSollwert11)
 
         # Right element of the row
-        festSollwert12 = InfoField(name=solwert12)
-        self.vbox2.addWidget(festSollwert12)
+        self.festSollwert12 = InfoField(name=solwert12)
+        self.vbox2.addWidget(self.festSollwert12)
 
         # Second row
         # Left
-        festSollwert21 = InfoField(name=solwert21)
-        self.vbox1.addWidget(festSollwert21)
+        self.festSollwert21 = InfoField(name=solwert21,dec_num=3)
+        self.vbox1.addWidget(self.festSollwert21)
 
         # Right
-        festSollwert22 = InfoField(name=solwert22)
-        self.vbox2.addWidget(festSollwert22)
+        self.festSollwert22 = InfoField(name=solwert22)
+        self.vbox2.addWidget(self.festSollwert22)
 
-        self.vbox0.addWidget(button)
+        self.vbox0.addWidget(self.button)
 
         # Adding layouts to main layout
         self.mainLayout.addLayout(self.vbox0)
@@ -53,6 +55,23 @@ class Futter1(QWidget):
         self.mainLayout.setSpacing(10)
 
         self.setLayout(self.mainLayout)  # Set the main layout for the widget
+
+    def update(self,inputs: dict):
+        """method to update all objects in current tab periodically after reading the values in different thread
+
+        :param inputs: tag values
+        :type inputs: dict
+        """
+        objectList=[    self.festSollwert11,
+                        self.festSollwert12,
+                        self.festSollwert21,
+                        self.festSollwert22
+                    ]
+
+
+        for o in objectList:
+            #iterate over an update method that should be added to all faceplate objects similar to box object
+            o.update(inputs)
 
 
 
@@ -68,48 +87,48 @@ class Feststoffbtn(QFrame):
         #first row 
         button1 = UnlabelledButton()
         #Left elements of the row
-        firstElement = InfoField(name =firstElement, 
+        self.firstElement = InfoField(name =firstElement, 
                                  buttonSymbol=2) 
-        self.vbox1.addWidget(firstElement)
+        self.vbox1.addWidget(self.firstElement)
         
         self.vbox0.addWidget(button1, alignment=Qt.AlignVCenter)
         #<-------------------------------------->
         #Second row
         button2 = UnlabelledButton()
-        secondElement = InfoField(name =secondElement, 
+        self.secondElement = InfoField(name =secondElement, 
                                  buttonSymbol=2)
-        self.vbox1.addWidget(secondElement)
+        self.vbox1.addWidget(self.secondElement)
         
         self.vbox0.addWidget(button2, alignment=Qt.AlignVCenter)
         
         #Third row
         button3 = UnlabelledButton()
-        thirdElement = InfoField(name =thirdElement, 
+        self.thirdElement = InfoField(name =thirdElement, 
                           buttonSymbol=2)
-        self.vbox1.addWidget(thirdElement)
+        self.vbox1.addWidget(self.thirdElement)
         
         self.vbox0.addWidget(button3, alignment=Qt.AlignVCenter)
        
         #Fourth row
         button4 = UnlabelledButton()
-        fourthElement = InfoField(name =fourthElement, 
+        self.fourthElement = InfoField(name =fourthElement, 
                                   buttonSymbol=2)
-        self.vbox1.addWidget(fourthElement)
+        self.vbox1.addWidget(self.fourthElement)
         
         self.vbox0.addWidget(button4, alignment=Qt.AlignVCenter)
 
         #Fifth row
         button5 = UnlabelledButton()
-        fifthElement = InfoField(name =fifthElement, 
+        self.fifthElement = InfoField(name =fifthElement, 
                                  buttonSymbol=2)
-        self.vbox1.addWidget(fifthElement)
+        self.vbox1.addWidget(self.fifthElement)
         self.vbox0.addWidget(button5, alignment=Qt.AlignVCenter)
         
         #Six row
         button6 = UnlabelledButton()
-        sixthElement = InfoField(name = sixthElement, 
+        self.sixthElement = InfoField(name = sixthElement, 
                                  buttonSymbol=2)
-        self.vbox1.addWidget(sixthElement)
+        self.vbox1.addWidget(self.sixthElement)
         self.vbox0.addWidget(button6, alignment=Qt.AlignVCenter)
          
         #adding layouts to main layout
@@ -122,4 +141,23 @@ class Feststoffbtn(QFrame):
         self.mainLayout.setSpacing(0)
        
         self.setLayout(self.mainLayout)
+    
+    def update(self,inputs: dict):
+        """method to update all objects in current tab periodically after reading the values in different thread
+
+        :param inputs: tag values
+        :type inputs: dict
+        """
+        objectList=[    self.firstElement,
+                        self.secondElement,
+                        self.thirdElement,
+                        self.fourthElement,
+                        self.fifthElement,
+                        self.sixthElement
+                    ]
+
+
+        for o in objectList:
+            #iterate over an update method that should be added to all faceplate objects similar to box object
+            o.update(inputs)
 

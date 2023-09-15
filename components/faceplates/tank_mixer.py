@@ -5,14 +5,14 @@ from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout, QHBoxLay
 
 
 class TankMixerWidget(QWidget):
-    def __init__(self, parent=None):
+    def __init__(self,name, parent=None):
         super().__init__(parent)
         self.setFixedSize(120, 150)
         self._max_level = 100  # Set the maximum level
         self._min_level = 20  # Set the minimum level
         self._current_level = 30  # Initial level of the tank
         self._motor_mode = 'idle'  # Initial motor mode
-
+        self.opcName=name
         main_layout = QVBoxLayout()  
         self.setLayout(main_layout)
 
@@ -77,7 +77,40 @@ class TankMixerWidget(QWidget):
     def set_motor_mode(self, mode):
         self._motor_mode = mode
         self.update()
+    def update1(self,val:dict):
+        try:
+          Auf:bool
+          error1:bool
+          Auf=val[self.opcName+':Auf']
+          error1=val[self.opcName+':error1']
+          error2=val[self.opcName+':error2']
 
+
+          if error1 or error2:
+            self.set_motor_mode('malfunction')
+          elif Auf:
+            self.set_motor_mode('operational')
+          else:
+            self.set_motor_mode('idle')
+          #print('If Statement done')
+          MaxNiv:bool
+          MinNiv:bool
+          MaxNiv=val[self.opcName+':MaxNiv']
+          MinNiv=val[self.opcName+':MinNiv']
+         
+
+
+          if (MaxNiv==False):
+            self.set_level(160)
+          elif (MinNiv==True):
+            self.set_level(2)
+          else:
+            print('Neither')
+          #print('If Statement done')
+        except Exception as e:
+          print('Exception raised')
+          #print(val[self.opcName])
+          print(str(e))
     def paintEvent(self, event):
         tank_width = self.width()
         tank_height = self.height()
@@ -158,8 +191,9 @@ class TankMixerWidget(QWidget):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    tank = TankMixerWidget()
+    tank = TankMixerWidget('Tank')
     tank.set_tank_label("My Tank")  
+    tank.set_level(105)
     tank.show()
 
     #increase and decrease the level of the tank
@@ -167,6 +201,6 @@ if __name__ == '__main__':
     tank.decrease_level(0.2)  # Decrease the level by 0.2
 
     #set the motor mode
-    tank.set_motor_mode('malfunction')  
+    tank.set_motor_mode('idle')  
     
     sys.exit(app.exec_())
