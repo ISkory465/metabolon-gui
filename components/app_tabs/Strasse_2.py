@@ -165,18 +165,11 @@ class Page(LineDrawer):
         # Create the TankIBC widget
         self.hbox2.addWidget(self.tankIbc.get_widget(), 4, 0, 1, 1)  # Add the tank widget to the grid layout
         
-        # Create infofield and add it to the grid 
-        self.infofieldNah = InfoField("Temp. Nahwaermenetz [C]")
-        #self.infofield.setStyleSheet("QGroupBox { border: none; }")
-        self.hbox2.addWidget(self.infofieldNah, 1, 0)
-        
-        self.infofieldWar = InfoField("Temp. Waermetauscher [C]")
-        #self.infofield.setStyleSheet("QGroupBox { border: none; }")
-        self.hbox2.addWidget(self.infofieldWar, 2, 0)
         
         self.infofieldSub = InfoField("IDM_SUB1")
         #self.infofield.setStyleSheet("QGroupBox { border: none; }")
-        self.hbox2.addWidget(self.infofieldSub, 0, 7)
+        self.hbox2.addWidget(self.infofieldSub, 0, 8)
+
         
         # Create Pump widget and add it to the grid layout
         self.pumpWidget1 = PumpWidget(name="Pumpe PU11")
@@ -224,7 +217,7 @@ class Page(LineDrawer):
         self.hbox2.addWidget(self.valve1, 4, 5)
 
         self.valve2 = ValveLabelWidget("Ventil AA14")
-        self.hbox2.addWidget(self.valve2, 0, 6)
+        self.hbox2.addWidget(self.valve2, 0, 6, 1, 3)
 
         self.valve3 = ValveLabelWidget("Ventil AA13")
         self.hbox2.addWidget(self.valve3, 1, 6)
@@ -233,11 +226,11 @@ class Page(LineDrawer):
         self.hbox2.addWidget(self.valve4, 2, 6)
 
         self.pumpLED = SingleLed(name="PU12 Rezi (Maisch)")
-        self.hbox2.addWidget(self.pumpLED, 1, 7)
+        self.hbox2.addWidget(self.pumpLED, 1, 8)
         
-        self.pumpWidget = PumpWidget(name="Pumpe PU12")
+        self.pumpWidget = PumpWidget(name="Pumpe   PU12")
         self.pumpWidget.set_mode("operational")
-        self.hbox2.addWidget(self.pumpWidget, 2, 7, 1, 1)
+        self.hbox2.addWidget(self.pumpWidget, 2, 7)
 
 
 
