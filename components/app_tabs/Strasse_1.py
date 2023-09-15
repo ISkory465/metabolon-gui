@@ -28,7 +28,7 @@ class LineDrawer(QWidget):
 
         # Set the pen to use for drawing
         pen = QPen()
-        pen.setWidth(5)
+        pen.setWidth(3)
         pen.setColor(Qt.black)
         painter.setPen(pen)
 
