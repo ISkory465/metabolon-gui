@@ -51,8 +51,7 @@ class Page(QWidget):
         vbox1.addWidget(self.field1_3)
         self.field1_4 = InfoField(name="Temp. Fer 2 [\N{DEGREE SIGN}C]")
         vbox1.addWidget(self.field1_4)
-        self.field1_5 = InfoField(name="Temp. Fer 2 [\N{DEGREE SIGN}C]")
-        vbox1.addWidget(self.field1_5)
+        
 
         # Settings for the vbox1 (First Column of the hbox1)
         vbox1.setAlignment(Qt.AlignTop)
@@ -61,15 +60,23 @@ class Page(QWidget):
     #----------------------SECOND COLUMN--------------------
         #Second column elements of vbox1 for the hbox1:
         self.box2 = Box("RW23",opcClient=self.client,parentDict=self.parentDict)
-        
+        vbox2.addWidget(self.box2)
+
         self.field2_1 = InfoField(name = "RW23 Pause Soll [min] ln",enable=True,opcClient=self.client,parentDict=self.parentDict 
                             )
+        vbox2.addWidget(self.field2_1)
         self.field2_2 = InfoField(name = "RW23 Run Soll [min] ln",enable=True,opcClient=self.client,parentDict=self.parentDict 
                             )
+        vbox2.addWidget(self.field2_2)
+
         self.field2_3 = InfoField(name = "RW23 Auto Sollwert [%]",enable=True,opcClient=self.client,parentDict=self.parentDict 
                             )
+        vbox2.addWidget(self.field2_3)
+
         self.field2_4 = InfoField(name = "RW23 Hand Soll [min] ln",enable=True,opcClient=self.client,parentDict=self.parentDict 
                             )
+        vbox2.addWidget(self.field2_4)
+
 
         # Settings for the vbox2 (First Column of the hbox1)
         vbox2.setAlignment(Qt.AlignTop)
@@ -155,7 +162,6 @@ class Page(QWidget):
             self.field1_2,
             self.field1_3,
             self.field1_4,
-            self.field1_5,
 
             self.box2,
             self.field2_1,
