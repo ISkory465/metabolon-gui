@@ -134,6 +134,7 @@ class Window(QMainWindow):
         self.timer = QTimer()
         self.timer.setInterval(4000)
         self.timer.timeout.connect(self.runLongTask)
+        
         self.timer.start() # Remove comment to run OPC update
 
         # Display the content of the central_widget
@@ -143,23 +144,31 @@ class Window(QMainWindow):
         #Create the Worker thread that runs periodically to update current list of OPC tags.""
         # Step 2: Create a QThread object
         global sensor_dict
-        self.thread1 = QThread()
-        #x=[1,2,3]
-        # Step 3: Create a worker object
-        #results=['Random.Int4','Random.Int8']
-        self.workerLog = WorkerLog(sensor_dict)
-        # Step 4: Move worker to the thread
-        self.workerLog.moveToThread(self.thread1)
+        try:
+          self.thread1 = QThread(parent=self)
+         # Step 3: Create a worker object
+          self.workerLog = WorkerLog(sensor_dict)
+          
+         # Step 4: Move worker to the thread
+          self.workerLog.moveToThread(self.thread1)
 
-        # Step 5: Connect signals and slots
-        
-        self.thread1.started.connect(self.workerLog.run)
-        self.workerLog.finished.connect(self.thread1.quit)
-        self.workerLog.finished.connect(self.workerLog.deleteLater)
-        self.thread1.finished.connect(self.thread1.deleteLater)
-        
-        # Step 6: Start the thread
-        self.thread1.start() 
+          # Step 5: Connect signals and slots
+          
+          self.thread1.started.connect(self.workerLog.run)
+          
+          self.workerLog.finished.connect(self.thread1.quit)
+          self.thread1.wait()
+          #self.workerLog.finished.connect(self.workerLog.deleteLater)
+          #self.thread1.finished.connect(self.thread1.deleteLater)
+          if self.thread1.isFinished():
+             self.workerLog.deleteLater()
+             self.thread1.deleteLater()
+           # Step 6: Start the thread
+          self.thread1.start() 
+          
+        except Exception as e:
+          print('exception occured in DB thread')
+          print(str(e))
     
     def setup_database_update(self):
         # Instantiate the DatabaseHandler
@@ -174,22 +183,33 @@ class Window(QMainWindow):
     def runLongTask(self):
         #Create the Worker thread that runs periodically to update current list of OPC tags.""
         # Step 2: Create a QThread object
-        self.thread = QThread()
-        # Step 3: Create a worker object
-        self.worker = Worker(self.opclist)
-        # Step 4: Move worker to the thread
-        self.worker.moveToThread(self.thread)
-
-        # Step 5: Connect signals and slots        
+        try:
+          self.thread = QThread(parent=self)
+          # Step 3: Create a worker object
+          self.worker = Worker(self.opclist)
+          # Step 4: Move worker to the thread
+          self.worker.moveToThread(self.thread)
         
-        self.thread.started.connect(self.worker.run)
-        self.worker.finished.connect(self.thread.quit)
-        self.worker.finished.connect(self.worker.deleteLater)
-        self.thread.finished.connect(self.thread.deleteLater)
-        self.worker.progress.connect(self.reportProgress)
-        # Step 6: Start the thread
-        self.thread.start() 
+          
+          self.thread.started.connect(self.worker.run)
+          #print('Worker Run')
+          
+          self.worker.finished.connect(self.thread.quit)
+          self.thread.wait()
+          #self.worker.finished.connect(self.worker.deleteLater)
+          if self.thread.isFinished():
+             self.worker.deleteLater()
+             self.thread.deleteLater()
+          #self.thread.finished.connect(self.thread.deleteLater)
+          #self.thread.destroyed.connect(self.destroyed)
 
+          self.worker.progress.connect(self.reportProgress)
+        # Step 6: Start the thread
+          self.thread.start() 
+        except Exception as e:
+          print('exception occured in OPC thread')
+          print(str(e))
+    
     def updateOPCList(self):
         """Change the list of OPC tags depending on the active tab
 

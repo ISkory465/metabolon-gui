@@ -98,7 +98,7 @@ class Worker(QObject):
         except:
             print('error')
             x=['thread not working']
-            self.progress.emit(x)
+            #self.progress.emit(x)
             self.finished.emit()
 
 
