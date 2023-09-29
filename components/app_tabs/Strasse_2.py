@@ -232,7 +232,7 @@ class Page(LineDrawer):
         self.valve1 = ValveLabelWidget("Ventil AA21")
         self.hbox2.addWidget(self.valve1, 4, 5)
 
-        self.valve2 = ValveLabelWidget("Ventil AA14")
+        self.valve2 = ValveLabelWidget("Ventil AA24")
         self.hbox2.addWidget(self.valve2, 0, 6, 1, 3)
 
         self.valve3 = ValveLabelWidget("Ventil AA23")
@@ -241,10 +241,10 @@ class Page(LineDrawer):
         self.valve4 = ValveLabelWidget("Ventil AA22")
         self.hbox2.addWidget(self.valve4, 2, 6)
 
-        self.pumpLED = SingleLed(name="PU12 Rezi (Maisch)")
+        self.pumpLED = SingleLed(name="PU22 Rezi (Maisch)")
         self.hbox2.addWidget(self.pumpLED, 1, 8)
         
-        self.pumpWidget = PumpWidget(name="Pumpe   PU12")
+        self.pumpWidget = PumpWidget(name="Pumpe   PU22")
         self.pumpWidget.set_mode("operational")
         self.hbox2.addWidget(self.pumpWidget, 2, 7)
 
